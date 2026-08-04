@@ -1,0 +1,60 @@
+@use 'variables' as *;
+
+// ════════════════════════════════════════════════════════════
+// ABOUT — visual-only (grid layout → Tailwind in TSX)
+// ════════════════════════════════════════════════════════════
+.value-card {
+  position: relative;
+  padding: 1.75rem;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba($cyan, 0.1);
+  transition: border-color 0.25s, transform 0.25s;
+  overflow: hidden;
+
+  &:hover {
+    border-color: rgba($cyan, 0.3);
+    transform: translateY(-4px);
+  }
+
+  &__icon { font-size: 2rem; display: block; margin-bottom: 0.75rem; }
+  &__title { font-size: 1.1rem; font-weight: 700; color: $text-white; margin: 0 0 0.5rem; }
+  &__desc  { font-size: 13.5px; color: $text-muted; line-height: 1.6; margin: 0; }
+}
+
+// Spinning rings (animation — must stay SCSS)
+.about__ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid rgba($cyan, 0.2);
+  animation: spin-ring 20s linear infinite;
+  width: 300px; height: 300px;
+
+  &--2 {
+    width: 440px; height: 440px;
+    animation-direction: reverse;
+    animation-duration: 30s;
+    border-color: rgba($purple, 0.15);
+  }
+}
+@keyframes spin-ring {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+.about__core {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: rgba($cyan, 0.08);
+  border: 2px solid rgba($cyan, 0.25);
+}
+
+@media (max-width: 768px) {
+  .about__ring, .about__ring--2 { display: none; }
+}

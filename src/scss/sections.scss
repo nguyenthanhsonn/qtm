@@ -1,0 +1,163 @@
+@use 'variables' as *;
+
+// ── Base section ────────────────────────────────────────────
+.section {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: linear-gradient(135deg, #050c1a 0%, #0a1628 50%, #0d1f3c 100%);
+  padding: clamp(80px, 10vh, 120px) clamp(1rem, 6vw, 5rem) clamp(2rem, 4vh, 4rem);
+
+  &__content {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  &__header {
+    text-align: center;
+    margin-bottom: clamp(2rem, 4vh, 4rem);
+  }
+
+  &__label {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: $cyan;
+    margin-bottom: 1rem;
+    padding: 4px 14px;
+    border: 1px solid rgba($cyan, 0.3);
+    border-radius: 999px;
+    background: rgba($cyan, 0.06);
+  }
+
+  &__title {
+    font-size: clamp(1.8rem, 4vw, 3rem);
+    font-weight: 700;
+    color: $text-white;
+    margin: 0.5rem 0 1rem;
+    line-height: 1.2;
+  }
+
+  &__desc {
+    font-size: clamp(14px, 1.4vw, 17px);
+    color: $text-muted;
+    max-width: 640px;
+    margin: 0 auto;
+    line-height: 1.7;
+  }
+}
+
+// ── Gradient text ───────────────────────────────────────────
+.gradient-text {
+  background: linear-gradient(90deg, $cyan-bright, $purple);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+// ── Decorative orbs ─────────────────────────────────────────
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  filter: blur(80px);
+  opacity: 0.18;
+  z-index: 0;
+
+  &--cyan {
+    background: $cyan-bright;
+    width: 500px;
+    height: 500px;
+    top: -100px;
+    left: -100px;
+  }
+
+  &--purple {
+    background: $purple;
+    width: 400px;
+    height: 400px;
+    bottom: -80px;
+    right: -80px;
+  }
+
+  &--sm {
+    width: 260px;
+    height: 260px;
+  }
+
+  &--right {
+    left: auto;
+    right: -60px;
+  }
+}
+
+// ── Buttons ─────────────────────────────────────────────────
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 32px;
+  border-radius: 999px;
+  font-size: clamp(13px, 1.1vw, 15px);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+  transition: all 0.25s ease;
+
+  &--primary {
+    background: linear-gradient(135deg, $cyan-bright, $purple);
+    color: $text-white;
+    box-shadow: 0 0 24px rgba($cyan-bright, 0.25);
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 40px rgba($cyan-bright, 0.4);
+    }
+  }
+
+  &--ghost {
+    background: transparent;
+    color: $text-muted;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+
+    &:hover {
+      color: $text-white;
+      border-color: rgba($cyan, 0.4);
+      background: rgba($cyan, 0.06);
+    }
+  }
+
+  &--full {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+// ── Tags ────────────────────────────────────────────────────
+.tag {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: rgba($cyan, 0.1);
+  color: $cyan;
+  border: 1px solid rgba($cyan, 0.2);
+
+  &--accent {
+    background: rgba(var(--accent-rgb, 79 209 232), 0.12);
+    color: var(--accent, $cyan);
+    border-color: rgba(var(--accent-rgb, 79 209 232), 0.25);
+  }
+}

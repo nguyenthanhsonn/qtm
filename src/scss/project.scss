@@ -1,0 +1,47 @@
+@use 'variables' as *;
+
+// ════════════════════════════════════════════════════════════
+// PROJECTS — visual card only (grid + header → Tailwind in TSX)
+// ════════════════════════════════════════════════════════════
+.project-card {
+  position: relative;
+  padding: 2rem;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  overflow: hidden;
+  transition: transform 0.25s, border-color 0.25s;
+
+  &:hover {
+    transform: translateY(-6px);
+    border-color: rgba(var(--accent, #{$cyan}), 0.4);
+  }
+
+  &__id {
+    font-size: 2rem;
+    font-weight: 800;
+    color: rgba(255,255,255,0.07);
+    line-height: 1;
+  }
+
+  &__category {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent, $cyan);
+    opacity: 0.8;
+  }
+
+  &__name { font-size: 1.2rem; font-weight: 700; color: $text-white; margin: 0 0 0.6rem; }
+  &__desc { font-size: 13.5px; color: $text-muted; line-height: 1.6; margin: 0 0 1rem; }
+
+  // Top accent bar driven by CSS custom property
+  &__bar {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--accent, $cyan), transparent);
+    border-radius: 999px 999px 0 0;
+  }
+}

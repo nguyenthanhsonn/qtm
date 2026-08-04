@@ -1,0 +1,394 @@
+// ── Variables ──────────────────────────────────────────────
+$cyan:        #4FD1E8;
+$cyan-bright: #00D4FF;
+$purple:      #7C4DFF;
+$cyan-hover:  #5EEAD4;
+$text-white:  #ffffff;
+$text-muted:  #CBD5E1;
+$text-dim:    #94A3B8;
+$bg-dark:     rgba(10, 15, 30, 0.88);
+$bg-drawer:   rgba(10, 15, 30, 0.97);
+$bg-dropdown: rgba(10, 15, 30, 0.95);
+
+// ── Header Root ────────────────────────────────────────────
+.header-root {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  width: 100%;
+  height: clamp(64px, 8vh, 90px);
+  display: flex;
+  align-items: center;
+  padding: 0 clamp(1rem, 5vw, 4.5rem);
+  background: transparent;
+  border-bottom: 1px solid transparent;
+  transition: background 0.35s ease, border-color 0.35s ease, backdrop-filter 0.35s ease;
+  padding-left:  max(clamp(1rem, 5vw, 4.5rem), env(safe-area-inset-left));
+  padding-right: max(clamp(1rem, 5vw, 4.5rem), env(safe-area-inset-right));
+
+  &.scrolled {
+    background: $bg-dark;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom-color: rgba(255, 255, 255, 0.08);
+
+    .header-glow-line { width: 100%; }
+  }
+}
+
+// ── Inner layout ───────────────────────────────────────────
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  gap: 2rem;
+}
+
+// ── Logo ───────────────────────────────────────────────────
+.header-logo {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+
+  img {
+    height: clamp(32px, 4vw, 45px) !important;
+    width: auto !important;
+    object-fit: contain;
+    transition: opacity 0.2s;
+  }
+
+  &:hover img { opacity: 0.85; }
+}
+
+// ── Desktop Navigation ─────────────────────────────────────
+.header-nav {
+  position: relative;  // needed for .nav-indicator absolute positioning
+  display: flex;
+  align-items: center;
+  gap: clamp(1rem, 2.5vw, 2.5rem);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  li { position: relative; }
+
+  a,
+  button.nav-btn {
+    font-family: inherit;
+    font-size: clamp(12px, 1.1vw, 14px);
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: $text-white;
+    text-decoration: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px 0;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    position: relative;
+    transition: color 0.2s;
+
+    &:hover {
+      color: $cyan-hover;
+    }
+  }
+
+  // Active item text highlight
+  a.active, button.nav-btn.active { color: $cyan-hover; }
+}
+
+// ── Sliding active indicator (driven by JS CSS vars) ────────
+.nav-indicator {
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  height: 2px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, $cyan-bright, $purple);
+  box-shadow: 0 0 8px rgba($cyan-bright, 0.6);
+  transform: translateX(var(--ind-left, 0px));
+  width: var(--ind-width, 0px);
+  transition:
+    transform 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+    width     0.35s cubic-bezier(0.4, 0, 0.2, 1),
+    opacity   0.2s;
+  opacity: var(--ind-opacity, 0);
+  pointer-events: none;
+}
+
+// ── Dropdown arrow ─────────────────────────────────────────
+.arrow-icon {
+  display: inline-block;
+  font-size: 10px;
+  line-height: 1;
+  transition: transform 0.2s;
+
+  &.open { transform: rotate(180deg); }
+}
+
+// ── Dropdown panel ─────────────────────────────────────────
+.dropdown-panel {
+  position: absolute;
+  top: calc(100% + 14px);
+  left: 50%;
+  min-width: 180px;
+  background: $bg-dropdown;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba($cyan, 0.15);
+  border-radius: 12px;
+  padding: 8px 0;
+  box-shadow:
+    0 16px 48px rgba(0, 0, 0, 0.5),
+    0 0 0 1px rgba($cyan, 0.05);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(-50%) translateY(-8px);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+
+  &.open {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateX(-50%) translateY(0);
+  }
+
+  a {
+    display: block;
+    padding: 10px 20px;
+    font-size: 13px;
+    color: $text-muted;
+    text-decoration: none;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    transition: color 0.2s, background 0.2s;
+    white-space: nowrap;
+
+    &::after { display: none; }
+
+    &:hover {
+      color: $cyan;
+      background: rgba($cyan, 0.07);
+    }
+  }
+}
+
+// ── CTA Button ─────────────────────────────────────────────
+.cta-btn {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: clamp(8px, 1vh, 12px) clamp(16px, 2vw, 24px);
+  border: 1px solid $cyan;
+  border-radius: 999px;
+  background: transparent;
+  color: $cyan;
+  font-size: clamp(12px, 1vw, 14px);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  white-space: nowrap;
+  transition:
+    background 0.25s ease,
+    color 0.25s ease,
+    box-shadow 0.25s ease,
+    border-color 0.25s ease;
+
+  &:hover {
+    background: linear-gradient(135deg, $cyan-bright 0%, $purple 100%);
+    color: $text-white;
+    border-color: transparent;
+    box-shadow: 0 0 20px rgba($cyan-bright, 0.35);
+  }
+}
+
+.cta-arrow {
+  font-style: normal;
+  transition: transform 0.2s;
+
+  .cta-btn:hover & { transform: translateX(3px); }
+}
+
+// ── Hamburger ──────────────────────────────────────────────
+.hamburger-btn {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 40px;
+  height: 40px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 8px;
+  transition: background 0.2s;
+
+  &:hover { background: rgba(255, 255, 255, 0.08); }
+
+  &.open {
+    .hamburger-bar:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger-bar:nth-child(2) { opacity: 0; width: 0; }
+    .hamburger-bar:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+  }
+}
+
+.hamburger-bar {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: $text-white;
+  border-radius: 999px;
+  transform-origin: center;
+  transition: transform 0.3s ease, opacity 0.3s ease, width 0.3s ease;
+}
+
+// ── Mobile overlay ─────────────────────────────────────────
+.mobile-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 998;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+
+  &.open {
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
+
+// ── Mobile Drawer ──────────────────────────────────────────
+.mobile-drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: min(320px, 85vw);
+  background: $bg-drawer;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+  padding: clamp(80px, 12vh, 100px) 2rem 2rem;
+  padding-right: max(2rem, env(safe-area-inset-right));
+  border-left: 1px solid rgba($cyan, 0.1);
+  transform: translateX(100%);
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+
+  &.open { transform: translateX(0); }
+}
+
+// ── Mobile Nav ─────────────────────────────────────────────
+.mobile-nav {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+
+  a,
+  button {
+    display: block;
+    width: 100%;
+    text-align: left;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: $text-muted;
+    text-decoration: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    border-radius: 10px;
+    font-family: inherit;
+    transition: color 0.2s, background 0.2s;
+
+    &:hover {
+      color: $cyan;
+      background: rgba($cyan, 0.07);
+    }
+  }
+
+  a.active { color: $cyan-bright; }
+}
+
+// ── Mobile sub-menu ────────────────────────────────────────
+.mobile-sub {
+  list-style: none;
+  padding: 4px 0 4px 16px;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.3s ease;
+
+  &.open { max-height: 200px; }
+
+  a {
+    font-size: 13px;
+    padding: 10px 12px;
+    color: $text-dim;
+  }
+}
+
+// ── Mobile CTA ─────────────────────────────────────────────
+.mobile-cta-wrap {
+  margin-top: auto;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+
+  .cta-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+// ── Glow line ──────────────────────────────────────────────
+.header-glow-line {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, $cyan, $purple, transparent);
+  transition: width 0.5s ease;
+}
+
+// ── Responsive ─────────────────────────────────────────────
+@media (max-width: 1024px) {
+  .header-nav {
+    gap: clamp(0.75rem, 2vw, 1.5rem);
+  }
+}
+
+@media (max-width: 768px) {
+  .header-nav,
+  .cta-btn {
+    display: none;
+  }
+
+  .hamburger-btn  { display: flex; }
+  .mobile-overlay { display: block; }
+}

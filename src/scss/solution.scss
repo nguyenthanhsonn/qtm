@@ -1,0 +1,36 @@
+@use 'variables' as *;
+
+// ════════════════════════════════════════════════════════════
+// SOLUTIONS — visual card only (grid → Tailwind in TSX)
+// ════════════════════════════════════════════════════════════
+.solution-card {
+  position: relative;
+  padding: 2rem;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba($cyan, 0.1);
+  overflow: hidden;
+  transition: border-color 0.25s, transform 0.25s;
+  cursor: default;
+
+  &:hover {
+    border-color: rgba($cyan, 0.3);
+    transform: translateY(-6px);
+    .solution-card__glow { opacity: 1; }
+  }
+
+  &__icon  { font-size: 2.2rem; display: block; margin-bottom: 1rem; }
+  &__title { font-size: 1.1rem; font-weight: 700; color: $text-white; margin: 0 0 0.6rem; }
+  &__desc  { font-size: 13.5px; color: $text-muted; line-height: 1.65; margin: 0 0 1rem; }
+
+  &__glow {
+    position: absolute;
+    bottom: -40px; left: -40px;
+    width: 160px; height: 160px;
+    border-radius: 50%;
+    background: $cyan-bright;
+    filter: blur(60px);
+    opacity: 0;
+    transition: opacity 0.4s;
+  }
+}
