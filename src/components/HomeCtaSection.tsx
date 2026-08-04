@@ -1,6 +1,9 @@
+"use client";
+
 import "@/scss/home-cta.scss";
-import FeatureCard3D from "@/components/FeatureCard3D";
 import Link from "next/link";
+import { motion, useReducedMotion } from "motion/react";
+import type { ComponentType } from "react";
 
 type IconProps = {
   className?: string;
@@ -39,45 +42,110 @@ const AiIcon = ({ className = "" }: IconProps) => (
   </svg>
 );
 
-const features = [
+const features: { icon: ComponentType<IconProps>; label: string }[] = [
   { icon: PartnershipIcon, label: "Đồng hành dài hạn" },
   { icon: TargetIcon, label: "Giải pháp theo mục tiêu" },
   { icon: ChartIcon, label: "Hiệu quả đo lường được" },
   { icon: AiIcon, label: "Ứng dụng AI & Dữ liệu" },
 ];
 
+const viewport = { once: true, amount: 0.25 } as const;
+
+const easeOut = [0.22, 1, 0.36, 1] as const;
+
 export default function HomeCtaSection() {
+  const reduceMotion = useReducedMotion();
+
+  const fadeUp = reduceMotion
+    ? { hidden: { opacity: 0 }, visible: { opacity: 1 } }
+    : { hidden: { opacity: 0, y: 36 }, visible: { opacity: 1, y: 0 } };
+
+  const fadeUpSoft = reduceMotion
+    ? { hidden: { opacity: 0 }, visible: { opacity: 1 } }
+    : { hidden: { opacity: 0, y: 24, scale: 0.96 }, visible: { opacity: 1, y: 0, scale: 1 } };
+
   return (
     <section id="home-cta" className="section section--home-cta">
       <div className="home-cta__bg" aria-hidden="true" />
       <div className="home-cta__glow" aria-hidden="true" />
 
       <div className="section__content home-cta__content">
-        <h2 className="home-cta__title">
+        <motion.h2
+          className="home-cta__title"
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewport}
+          transition={{ duration: 0.65, ease: easeOut }}
+        >
           Chúng tôi không chỉ hoàn thành dự án. Chúng tôi{" "}
           <span className="home-cta__highlight">đồng hành</span> cùng sự{" "}
           <span className="home-cta__highlight">tăng trưởng</span>.
-        </h2>
+        </motion.h2>
 
-        <p className="home-cta__desc">
+        <motion.p
+          className="home-cta__desc"
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewport}
+          transition={{ duration: 0.65, ease: easeOut, delay: 0.08 }}
+        >
           QTM kết nối chiến lược, công nghệ và sáng tạo để mang đến những giải pháp
           truyền thông tạo ra giá trị thật và bền vững.
-        </p>
+        </motion.p>
 
-        <div className="home-cta__features">
-          {features.map(({ icon, label }) => (
-            <FeatureCard3D key={label} icon={icon} label={label} />
+        <motion.div
+          className="home-cta__features"
+          variants={{
+            hidden: {},
+            visible: {
+              transition: { staggerChildren: reduceMotion ? 0 : 0.12, delayChildren: 0.05 },
+            },
+          }}
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewport}
+        >
+          {features.map(({ icon: Icon, label }) => (
+            <motion.div
+              key={label}
+              className="home-cta__feature"
+              variants={fadeUpSoft}
+              transition={{ duration: 0.55, ease: easeOut }}
+              whileHover={reduceMotion ? undefined : { y: -6, transition: { duration: 0.25 } }}
+            >
+              <span className="home-cta__feature-shine" aria-hidden="true" />
+              <span className="home-cta__feature-icon">
+                <Icon />
+              </span>
+              <span className="home-cta__feature-label">{label}</span>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
 
-        <div className="home-cta__action">
+        <motion.div
+          className="home-cta__action"
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewport}
+          transition={{ duration: 0.65, ease: easeOut, delay: 0.15 }}
+        >
           <p className="home-cta__prompt">Ready to build together?</p>
           <Link href="/contact" className="home-cta__btn">
             NHẬN TƯ VẤN CHIẾN LƯỢC <span className="home-cta__btn-arrow">→</span>
           </Link>
-        </div>
+        </motion.div>
 
-        <div className="home-cta__tagline">
+        <motion.div
+          className="home-cta__tagline"
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewport}
+          transition={{ duration: 0.6, ease: easeOut, delay: 0.22 }}
+        >
           <span className="home-cta__tagline-line" aria-hidden="true" />
           <span>Quality</span>
           <span className="home-cta__tagline-dot">•</span>
@@ -85,7 +153,7 @@ export default function HomeCtaSection() {
           <span className="home-cta__tagline-dot">•</span>
           <span>Mindset</span>
           <span className="home-cta__tagline-line" aria-hidden="true" />
-        </div>
+        </motion.div>
       </div>
     </section>
   );

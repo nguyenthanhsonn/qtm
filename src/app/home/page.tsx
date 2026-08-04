@@ -1,5 +1,7 @@
 import "@/scss/home.scss";
 import CountUp from "@/components/CountUp";
+import HomeCtaSection from "@/components/HomeCtaSection";
+import HomeEcosystemSection from "@/components/HomeEcosystemSection";
 import TextType from "@/components/TextType";
 
 type HomeIconProps = {
@@ -38,7 +40,7 @@ const StarIcon = ({ className = "" }: HomeIconProps) => (
   </svg>
 );
 
-export default function HomeSection() {
+function HomeHero() {
   const stats = [
     { value: 15, suffix: "+", label: "Năm kinh nghiệm", icon: TrophyIcon },
     { value: 200, suffix: "+", label: "Dự án đã triển khai", icon: BriefcaseIcon },
@@ -48,6 +50,17 @@ export default function HomeSection() {
 
   return (
     <section id="home" className="section section--home">
+      <video
+        className="section__bg-video"
+        autoPlay
+        loop
+        muted
+        playsInline
+        aria-hidden="true"
+      >
+        <source src="/kling_20260804_VIDEO_A_cinemati_5058_0.mp4" type="video/mp4" />
+      </video>
+      <div className="section__bg-overlay" aria-hidden="true" />
       <div className="section__bg-grid" aria-hidden="true" />
       <div className="section__particles" aria-hidden="true">
         {Array.from({ length: 20 }).map((_, i) => (
@@ -127,5 +140,15 @@ export default function HomeSection() {
       <div className="orb orb--cyan" aria-hidden="true" />
       <div className="orb orb--purple" aria-hidden="true" />
     </section>
+  );
+}
+
+export default function HomePage() {
+  return (
+    <>
+      <HomeHero />
+      <HomeCtaSection />
+      <HomeEcosystemSection />
+    </>
   );
 }
