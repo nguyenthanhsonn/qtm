@@ -1,0 +1,392 @@
+@use 'variables' as *;
+
+.section.section--home {
+  position: relative;
+  text-align: center;
+  overflow: hidden;
+  background: #050c1a;
+}
+
+.section__bg-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+  opacity: 0.65;
+  pointer-events: none;
+  filter: saturate(1.1) brightness(0.85);
+}
+
+.section__bg-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background:
+    radial-gradient(ellipse at center, rgba(5, 12, 26, 0.4) 0%, rgba(5, 12, 26, 0.75) 75%),
+    linear-gradient(180deg, rgba(5, 12, 26, 0.6) 0%, rgba(5, 12, 26, 0.3) 40%, rgba(5, 12, 26, 0.85) 100%);
+  pointer-events: none;
+}
+
+
+// bg grid overlay
+.section__bg-grid {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-image:
+    linear-gradient(rgba($cyan, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba($cyan, 0.04) 1px, transparent 1px);
+  background-size: 60px 60px;
+  mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
+}
+
+// floating particles (CSS custom property animation)
+.section__particles { position: absolute; inset: 0; z-index: 0; overflow: hidden; }
+.particle {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  border-radius: 50%;
+  background: $cyan-bright;
+  opacity: 0;
+  animation: float-particle 8s infinite;
+  animation-delay: calc(var(--i, 0) * 0.4s);
+  left: calc(5% + var(--i, 0) * 5%);
+  top: calc(10% + var(--i, 0) * 3.5%);
+}
+@keyframes float-particle {
+  0%   { opacity: 0; transform: translateY(0); }
+  20%  { opacity: 0.6; }
+  80%  { opacity: 0.3; }
+  100% { opacity: 0; transform: translateY(-80px); }
+}
+
+.section__content.home__content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: clamp(1.2rem, 2.5vh, 1.8rem);
+  text-align: left;
+  z-index: 1;
+  width: 94vw;
+  max-width: 1700px;
+  margin: 0 auto;
+}
+
+// Badge pill
+.home__badge-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 12.5px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  color: #E2E8F0;
+  text-transform: uppercase;
+  padding: 8px 24px;
+  border-radius: 999px;
+  border: 1px solid rgba($cyan, 0.25);
+  background: rgba(#050c1a, 0.55);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 0 20px rgba($cyan, 0.05);
+
+  .badge-pill__dot {
+    color: $cyan-bright;
+    font-size: 14px;
+    animation: pulse-dot 2.5s infinite;
+  }
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 1; filter: drop-shadow(0 0 4px $cyan-bright); }
+}
+
+// Responsive text sizes
+.home__title {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.1em;
+  width: 100%;
+  font-size: clamp(3.5rem, 8vw, 6.8rem); // 56px to 108.8px
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+
+.home__title-line {
+  display: block;
+  width: 100%;
+}
+
+.home__title-line--plain {
+  color: $text-white;
+}
+
+.home__title-line--gradient-teal-blue {
+  background: linear-gradient(90deg, #4FD1C5 0%, #3B82F6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.home__desc {
+  font-size: clamp(18px, 1.8vw, 22px);
+  color: #E5E7EB;
+  max-width: 680px;
+  line-height: 1.65;
+  font-weight: 400;
+  margin: 0;
+
+  .desc__dot {
+    color: $cyan-bright;
+    margin: 0 4px;
+    font-weight: 700;
+  }
+}
+
+.home__actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  gap: 1.2rem;
+  margin-top: 0.5rem;
+  width: 100%;
+}
+
+.home__cta {
+  min-width: 170px;
+  justify-content: center;
+  padding: 14px 32px;
+  font-size: 15.5px;
+  letter-spacing: 0.08em;
+}
+
+.home__cta--primary {
+  background: linear-gradient(135deg, #4FD1C5, #3B82F6);
+  color: #050c1a;
+  border: none;
+  box-shadow: 0 0 24px rgba(#4FD1C5, 0.25);
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 40px rgba(#4FD1C5, 0.45);
+    color: #050c1a;
+  }
+}
+
+.home__cta--outline {
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  color: $text-white;
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(4px);
+
+  .btn__arrow {
+    display: inline-block;
+    transition: transform 0.25s ease;
+    margin-left: 6px;
+  }
+
+  &:hover {
+    border-color: rgba(#4FD1C5, 0.45);
+    background: rgba(#4FD1C5, 0.05);
+
+    .btn__arrow {
+      transform: translateX(4px);
+    }
+  }
+}
+
+// Stats bar container
+.home__stats-bar {
+  background: rgba(10, 22, 40, 0.4);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  padding: 1.8rem 50px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  width: 100%;
+  margin-top: clamp(1.5rem, 4vh, 2.5rem);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+  align-self: center;
+}
+
+.home__stat-col {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.9rem;
+  padding: 0 1rem;
+}
+
+// Stats dividers (vertical lines)
+.home__stat-col + .home__stat-col::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 15%;
+  bottom: 15%;
+  width: 1px;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.stat-col__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  color: $cyan-bright;
+  border: 1.5px solid rgba($cyan, 0.25);
+  background: rgba($cyan, 0.06);
+  box-shadow: 0 0 16px rgba($cyan-bright, 0.08);
+  flex-shrink: 0;
+}
+
+.stat-col__info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+}
+
+.stat-col__value {
+  font-size: clamp(30px, 2.6vw, 36px);
+  font-weight: 800;
+  color: $text-white;
+  line-height: 1.1;
+}
+
+.stat-col__label {
+  font-size: clamp(14px, 1.2vw, 15.5px);
+  color: #94A3B8;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.home__scroll {
+  position: absolute;
+  left: 50%;
+  bottom: clamp(1.2rem, 3vh, 2rem);
+  z-index: 2;
+  width: 22px;
+  height: 38px;
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  border-radius: 999px;
+  transform: translateX(-50%);
+}
+
+.home__scroll-dot {
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: $cyan-bright;
+  box-shadow: 0 0 12px rgba($cyan-bright, 0.8);
+  transform: translateX(-50%);
+  animation: scroll-dot 1.7s ease-in-out infinite;
+}
+
+@keyframes scroll-dot {
+  0%, 100% { opacity: 0.35; transform: translate(-50%, 0); }
+  45% { opacity: 1; transform: translate(-50%, 12px); }
+}
+
+@media (max-width: 900px) {
+  .home__stats-bar {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem 1rem;
+    padding: 1.5rem;
+    width: 100%;
+    max-width: 600px;
+  }
+
+  .home__stat-col {
+    justify-content: flex-start;
+    padding: 0 1rem;
+  }
+
+  .home__stat-col + .home__stat-col::before {
+    display: none;
+  }
+
+  .home__stat-col:nth-child(even)::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 10%;
+    bottom: 10%;
+    width: 1px;
+    background: rgba(255, 255, 255, 0.1);
+  }
+}
+
+@media (max-width: 768px) {
+  .home__content {
+    gap: 1.2rem;
+  }
+
+  .home__title {
+    font-size: clamp(2.5rem, 11vw, 4.2rem);
+    line-height: 1.1;
+  }
+
+  .home__desc {
+    max-width: 28rem;
+    font-size: 17.5px;
+  }
+
+  .home__actions {
+    width: 100%;
+    gap: 1rem;
+  }
+
+  .home__cta {
+    min-width: calc(50% - 0.5rem);
+    flex-grow: 1;
+    padding: 12px 20px;
+  }
+}
+
+@media (max-width: 560px) {
+  .section--home {
+    padding-bottom: 5.5rem;
+  }
+
+  .home__stats-bar {
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+    max-width: 320px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .home__stat-col {
+    justify-content: flex-start;
+    padding: 0;
+  }
+
+  .home__stat-col:nth-child(even)::before {
+    display: none;
+  }
+
+  .home__stat-col + .home__stat-col::after {
+    content: "";
+    position: absolute;
+    left: 10%;
+    right: 10%;
+    top: -0.6rem;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.08);
+  }
+}
