@@ -17,7 +17,7 @@ export default function AboutSection() {
             Đội ngũ <span className="gradient-text">chuyên gia</span> hàng đầu
           </h2>
           <p className="section__desc">
-            Với hơn 12 năm kinh nghiệm, QTM đã giúp hàng trăm doanh nghiệp
+            Với hơn 12 năm kinh nghiệm, Miss Legacy đã giúp hàng trăm doanh nghiệp
             từ startup đến tập đoàn lớn tối ưu hoạt động và tăng trưởng bền vững
             thông qua sức mạnh của công nghệ.
           </p>
@@ -39,7 +39,7 @@ export default function AboutSection() {
           <div className="about__ring"     aria-hidden="true" />
           <div className="about__ring about__ring--2" aria-hidden="true" />
           <div className="about__core">
-            <span className="gradient-text text-3xl font-bold">QTM</span>
+            <span className="gradient-text text-3xl font-bold">Miss Legacy</span>
           </div>
         </div>
       </div>

@@ -91,7 +91,7 @@ export default function HomeCtaSection() {
           viewport={viewport}
           transition={{ duration: 0.65, ease: easeOut, delay: 0.08 }}
         >
-          QTM kết nối chiến lược, công nghệ và sáng tạo để mang đến những giải pháp
+          Miss Legacy kết nối chiến lược, công nghệ và sáng tạo để mang đến những giải pháp
           truyền thông tạo ra giá trị thật và bền vững.
         </motion.p>
 

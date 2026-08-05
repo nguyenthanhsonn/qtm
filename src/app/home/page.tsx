@@ -106,7 +106,7 @@ function HomeHero() {
             LIÊN HỆ TƯ VẤN
           </a>
           <a href="#projects" className="btn btn--outline home__cta home__cta--outline">
-            KHÁM PHÁ QTM <span className="btn__arrow">→</span>
+            KHÁM PHÁ MISS LEGACY <span className="btn__arrow">→</span>
           </a>
         </div>
 
