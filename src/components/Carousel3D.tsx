@@ -13,9 +13,10 @@ export type CarouselItem = {
 
 interface Carousel3DProps {
   items: CarouselItem[];
+  autoPlayDuration?: number;
 }
 
-export default function Carousel3D({ items }: Carousel3DProps) {
+export default function Carousel3D({ items, autoPlayDuration = 4000 }: Carousel3DProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
 
