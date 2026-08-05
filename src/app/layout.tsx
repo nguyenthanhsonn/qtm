@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono, Poppins } from "next/font/google";
 import "../scss/globals.css";
 import "@/scss/sections.scss";
+import Footer from "@/components/Footer";
 import Header from "@/components/header";
 import PageIntroLoader from "@/components/PageIntroLoader";
 
@@ -37,7 +38,8 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <body className="min-h-full flex flex-col">
         <PageIntroLoader />
         <Header />
-        {children}
+        <main className="flex-1">{children}</main>
+        <Footer />
       </body>
     </html>
   );
