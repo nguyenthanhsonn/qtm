@@ -10,6 +10,10 @@
   --font-sans:   var(--font-sans);
   --font-mono:          var(--font-geist-mono);
   /* Brand tokens */
+  --color-deep-navy:   #123A53;
+  --color-deep-ocean:  #17398F;
+  --color-teal-blue:   #2095AD;
+  --color-aqua-mint:   #38CFC8;
   --color-brand-cyan:   #4FD1E8;
   --color-brand-bright: #00D4FF;
   --color-brand-purple: #7C4DFF;
