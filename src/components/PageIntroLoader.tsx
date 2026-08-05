@@ -63,7 +63,7 @@ export default function PageIntroLoader() {
             >
               <Image
                 src="/logo.png"
-                alt="QTM Logo"
+                alt="Miss Legacy Logo"
                 width={260}
                 height={60}
                 priority

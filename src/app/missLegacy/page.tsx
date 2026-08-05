@@ -1,4 +1,4 @@
-import "@/scss/project.scss";
+import "@/scss/missLegacy.scss";
 
 const projects = [
   {
