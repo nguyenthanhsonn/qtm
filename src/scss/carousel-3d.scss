@@ -100,7 +100,8 @@ $text-muted:  #CBD5E1;
     box-shadow: 0 20px 45px rgba(0, 0, 0, 0.6),
                 0 0 15px rgba(79, 209, 232, 0.15);
     overflow: hidden;
-    transition: all 0.35s ease;
+    transform-style: preserve-3d;
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.4s ease, border-color 0.4s ease;
   }
 
   // Active / Front Card Technical HUD Reticle
@@ -110,6 +111,7 @@ $text-muted:  #CBD5E1;
       box-shadow: 0 25px 65px rgba(0, 0, 0, 0.75),
                   0 0 40px rgba(0, 212, 255, 0.5),
                   inset 0 0 20px rgba(124, 77, 255, 0.3);
+      transform: translateZ(25px);
     }
 
     // Laser Scanline Effect on Active Card
@@ -129,14 +131,26 @@ $text-muted:  #CBD5E1;
   }
 
   &:hover {
+    z-index: 50;
+
     .c3d-card-inner {
       border-color: rgba(0, 212, 255, 1);
-      box-shadow: 0 30px 75px rgba(0, 0, 0, 0.85),
-                  0 0 50px rgba(0, 212, 255, 0.6);
+      box-shadow: 0 35px 85px rgba(0, 0, 0, 0.9),
+                  0 0 60px rgba(0, 212, 255, 0.7);
+      transform: translateZ(50px) scale(1.05);
     }
 
     .c3d-card-image {
-      transform: scale(1.06);
+      transform: scale(1.08) translateZ(10px);
+    }
+
+    .c3d-card-overlay {
+      transform: translateZ(35px);
+    }
+
+    .c3d-card-hud-corner {
+      transform: translateZ(40px);
+      box-shadow: 0 0 10px $cyan-bright;
     }
   }
 }
@@ -210,7 +224,7 @@ $text-muted:  #CBD5E1;
   }
 
   .c3d-card-title {
-    font-family: var(--font-poppins), sans-serif;
+    font-family: var(--font-heading);
     font-size: 0.925rem;
     font-weight: 600;
     line-height: 1.3;
