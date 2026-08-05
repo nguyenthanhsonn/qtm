@@ -23,7 +23,7 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "QTM",
+  title: "Miss Legacy",
   icons: {
     icon: "/icon.png",
   },

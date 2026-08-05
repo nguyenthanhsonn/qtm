@@ -33,9 +33,9 @@ export default function ContactSection() {
 
             <div className="flex flex-col gap-5 mt-2">
               {[
-                { icon: "📧", label: "Email",   value: "hello@qtm.vn" },
+                { icon: "📧", label: "Email",   value: "hello@misslegacy.vn" },
                 { icon: "📞", label: "Hotline", value: "1800 123 456" },
-                { icon: "📍", label: "Địa chỉ", value: "Tầng 12, Tòa nhà QTM, TP.HCM" },
+                { icon: "📍", label: "Địa chỉ", value: "Tầng 12, Tòa nhà Miss Legacy, TP.HCM" },
               ].map((d) => (
                 <div key={d.label} className="flex items-start gap-4">
                   <span className="text-2xl shrink-0">{d.icon}</span>

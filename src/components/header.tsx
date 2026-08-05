@@ -19,7 +19,7 @@ const NAV_ITEMS: { label: string; href?: string; dropdown?: { label: string; hre
       { label: "Phân tích",   href: "/solution" },
     ],
   },
-  { label: "Miss Legacy", href: "/project" },
+  { label: "Miss Legacy", href: "/missLegacy" },
   { label: "Liên hệ",    href: "/contact"  },
 ];
 
@@ -165,12 +165,12 @@ export default function Header() {
           <Link
             href="/home"
             className="header-logo"
-            aria-label="QTM - Trang chủ"
+            aria-label="Miss Legacy - Trang chủ"
             style={{ background: "none", border: "none", cursor: "pointer", padding: 0 }}
           >
             <Image
               src="/logo.png"
-              alt="QTM Logo"
+              alt="Miss Legacy Logo"
               width={200}
               height={45}
               priority
