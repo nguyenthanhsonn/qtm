@@ -8,18 +8,53 @@
   padding: 1.75rem;
   border-radius: 16px;
   background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba($cyan, 0.1);
-  transition: border-color 0.25s, transform 0.25s;
+  border: 1px solid rgba($cyan, 0.12);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transform-style: preserve-3d;
+  transition: border-color 0.35s ease, box-shadow 0.35s ease;
   overflow: hidden;
 
   &:hover {
-    border-color: rgba($cyan, 0.3);
-    transform: translateY(-4px);
+    border-color: rgba($purple, 0.45);
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.4), 0 0 25px rgba($purple, 0.3);
+
+    .value-card__icon {
+      transform: translateZ(35px) scale(1.1);
+    }
+    .value-card__title {
+      transform: translateZ(25px);
+    }
+    .value-card__desc {
+      transform: translateZ(18px);
+    }
   }
 
-  &__icon { font-size: 2rem; display: block; margin-bottom: 0.75rem; }
-  &__title { font-size: 1.1rem; font-weight: 700; color: $text-white; margin: 0 0 0.5rem; }
-  &__desc  { font-size: 13.5px; color: $text-muted; line-height: 1.6; margin: 0; }
+  &__icon {
+    font-size: 2.2rem;
+    display: block;
+    margin-bottom: 0.75rem;
+    transform: translateZ(22px);
+    transition: transform 0.35s ease;
+  }
+
+  &__title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: $text-white;
+    margin: 0 0 0.5rem;
+    transform: translateZ(18px);
+    transition: transform 0.35s ease;
+  }
+
+  &__desc {
+    font-size: 13.5px;
+    color: $text-muted;
+    line-height: 1.6;
+    margin: 0;
+    transform: translateZ(12px);
+    transition: transform 0.35s ease;
+  }
 }
 
 // Spinning rings (animation — must stay SCSS)

@@ -1,4 +1,7 @@
+"use client";
+
 import "@/scss/missLegacy.scss";
+import Card3DTilt from "@/components/Card3DTilt";
 
 const projects = [
   {
@@ -52,9 +55,13 @@ export default function ProjectsSection() {
         {/* Grid — Tailwind */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
           {projects.map((p) => (
-            <div
+            <Card3DTilt
               key={p.id}
-              className="project-card"
+              className="project-card h-full"
+              maxTilt={12}
+              scale={1.03}
+              glareColor={p.color}
+              glareOpacity={0.35}
               style={{ "--accent": p.color } as React.CSSProperties}
             >
               <div className="flex items-center justify-between mb-4">
@@ -63,13 +70,13 @@ export default function ProjectsSection() {
               </div>
               <h3 className="project-card__name">{p.name}</h3>
               <p className="project-card__desc">{p.desc}</p>
-              <div className="flex flex-wrap gap-1.5">
+              <div className="flex flex-wrap gap-1.5 project-card__tags">
                 {p.tech.map((t) => (
                   <span key={t} className="tag tag--accent">{t}</span>
                 ))}
               </div>
               <div className="project-card__bar" aria-hidden="true" />
-            </div>
+            </Card3DTilt>
           ))}
         </div>
       </div>

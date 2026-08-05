@@ -1,4 +1,7 @@
+"use client";
+
 import "@/scss/solution.scss";
+import Card3DTilt from "@/components/Card3DTilt";
 
 const solutions = [
   {
@@ -45,17 +48,24 @@ export default function SolutionsSection() {
         {/* Grid — Tailwind */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {solutions.map((s) => (
-            <div key={s.title} className="solution-card">
+            <Card3DTilt
+              key={s.title}
+              className="solution-card h-full"
+              maxTilt={14}
+              scale={1.035}
+              glareColor="rgba(0, 212, 255, 0.35)"
+              glareOpacity={0.4}
+            >
               <span className="solution-card__icon">{s.icon}</span>
               <h3 className="solution-card__title">{s.title}</h3>
               <p className="solution-card__desc">{s.desc}</p>
-              <div className="flex flex-wrap gap-1.5">
+              <div className="flex flex-wrap gap-1.5 solution-card__tags">
                 {s.tags.map((t) => (
                   <span key={t} className="tag">{t}</span>
                 ))}
               </div>
               <div className="solution-card__glow" aria-hidden="true" />
-            </div>
+            </Card3DTilt>
           ))}
         </div>
       </div>
