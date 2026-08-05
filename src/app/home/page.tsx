@@ -2,6 +2,9 @@ import "@/scss/home.scss";
 import CountUp from "@/components/CountUp";
 import HomeCtaSection from "@/components/HomeCtaSection";
 import HomeEcosystemSection from "@/components/HomeEcosystemSection";
+import HomeSolutionsSection from "@/components/HomeSolutionsSection";
+import HomePartnersSection from "@/components/HomePartnersSection";
+import FooterCtaSection from "@/components/FooterCtaSection";
 import TextType from "@/components/TextType";
 
 type HomeIconProps = {
@@ -149,6 +152,9 @@ export default function HomePage() {
       <HomeHero />
       <HomeCtaSection />
       <HomeEcosystemSection />
+      <HomeSolutionsSection />
+      <HomePartnersSection />
+      <FooterCtaSection />
     </>
   );
 }

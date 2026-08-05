@@ -8,20 +8,66 @@
   padding: 2rem;
   border-radius: 20px;
   background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba($cyan, 0.1);
+  border: 1px solid rgba($cyan, 0.12);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   overflow: hidden;
-  transition: border-color 0.25s, transform 0.25s;
+  transform-style: preserve-3d;
+  transition: border-color 0.35s ease, box-shadow 0.35s ease;
   cursor: default;
 
   &:hover {
-    border-color: rgba($cyan, 0.3);
-    transform: translateY(-6px);
-    .solution-card__glow { opacity: 1; }
+    border-color: rgba($cyan, 0.45);
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.45), 0 0 30px rgba($cyan-bright, 0.25);
+
+    .solution-card__icon {
+      transform: translateZ(40px) scale(1.15);
+    }
+    .solution-card__title {
+      transform: translateZ(30px);
+    }
+    .solution-card__desc {
+      transform: translateZ(20px);
+    }
+    .solution-card__tags {
+      transform: translateZ(25px);
+    }
+    .solution-card__glow {
+      opacity: 0.8;
+      transform: translateZ(10px) scale(1.2);
+    }
   }
 
-  &__icon  { font-size: 2.2rem; display: block; margin-bottom: 1rem; }
-  &__title { font-size: 1.1rem; font-weight: 700; color: $text-white; margin: 0 0 0.6rem; }
-  &__desc  { font-size: 13.5px; color: $text-muted; line-height: 1.65; margin: 0 0 1rem; }
+  &__icon {
+    font-size: 2.4rem;
+    display: block;
+    margin-bottom: 1rem;
+    transform: translateZ(25px);
+    transition: transform 0.35s ease;
+  }
+
+  &__title {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: $text-white;
+    margin: 0 0 0.6rem;
+    transform: translateZ(20px);
+    transition: transform 0.35s ease;
+  }
+
+  &__desc {
+    font-size: 13.5px;
+    color: $text-muted;
+    line-height: 1.65;
+    margin: 0 0 1rem;
+    transform: translateZ(15px);
+    transition: transform 0.35s ease;
+  }
+
+  &__tags {
+    transform: translateZ(18px);
+    transition: transform 0.35s ease;
+  }
 
   &__glow {
     position: absolute;
@@ -31,6 +77,7 @@
     background: $cyan-bright;
     filter: blur(60px);
     opacity: 0;
-    transition: opacity 0.4s;
+    transform: translateZ(5px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
   }
 }

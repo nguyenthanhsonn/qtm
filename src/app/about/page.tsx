@@ -1,4 +1,7 @@
+"use client";
+
 import "@/scss/about.scss";
+import Card3DTilt from "@/components/Card3DTilt";
 
 export default function AboutSection() {
   const values = [
@@ -26,11 +29,18 @@ export default function AboutSection() {
         {/* Values grid — Tailwind */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
           {values.map((v) => (
-            <div key={v.title} className="value-card">
+            <Card3DTilt
+              key={v.title}
+              className="value-card h-full"
+              maxTilt={14}
+              scale={1.035}
+              glareColor="rgba(124, 77, 255, 0.35)"
+              glareOpacity={0.4}
+            >
               <span className="value-card__icon">{v.icon}</span>
               <h3 className="value-card__title">{v.title}</h3>
               <p className="value-card__desc">{v.desc}</p>
-            </div>
+            </Card3DTilt>
           ))}
         </div>
 

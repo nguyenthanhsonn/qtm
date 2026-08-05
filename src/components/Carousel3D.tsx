@@ -16,7 +16,7 @@ interface Carousel3DProps {
   autoPlayDuration?: number;
 }
 
-export default function Carousel3D({ items, autoPlayDuration = 4000 }: Carousel3DProps) {
+export default function Carousel3D({ items }: Carousel3DProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
 
@@ -27,12 +27,6 @@ export default function Carousel3D({ items, autoPlayDuration = 4000 }: Carousel3
 
   const [radius, setRadius] = useState(760);
   const [frontIndex, setFrontIndex] = useState(0);
-
-  // Live status state for technical HUD display
-  const [hudState, setHudState] = useState({
-    velocityDisplay: "0.12",
-    statusText: "AUTO_PANNING",
-  });
 
   // Physics animation state
   const rotationRef = useRef(0);
@@ -64,9 +58,7 @@ export default function Carousel3D({ items, autoPlayDuration = 4000 }: Carousel3
 
   // 60fps Animation physics loop with Dynamic Lean (rotateZ)
   useEffect(() => {
-    let lastHudUpdate = 0;
-
-    const animate = (timestamp: number) => {
+    const animate = () => {
       if (!isDragging.current) {
         // Lerp velocity toward targetVelocity
         velocityRef.current += (targetVelocityRef.current - velocityRef.current) * 0.08;
@@ -84,20 +76,6 @@ export default function Carousel3D({ items, autoPlayDuration = 4000 }: Carousel3
       const currentRotMod = ((-rotationRef.current % 360) + 360) % 360;
       const closestIdx = Math.round(currentRotMod / angleStep) % total;
       setFrontIndex(closestIdx);
-
-      // Throttle HUD status updates to ~10Hz
-      if (timestamp - lastHudUpdate > 100) {
-        lastHudUpdate = timestamp;
-        let st = "AUTO_PANNING";
-        if (isDragging.current) st = "USER_DRAGGING";
-        else if (Math.abs(targetVelocityRef.current) === 0) st = "INSPECT_PAUSED";
-        else if (Math.abs(velocityRef.current) > 0.4) st = "HIGH_SPEED_ROTATE";
-
-        setHudState({
-          velocityDisplay: Math.abs(velocityRef.current * 10).toFixed(2),
-          statusText: st,
-        });
-      }
 
       animFrameId.current = requestAnimationFrame(animate);
     };
@@ -224,20 +202,6 @@ export default function Carousel3D({ items, autoPlayDuration = 4000 }: Carousel3
               </div>
             );
           })}
-        </div>
-      </div>
-
-      {/* Technical HUD System Status Bar */}
-      <div className="c3d-tech-status-bar">
-        <div className="status-item">
-          <span className="status-dot" />
-          <span>SYS_3D_STATUS: <span className="val-highlight">{hudState.statusText}</span></span>
-        </div>
-        <div className="status-item">
-          <span>VELOCITY: <span className="val-highlight">{hudState.velocityDisplay} RPM</span></span>
-        </div>
-        <div className="status-item">
-          <span>ACTIVE_NODE: <span className="val-highlight">0{frontIndex + 1} / 0{total}</span></span>
         </div>
       </div>
     </div>
