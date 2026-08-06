@@ -1175,12 +1175,131 @@
     color: #475569;
     margin: 0;
   }
+}
+
+.commitments-main-split {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 2rem;
+  width: 100%;
+  margin-top: 1.5rem;
+  align-items: center;
+
+  @media (max-width: 960px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.commitments-shield-visual {
+  display: flex;
+  justify-content: center;
+}
+
+.shield-card-graphic {
+  position: relative;
+  width: 100%;
+  max-width: 320px;
+  padding: 1.8rem;
+  border-radius: 20px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(241, 245, 249, 0.95) 100%);
+  border: 1.5px solid rgba(32, 149, 173, 0.25);
+  box-shadow: 0 15px 40px rgba(32, 149, 173, 0.12);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  text-align: center;
+
+  .shield-central-icon {
+    width: 160px;
+    height: 160px;
+
+    .shield-svg {
+      width: 100%;
+      height: 100%;
+      filter: drop-shadow(0 10px 25px rgba(32, 149, 173, 0.25));
+    }
+  }
+
+  .shield-bottom-label {
+    font-family: var(--font-geist-mono), monospace;
+    font-size: 0.725rem;
+    font-weight: 700;
+    color: #2095AD;
+    letter-spacing: 0.05em;
+  }
+}
+
+.commitments-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.2rem;
+  width: 100%;
+
+  @media (max-width: 1024px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: 600px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.commitment-light-card {
+  height: 100%;
+  padding: 1.4rem;
+  border-radius: 16px;
+  background: #FFFFFF;
+  border: 1.5px solid rgba(32, 149, 173, 0.2);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  transition: all 0.3s ease;
+
+  .card-icon-header {
+    margin-bottom: 0.25rem;
+
+    .icon-circle {
+      width: 46px;
+      height: 46px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      &--teal {
+        background: rgba(13, 148, 136, 0.1);
+      }
+      &--blue {
+        background: rgba(2, 132, 199, 0.1);
+      }
+      &--purple {
+        background: rgba(124, 58, 237, 0.1);
+      }
+    }
+  }
+
+  .card-item-title {
+    font-size: 0.95rem;
+    font-weight: 800;
+    color: #123A53;
+    margin: 0;
+    line-height: 1.35;
+  }
+
+  .card-item-desc {
+    font-size: 0.825rem;
+    line-height: 1.6;
+    color: #475569;
+    margin: 0;
+  }
 
   &:hover {
-    background: #FFFFFF;
+    transform: translateY(-4px);
     border-color: #38CFC8;
-    box-shadow: 0 10px 30px rgba(56, 207, 200, 0.18);
-    transform: translateY(-3px);
+    box-shadow: 0 12px 30px rgba(56, 207, 200, 0.2);
   }
 }
 
