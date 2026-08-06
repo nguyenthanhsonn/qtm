@@ -12,7 +12,6 @@ export default function FooterCtaSection() {
   const reduceMotion = useReducedMotion();
   const router = useRouter();
   const [isPlayingVideo, setIsPlayingVideo] = useState(false);
-  const [isBgMuted, setIsBgMuted] = useState(true);
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const bgVideoRef = useRef<HTMLVideoElement | null>(null);
 
@@ -20,13 +19,6 @@ export default function FooterCtaSection() {
     // Prefetch contact page for instant seamless navigation
     router.prefetch("/contact");
   }, [router]);
-
-  const toggleBgAudio = () => {
-    if (bgVideoRef.current) {
-      bgVideoRef.current.muted = !isBgMuted;
-      setIsBgMuted(!isBgMuted);
-    }
-  };
 
   const fadeUp = reduceMotion
     ? { hidden: { opacity: 0 }, visible: { opacity: 1 } }
@@ -71,33 +63,6 @@ export default function FooterCtaSection() {
         {/* Dark Gradient Overlay */}
         <div className="fcta-bg-overlay" aria-hidden="true" />
 
-        {/* Floating Sound Toggle Button */}
-        <button
-          type="button"
-          onClick={toggleBgAudio}
-          className="fcta-sound-toggle"
-          aria-label={isBgMuted ? "Bật âm thanh video nền" : "Tắt âm thanh video nền"}
-        >
-          {isBgMuted ? (
-            <>
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" />
-                <line x1="23" y1="9" x2="17" y2="15" />
-                <line x1="17" y1="9" x2="23" y2="15" />
-              </svg>
-              <span>Bật âm thanh</span>
-            </>
-          ) : (
-            <>
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" />
-                <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07" />
-              </svg>
-              <span>Tắt âm thanh</span>
-            </>
-          )}
-        </button>
-
         {/* Radiant Background Layer */}
         <div className="fcta-bg" aria-hidden="true">
           {/* Concentric Halo Circles */}
@@ -139,7 +104,7 @@ export default function FooterCtaSection() {
             data-aos-duration="800"
           >
             Ý TƯỞNG BẮT ĐẦU<br />
-            <span className="fcta-title-blue">TỪ MỘT CUỘC TRÒ CHUYỆN.</span>
+            TỪ MỘT CUỘC TRÒ CHUYỆN.
           </h2>
 
           {/* Sub-description */}
