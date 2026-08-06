@@ -1,60 +1,49 @@
 "use client";
 
 import "@/scss/about.scss";
-import Card3DTilt from "@/components/Card3DTilt";
+import AboutHero from "@/components/about/AboutHero";
+import AboutVisionMission from "@/components/about/AboutVisionMission";
+import AboutRoadmap from "@/components/about/AboutRoadmap";
+import AboutAiCulture from "@/components/about/AboutAiCulture";
+import AboutTargetAudience from "@/components/about/AboutTargetAudience";
+import AboutCommitments from "@/components/about/AboutCommitments";
+import SectionDivider from "@/components/about/SectionDivider";
 
-export default function AboutSection() {
-  const values = [
-    { icon: "⚡", title: "Đổi mới",  desc: "Luôn đứng ở tuyến đầu công nghệ, mang tới giải pháp tiên phong." },
-    { icon: "🎯", title: "Hiệu quả", desc: "Tập trung vào kết quả đo lường được, cam kết ROI rõ ràng." },
-    { icon: "🤝", title: "Đối tác",  desc: "Đồng hành cùng khách hàng như một thành viên nội bộ." },
-    { icon: "🔒", title: "Tin cậy",  desc: "Bảo mật dữ liệu và minh bạch trong mọi quy trình." },
-  ];
-
+export default function AboutPage() {
   return (
-    <section id="about" className="section section--about">
-      <div className="section__content">
-        <div className="section__header">
-          <span className="section__label">VỀ CHÚNG TÔI</span>
-          <h2 className="section__title">
-            Đội ngũ <span className="gradient-text">chuyên gia</span> hàng đầu
-          </h2>
-          <p className="section__desc">
-            Với hơn 12 năm kinh nghiệm, Miss Legacy đã giúp hàng trăm doanh nghiệp
-            từ startup đến tập đoàn lớn tối ưu hoạt động và tăng trưởng bền vững
-            thông qua sức mạnh của công nghệ.
-          </p>
-        </div>
+    <main className="about-page-wrapper">
+      {/* BLOCK 1 - HERO (Dark) */}
+      <AboutHero />
 
-        {/* Values grid — Tailwind */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-          {values.map((v) => (
-            <Card3DTilt
-              key={v.title}
-              className="value-card h-full"
-              maxTilt={14}
-              scale={1.035}
-              glareColor="rgba(124, 77, 255, 0.35)"
-              glareOpacity={0.4}
-            >
-              <span className="value-card__icon">{v.icon}</span>
-              <h3 className="value-card__title">{v.title}</h3>
-              <p className="value-card__desc">{v.desc}</p>
-            </Card3DTilt>
-          ))}
-        </div>
+      {/* Transition: Dark → Light */}
+      <SectionDivider type="dark-to-light" bottomColor="#F8FAFC" />
 
-        {/* Decorative ring visual — Tailwind layout */}
-        <div className="relative flex items-center justify-center h-56">
-          <div className="about__ring"     aria-hidden="true" />
-          <div className="about__ring about__ring--2" aria-hidden="true" />
-          <div className="about__core">
-            <span className="gradient-text text-3xl font-bold">Miss Legacy</span>
-          </div>
-        </div>
-      </div>
+      {/* BLOCK 2 - TẦM NHÌN & SỨ MỆNH (Light) */}
+      <AboutVisionMission />
 
-      <div className="orb orb--purple orb--sm" aria-hidden="true" />
-    </section>
+      {/* Transition: Light → Dark */}
+      <SectionDivider type="light-to-dark" bottomColor="#050C1A" />
+
+      {/* BLOCK 3 - ROADMAP 5 NĂM (Dark) */}
+      <AboutRoadmap />
+
+      {/* Transition: Dark → Light */}
+      <SectionDivider type="dark-to-light" bottomColor="#F8FAFC" />
+
+      {/* BLOCK 4 - VĂN HÓA AI (Light) */}
+      <AboutAiCulture />
+
+      {/* Transition: Light → Dark */}
+      <SectionDivider type="light-to-dark" bottomColor="#081225" />
+
+      {/* BLOCK 5 - KHÁCH HÀNG MỤC TIÊU & ĐỐI TÁC (Dark) */}
+      <AboutTargetAudience />
+
+      {/* Transition: Dark → Light */}
+      <SectionDivider type="dark-to-light" bottomColor="#FFFFFF" />
+
+      {/* BLOCK 6 - CAM KẾT (Light + Dark CTA Band) */}
+      <AboutCommitments />
+    </main>
   );
 }
