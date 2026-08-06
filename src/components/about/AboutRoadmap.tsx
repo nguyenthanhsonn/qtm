@@ -1,65 +1,96 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
-import { motion, AnimatePresence, useReducedMotion } from "motion/react";
+import React, { useState } from "react";
+import { motion, useReducedMotion } from "motion/react";
 import Card3DTilt from "@/components/Card3DTilt";
 import ParticleField from "@/components/TechBackground/ParticleField";
 
-type RoadmapItem = {
+type RoadmapNode = {
   year: string;
-  code: string;
-  tagline: string;
   title: string;
   desc: string;
-  keyTech: string[];
-  metrics: string;
+  iconSvg: React.ReactNode;
 };
 
-const roadmapData: RoadmapItem[] = [
+const roadmapNodes: RoadmapNode[] = [
   {
     year: "2026",
-    code: "NODE_2026_V1",
-    tagline: "SÁNG TẠO DỰA TRÊN DỮ LIỆU",
-    title: "AI-Driven Content Engine & QTM Data Lab",
-    desc: "Tự động hóa 50% quy trình sản xuất nội dung đa kênh. Chính thức đi vào hoạt động QTM Data Lab — Trung tâm nghiên cứu & phân tích dữ liệu hành vi người dùng truyền thông số.",
-    keyTech: ["Generative Content Engine", "Social Data Crawler", "Real-time Sentiment Analysis"],
-    metrics: "Tăng tốc độ sản xuất nội dung x3.5 lần",
+    title: "HOÀN THIỆN MÔ HÌNH MEDIATECH",
+    desc: "Xây dựng nền tảng vững chắc về chiến lược - sáng tạo - công nghệ.",
+    iconSvg: (
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#38CFC8" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.71 1.26-1.55 1.66-2.48l-2.18-2.18c-.93.4-1.77.95-2.48 1.66z" />
+        <path d="M15 9l-6 6" />
+        <path d="M9 15l-1.5-1.5" />
+        <path d="M12 12l-1.5-1.5" />
+        <path d="M15 9l-1.5-1.5" />
+        <path d="M9.5 6.5L17.5 3.5 20.5 6.5 17.5 14.5" />
+      </svg>
+    ),
   },
   {
     year: "2027",
-    code: "NODE_2027_V2",
-    tagline: "MÔ HÌNH DỰ BÁO XU HƯỚNG",
-    title: "Predictive Media Platform & Automated Workflow",
-    desc: "Ứng dụng các mô hình học sâu (Deep Learning) để dự báo xu hướng truyền thông và chủ đề hot-trend trước khi bùng nổ. Tối ưu hóa chi phí mua quảng cáo truyền thông đa kênh.",
-    keyTech: ["Deep Learning Trend Predictor", "Automated Media Buying", "MarTech Pipeline"],
-    metrics: "Dự báo chính xác 88% sóng truyền thông",
+    title: "CHUẨN HÓA HỆ THỐNG AI & AUTOMATION",
+    desc: "Tích hợp AI vào dòng công việc, tối ưu hóa quy trình để nâng cao hiệu suất và tính chính xác.",
+    iconSvg: (
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#00D4FF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <rect x="4" y="4" width="16" height="16" rx="2" />
+        <rect x="9" y="9" width="6" height="6" />
+        <line x1="9" y1="1" x2="9" y2="4" />
+        <line x1="15" y1="1" x2="15" y2="4" />
+        <line x1="9" y1="20" x2="9" y2="23" />
+        <line x1="15" y1="20" x2="15" y2="23" />
+        <line x1="20" y1="9" x2="23" y2="9" />
+        <line x1="20" y1="15" x2="23" y2="15" />
+        <line x1="1" y1="9" x2="4" y2="9" />
+        <line x1="1" y1="15" x2="4" y2="15" />
+      </svg>
+    ),
   },
   {
     year: "2028",
-    code: "NODE_2028_V3",
-    tagline: "TRẢI NGHIỆM NHẬP VAI 3D",
-    title: "Immersive Brand Experience & Interactive Ads",
-    desc: "Tích hợp công nghệ AR/VR và 3D Interactive Display vào các chiến dịch truyền thông thương hiệu lớn. Biến người xem từ thụ động sang chủ động tương tác với thông điệp.",
-    keyTech: ["WebGL 3D Rendering", "Spatial AR Ads", "Interactive Video Stream"],
-    metrics: "Tăng thời gian giữ chân (Engagement Time) +240%",
+    title: "XÂY DỰNG NỀN TẢNG DỮ LIỆU KHÁCH HÀNG",
+    desc: "Phát triển hệ thống dữ liệu thông minh, cá nhân hóa trải nghiệm và tối ưu trải nghiệm khách hàng.",
+    iconSvg: (
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#38CFC8" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <ellipse cx="12" cy="5" rx="9" ry="3" />
+        <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3" />
+        <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5" />
+      </svg>
+    ),
   },
   {
     year: "2029",
-    code: "NODE_2029_V4",
-    tagline: "TỰ ĐỘNG HÓA SIÊU CÁ NHÂN HÓA",
-    title: "Hyper-Personalized Content at Scale",
-    desc: "Phân phối thông điệp truyền thông real-time được cá nhân hóa theo từng ngữ cảnh riêng biệt của từng tệp khách hàng cá nhân mà vẫn đảm bảo tính nhất quán của thương hiệu.",
-    keyTech: ["Dynamic Creative Optimization (DCO)", "Contextual AI Agent", "Edge Personalization"],
-    metrics: "Chuyển đổi chiến dịch (CTR/CVR) tăng 180%",
+    title: "MỞ RỘNG HỆ SINH THÁI GIẢI PHÁP",
+    desc: "Đa dạng hóa giải pháp, kết nối đối tác và mở rộng quy mô thị trường ngoài nước.",
+    iconSvg: (
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#00D4FF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <circle cx="12" cy="12" r="3" />
+        <circle cx="19" cy="5" r="2" />
+        <circle cx="5" cy="19" r="2" />
+        <circle cx="5" cy="5" r="2" />
+        <circle cx="19" cy="19" r="2" />
+        <line x1="14.12" y1="10.12" x2="17.5" y2="6.5" />
+        <line x1="9.88" y1="13.88" x2="6.5" y2="17.5" />
+        <line x1="9.88" y1="10.12" x2="6.5" y2="6.5" />
+        <line x1="14.12" y1="13.88" x2="17.5" y2="17.5" />
+      </svg>
+    ),
   },
   {
     year: "2030",
-    code: "NODE_2030_V5",
-    tagline: "HỆ SINH THÁI REGIONAL MEDIATECH",
-    title: "Regional MediaTech Ecosystem Expansion",
-    desc: "Mở rộng mạng lưới đối tác và cung cấp giải pháp truyền thông công nghệ toàn diện cho các tập đoàn thương hiệu lớn tại khu vực Đông Nam Á (SEA).",
-    keyTech: ["Cross-border Media Hub", "Global AI Localization", "Enterprise MarTech Suite"],
-    metrics: "Phục vụ 500+ thương hiệu dẫn đầu khu vực",
+    title: "TRỞ THÀNH STRATEGIC MEDIATECH PARTNER",
+    desc: "Trở thành đối tác chiến lược thiết yếu giai đoạn 2026-2030, cùng công nghệ và dữ liệu mở đường tương lai.",
+    iconSvg: (
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#FFC72C" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6" />
+        <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18" />
+        <path d="M4 22h16" />
+        <path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22" />
+        <path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22" />
+        <path d="M18 2H6v7a6 6 0 0 0 12 0V2z" />
+      </svg>
+    ),
   },
 ];
 
@@ -68,31 +99,14 @@ const easeOut = [0.22, 1, 0.36, 1] as const;
 
 export default function AboutRoadmap() {
   const reduceMotion = useReducedMotion();
-  const [activeIndex, setActiveIndex] = useState<number>(0);
-  const [isPaused, setIsPaused] = useState<boolean>(false);
-
-  // Auto-advance node timeline if not paused
-  useEffect(() => {
-    if (isPaused) return;
-    const interval = setInterval(() => {
-      setActiveIndex((prev) => (prev + 1) % roadmapData.length);
-    }, 4500);
-    return () => clearInterval(interval);
-  }, [isPaused]);
-
-  const activeItem = roadmapData[activeIndex];
+  const [activeHoverNode, setActiveHoverNode] = useState<number | null>(null);
 
   const fadeUp = reduceMotion
     ? { hidden: { opacity: 0 }, visible: { opacity: 1 } }
     : { hidden: { opacity: 0, y: 32 }, visible: { opacity: 1, y: 0 } };
 
   return (
-    <section
-      id="roadmap"
-      className="section section--roadmap"
-      onMouseEnter={() => setIsPaused(true)}
-      onMouseLeave={() => setIsPaused(false)}
-    >
+    <section id="roadmap" className="section section--roadmap">
       {/* Background Particles & Grid */}
       <div className="roadmap__bg-overlay" aria-hidden="true" />
       <div className="roadmap__bg-grid" aria-hidden="true" />
@@ -108,7 +122,7 @@ export default function AboutRoadmap() {
           viewport={viewport}
           transition={{ duration: 0.65, delay: 0.05, ease: easeOut }}
         >
-          LỘ TRÌNH PHÁT TRIỂN <span className="title-highlight-mint">2026 - 2030</span>
+          HÀNH TRÌNH 5 NĂM <span className="title-highlight-mint">KIẾN TẠO TƯƠNG LAI</span>
         </motion.h2>
 
         <motion.p
@@ -119,114 +133,66 @@ export default function AboutRoadmap() {
           viewport={viewport}
           transition={{ duration: 0.65, delay: 0.1, ease: easeOut }}
         >
-          Dùng công nghệ kể câu chuyện tương lai — Từng bước nâng tầm năng lực truyền thông số bằng giải pháp đột phá.
+          QTM không ngừng đổi mới và mở rộng năng lực để trở thành đối tác truyền thông chiến lược hàng đầu tại Việt Nam.
         </motion.p>
 
-        {/* ── TIMELINE TRACK (Horizontal Desktop, Vertical Mobile) ── */}
+        {/* 5 Milestone Cards Grid with Ascending Trajectory Arrow */}
         <motion.div
-          className="roadmap__timeline-container"
+          className="roadmap-trajectory-wrapper"
           variants={fadeUp}
           initial="hidden"
           whileInView="visible"
           viewport={viewport}
-          transition={{ duration: 0.75, delay: 0.15, ease: easeOut }}
+          transition={{ duration: 0.75, delay: 0.18, ease: easeOut }}
         >
-          {/* Animated Connecting Line with Running Signal Pulse */}
-          <div className="timeline-track">
-            <div className="timeline-track__base" />
-            <div
-              className="timeline-track__active-fill"
-              style={{
-                width: `${(activeIndex / (roadmapData.length - 1)) * 100}%`,
-              }}
-            />
-            <div className="timeline-track__laser-pulse" />
+          {/* Background Ascending Arrow SVG */}
+          <div className="ascending-arrow-svg-bg" aria-hidden="true">
+            <svg viewBox="0 0 1000 120" preserveAspectRatio="none" className="w-full h-full">
+              <path
+                d="M 20,100 Q 250,90 500,60 T 960,15"
+                fill="none"
+                stroke="url(#arrowGrad)"
+                strokeWidth="3"
+                strokeDasharray="6 6"
+              />
+              <path d="M 960,15 L 945,8 L 948,22 Z" fill="#00D4FF" />
+              <defs>
+                <linearGradient id="arrowGrad" x1="0" y1="0" x2="1" y2="0">
+                  <stop offset="0%" stopColor="#38CFC8" opacity="0.3" />
+                  <stop offset="50%" stopColor="#00D4FF" opacity="0.7" />
+                  <stop offset="100%" stopColor="#6366F1" opacity="1" />
+                </linearGradient>
+              </defs>
+            </svg>
           </div>
 
-          {/* 5 Milestone Nodes */}
-          <div className="timeline-nodes-row">
-            {roadmapData.map((item, idx) => {
-              const isActive = idx === activeIndex;
-              const isPast = idx < activeIndex;
-
-              return (
-                <button
-                  key={item.year}
-                  type="button"
-                  onClick={() => setActiveIndex(idx)}
-                  className={`timeline-node-btn ${isActive ? "active" : ""} ${isPast ? "past" : ""}`}
-                  aria-label={`Milestone năm ${item.year}`}
-                >
-                  <div className="node-glow-ring" />
-                  <div className="node-circle">
-                    <span className="node-dot" />
-                  </div>
-                  <div className="node-label">
-                    <span className="node-year">{item.year}</span>
-                    <span className="node-tagline">{item.tagline}</span>
-                  </div>
-                </button>
-              );
-            })}
-          </div>
-        </motion.div>
-
-        {/* ── ACTIVE MILESTONE DISPLAY CARD ── */}
-        <motion.div
-          className="roadmap__card-container"
-          variants={fadeUp}
-          initial="hidden"
-          whileInView="visible"
-          viewport={viewport}
-          transition={{ duration: 0.75, delay: 0.25, ease: easeOut }}
-        >
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={activeItem.year}
-              initial={{ opacity: 0, y: 16, scale: 0.98 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              exit={{ opacity: 0, y: -16, scale: 0.98 }}
-              transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-              className="w-full"
-            >
-              <Card3DTilt
-                className="roadmap-glass-card"
-                maxTilt={6}
-                scale={1.01}
-                glareColor="rgba(56, 207, 200, 0.4)"
-                glareOpacity={0.4}
+          {/* 5 Cards Row */}
+          <div className="roadmap-cards-grid">
+            {roadmapNodes.map((node, index) => (
+              <div
+                key={node.year}
+                className={`roadmap-node-card-wrap node-idx-${index}`}
+                onMouseEnter={() => setActiveHoverNode(index)}
+                onMouseLeave={() => setActiveHoverNode(null)}
               >
-                {/* HUD Corner accents */}
-                <div className="hud-corner-mark top-left" aria-hidden="true" />
-                <div className="hud-corner-mark top-right" aria-hidden="true" />
-                <div className="hud-corner-mark bottom-left" aria-hidden="true" />
-                <div className="hud-corner-mark bottom-right" aria-hidden="true" />
-
-                <div className="roadmap-card__header">
-                  <div className="header-left">
-                    <span className="year-badge">{activeItem.year}</span>
+                <Card3DTilt
+                  className="roadmap-node-card"
+                  maxTilt={8}
+                  scale={1.03}
+                  glareColor="rgba(56, 207, 200, 0.35)"
+                  glareOpacity={0.35}
+                >
+                  <div className="card-top-year">
+                    <span className="year-number">{node.year}</span>
+                    <div className="icon-badge-box">{node.iconSvg}</div>
                   </div>
-                  <div className="header-right">
-                    <span className="metrics-badge">⚡ {activeItem.metrics}</span>
-                  </div>
-                </div>
 
-                <h3 className="roadmap-card__title">{activeItem.title}</h3>
-                <p className="roadmap-card__desc">{activeItem.desc}</p>
-
-                <div className="roadmap-card__tech-row">
-                  <span className="tech-label">CORE TECH ENGINES:</span>
-                  <div className="tech-pills">
-                    {activeItem.keyTech.map((tech) => (
-                      <span key={tech} className="tech-pill">
-                        <span className="pill-icon">◈</span> {tech}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </Card3DTilt>
-            </motion.div>
-          </AnimatePresence>
+                  <h3 className="card-node-title">{node.title}</h3>
+                  <p className="card-node-desc">{node.desc}</p>
+                </Card3DTilt>
+              </div>
+            ))}
+          </div>
         </motion.div>
       </div>
     </section>
