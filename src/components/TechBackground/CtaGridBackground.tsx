@@ -69,43 +69,43 @@ export default function CtaGridBackground() {
 
       ctx.clearRect(0, 0, width, height);
 
-      // --- Sóng 1: Sóng hạt màu Cyan sáng (#38CFC8) + Dây quét công nghệ ---
-      const numPointsWave1 = 45;
-      ctx.fillStyle = "rgba(56, 207, 200, 0.65)";
+      // --- Sóng 1: Sóng hạt màu Cyan sáng (#38CFC8) ---
+      const numPointsWave1 = 48;
+      ctx.fillStyle = "rgba(56, 207, 200, 0.85)";
 
       for (let i = 0; i <= numPointsWave1; i++) {
         const x = (width / numPointsWave1) * i;
-        const y = height * 0.58 + Math.sin(i * 0.2 + phase) * 24;
+        const y = height * 0.58 + Math.sin(i * 0.2 + phase) * 26;
 
-        // Hạt tròn sáng
+        // Hạt tròn phát sáng đậm
         ctx.beginPath();
-        ctx.arc(x, y, 3, 0, Math.PI * 2);
+        ctx.arc(x, y, 3.8, 0, Math.PI * 2);
         ctx.fill();
 
-        // Dây quét rơi mờ ảo
-        ctx.fillStyle = "rgba(56, 207, 200, 0.08)";
-        ctx.fillRect(x - 0.75, y + 4, 1.5, height - y);
-        ctx.fillStyle = "rgba(56, 207, 200, 0.65)";
+        // Dây quét rơi rõ hơn
+        ctx.fillStyle = "rgba(56, 207, 200, 0.16)";
+        ctx.fillRect(x - 1, y + 4, 2, height - y);
+        ctx.fillStyle = "rgba(56, 207, 200, 0.85)";
       }
 
-      // --- Sóng 2: Hạt màu Deep Navy (#17398F) uốn lệch pha 3D ---
-      const numPointsWave2 = 36;
-      ctx.fillStyle = "rgba(23, 57, 143, 0.45)";
+      // --- Sóng 2: Hạt màu Deep Ocean (#17398F) uốn lệch pha 3D ---
+      const numPointsWave2 = 38;
+      ctx.fillStyle = "rgba(23, 57, 143, 0.65)";
 
       for (let i = 0; i <= numPointsWave2; i++) {
         const x = (width / numPointsWave2) * i;
-        const y = height * 0.65 + Math.cos(i * 0.16 + phase * 0.85) * 30;
+        const y = height * 0.65 + Math.cos(i * 0.16 + phase * 0.85) * 32;
 
         ctx.beginPath();
-        ctx.arc(x, y, 3.5, 0, Math.PI * 2);
+        ctx.arc(x, y, 4.2, 0, Math.PI * 2);
         ctx.fill();
 
         // Constellation lines giữa 2 làn sóng
         if (i % 2 === 0) {
           const correspondingX1 = (width / numPointsWave1) * Math.min(Math.round(i * (numPointsWave1 / numPointsWave2)), numPointsWave1);
-          const correspondingY1 = height * 0.58 + Math.sin(correspondingX1 * (numPointsWave1 / width) * 0.2 + phase) * 24;
-          ctx.strokeStyle = "rgba(32, 149, 173, 0.12)";
-          ctx.lineWidth = 1;
+          const correspondingY1 = height * 0.58 + Math.sin(correspondingX1 * (numPointsWave1 / width) * 0.2 + phase) * 26;
+          ctx.strokeStyle = "rgba(32, 149, 173, 0.28)";
+          ctx.lineWidth = 1.4;
           ctx.beginPath();
           ctx.moveTo(x, y);
           ctx.lineTo(correspondingX1, correspondingY1);
@@ -129,8 +129,8 @@ export default function CtaGridBackground() {
     <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden bg-white" aria-hidden="true">
       <style>{cssKeyframes}</style>
 
-      {/* Lớp overlay Grid Pattern ĐẬM RÕ (Teal Blue #2095AD opacity ~25%) */}
-      <div className="absolute inset-0 opacity-[0.25] z-0">
+      {/* Lớp overlay Grid Pattern ĐẬM NÉT RÕ RỆT (Teal Blue #2095AD opacity ~45%) */}
+      <div className="absolute inset-0 opacity-[0.45] z-0">
         <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
           <defs>
             <pattern
@@ -143,12 +143,12 @@ export default function CtaGridBackground() {
                 d={`M ${gridSize} 0 L 0 0 0 ${gridSize}`}
                 fill="none"
                 stroke="#2095AD"
-                strokeWidth="1.2"
+                strokeWidth="1.5"
               />
               {/* Chấm điểm giao cắt kỹ thuật số (Crosshair nodes) */}
-              <circle cx="0" cy="0" r="1.5" fill="#2095AD" />
-              <circle cx={gridSize} cy="0" r="1.5" fill="#2095AD" />
-              <circle cx="0" cy={gridSize} r="1.5" fill="#2095AD" />
+              <circle cx="0" cy="0" r="2.2" fill="#2095AD" />
+              <circle cx={gridSize} cy="0" r="2.2" fill="#2095AD" />
+              <circle cx="0" cy={gridSize} r="2.2" fill="#2095AD" />
             </pattern>
           </defs>
           <rect width="100%" height="100%" fill="url(#cta-grid-pattern)" />
@@ -157,16 +157,16 @@ export default function CtaGridBackground() {
 
       {/* Dải Laser Scanline quét công nghệ trôi từ trên xuống */}
       <div
-        className="absolute left-0 right-0 h-[100px] z-0 pointer-events-none opacity-60"
+        className="absolute left-0 right-0 h-[120px] z-0 pointer-events-none opacity-80"
         style={{
-          background: "linear-gradient(180deg, transparent 0%, rgba(56, 207, 200, 0.25) 50%, transparent 100%)",
-          borderBottom: "1.5px solid rgba(56, 207, 200, 0.6)",
-          filter: "drop-shadow(0 0 10px rgba(56, 207, 200, 0.4))",
-          animation: "laserGridScan 9s infinite linear",
+          background: "linear-gradient(180deg, transparent 0%, rgba(56, 207, 200, 0.4) 50%, transparent 100%)",
+          borderBottom: "2px solid rgba(56, 207, 200, 0.8)",
+          filter: "drop-shadow(0 0 14px rgba(56, 207, 200, 0.6))",
+          animation: "laserGridScan 8s infinite linear",
         }}
       />
 
-      {/* Các ô vuông highlight trôi nổi ĐẬM & RÕ HƠN (14 ô) */}
+      {/* Các ô vuông highlight trôi nổi ĐẬM & NỔI BẬT (14 ô) */}
       {highlights.map((h, i) => (
         <div
           key={`h-${i}`}
@@ -176,9 +176,9 @@ export default function CtaGridBackground() {
             top: h.top,
             width: `${h.size}px`,
             height: `${h.size}px`,
-            background: "linear-gradient(135deg, rgba(56, 207, 200, 0.35) 0%, rgba(32, 149, 173, 0.08) 100%)",
-            border: "1.5px solid rgba(56, 207, 200, 0.35)",
-            boxShadow: "0 0 12px rgba(56, 207, 200, 0.2)",
+            background: "linear-gradient(135deg, rgba(56, 207, 200, 0.5) 0%, rgba(32, 149, 173, 0.15) 100%)",
+            border: "1.8px solid rgba(56, 207, 200, 0.5)",
+            boxShadow: "0 0 16px rgba(56, 207, 200, 0.35)",
             animation: `float-h-${i} ${h.duration} ease-in-out infinite`,
             animationDelay: h.delay,
             transformOrigin: "center center",

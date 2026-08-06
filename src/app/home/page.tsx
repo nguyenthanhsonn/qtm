@@ -1,3 +1,4 @@
+import Link from "next/link";
 import "@/scss/home.scss";
 import { HomeIconProps } from "@/types/home";
 import CountUp from "@/components/CountUp";
@@ -7,7 +8,7 @@ import HomeSolutionsSection from "@/components/Home/HomeSolutionsSection";
 import HomePartnersSection from "@/components/Home/HomePartnersSection";
 import FooterCtaSection from "@/components/FooterCtaSection";
 import TextType from "@/components/TextType";
-import CyberText from "@/uiux/cyber_text";
+
 import HomeTransitionQuote from "@/components/Home/HomeTransitionQuote";
 import CursorGrid from "@/uiux/CursorGrid";
 
@@ -45,8 +46,8 @@ const StarIcon = ({ className = "" }: HomeIconProps) => (
 
 function HomeHero() {
   const stats = [
-    { value: 15, suffix: "+", label: "Năm kinh nghiệm", icon: TrophyIcon },
-    { value: 200, suffix: "+", label: "Dự án đã triển khai", icon: BriefcaseIcon },
+    { value: 16, suffix: "+", label: "Năm kinh nghiệm", icon: TrophyIcon },
+    { value: 300, suffix: "+", label: "Dự án đã triển khai", icon: BriefcaseIcon },
     { value: 100, suffix: "+", label: "Khách hàng tin tưởng", icon: UsersIcon },
     { value: 1000, suffix: "+", label: "Sự kiện ấn tượng", icon: StarIcon },
   ];
@@ -86,12 +87,8 @@ function HomeHero() {
       {/* Content */}
       <div className="section__content home__content">
         <h1 className="home__title">
-          <span className="home__title-line home__title-line--plain">
-            <CyberText text="Strategic" />
-          </span>
-          <span className="home__title-line home__title-line--gradient-teal-blue">
-            <CyberText text="MediaTech Partner" />
-          </span>
+          <span className="home__title-line home__title-line--plain">Strategic</span>
+          <span className="home__title-line home__title-line--gradient-teal-blue">MediaTech Partner</span>
         </h1>
 
         <div className="home__info-card" data-aos="flip-left" data-aos-delay="300">
@@ -115,12 +112,12 @@ function HomeHero() {
 
         {/* CTA buttons */}
         <div className="home__actions">
-          <a href="#contact" className="btn btn--primary home__cta home__cta--primary">
+          <Link href="/contact" className="btn btn--primary home__cta home__cta--primary">
             LIÊN HỆ TƯ VẤN
-          </a>
-          <a href="#projects" className="btn btn--outline home__cta home__cta--outline">
+          </Link>
+          <Link href="/missLegacy" className="btn btn--outline home__cta home__cta--outline">
             KHÁM PHÁ MISS LEGACY <span className="btn__arrow">→</span>
-          </a>
+          </Link>
         </div>
 
         {/* Stats bar */}
@@ -152,6 +149,9 @@ function HomeHero() {
 
       <div className="orb orb--cyan" aria-hidden="true" />
       <div className="orb orb--purple" aria-hidden="true" />
+
+      {/* Overlapping Tech Quote Card positioned absolutely at bottom boundary */}
+      <HomeTransitionQuote />
     </section>
   );
 }
@@ -160,7 +160,6 @@ export default function HomePage() {
   return (
     <>
       <HomeHero />
-      <HomeTransitionQuote />
       <HomeCtaSection />
       <HomeEcosystemSection />
       <HomeSolutionsSection />

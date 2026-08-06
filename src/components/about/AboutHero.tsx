@@ -1,17 +1,16 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import { motion, useReducedMotion } from "motion/react";
 import ParticleField from "@/components/TechBackground/ParticleField";
 import Card3DTilt from "@/components/Card3DTilt";
-import ContactModal from "./ContactModal";
+import Link from "next/link";
 
 const viewport = { once: true, amount: 0.2 } as const;
 const easeOut = [0.22, 1, 0.36, 1] as const;
 
 export default function AboutHero() {
   const reduceMotion = useReducedMotion();
-  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const fadeUp = reduceMotion
     ? { hidden: { opacity: 0 }, visible: { opacity: 1 } }
@@ -52,10 +51,10 @@ export default function AboutHero() {
                 viewport={viewport}
                 transition={{ duration: 0.65, delay: 0.08, ease: easeOut }}
               >
-                Chúng tôi không chỉ làm truyền thông. <br />
-                <span className="title-highlight-mint">
-                  Chúng tôi đồng hành cùng doanh nghiệp kiến tạo tăng trưởng.
-                </span>
+                Engineering{" "}
+                <span className="title-highlight-mint">Intelligent</span>
+                <br />
+                Creativity
               </motion.h1>
 
               <motion.div
@@ -67,10 +66,9 @@ export default function AboutHero() {
                 transition={{ duration: 0.7, delay: 0.15, ease: easeOut }}
               >
                 <p className="hero-paragraph">
-                  Trong bối cảnh truyền thông đang thay đổi mạnh mẽ bởi công nghệ và trí tuệ nhân tạo, doanh nghiệp không chỉ cần một đơn vị chỉ thực hiện sự kiện hay triển khai truyền thông đơn lẻ. Doanh nghiệp cần là một đối tác có khả năng tư duy chiến lược, ứng dụng công nghệ và đồng hành lâu dài.
-                </p>
-                <p className="hero-paragraph">
-                  <strong className="text-mint">QTM</strong> được xây dựng với định hướng trở thành doanh nghiệp <strong className="text-white">Công nghệ Truyền thông (MediaTech)</strong>, kết hợp giữa chiến lược, sáng tạo, công nghệ và dữ liệu để tạo nên những giải pháp truyền thông hiệu quả, có thể đo lường và tạo giá trị bền vững.
+                  QTM MediaTech là doanh nghiệp hoạt động trong lĩnh vực{" "}
+                  <strong className="text-mint">Công nghệ Truyền thông (MediaTech)</strong>, kết hợp giữa{" "}
+                  <strong className="text-white">chiến lược, sáng tạo và công nghệ</strong> nhằm kiến tạo những giải pháp truyền thông hiệu quả, có khả năng đo lường và tạo giá trị bền vững cho khách hàng.
                 </p>
               </motion.div>
 
@@ -83,17 +81,14 @@ export default function AboutHero() {
                 viewport={viewport}
                 transition={{ duration: 0.7, delay: 0.22, ease: easeOut }}
               >
-                <a href="#roadmap" className="btn btn--primary about-hero__btn-fill">
+                <a href="/solution" className="btn btn--primary about-hero__btn-fill">
                   <span>KHÁM PHÁ GIẢI PHÁP</span>
                   <span className="btn-arrow">→</span>
                 </a>
 
-                <button
-                  onClick={() => setIsModalOpen(true)}
-                  className="btn btn--outline about-hero__btn-outline"
-                >
+                <Link href="/contact" className="btn btn--outline about-hero__btn-outline">
                   <span>LIÊN HỆ VỚI QTM</span>
-                </button>
+                </Link>
               </motion.div>
 
               {/* 4 Feature Metric Icons Bar */}
@@ -105,38 +100,18 @@ export default function AboutHero() {
                 viewport={viewport}
                 transition={{ duration: 0.75, delay: 0.28, ease: easeOut }}
               >
+                {/* Q — Quality */}
                 <div className="metric-icon-card">
                   <div className="icon-box">
                     <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#38CFC8" strokeWidth="2">
-                      <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
-                      <circle cx="9" cy="7" r="4" />
-                      <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
-                      <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                      <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" />
+                      <path d="M9 12l2 2 4-4" />
                     </svg>
                   </div>
-                  <span className="metric-text">Đồng hành lâu dài</span>
+                  <span className="metric-text">Quality</span>
                 </div>
 
-                <div className="metric-icon-card">
-                  <div className="icon-box">
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#38CFC8" strokeWidth="2">
-                      <rect x="2" y="7" width="20" height="14" rx="2" ry="2" />
-                      <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
-                    </svg>
-                  </div>
-                  <span className="metric-text">Chiến lược tổng thể</span>
-                </div>
-
-                <div className="metric-icon-card">
-                  <div className="icon-box">
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#38CFC8" strokeWidth="2">
-                      <path d="M3 3v18h18" />
-                      <path d="m19 9-5 5-4-4-3 3" />
-                    </svg>
-                  </div>
-                  <span className="metric-text">Đo lường rõ ràng</span>
-                </div>
-
+                {/* T — Technology */}
                 <div className="metric-icon-card">
                   <div className="icon-box">
                     <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#38CFC8" strokeWidth="2">
@@ -145,7 +120,28 @@ export default function AboutHero() {
                       <polyline points="2 12 12 17 22 12" />
                     </svg>
                   </div>
-                  <span className="metric-text">Ứng dụng AI &amp; Data</span>
+                  <span className="metric-text">Technology</span>
+                </div>
+
+                {/* M — Mindset */}
+                <div className="metric-icon-card">
+                  <div className="icon-box">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#38CFC8" strokeWidth="2">
+                      <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
+                    </svg>
+                  </div>
+                  <span className="metric-text">Mindset</span>
+                </div>
+
+                {/* MediaTech */}
+                <div className="metric-icon-card">
+                  <div className="icon-box">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#38CFC8" strokeWidth="2">
+                      <path d="M3 3v18h18" />
+                      <path d="m19 9-5 5-4-4-3 3" />
+                    </svg>
+                  </div>
+                  <span className="metric-text">MediaTech</span>
                 </div>
               </motion.div>
             </div>
@@ -216,8 +212,6 @@ export default function AboutHero() {
         </div>
       </section>
 
-      {/* Contact Modal */}
-      <ContactModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </>
   );
 }
