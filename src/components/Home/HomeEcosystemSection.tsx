@@ -1,8 +1,10 @@
 "use client";
 
 import "@/scss/home-ecosystem.scss";
-import Carousel3D, { CarouselItem } from "@/components/Carousel3D";
+import Carousel3D from "@/components/Carousel3D";
+import { CarouselItem } from "@/types/components";
 import { motion, useReducedMotion } from "motion/react";
+import CursorGrid from "@/uiux/CursorGrid";
 
 const viewport = { once: true, amount: 0.2 } as const;
 const easeOut = [0.22, 1, 0.36, 1] as const;
@@ -39,7 +41,7 @@ const ecosystemItems: CarouselItem[] = [
   {
     id: 5,
     title: "Không gian Trải nghiệm Thương hiệu",
-    tag: "QTM EXPERIENCE CENTER",
+    tag: "MISS LEGACY EXPERIENCE CENTER",
     imageSrc: "/home/ecosystem/panel-office.jpg",
     alt: "Không gian trải nghiệm & Văn phòng",
   },
@@ -61,6 +63,17 @@ export default function HomeEcosystemSection() {
 
   return (
     <section id="ecosystem" className="section section--home-ecosystem">
+      <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
+        <CursorGrid
+          color="#38CFC8"
+          cellSize={65}
+          gridOpacity={0.06}
+          maxOpacity={0.45}
+          fillOpacity={0.14}
+          radius={160}
+          clickPulse={true}
+        />
+      </div>
       <div className="home-ecosystem__bg" aria-hidden="true" />
 
       <div className="section__content home-ecosystem__content">

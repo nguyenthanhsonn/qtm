@@ -4,6 +4,7 @@ import "@/scss/footer.scss";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
+import CursorGrid from "@/uiux/CursorGrid";
 
 export default function Footer() {
   const [email, setEmail] = useState("");
@@ -26,7 +27,18 @@ export default function Footer() {
   };
 
   return (
-    <footer className="footer-root" role="contentinfo">
+    <footer className="footer-root relative overflow-hidden" role="contentinfo">
+      <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
+        <CursorGrid
+          color="#38CFC8"
+          cellSize={60}
+          gridOpacity={0.04}
+          maxOpacity={0.35}
+          fillOpacity={0.1}
+          radius={140}
+          clickPulse={true}
+        />
+      </div>
       {/* Background Ambient Glow & Grid */}
       <div className="footer-ambient" aria-hidden="true">
         <div className="footer-orb footer-orb--cyan" />

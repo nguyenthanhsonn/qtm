@@ -1,20 +1,8 @@
 "use client";
 
 import "@/scss/carousel-3d.scss";
+import { CarouselItem, Carousel3DProps } from "@/types/components";
 import { useEffect, useRef, useState } from "react";
-
-export type CarouselItem = {
-  id: number;
-  title: string;
-  tag: string;
-  imageSrc: string;
-  alt: string;
-};
-
-interface Carousel3DProps {
-  items: CarouselItem[];
-  autoPlayDuration?: number;
-}
 
 export default function Carousel3D({ items }: Carousel3DProps) {
   const containerRef = useRef<HTMLDivElement>(null);

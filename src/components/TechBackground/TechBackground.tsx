@@ -1,19 +1,11 @@
 "use client";
 
+import { TechBackgroundProps } from "@/types/tech-background";
 import React from "react";
-import BackgroundGrid from "./BackgroundGrid";
+import { BackgroundGrid } from "./BackgroundGrid";
 import GlassPanels from "./GlassPanels";
 import LightRays from "./LightRays";
-import ParticleField from "./ParticleField";
-
-export interface TechBackgroundProps {
-  /** Section content rendered above all background layers */
-  children?: React.ReactNode;
-  /** Optional custom CSS classes for the outer section container */
-  className?: string;
-  /** Custom base background style override */
-  style?: React.CSSProperties;
-}
+import { ParticleField } from "./ParticleField";
 
 /**
  * TechBackground Component
@@ -32,7 +24,7 @@ export const TechBackground: React.FC<TechBackgroundProps> = ({
 }) => {
   return (
     <section
-      className={`relative w-full overflow-hidden bg-[#123A53] ${className}`}
+      className={`relative w-full overflow-hidden bg-deep-navy ${className}`}
       style={{
         background:
           "radial-gradient(ellipse 120% 100% at 50% 0%, #123A53 0%, #17398F 65%, #0B1F2D 100%)",
@@ -41,7 +33,7 @@ export const TechBackground: React.FC<TechBackgroundProps> = ({
     >
       {/* Layer 1: Base Radial Gradient Accent */}
       <div
-        className="absolute inset-0 pointer-events-none z-[0] opacity-80"
+        className="absolute inset-0 pointer-events-none z-0 opacity-80"
         style={{
           background:
             "conic-gradient(from 180deg at 50% 50%, rgba(32,149,173,0.15) 0deg, rgba(23,57,143,0.2) 120deg, rgba(56,207,200,0.12) 240deg, rgba(32,149,173,0.15) 360deg)",
@@ -62,7 +54,7 @@ export const TechBackground: React.FC<TechBackgroundProps> = ({
       <LightRays />
 
       {/* Foreground Content Layer */}
-      <div className="relative z-[10] w-full h-full">{children}</div>
+      <div className="relative z-10 w-full h-full">{children}</div>
     </section>
   );
 };
