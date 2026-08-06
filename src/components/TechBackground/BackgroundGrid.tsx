@@ -1,13 +1,7 @@
 "use client";
 
+import { BackgroundGridProps } from "@/types/tech-background";
 import React from "react";
-
-interface BackgroundGridProps {
-  /** Grid cell size in pixels (default: 40) */
-  gridSize?: number;
-  /** Opacity level (default: 0.06 for 6%) */
-  opacity?: number;
-}
 
 /**
  * BackgroundGrid Component
@@ -19,7 +13,7 @@ export const BackgroundGrid: React.FC<BackgroundGridProps> = ({
 }) => {
   return (
     <div
-      className="absolute inset-0 pointer-events-none z-[1] overflow-hidden"
+      className="absolute inset-0 pointer-events-none z-1 overflow-hidden"
       aria-hidden="true"
       style={{ opacity }}
     >

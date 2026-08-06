@@ -1,0 +1,376 @@
+"use client";
+
+import React from 'react';
+import styled from 'styled-components';
+
+interface InputProps {
+  id: string;
+  label: string;
+  type?: string;
+  placeholder?: string;
+  value?: string;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
+  required?: boolean;
+  as?: "input" | "textarea";
+  rows?: number;
+}
+
+const Input: React.FC<InputProps> = ({
+  id,
+  label,
+  type = "text",
+  placeholder = " ",
+  value,
+  onChange,
+  required = false,
+  as = "input",
+  rows = 4
+}) => {
+  const isTextArea = as === "textarea";
+
+  return (
+    <StyledWrapper>
+      <div className="glitch-input-wrapper">
+        <div className="input-container">
+          {isTextArea ? (
+            <textarea
+              id={id}
+              className="holo-input holo-textarea"
+              placeholder={placeholder}
+              value={value}
+              onChange={onChange}
+              required={required}
+              rows={rows}
+            />
+          ) : (
+            <input
+              type={type}
+              id={id}
+              className="holo-input"
+              placeholder={placeholder}
+              value={value}
+              onChange={onChange}
+              required={required}
+            />
+          )}
+          <label htmlFor={id} className="input-label" data-text={label}>
+            {label}
+          </label>
+          <div className="input-border" />
+          <div className="input-scanline" />
+          <div className="input-glow" />
+          <div className="input-data-stream">
+            <div className="stream-bar" style={{ "--i": 0 } as React.CSSProperties} />
+            <div className="stream-bar" style={{ "--i": 1 } as React.CSSProperties} />
+            <div className="stream-bar" style={{ "--i": 2 } as React.CSSProperties} />
+            <div className="stream-bar" style={{ "--i": 3 } as React.CSSProperties} />
+            <div className="stream-bar" style={{ "--i": 4 } as React.CSSProperties} />
+            <div className="stream-bar" style={{ "--i": 5 } as React.CSSProperties} />
+            <div className="stream-bar" style={{ "--i": 6 } as React.CSSProperties} />
+            <div className="stream-bar" style={{ "--i": 7 } as React.CSSProperties} />
+            <div className="stream-bar" style={{ "--i": 8 } as React.CSSProperties} />
+            <div className="stream-bar" style={{ "--i": 9 } as React.CSSProperties} />
+          </div>
+          <div className="input-corners">
+            <div className="corner corner-tl" />
+            <div className="corner corner-tr" />
+            <div className="corner corner-bl" />
+            <div className="corner corner-br" />
+          </div>
+        </div>
+      </div>
+    </StyledWrapper>
+  );
+};
+
+const StyledWrapper = styled.div`
+  width: 100%;
+
+  /* --- Root Variables & Wrapper --- */
+  .glitch-input-wrapper {
+    --bg-color: #050c1a;
+    --primary-color: #38CFC8;
+    --secondary-color: #7C4DFF;
+    --text-color: #94a3b8;
+    --font-family: inherit;
+    --glitch-anim-duration: 0.4s;
+
+    display: flex;
+    width: 100%;
+    font-size: 16px;
+  }
+
+  /* --- Container  --- */
+  .input-container {
+    position: relative;
+    width: 100%;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+  }
+
+  /* --- Input --- */
+  .holo-input {
+    width: 100%;
+    height: 3.5rem;
+    background: rgba(5, 12, 26, 0.7);
+    border: none;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+    outline: none;
+    padding: 0 1rem;
+    color: var(--primary-color);
+    font-family: inherit;
+    font-size: 1.1rem;
+    caret-color: var(--primary-color);
+    z-index: 10;
+    transition:
+      background 0.3s ease,
+      border-color 0.3s ease;
+  }
+
+  /* --- Textarea override --- */
+  .holo-textarea {
+    height: auto;
+    padding: 1rem;
+    resize: vertical;
+    min-height: 6.5rem;
+  }
+
+  /* --- Floating Label --- */
+  .input-label {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    color: var(--text-color);
+    opacity: 0.6;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    pointer-events: none;
+    transition: all 0.3s ease;
+    z-index: 11;
+  }
+  
+  .holo-input:focus + .input-label,
+  .holo-input:not(:placeholder-shown) + .input-label {
+    top: -1.5rem;
+    left: 0;
+    font-size: 0.8rem;
+    opacity: 1;
+    color: var(--primary-color);
+  }
+
+  .holo-input:focus + .input-label::before,
+  .holo-input:focus + .input-label::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #050c1a;
+  }
+  
+  .holo-input:focus + .input-label::before {
+    color: var(--secondary-color);
+    animation: glitch-label var(--glitch-anim-duration)
+      cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  }
+  
+  .holo-input:focus + .input-label::after {
+    color: var(--primary-color);
+    animation: glitch-label var(--glitch-anim-duration)
+      cubic-bezier(0.25, 0.46, 0.45, 0.94) reverse both;
+  }
+
+  /* --- Decorative Layers --- */
+  .input-border,
+  .input-scanline,
+  .input-glow,
+  .input-corners {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+  }
+  
+  .input-border {
+    border: 1px solid rgba(56, 207, 200, 0.2);
+    opacity: 0.5;
+    transition: all 0.3s ease;
+  }
+  
+  .corner {
+    position: absolute;
+    width: 1rem;
+    height: 1rem;
+    border: 2px solid var(--primary-color);
+    transition: all 0.3s ease;
+    opacity: 0.5;
+  }
+  
+  .corner-tl {
+    top: -0.3rem;
+    left: -0.3rem;
+    border-right: none;
+    border-bottom: none;
+  }
+  
+  .corner-tr {
+    top: -0.3rem;
+    right: -0.3rem;
+    border-left: none;
+    border-bottom: none;
+  }
+  
+  .corner-bl {
+    bottom: -0.3rem;
+    left: -0.3rem;
+    border-right: none;
+    border-top: none;
+  }
+  
+  .corner-br {
+    bottom: -0.3rem;
+    right: -0.3rem;
+    border-left: none;
+    border-top: none;
+  }
+
+  .input-glow {
+    background: radial-gradient(
+      ellipse at center,
+      rgba(56, 207, 200, 0.2) 0%,
+      transparent 70%
+    );
+    opacity: 0;
+    transition: opacity 0.4s ease;
+  }
+
+  .input-scanline {
+    height: 100%;
+    background: linear-gradient(
+      to bottom,
+      transparent 0%,
+      rgba(56, 207, 200, 0.1) 48%,
+      rgba(56, 207, 200, 0.3) 50%,
+      rgba(56, 207, 200, 0.1) 52%,
+      transparent 100%
+    );
+    opacity: 0;
+  }
+
+  /* --- Data Visualization --- */
+  .input-data-stream {
+    position: absolute;
+    bottom: 2px;
+    left: 0;
+    width: 100%;
+    height: 0.3rem;
+    display: flex;
+    opacity: 0;
+    transition: opacity 0.3s ease 0.1s;
+  }
+  
+  .stream-bar {
+    flex-grow: 1;
+    background-color: var(--primary-color);
+    transition:
+      transform 0.2s,
+      opacity 0.2s;
+    transform: scaleY(0);
+    transform-origin: bottom;
+  }
+
+  .holo-input:focus {
+    border-color: transparent;
+  }
+  
+  .holo-input:focus ~ .input-border {
+    opacity: 1;
+    border-color: rgba(56, 207, 200, 0.5);
+  }
+  
+  .holo-input:focus ~ .input-corners .corner {
+    width: 1.25rem;
+    height: 1.25rem;
+    border-width: 3px;
+    opacity: 1;
+  }
+  
+  .holo-input:focus ~ .input-glow {
+    opacity: 1;
+  }
+  
+  .holo-input:focus ~ .input-scanline {
+    animation: scan-vertical 4s linear infinite;
+  }
+  
+  .holo-input:focus ~ .input-data-stream {
+    opacity: 1;
+  }
+  
+  .holo-input:focus ~ .input-data-stream .stream-bar {
+    animation: data-pulse 2s infinite;
+    animation-delay: calc(var(--i) * 0.1s);
+  }
+
+  /* --- Keyframes --- */
+  @keyframes glitch-label {
+    0% {
+      transform: translate(0);
+      clip-path: inset(0 0 0 0);
+    }
+    20% {
+      transform: translate(-0.2rem, 0.1rem);
+      clip-path: inset(50% 0 20% 0);
+    }
+    40% {
+      transform: translate(0.1rem, -0.1rem);
+      clip-path: inset(20% 0 60% 0);
+    }
+    60% {
+      transform: translate(-0.15rem, 0.1rem);
+      clip-path: inset(80% 0 5% 0);
+    }
+    80% {
+      transform: translate(0.15rem, -0.15rem);
+      clip-path: inset(30% 0 45% 0);
+    }
+    100% {
+      transform: translate(0);
+      clip-path: inset(0 0 0 0);
+    }
+  }
+
+  @keyframes scan-vertical {
+    0% {
+      opacity: 0;
+      transform: translateY(-100%);
+    }
+    25% {
+      opacity: 0.5;
+    }
+    75% {
+      opacity: 0.5;
+    }
+    100% {
+      opacity: 0;
+      transform: translateY(100%);
+    }
+  }
+
+  @keyframes data-pulse {
+    0%,
+    100% {
+      transform: scaleY(0.2);
+      opacity: 0.3;
+    }
+    50% {
+      transform: scaleY(1);
+      opacity: 0.8;
+    }
+  }
+`;
+
+export default Input;

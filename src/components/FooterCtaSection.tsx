@@ -12,12 +12,21 @@ export default function FooterCtaSection() {
   const reduceMotion = useReducedMotion();
   const router = useRouter();
   const [isPlayingVideo, setIsPlayingVideo] = useState(false);
+  const [isBgMuted, setIsBgMuted] = useState(true);
   const videoRef = useRef<HTMLVideoElement | null>(null);
+  const bgVideoRef = useRef<HTMLVideoElement | null>(null);
 
   useEffect(() => {
     // Prefetch contact page for instant seamless navigation
     router.prefetch("/contact");
   }, [router]);
+
+  const toggleBgAudio = () => {
+    if (bgVideoRef.current) {
+      bgVideoRef.current.muted = !isBgMuted;
+      setIsBgMuted(!isBgMuted);
+    }
+  };
 
   const fadeUp = reduceMotion
     ? { hidden: { opacity: 0 }, visible: { opacity: 1 } }
@@ -45,6 +54,50 @@ export default function FooterCtaSection() {
   return (
     <>
       <section className="section--footer-cta" id="build-next">
+        {/* Background Video */}
+        <video
+          ref={bgVideoRef}
+          className="fcta-bg-video"
+          autoPlay
+          loop
+          muted
+          playsInline
+          preload="auto"
+          aria-hidden="true"
+        >
+          <source src="/home/vid_footer.mp4" type="video/mp4" />
+        </video>
+
+        {/* Dark Gradient Overlay */}
+        <div className="fcta-bg-overlay" aria-hidden="true" />
+
+        {/* Floating Sound Toggle Button */}
+        <button
+          type="button"
+          onClick={toggleBgAudio}
+          className="fcta-sound-toggle"
+          aria-label={isBgMuted ? "Bật âm thanh video nền" : "Tắt âm thanh video nền"}
+        >
+          {isBgMuted ? (
+            <>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" />
+                <line x1="23" y1="9" x2="17" y2="15" />
+                <line x1="17" y1="9" x2="23" y2="15" />
+              </svg>
+              <span>Bật âm thanh</span>
+            </>
+          ) : (
+            <>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" />
+                <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07" />
+              </svg>
+              <span>Tắt âm thanh</span>
+            </>
+          )}
+        </button>
+
         {/* Radiant Background Layer */}
         <div className="fcta-bg" aria-hidden="true">
           {/* Concentric Halo Circles */}
@@ -68,69 +121,58 @@ export default function FooterCtaSection() {
 
         <div className="fcta-content">
           {/* Top Tag Badge */}
-          <motion.div
+          <div
             className="fcta-badge-wrapper"
-            variants={fadeUp}
-            initial="hidden"
-            whileInView="visible"
-            viewport={viewport}
-            transition={{ duration: 0.55, ease: easeOut }}
+            data-aos="fade-down"
+            data-aos-duration="600"
           >
             <div className="fcta-badge-dash" />
             <span className="fcta-badge-text">LET&apos;S BUILD THE NEXT</span>
             <div className="fcta-badge-dash" />
-          </motion.div>
+          </div>
 
           {/* Title */}
-          <motion.h2
+          <h2
             className="fcta-title"
-            variants={fadeUp}
-            initial="hidden"
-            whileInView="visible"
-            viewport={viewport}
-            transition={{ duration: 0.65, delay: 0.1, ease: easeOut }}
+            data-aos="fade-up"
+            data-aos-delay="150"
+            data-aos-duration="800"
           >
             Ý TƯỞNG BẮT ĐẦU<br />
             <span className="fcta-title-blue">TỪ MỘT CUỘC TRÒ CHUYỆN.</span>
-          </motion.h2>
+          </h2>
 
           {/* Sub-description */}
-          <motion.p
+          <p
             className="fcta-desc"
-            variants={fadeUp}
-            initial="hidden"
-            whileInView="visible"
-            viewport={viewport}
-            transition={{ duration: 0.65, delay: 0.15, ease: easeOut }}
+            data-aos="fade-up"
+            data-aos-delay="300"
+            data-aos-duration="800"
           >
             Mỗi doanh nghiệp đều có mục tiêu riêng.<br />
             QTM lắng nghe để thấu hiểu, phân tích để tìm ra hướng đi phù hợp,<br />
             và kiến tạo giải pháp truyền thông có thể đo lường – tạo ra giá trị lâu dài.
-          </motion.p>
+          </p>
 
           {/* Action Button */}
-          <motion.div
+          <div
             className="fcta-action"
-            variants={fadeUp}
-            initial="hidden"
-            whileInView="visible"
-            viewport={viewport}
-            transition={{ duration: 0.65, delay: 0.2, ease: easeOut }}
+            data-aos="zoom-in"
+            data-aos-delay="450"
+            data-aos-duration="700"
           >
             <button onClick={handleStartProject} className="fcta-btn">
               <span>BẮT ĐẦU DỰ ÁN</span>
               <span className="fcta-btn-arrow">→</span>
             </button>
-          </motion.div>
+          </div>
 
           {/* 3 Pillars List (Lắng nghe thấu hiểu | Phân tích chiến lược | Kiến tạo giải pháp) */}
-          <motion.div
+          <div
             className="fcta-pillars"
-            variants={fadeUp}
-            initial="hidden"
-            whileInView="visible"
-            viewport={viewport}
-            transition={{ duration: 0.7, delay: 0.25, ease: easeOut }}
+            data-aos="fade-up"
+            data-aos-delay="600"
+            data-aos-duration="900"
           >
             <div className="fcta-pillar">
               <span className="pillar-icon">
@@ -175,7 +217,7 @@ export default function FooterCtaSection() {
                 <span className="pillar-subtitle">giải pháp</span>
               </div>
             </div>
-          </motion.div>
+          </div>
         </div>
       </section>
 

@@ -1,6 +1,6 @@
 @use 'variables' as *;
 
-.section.section--footer-cta {
+.section--footer-cta {
   position: relative;
   min-height: clamp(900px, 100vh, 1250px);
   padding: clamp(10rem, 18vh, 16rem) clamp(2rem, 6vw, 5rem) clamp(8rem, 14vh, 12rem);
@@ -8,28 +8,70 @@
   align-items: center;
   justify-content: center;
   text-align: center;
-  background-color: #f8fafc;
-  background-image:
-    radial-gradient(ellipse 80% 50% at 50% 0%, rgba(56, 207, 200, 0.18), transparent 70%),
-    radial-gradient(ellipse 75% 45% at 50% 100%, rgba(32, 149, 173, 0.14), transparent 70%),
-    linear-gradient(180deg, #f8fafc 0%, #f1f5f9 50%, #e2e8f0 100%);
+  background-color: #050c1a;
   overflow: hidden;
   border-top: 1px solid rgba(32, 149, 173, 0.2);
   border-bottom: 1px solid rgba(32, 149, 173, 0.2);
 }
 
-// Light Blueprint Grid Matrix FX (Exact Match with GIẢI PHÁP TOÀN DIỆN)
-.fcta-bg {
+// Background Video Player
+.fcta-bg-video {
   position: absolute;
   inset: 0;
-  pointer-events: none;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
   z-index: 0;
-  overflow: hidden;
-  background-image: 
-    linear-gradient(to right, rgba(32, 149, 173, 0.09) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(32, 149, 173, 0.09) 1px, transparent 1px);
-  background-size: 36px 36px;
-  opacity: 0.95;
+  pointer-events: none;
+}
+
+// Dark Gradient Overlay for high text contrast over video
+.fcta-bg-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+    180deg,
+    rgba(5, 12, 26, 0.65) 0%,
+    rgba(5, 12, 26, 0.50) 50%,
+    rgba(5, 12, 26, 0.75) 100%
+  );
+  pointer-events: none;
+}
+
+// Floating Sound Toggle Button (Bật/Tắt âm thanh video)
+.fcta-sound-toggle {
+  position: absolute;
+  bottom: 24px;
+  right: 24px;
+  z-index: 10;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.55rem 1.1rem;
+  border-radius: 30px;
+  background: rgba(12, 25, 43, 0.75);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(56, 207, 200, 0.4);
+  color: #38CFC8;
+  font-family: var(--font-heading);
+  font-size: 0.825rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: #38CFC8;
+    color: #0c192b;
+    border-color: #38CFC8;
+    box-shadow: 0 4px 20px rgba(56, 207, 200, 0.5);
+  }
+}
+
+// Light Blueprint Grid Matrix FX
+.fcta-bg {
+  display: none;
 }
 
 // Concentric Circular Halo Rings (Cyan Blueprint Match)
@@ -112,8 +154,8 @@
   border-bottom: none;
   background: linear-gradient(180deg, #ffffff 0%, rgba(226, 232, 240, 0.95) 60%, rgba(32, 149, 173, 0.25) 100%);
   box-shadow: 0 -10px 60px rgba(255, 255, 255, 1),
-              0 -30px 110px rgba(56, 207, 200, 0.45),
-              0 0 160px rgba(32, 149, 173, 0.3);
+    0 -30px 110px rgba(56, 207, 200, 0.45),
+    0 0 160px rgba(32, 149, 173, 0.3);
   z-index: 1;
 
   .door-frame {
@@ -163,7 +205,7 @@
   }
 
   .fcta-badge-text {
-    font-family: var(--font-geist-mono), monospace;
+    font-family: var(--font-heading); /* SVN-Aguda: eyebrow badge label */
     font-size: clamp(0.825rem, 1.4vw, 0.95rem);
     font-weight: 700;
     letter-spacing: 0.26em;
@@ -180,10 +222,11 @@
   line-height: 1.12;
   margin: 0;
   letter-spacing: -0.02em;
-  color: #123A53;
+  color: #ffffff; // Changed to white for dark mode image background
+  text-shadow: 0 4px 18px rgba(0, 0, 0, 0.45); // Pop out over bright areas
 
   .fcta-title-blue {
-    background: linear-gradient(90deg, #17398F 0%, #2095AD 50%, #38CFC8 100%);
+    background: linear-gradient(90deg, #38CFC8 0%, #2095AD 50%, #00D4FF 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -195,11 +238,12 @@
 .fcta-desc {
   font-family: var(--font-body);
   font-size: clamp(1.05rem, 1.6vw, 1.3rem);
-  color: #475569;
+  color: #cbd5e1; // Changed to light gray
   line-height: 1.8;
   max-width: 900px;
   margin: 0;
   font-weight: 450;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4); // Enhanced readability
 }
 
 // Action Button (Cyan Gradient Pill with Glow)
@@ -262,7 +306,7 @@
   gap: 1rem;
 
   .pillar-icon {
-    color: #2095AD;
+    color: #38CFC8; // brighter cyan
     display: flex;
     align-items: center;
     justify-content: center;
@@ -279,17 +323,18 @@
       font-family: var(--font-body);
       font-size: 1rem;
       font-weight: 700;
-      color: #123A53;
+      color: #ffffff; // white text
     }
 
     .pillar-subtitle {
       font-family: var(--font-body);
       font-size: 1rem;
       font-weight: 500;
-      color: #475569;
+      color: #94a3b8; // muted light gray text
     }
   }
 }
+
 
 .fcta-divider {
   width: 1px;

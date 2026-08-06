@@ -97,6 +97,23 @@ $bg-dropdown: rgba(10, 15, 30, 0.95);
     position: relative;
     transition: color 0.2s;
 
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: -2px;
+      left: 50%;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, $cyan-bright, $purple);
+      transition: width 0.3s ease, left 0.3s ease;
+      pointer-events: none;
+    }
+
+    &:hover::after {
+      width: 100%;
+      left: 0;
+    }
+
     &:hover {
       color: $cyan-hover;
     }

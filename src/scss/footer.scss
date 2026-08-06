@@ -122,7 +122,7 @@ $bg-footer:   #040915;
   }
 
   .footer-heading {
-    font-family: var(--font-poppins), sans-serif;
+    font-family: var(--font-heading); /* SVN-Aguda: section heading label */
     font-size: 1.1rem;
     font-weight: 700;
     color: $text-white;

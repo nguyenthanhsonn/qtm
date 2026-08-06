@@ -1,15 +1,11 @@
 "use client";
 
 import "@/scss/home-cta.scss";
+import { CoreValue } from "@/types/home";
 import { motion, useReducedMotion } from "motion/react";
 import ParticleField from "@/components/TechBackground/ParticleField";
 import Card3DTilt from "@/components/Card3DTilt";
-
-type CoreValue = {
-  title: string;
-  subtitle: string;
-  items: { head: string; desc: string }[];
-};
+import { CtaGridBackground } from "@/components/TechBackground";
 
 const coreValues: CoreValue[] = [
   {
@@ -92,54 +88,23 @@ export default function HomeCtaSection() {
 
   return (
     <section id="values" className="section section--home-cta">
-      {/* Light Grid Background & Laser Scanbeam */}
-      <div className="home-cta__bg" aria-hidden="true" />
-      <div className="home-cta__glow" aria-hidden="true" />
+      {/* Redesigned Premium Background Grid */}
+      <CtaGridBackground />
 
       {/* Interactive Data Particles */}
       <ParticleField />
 
-      {/* Technical HUD Corner Indicators */}
-      <div className="home-cta__hud-corner home-cta__hud-corner--top-left" aria-hidden="true">
-        <span className="hud-dot" />
-        <span>SYS_CORE_DNA // 02</span>
-      </div>
-      <div className="home-cta__hud-corner home-cta__hud-corner--top-right" aria-hidden="true">
-        <span>LAT: 21.0285 / LON: 105.83</span>
-      </div>
-      <div className="home-cta__hud-corner home-cta__hud-corner--bottom-left" aria-hidden="true">
-        <span>GRID_MATRIX_STATUS: ACTIVE</span>
-      </div>
-      <div className="home-cta__hud-corner home-cta__hud-corner--bottom-right" aria-hidden="true">
-        <span>QTM_TECH_STANDARDS</span>
-      </div>
+
 
       <div className="section__content home-cta__content">
-        {/* Badge Header */}
-        <motion.div
-          className="home-cta__badge"
-          variants={fadeUp}
-          initial="hidden"
-          whileInView="visible"
-          viewport={viewport}
-          transition={{ duration: 0.55, ease: easeOut }}
-        >
-          <span>BLOCK 02</span>
-          <span>•</span>
-          <span>GIÁ TRỊ TẠO NÊN QTM</span>
-        </motion.div>
 
         {/* Title & Desc */}
-        <motion.h2
+        <h2
           className="home-cta__title"
-          variants={fadeUp}
-          initial="hidden"
-          whileInView="visible"
-          viewport={viewport}
-          transition={{ duration: 0.65, delay: 0.1, ease: easeOut }}
+          data-aos="zoom-in"
         >
           GIÁ TRỊ <span className="title-highlight">CỐT LÕI</span>
-        </motion.h2>
+        </h2>
 
         <motion.p
           className="home-cta__desc"
@@ -165,7 +130,7 @@ export default function HomeCtaSection() {
           whileInView="visible"
           viewport={viewport}
         >
-          {coreValues.map((val) => (
+          {coreValues.map((val, colIdx) => (
             <motion.div
               key={val.title}
               variants={fadeUp}
@@ -179,11 +144,7 @@ export default function HomeCtaSection() {
                 glareColor="rgba(56, 207, 200, 0.35)"
                 glareOpacity={0.45}
               >
-                {/* Điểm nhấn 4 góc */}
-                <div className="corner-mark top-left" aria-hidden="true" />
-                <div className="corner-mark top-right" aria-hidden="true" />
-                <div className="corner-mark bottom-left" aria-hidden="true" />
-                <div className="corner-mark bottom-right" aria-hidden="true" />
+
 
                 {/* Nội dung Card */}
                 <div className="hud-title">
@@ -193,8 +154,13 @@ export default function HomeCtaSection() {
 
                 <div className="hud-content">
                   <ul className="card-list">
-                    {val.items.map((item) => (
-                      <li key={item.head}>
+                    {val.items.map((item, itemIdx) => (
+                      <li
+                        key={item.head}
+                        data-aos="fade-right"
+                        data-aos-delay={(colIdx + itemIdx) * 100 + 100}
+                        data-aos-duration="600"
+                      >
                         <span className="item-head">
                           <span className="scifi-bullet-dot" /> {item.head}:
                         </span>
