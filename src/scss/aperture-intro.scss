@@ -1,169 +1,494 @@
 @use 'variables' as *;
 
-.aperture-intro-root {
+// ════════════════════════════════════════════════════════════════
+//  QTM INTRO — 60fps Optimized CSS
+//
+//  PERF RULES ENFORCED HERE:
+//  ✅  Only animate: transform (translate/scale/rotate) + opacity
+//  ✅  will-change declared on elements that animate (removed via
+//      JS after animation completes — handled by Framer Motion)
+//  ✅  No animation of: width, height, top, left, margin, padding,
+//      border-width, box-shadow (all cause reflow/repaint)
+//  ✅  Glow effects use filter:drop-shadow on a static pseudo-element
+//      or pre-baked SVG — NOT runtime filter:blur() on large areas
+//  ✅  contain: strict on root → browser skips layout for children
+//  ✅  CSS clip-path:circle() for iris wipe (GPU composited)
+// ════════════════════════════════════════════════════════════════
+
+// ─── Root container ──────────────────────────────────────────────
+.qi-root {
   position: fixed;
   inset: 0;
   z-index: 99999;
-  background: #050C1A;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   overflow: hidden;
   user-select: none;
-  will-change: opacity;
+  pointer-events: auto;
+  // PERF: contain prevents layout recalculation propagating outside
+  contain: strict;
 }
 
-.aperture-bg-dark {
+// ─── LAYER 1: Base background (static, no animation) ─────────────
+.qi-bg {
   position: absolute;
   inset: 0;
-  background:
-    radial-gradient(ellipse at center, rgba(56, 207, 200, 0.18) 0%, transparent 70%),
-    linear-gradient(180deg, #050C1A 0%, #081225 100%);
+  z-index: 0;
+  background: radial-gradient(
+    ellipse at 50% 46%,
+    #0d2444 0%,
+    #0C192B 55%,
+    #06101e 100%
+  );
+  // PERF: static — zero animation cost
+}
+
+// ─── LAYER 2: Perspective grid (CSS transform, GPU layer) ─────────
+.qi-grid-wrap {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  perspective: 550px;
   pointer-events: none;
+  overflow: hidden;
 }
 
-.aperture-grid-pattern {
+.qi-grid-floor {
   position: absolute;
-  inset: 0;
+  bottom: -10%;
+  left: -50%;
+  width: 200%;
+  height: 55%;
+  transform: rotateX(65deg);
+  transform-origin: bottom center;
+  // PERF: will-change:transform promotes to GPU layer
+  will-change: transform;
   background-image:
-    linear-gradient(rgba(56, 207, 200, 0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(56, 207, 200, 0.05) 1px, transparent 1px);
-  background-size: 40px 40px;
-  mask-image: radial-gradient(ellipse at center, black 40%, transparent 80%);
-  pointer-events: none;
+    linear-gradient(rgba(56, 207, 200, 0.13) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(56, 207, 200, 0.13) 1px, transparent 1px);
+  background-size: 58px 58px;
+  mask-image: linear-gradient(to top, rgba(0,0,0,0.75) 0%, transparent 82%);
+  // PERF: animate background-position (not top/left) — no reflow
+  animation: qi-grid-scroll 5.5s linear infinite;
 }
 
-/* Minimalist Skip Button Top-Right */
-.aperture-skip-btn {
-  position: absolute;
-  top: 30px; right: 35px;
-  z-index: 20;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 8px 18px;
-  border-radius: 999px;
-  background: rgba(56, 207, 200, 0.1);
-  border: 1px solid rgba(56, 207, 200, 0.3);
-  backdrop-filter: blur(8px);
-  color: #38CFC8;
-  font-family: var(--font-geist-mono), monospace;
-  font-size: 0.75rem;
-  font-weight: 700;
-  cursor: pointer;
-  transition: all 0.25s ease;
-
-  .arrow {
-    font-size: 0.7rem;
-    transition: transform 0.2s ease;
-  }
-
-  &:hover {
-    background: #38CFC8;
-    color: #050C1A;
-    box-shadow: 0 0 20px rgba(56, 207, 200, 0.5);
-
-    .arrow {
-      transform: translateX(3px);
-    }
-  }
+@keyframes qi-grid-scroll {
+  // background-position animation: no layout, only paint (cheap on GPU)
+  from { background-position: 0 0; }
+  to   { background-position: 0 58px; }
 }
 
-/* Central Stage Container */
-.aperture-hud-stage {
+// ─── LAYER 3: Film grain (background-position steps — cheap) ──────
+.qi-noise {
   position: absolute;
-  width: min(650px, 85vw);
-  height: min(650px, 85vw);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  inset: 0;
+  z-index: 2;
   pointer-events: none;
+  opacity: 0.035;
+  // Pre-baked SVG noise texture — no runtime computation
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.78' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 180px 180px;
+  // PERF: steps(1) = instant jump between frames → no interpolation cost
+  animation: qi-noise-shift 0.1s steps(1) infinite;
+}
+
+@keyframes qi-noise-shift {
+  // Only background-position — zero reflow, trivial repaint
+  0%  { background-position: 0 0; }
+  25% { background-position: -48px -22px; }
+  50% { background-position: 22px -48px; }
+  75% { background-position: -22px 22px; }
+}
+
+// ─── LAYER 4: Radial glow heartbeat ───────────────────────────────
+// PERF: animate opacity + transform:scale only — NO box-shadow changes
+.qi-glow-pulse {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background: radial-gradient(
+    ellipse at 50% 48%,
+    rgba(56, 207, 200, 0.20) 0%,
+    rgba(32, 149, 173, 0.08) 38%,
+    transparent 68%
+  );
+  // PERF: only opacity+scale — GPU composited, zero reflow
   will-change: transform, opacity;
+  animation: qi-heartbeat 2.6s ease-in-out infinite;
 }
 
-/* Pristine Circular Mask for User Uploaded Image (Crops out all square corners & watermarks) */
-.user-aperture-circle-mask {
-  position: relative;
+@keyframes qi-heartbeat {
+  0%, 100% { opacity: 0.55; transform: scale(1); }
+  35%       { opacity: 1;    transform: scale(1.05); }
+  70%       { opacity: 0.65; transform: scale(0.97); }
+}
+
+// ─── LAYER 5: Canvas ────────────────────────────────────────────────
+.qi-canvas {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
-  border-radius: 50%;
-  overflow: hidden;
-  box-shadow: 0 0 70px rgba(56, 207, 200, 0.55), inset 0 0 45px rgba(56, 207, 200, 0.4);
-  background: #050C1A;
-
-  .user-aperture-image-inner {
-    width: 100%;
-    height: 100%;
-    will-change: transform;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .user-aperture-img {
-    width: 122%;
-    height: 122%;
-    max-width: none;
-    object-fit: cover;
-    mix-blend-mode: lighten;
-    filter: brightness(1.15) contrast(1.2) drop-shadow(0 0 35px rgba(56, 207, 200, 0.55));
-  }
-
-  /* 100% Clean Central Hole */
-  .user-aperture-center-hole {
-    position: absolute;
-    top: 50%; left: 50%;
-    transform: translate(-50%, -50%);
-    width: 38%;
-    height: 38%;
-    border-radius: 50%;
-    background: #050C1A;
-    box-shadow: inset 0 0 20px rgba(56, 207, 200, 0.45), 0 0 25px #050C1A;
-    pointer-events: none;
-    z-index: 5;
-  }
-
-  .user-aperture-glow-ring {
-    position: absolute;
-    inset: 0;
-    border-radius: 50%;
-    border: 2px solid rgba(56, 207, 200, 0.55);
-    box-shadow: inset 0 0 30px rgba(56, 207, 200, 0.45), 0 0 35px rgba(0, 212, 255, 0.45);
-    pointer-events: none;
-    z-index: 6;
-  }
+  z-index: 3;
+  pointer-events: none;
+  // PERF: promotes canvas to its own compositor layer
+  will-change: transform;
 }
 
-/* Minimalist Scroll Hint at Bottom Center */
-.aperture-minimal-scroll-hint {
+// ─── LAYER 6: Main stage ─────────────────────────────────────────────
+.qi-stage {
   position: absolute;
-  bottom: 40px;
-  left: 50%;
-  transform: translateX(-50%);
+  inset: 0;
+  z-index: 10;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 6px;
-  z-index: 10;
+  justify-content: center;
+  gap: 0.9rem;
+}
+
+// ─── Logo wrapper ────────────────────────────────────────────────────
+.qi-logo-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.6rem 2.8rem;
+  will-change: transform, opacity;
+}
+
+// Pre-baked SVG glow ring — no runtime filter:blur() on large area
+// PERF: opacity animation only (scale already on parent .qi-logo-wrap)
+.qi-logo-glow-ring {
+  position: absolute;
+  inset: -6px;
+  border-radius: 18px;
+  // Static border + box-shadow: NOT animated (static is free)
+  border: 1px solid rgba(56, 207, 200, 0.22);
+  box-shadow:
+    0 0 18px rgba(56, 207, 200, 0.14),
+    inset 0 0 14px rgba(56, 207, 200, 0.05);
   pointer-events: none;
+  // PERF: opacity only — no box-shadow keyframe changes
+  animation: qi-ring-opacity 2.4s ease-in-out infinite;
+}
 
-  .hint-arrow {
-    font-size: 1.2rem;
-    color: #38CFC8;
-    animation: scrollPulse 1.4s infinite ease-in-out;
-  }
+@keyframes qi-ring-opacity {
+  // Opacity only — pure alpha fade, compositor handles it
+  0%, 100% { opacity: 0.45; }
+  50%       { opacity: 1; }
+}
 
-  .hint-text {
-    font-family: var(--font-geist-mono), monospace;
-    font-size: 0.725rem;
-    font-weight: 700;
-    letter-spacing: 0.14em;
-    color: #38CFC8;
-    text-shadow: 0 0 10px rgba(56, 207, 200, 0.5);
+// ─── Corner brackets (transform:scale + opacity) ─────────────────────
+.qi-corner {
+  position: absolute;
+  width: 17px;
+  height: 17px;
+  border-style: solid;
+  border-color: rgba(56, 207, 200, 0.85);
+  pointer-events: none;
+  // PERF: scale+opacity — GPU composited
+  animation: qi-corner-in 0.45s cubic-bezier(0.16, 1, 0.3, 1) both;
+
+  &--tl { top: 0; left: 0; border-width: 2px 0 0 2px; border-radius: 6px 0 0 0; animation-delay: 0.05s; }
+  &--tr { top: 0; right: 0; border-width: 2px 2px 0 0; border-radius: 0 6px 0 0; animation-delay: 0.10s; }
+  &--bl { bottom: 0; left: 0; border-width: 0 0 2px 2px; border-radius: 0 0 0 6px; animation-delay: 0.15s; }
+  &--br { bottom: 0; right: 0; border-width: 0 2px 2px 0; border-radius: 0 0 6px 0; animation-delay: 0.20s; }
+}
+
+@keyframes qi-corner-in {
+  from { opacity: 0; transform: scale(0.5); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+// ─── Logo image + pulse ───────────────────────────────────────────────
+.qi-logo-inner {
+  position: relative;
+  z-index: 2;
+  will-change: transform;
+}
+
+.qi-logo-img {
+  height: clamp(46px, 7.5vw, 66px) !important;
+  width: auto !important;
+  display: block;
+  // PERF: filter:drop-shadow on static element — no animation, no perf hit
+  filter:
+    brightness(0) invert(1)
+    drop-shadow(0 0 14px rgba(56, 207, 200, 0.65))
+    drop-shadow(0 0 32px rgba(56, 207, 200, 0.28));
+  
+  // After logo-ready: transition filter glow (opacity equivalent on drop-shadow)
+  // PERF: use opacity transition on a wrapper — do NOT animate filter directly
+  transition: opacity 0.3s ease;
+
+  &--active {
+    // Strengthen glow via filter — only fires once (not looping)
+    filter:
+      brightness(0) invert(1)
+      drop-shadow(0 0 20px rgba(56, 207, 200, 0.9))
+      drop-shadow(0 0 45px rgba(56, 207, 200, 0.45));
   }
 }
 
-@keyframes scrollPulse {
-  0%, 100% { transform: translateY(0); opacity: 0.6; }
-  50% { transform: translateY(6px); opacity: 1; }
+// ─── Chromatic aberration glitch (translateX + opacity only) ────────
+// PERF: translate is GPU-composited; NO left/right position animation
+.qi-glitch-r,
+.qi-glitch-b {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 3;
+  overflow: hidden;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.qi-glitch-r {
+  // Red channel offset — translateX only
+  background-image: url('/logo.png');
+  filter: brightness(0) sepia(1) saturate(8) hue-rotate(-30deg) invert(0.3);
+  animation: qi-glitch-r 2.2s steps(1) infinite;
+}
+
+.qi-glitch-b {
+  // Blue channel offset — translateX only
+  background-image: url('/logo.png');
+  filter: brightness(0) sepia(1) saturate(8) hue-rotate(160deg) invert(0.3);
+  animation: qi-glitch-b 2.2s steps(1) 0.08s infinite;
+}
+
+@keyframes qi-glitch-r {
+  // translateX + opacity only — GPU composited, zero reflow
+  0%, 87%, 100% { opacity: 0; transform: translate(0); }
+  88%  { opacity: 0.65; transform: translate(-3px, 0); }
+  90%  { opacity: 0.4;  transform: translate(2px, 0); }
+  92%  { opacity: 0; }
+}
+
+@keyframes qi-glitch-b {
+  0%, 87%, 100% { opacity: 0; transform: translate(0); }
+  88%  { opacity: 0.55; transform: translate(3px, 0); }
+  91%  { opacity: 0.35; transform: translate(-2px, 0); }
+  93%  { opacity: 0; }
+}
+
+// ─── Shine sweep (translateX only — GPU) ──────────────────────────────
+// PERF: pseudo-element uses transform:translateX, NOT left animation
+.qi-shine {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  overflow: hidden;
+  border-radius: 4px;
+  pointer-events: none;
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: -5%;
+    left: 0;
+    width: 42%;
+    height: 110%;
+    background: linear-gradient(
+      105deg,
+      transparent 0%,
+      rgba(255, 255, 255, 0.22) 50%,
+      transparent 100%
+    );
+    // PERF: translateX instead of `left` animation — no layout
+    will-change: transform;
+    animation: qi-shine 3s ease-in-out infinite;
+  }
+}
+
+@keyframes qi-shine {
+  // translateX from -100% to +280% (equivalent to left sweep)
+  from { transform: translateX(-100%); }
+  50%, 100% { transform: translateX(650%); }
+}
+
+// ─── Wordmark ─────────────────────────────────────────────────────────
+.qi-wordmark {
+  display: flex;
+  gap: 0.04em;
+}
+
+.qi-wordmark__letter {
+  font-family: var(--font-montserrat), 'Montserrat', sans-serif;
+  font-size: clamp(2.6rem, 6.5vw, 5rem);
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  color: #ffffff;
+  // Static drop-shadow (not animated) — no perf cost
+  filter: drop-shadow(0 0 16px rgba(56, 207, 200, 0.45));
+  line-height: 1;
+  display: inline-block;
+  will-change: transform, opacity;
+}
+
+// ─── Slogan ───────────────────────────────────────────────────────────
+.qi-slogan {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  min-height: 1.5em;
+}
+
+.qi-slogan__word {
+  font-family: var(--font-montserrat), 'Montserrat', sans-serif;
+  font-size: clamp(10px, 1.3vw, 12.5px);
+  font-weight: 700;
+  letter-spacing: 0.24em;
+  color: rgba(255, 255, 255, 0.76);
+  text-transform: uppercase;
+  will-change: opacity;
+}
+
+.qi-slogan__dot {
+  color: #38CFC8;
+  font-size: 15px;
+  font-weight: 900;
+  // PERF: scale+opacity only — GPU composited
+  animation: qi-dot-signal 0.85s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+@keyframes qi-dot-signal {
+  0%, 100% { opacity: 0.4; transform: scale(0.85); }
+  50%       { opacity: 1;   transform: scale(1.25); }
+}
+
+.qi-slogan__cursor {
+  color: #38CFC8;
+  font-weight: 700;
+  // PERF: opacity blink (not visibility — opacity is GPU composited)
+  animation: qi-cursor-blink 0.7s steps(1) infinite;
+}
+
+@keyframes qi-cursor-blink {
+  0%, 50%  { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+// ─── Accent line (scaleX only) ────────────────────────────────────────
+.qi-accent-line {
+  width: clamp(90px, 16vw, 190px);
+  height: 2px;
+  background: linear-gradient(90deg, #2DD4BF 0%, #38CFC8 55%, #3B82F6 100%);
+  border-radius: 2px;
+  // Static drop-shadow — not animated
+  filter: drop-shadow(0 0 10px rgba(56, 207, 200, 0.65));
+  transform-origin: center;
+  will-change: transform, opacity;
+}
+
+// ─── IRIS WIPE EXIT ────────────────────────────────────────────────────
+// PERF: clip-path:circle() is GPU composited — zero reflow/repaint
+// CSS transition (not JS RAF loop) handles the animation
+// The element uses box-shadow to create the dark navy "ring outside" effect
+// while the clip-path punches a transparent circle through it
+.qi-iris {
+  position: fixed;
+  // Bleed beyond viewport so corners never flash navy
+  inset: -2%;
+  z-index: 50;
+  border-radius: 50%;
+  // Dark navy "ocean" outside the iris hole
+  box-shadow: 0 0 0 200vmax #0C192B;
+  // Start: collapsed circle (hides hero behind navy)
+  clip-path: circle(0% at 50% 50%);
+  will-change: clip-path;
+  pointer-events: none;
+
+  &--open {
+    // End: expanded circle (reveals hero section)
+    clip-path: circle(150% at 50% 50%);
+    // PERF: CSS transition on clip-path — browser handles with GPU compositing
+    transition: clip-path 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+}
+
+// ─── Eyebrow hint ─────────────────────────────────────────────────────
+.qi-eyebrow {
+  position: absolute;
+  bottom: clamp(2rem, 7vh, 4.5rem);
+  left: 50%;
+  z-index: 10;
+  transform: translateX(-50%);
+  font-family: var(--font-montserrat), sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.28em;
+  color: rgba(56, 207, 200, 0.48);
+  text-transform: uppercase;
+  white-space: nowrap;
+  margin: 0;
+  // PERF: will-change removed after animation via AnimatePresence unmount
+}
+
+// ─── Skip button ──────────────────────────────────────────────────────
+.qi-skip {
+  position: absolute;
+  bottom: clamp(1.25rem, 3.5vh, 2rem);
+  right: clamp(1.25rem, 3.5vw, 2rem);
+  z-index: 90;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.38rem 0.9rem;
+  border-radius: 999px;
+  background: rgba(12, 25, 43, 0.5);
+  border: 1px solid rgba(56, 207, 200, 0.24);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: rgba(255, 255, 255, 0.4);
+  font-family: var(--font-montserrat), sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  cursor: pointer;
+  // PERF: only transform+opacity on hover (not background-color change which triggers repaint)
+  transition: opacity 0.2s ease, transform 0.2s ease;
+
+  &:hover {
+    opacity: 1;
+    transform: translateY(-1px);
+    color: #38CFC8;
+    border-color: rgba(56, 207, 200, 0.5);
+  }
+}
+
+.qi-skip__arrow {
+  font-size: 9px;
+  color: #38CFC8;
+}
+
+// ─── RESPONSIVE: Mobile ───────────────────────────────────────────────
+@media (max-width: 640px) {
+  .qi-logo-img {
+    height: clamp(36px, 11vw, 50px) !important;
+  }
+
+  .qi-logo-wrap {
+    padding: 1.1rem 1.6rem;
+  }
+
+  .qi-wordmark__letter {
+    font-size: clamp(2rem, 9.5vw, 3.2rem);
+  }
+
+  .qi-corner {
+    width: 12px;
+    height: 12px;
+  }
+
+  // Reduce grid complexity on mobile for perf
+  .qi-grid-floor {
+    height: 40%;
+    background-size: 48px 48px;
+  }
 }

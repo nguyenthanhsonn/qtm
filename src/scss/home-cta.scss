@@ -2,13 +2,14 @@
 
 .section.section--home-cta {
   position: relative;
+  z-index: 1;
   min-height: auto;
   text-align: center;
   background-color: #ffffff;
   background-image: none;
-  padding: clamp(4rem, 8vh, 6.5rem) clamp(1rem, 5vw, 4rem);
+  // Extra top padding (clamp 8rem to 11rem) so the floating overlapping quote card has room
+  padding: clamp(8rem, 14vh, 11rem) clamp(1rem, 5vw, 4rem) clamp(4rem, 8vh, 6.5rem);
   overflow: hidden;
-  border-top: 1px solid rgba(32, 149, 173, 0.15);
   border-bottom: 1px solid rgba(32, 149, 173, 0.15);
 }
 
@@ -184,9 +185,10 @@
   padding: clamp(1.75rem, 2.4vw, 2.4rem);
   box-sizing: border-box;
   color: #123A53;
-  text-align: left;
+  text-align: center;
   display: flex;
   flex-direction: column;
+  align-items: center;
   transform-style: preserve-3d;
   transition: all 0.35s cubic-bezier(0.25, 1, 0.5, 1);
 
@@ -328,43 +330,162 @@
   }
 }
 
-// Frameless Large Animated Gradient Quote Typography (MediaTech Partner Style)
-.home-cta__frameless-quote {
+/* Redesigned Striking Tech Quote Card Block */
+.home-cta__quote-card {
   position: relative;
   width: 100%;
-  max-width: 1040px;
-  margin-top: 2rem;
-  padding: 1rem 0;
+  max-width: 860px;
+  margin: 3.5rem auto 0;
+  background: linear-gradient(145deg, #ffffff 0%, #f0f9ff 100%);
+  border-radius: 24px;
+  border: 1.5px solid rgba(56, 207, 200, 0.45);
+  box-shadow:
+    0 16px 48px rgba(32, 149, 173, 0.16),
+    0 0 30px rgba(56, 207, 200, 0.12),
+    inset 0 0 20px rgba(56, 207, 200, 0.05);
+  backdrop-filter: blur(16px);
+  padding: clamp(3.2rem, 6.5vh, 4.8rem) clamp(1.75rem, 5vw, 3.8rem);
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
-  background: transparent;
-  border: none;
+  overflow: hidden;
 
-  .quote-text {
-    font-family: var(--font-heading);
-    font-size: clamp(1.35rem, 2.4vw, 2.1rem);
-    font-weight: 700;
-    line-height: 1.65;
-    letter-spacing: -0.01em;
-    font-style: italic;
-    margin: 0;
+  // Corner Accents (+)
+  .corner-mark {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    border-color: #38CFC8;
+    border-style: solid;
+    z-index: 3;
+    filter: drop-shadow(0 0 6px rgba(56, 207, 200, 0.8));
+  }
 
-    // MediaTech Partner Gradient Text Color
-    background: linear-gradient(90deg, #123A53 0%, #17398F 30%, #2095AD 70%, #38CFC8 100%);
-    background-size: 200% auto;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    animation: gradientFlow 8s ease infinite;
+  .top-left {
+    top: 10px;
+    left: 10px;
+    border-width: 2.5px 0 0 2.5px;
+  }
 
-    .quote-highlight {
-      background: linear-gradient(90deg, #2095AD 0%, #38CFC8 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      font-weight: 800;
-      font-style: normal;
-      filter: drop-shadow(0 0 15px rgba(56, 207, 200, 0.4));
+  .top-right {
+    top: 10px;
+    right: 10px;
+    border-width: 2.5px 2.5px 0 0;
+  }
+
+  .bottom-left {
+    bottom: 10px;
+    left: 10px;
+    border-width: 0 0 2.5px 2.5px;
+  }
+
+  .bottom-right {
+    bottom: 10px;
+    right: 10px;
+    border-width: 0 2.5px 2.5px 0;
+  }
+
+  // Brand Manifesto Tag & Icon Pill Badge
+  .quote-brand-header {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.65rem;
+    padding: 0.4rem 1.25rem;
+    border-radius: 20px;
+    background: linear-gradient(90deg, rgba(32, 149, 173, 0.12) 0%, rgba(56, 207, 200, 0.06) 100%);
+    border: 1px solid rgba(32, 149, 173, 0.35);
+    box-shadow: 0 0 14px rgba(56, 207, 200, 0.18);
+    margin-bottom: 1rem;
+
+    .quote-brand-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #2095AD;
     }
+
+    .quote-brand-tag {
+      font-family: var(--font-heading);
+      font-size: 0.775rem;
+      font-weight: 800;
+      letter-spacing: 0.18em;
+      color: #2095AD;
+      text-transform: uppercase;
+    }
+  }
+
+  // Glowing Divider Lines
+  .quote-divider {
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, #2095AD 0%, #38CFC8 100%);
+    box-shadow: 0 0 10px rgba(56, 207, 200, 0.6);
+    border-radius: 3px;
+    margin: 0.45rem 0;
+  }
+
+  // Text Container with Watermark
+  .quote-text-container {
+    position: relative;
+    width: 100%;
+    max-width: 750px;
+    margin: 1.35rem 0;
+    padding: 0 1rem;
+    box-sizing: border-box;
+
+    // Watermark Opening Quotation Mark
+    .quote-watermark-mark {
+      position: absolute;
+      top: -30px;
+      left: -10px;
+      font-family: Georgia, serif;
+      font-size: clamp(75px, 9.5vw, 105px);
+      line-height: 1;
+      color: #38CFC8;
+      opacity: 0.32;
+      filter: drop-shadow(0 0 12px rgba(56, 207, 200, 0.3));
+      user-select: none;
+      pointer-events: none;
+      z-index: 0;
+
+      @media (max-width: 640px) {
+        font-size: 48px;
+        top: -18px;
+        left: 0;
+      }
+    }
+
+    .quote-text {
+      position: relative;
+      z-index: 1;
+      font-family: var(--font-heading);
+      font-size: clamp(1.2rem, 2.3vw, 1.7rem); // 19-20px mobile, 25-27px desktop
+      font-weight: 700;
+      font-style: italic;
+      line-height: 1.55;
+      color: #0c192b; // Deep Navy for sharp contrast
+      margin: 0;
+
+      .quote-accent {
+        background: linear-gradient(90deg, #17398F 0%, #2095AD 50%, #38CFC8 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        font-style: italic;
+        font-weight: 800;
+        border-bottom: 2px solid rgba(56, 207, 200, 0.4);
+        padding-bottom: 1px;
+        filter: drop-shadow(0 0 12px rgba(56, 207, 200, 0.35));
+      }
+    }
+  }
+
+  @media (max-width: 640px) {
+    padding: 2.75rem 1.25rem;
+    margin-top: 2.5rem;
+    border-radius: 18px;
   }
 }
 
