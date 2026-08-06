@@ -3,8 +3,10 @@
 .section.section--home {
   position: relative;
   text-align: center;
-  overflow: hidden;
+  overflow: visible; // Allow floating quote card to overlap down
+  z-index: 20;       // Stack above section below
   background: #050c1a;
+  padding-bottom: clamp(6.5rem, 12vh, 10rem); // Room for stats bar above floating card
 }
 
 .section__bg-video {
@@ -43,7 +45,13 @@
 }
 
 // floating particles (CSS custom property animation)
-.section__particles { position: absolute; inset: 0; z-index: 0; overflow: hidden; }
+.section__particles {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+}
+
 .particle {
   position: absolute;
   width: 2px;
@@ -56,11 +64,25 @@
   left: calc(5% + var(--i, 0) * 5%);
   top: calc(10% + var(--i, 0) * 3.5%);
 }
+
 @keyframes float-particle {
-  0%   { opacity: 0; transform: translateY(0); }
-  20%  { opacity: 0.6; }
-  80%  { opacity: 0.3; }
-  100% { opacity: 0; transform: translateY(-80px); }
+  0% {
+    opacity: 0;
+    transform: translateY(0);
+  }
+
+  20% {
+    opacity: 0.6;
+  }
+
+  80% {
+    opacity: 0.3;
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateY(-80px);
+  }
 }
 
 .section__content.home__content {
@@ -100,8 +122,16 @@
 }
 
 @keyframes pulse-dot {
-  0%, 100% { opacity: 0.4; }
-  50% { opacity: 1; filter: drop-shadow(0 0 4px $cyan-bright); }
+
+  0%,
+  100% {
+    opacity: 0.4;
+  }
+
+  50% {
+    opacity: 1;
+    filter: drop-shadow(0 0 4px $cyan-bright);
+  }
 }
 
 // Responsive text sizes
@@ -111,7 +141,7 @@
   align-items: flex-start;
   gap: 0.1em;
   width: 100%;
-  font-size: clamp(3.5rem, 8vw, 6.8rem); // 56px to 108.8px
+  font-size: clamp(3.5rem, 8vw, 6.8rem);
   font-weight: 800;
   line-height: 1.05;
   letter-spacing: -0.02em;
@@ -142,7 +172,7 @@
   border: 1px solid rgba(56, 207, 200, 0.15);
   padding: 1.5rem 1.75rem;
   border-radius: 16px;
-  box-shadow: 
+  box-shadow:
     0 10px 30px rgba(0, 0, 0, 0.25),
     inset 0 0 20px rgba(56, 207, 200, 0.03);
   text-align: left;
@@ -161,6 +191,7 @@
     border-top: 2px solid #38CFC8;
     border-left: 2px solid #38CFC8;
   }
+
   &::after {
     content: "";
     position: absolute;
@@ -295,7 +326,7 @@
 }
 
 // Stats dividers (vertical lines)
-.home__stat-col + .home__stat-col::before {
+.home__stat-col+.home__stat-col::before {
   content: "";
   position: absolute;
   left: 0;
@@ -366,8 +397,17 @@
 }
 
 @keyframes scroll-dot {
-  0%, 100% { opacity: 0.35; transform: translate(-50%, 0); }
-  45% { opacity: 1; transform: translate(-50%, 12px); }
+
+  0%,
+  100% {
+    opacity: 0.35;
+    transform: translate(-50%, 0);
+  }
+
+  45% {
+    opacity: 1;
+    transform: translate(-50%, 12px);
+  }
 }
 
 @media (max-width: 900px) {
@@ -384,7 +424,7 @@
     padding: 0 1rem;
   }
 
-  .home__stat-col + .home__stat-col::before {
+  .home__stat-col+.home__stat-col::before {
     display: none;
   }
 
@@ -448,7 +488,7 @@
     display: none;
   }
 
-  .home__stat-col + .home__stat-col::after {
+  .home__stat-col+.home__stat-col::after {
     content: "";
     position: absolute;
     left: 10%;
@@ -459,62 +499,30 @@
   }
 }
 
-/* --- Transition Quote Section --- */
-.home-quote-section {
-  position: relative;
-  width: 100%;
-  padding: 4rem 0;
-  overflow: visible;
-  z-index: 10;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.home-quote-section__bg-split {
+/* --- Floating Tech Quote Card Between Hero (Dark) and CTA (White) Sections --- */
+.home-quote-floating-wrapper {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: -1;
-  display: flex;
-  flex-direction: column;
-
-  .bg-split__top {
-    flex: 1;
-    background-color: #050c1a;
-  }
-
-  .bg-split__bottom {
-    flex: 1;
-    background-color: #ffffff;
-    background-image: 
-      linear-gradient(to right, rgba(32, 149, 173, 0.08) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(32, 149, 173, 0.08) 1px, transparent 1px);
-    background-size: 50px 50px;
-    background-position: center top;
-  }
-}
-
-.home-quote-section__content {
-  max-width: 900px;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, 50%);
   width: 90%;
-  margin: 0 auto;
+  max-width: 920px;
+  z-index: 30;
+  pointer-events: auto;
 }
 
 .home-quote__card {
   position: relative;
-  background: rgba(5, 12, 26, 0.85);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(56, 207, 200, 0.25);
+  background: rgba(5, 12, 26, 0.92);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(56, 207, 200, 0.35);
   border-radius: 16px;
   padding: 2.5rem 3rem;
-  box-shadow: 
-    0 15px 40px rgba(0, 0, 0, 0.35),
-    inset 0 0 20px rgba(56, 207, 200, 0.05);
+  box-shadow:
+    0 20px 50px rgba(0, 0, 0, 0.5),
+    0 0 30px rgba(56, 207, 200, 0.15),
+    inset 0 0 20px rgba(56, 207, 200, 0.08);
   text-align: center;
   overflow: hidden;
 
@@ -525,10 +533,38 @@
     border: 2px solid #38CFC8;
     transition: all 0.3s ease;
   }
-  .quote-corner-tl { top: 0; left: 0; border-right: none; border-bottom: none; border-top-left-radius: 16px; }
-  .quote-corner-tr { top: 0; right: 0; border-left: none; border-bottom: none; border-top-right-radius: 16px; }
-  .quote-corner-bl { bottom: 0; left: 0; border-right: none; border-top: none; border-bottom-left-radius: 16px; }
-  .quote-corner-br { bottom: 0; right: 0; border-left: none; border-top: none; border-bottom-right-radius: 16px; }
+
+  .quote-corner-tl {
+    top: 0;
+    left: 0;
+    border-right: none;
+    border-bottom: none;
+    border-top-left-radius: 16px;
+  }
+
+  .quote-corner-tr {
+    top: 0;
+    right: 0;
+    border-left: none;
+    border-bottom: none;
+    border-top-right-radius: 16px;
+  }
+
+  .quote-corner-bl {
+    bottom: 0;
+    left: 0;
+    border-right: none;
+    border-top: none;
+    border-bottom-left-radius: 16px;
+  }
+
+  .quote-corner-br {
+    bottom: 0;
+    right: 0;
+    border-left: none;
+    border-top: none;
+    border-bottom-right-radius: 16px;
+  }
 
   .quote-hud-accent {
     position: absolute;
@@ -571,13 +607,18 @@
 }
 
 @media (max-width: 768px) {
-  .home-quote-section {
-    padding: 2.5rem 0;
+  .home-quote-floating-wrapper {
+    width: 94%;
   }
-  
+
   .home-quote__card {
-    padding: 1.75rem 2rem;
-    
+    padding: 1.5rem 1.5rem;
+
+    .quote-card__text {
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
     .quote-corner {
       width: 12px;
       height: 12px;

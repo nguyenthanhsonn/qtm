@@ -130,14 +130,14 @@
   flex-direction: column;
   align-items: flex-start;
   text-align: left;
-  gap: 1.25rem;
+  gap: 1.5rem; // Consistent 24px rhythm between all blocks
 }
 
 .about-hero__title {
-  font-size: clamp(2.4rem, 4.2vw, 3.8rem);
-  font-weight: 800;
-  line-height: 1.15;
-  letter-spacing: -0.02em;
+  font-size: clamp(2.6rem, 4.8vw, 4.2rem);
+  font-weight: 900; // Extra bold/black for headline impact
+  line-height: 1.12;
+  letter-spacing: -0.03em;
   color: #FFFFFF;
   margin: 0;
 }
@@ -145,11 +145,12 @@
 .about-hero__desc-box {
   display: flex;
   flex-direction: column;
-  gap: 0.8rem;
+  gap: 0;
+  max-width: 620px; // Prevent lines from being too long
 
   .hero-paragraph {
     font-size: clamp(0.95rem, 1.3vw, 1.1rem);
-    line-height: 1.68;
+    line-height: 1.72;
     color: #CBD5E1;
     margin: 0;
   }
@@ -158,8 +159,8 @@
 .about-hero__actions {
   display: flex;
   align-items: center;
-  gap: 1.2rem;
-  margin-top: 0.5rem;
+  gap: 1.25rem;
+  margin-top: 0.75rem;
   flex-wrap: wrap;
 }
 
@@ -354,16 +355,56 @@
 }
 
 // ════════════════════════════════════════════════════════════
-// BLOCK 2 — VISION & MISSION (LIGHT THEME BACKGROUND)
+// BLOCK 2 — VISION & MISSION (DARK "DIGITAL HORIZON" THEME)
 // ════════════════════════════════════════════════════════════
 .section.section--about-vm {
   position: relative;
-  background-color: #F8FAFC;
-  background-image:
-    radial-gradient(ellipse 80% 50% at 50% 0%, rgba(56, 207, 200, 0.14), transparent 70%),
-    linear-gradient(180deg, #F8FAFC 0%, #F1F5F9 100%);
+  background: linear-gradient(180deg, #0A0E27 0%, #0C1535 50%, #0F1B3D 100%);
   padding: clamp(5rem, 9vh, 7.5rem) clamp(1.2rem, 5vw, 4rem);
   overflow: hidden;
+}
+
+// Diagonal grid lines — strategic direction feel
+.about-vm__bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image:
+      // Diagonal line 1: top-left → bottom-right
+      linear-gradient(135deg, rgba(79, 209, 232, 0.07) 1px, transparent 1px),
+      // Diagonal line 2: shifted offset
+      linear-gradient(135deg, rgba(79, 209, 232, 0.05) 1px, transparent 1px);
+    background-size: 280px 280px, 560px 560px;
+    background-position: 0 0, 140px 140px;
+    mask-image: radial-gradient(ellipse 90% 80% at 50% 50%, black 40%, transparent 85%);
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    // Ambient radial glow at center
+    background: radial-gradient(ellipse 70% 50% at 50% 30%, rgba(79, 209, 232, 0.08), transparent 65%);
+  }
+}
+
+// Subtle ambient glow element (optional, kept for class compatibility)
+.about-vm__glow {
+  position: absolute;
+  top: -80px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(900px, 90vw);
+  height: 400px;
+  background: radial-gradient(ellipse at center, rgba(56, 207, 200, 0.1) 0%, transparent 65%);
+  pointer-events: none;
+  z-index: 0;
 }
 
 .about-vm__content {
@@ -381,14 +422,21 @@
 .about-vm__title {
   font-size: clamp(2.2rem, 4vw, 3.4rem);
   font-weight: 800;
-  color: #123A53;
+  color: #FFFFFF;     // Dark theme: white main text
   margin: 0;
   letter-spacing: -0.02em;
+
+  .title-highlight {
+    background: linear-gradient(90deg, #4FD1E8 0%, #38CFC8 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
 }
 
 .about-vm__subtitle {
   font-size: clamp(1rem, 1.4vw, 1.15rem);
-  color: #475569;
+  color: #B8C1D9;     // Dark theme: muted light grey
   max-width: 720px;
   margin: 0;
   line-height: 1.65;
@@ -405,16 +453,28 @@
   }
 }
 
+/* Dark Glassmorphism Cards */
 .vm-light-card {
-  background: rgba(255, 255, 255, 0.95);
-  border: 1.5px solid rgba(32, 149, 173, 0.28);
+  background: rgba(15, 27, 61, 0.55);
+  border: 1px solid rgba(79, 209, 232, 0.25);
   border-radius: 20px;
-  box-shadow: 0 15px 40px rgba(32, 149, 173, 0.1);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   padding: clamp(1.8rem, 3vw, 2.4rem);
   text-align: left;
   display: flex;
   flex-direction: column;
   gap: 0.85rem;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+
+  &:hover {
+    border-color: rgba(79, 209, 232, 0.55);
+    box-shadow:
+      0 20px 50px rgba(0, 0, 0, 0.45),
+      0 0 25px rgba(79, 209, 232, 0.2);
+    transform: scale(1.01);
+  }
 
   .vm-card-top-icon {
     margin-bottom: 0.4rem;
@@ -428,10 +488,12 @@
       justify-content: center;
 
       &--blue {
-        background: rgba(2, 132, 199, 0.1);
+        background: linear-gradient(135deg, rgba(79, 209, 232, 0.2), rgba(79, 209, 232, 0.04));
+        border: 1px solid rgba(79, 209, 232, 0.3);
       }
       &--teal {
-        background: rgba(13, 148, 136, 0.1);
+        background: linear-gradient(135deg, rgba(56, 207, 200, 0.2), rgba(56, 207, 200, 0.04));
+        border: 1px solid rgba(56, 207, 200, 0.3);
       }
     }
   }
@@ -439,26 +501,28 @@
   .vm-card-title {
     font-size: 1.4rem;
     font-weight: 800;
-    color: #123A53;
+    color: #FFFFFF;   // White on dark
     margin: 0;
+    letter-spacing: 0.04em;
   }
 
   .vm-card-highlight-sub {
     font-size: 1rem;
-    font-weight: 700;
-    color: #0284C7;
+    font-weight: 600;
+    color: #4FD1E8;   // Cyan highlight
     margin: 0;
+    line-height: 1.5;
   }
 
   .vm-card-text {
     font-size: 0.95rem;
-    line-height: 1.7;
-    color: #334155;
+    line-height: 1.65;
+    color: #C5CBD9;   // Muted light grey, readable on dark
     margin: 0;
   }
 }
 
-/* 5 Value Pillars Row */
+/* 5 Value Pillars Row — Dark style */
 .about-vm__pillars-row {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
@@ -471,21 +535,36 @@
   }
 
   @media (max-width: 600px) {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
   }
 
   .vm-pillar-item {
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 8px;
     padding: 1rem 0.8rem;
     border-radius: 14px;
-    background: #FFFFFF;
-    border: 1px solid rgba(32, 149, 173, 0.2);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+    background: rgba(15, 27, 61, 0.55);
+    border: 1px solid rgba(79, 209, 232, 0.18);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
     text-align: center;
     transition: all 0.3s ease;
+
+    // Cyan dot accent at top-right corner
+    &::after {
+      content: "";
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: rgba(79, 209, 232, 0.6);
+      box-shadow: 0 0 6px rgba(79, 209, 232, 0.5);
+    }
 
     .pillar-icon-box {
       font-size: 1.5rem;
@@ -494,14 +573,19 @@
     .pillar-text {
       font-size: 0.825rem;
       font-weight: 700;
-      color: #123A53;
+      color: #E2E8F0;   // Light on dark
       line-height: 1.35;
     }
 
     &:hover {
       transform: translateY(-4px);
-      border-color: #38CFC8;
-      box-shadow: 0 10px 25px rgba(56, 207, 200, 0.2);
+      border-color: rgba(79, 209, 232, 0.55);
+      box-shadow: 0 8px 25px rgba(79, 209, 232, 0.2);
+
+      &::after {
+        background: #4FD1E8;
+        box-shadow: 0 0 10px rgba(79, 209, 232, 0.8);
+      }
     }
   }
 }

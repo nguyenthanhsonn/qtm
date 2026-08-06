@@ -174,18 +174,47 @@ export default function HomeCtaSection() {
           ))}
         </motion.div>
 
-        {/* Frameless Large Animated Gradient Quote Typography (MediaTech Partner Style) */}
+        {/* Redesigned Striking Tech Quote Card Block */}
         <motion.div
-          className="home-cta__frameless-quote"
+          className="home-cta__quote-card"
           variants={fadeUp}
           initial="hidden"
           whileInView="visible"
           viewport={viewport}
-          transition={{ duration: 0.75, delay: 0.25, ease: easeOut }}
+          transition={{ duration: 0.75, delay: 0.2, ease: easeOut }}
         >
-          <p className="quote-text">
-            &ldquo;Ba giá trị cốt lõi kết hợp tạo nên <span className="quote-highlight">DNA QTM</span>, là nền tảng cho mọi giải pháp và cam kết đồng hành cùng doanh nghiệp trên hành trình tăng trưởng bền vững.&rdquo;
-          </p>
+          {/* Tech Corner Accent Marks */}
+          <div className="corner-mark top-left" aria-hidden="true" />
+          <div className="corner-mark top-right" aria-hidden="true" />
+          <div className="corner-mark bottom-left" aria-hidden="true" />
+          <div className="corner-mark bottom-right" aria-hidden="true" />
+
+          {/* Brand Manifesto Tag & Icon */}
+          <div className="quote-brand-header">
+            <span className="quote-brand-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2095AD" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M12 2L2 7l10 5 10-5-10-5z" />
+                <path d="M2 17l10 5 10-5" />
+                <path d="M2 12l10 5 10-5" />
+              </svg>
+            </span>
+            <span className="quote-brand-tag">TUYÊN NGÔN THƯƠNG HIỆU</span>
+          </div>
+
+          {/* Top Accent Line */}
+          <div className="quote-divider" aria-hidden="true" />
+
+          {/* Quote Text Container with Watermark */}
+          <div className="quote-text-container">
+            <span className="quote-watermark-mark" aria-hidden="true">&ldquo;</span>
+
+            <p className="quote-text">
+              &ldquo;Ba giá trị cốt lõi kết hợp tạo nên <span className="quote-accent">DNA QTM</span>, là nền tảng cho mọi giải pháp và cam kết đồng hành cùng doanh nghiệp trên hành trình <span className="quote-accent">tăng trưởng bền vững</span>.&rdquo;
+            </p>
+          </div>
+
+          {/* Bottom Accent Line */}
+          <div className="quote-divider" aria-hidden="true" />
         </motion.div>
 
       </div>
