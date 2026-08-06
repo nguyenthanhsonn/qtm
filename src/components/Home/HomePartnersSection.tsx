@@ -316,10 +316,6 @@ export default function HomePartnersSection() {
             {[...clientsList, ...clientsList].map((p, idx) => (
               <div key={`client-${p.id}-${idx}`} className="partner-card-wrap">
                 <div className="partner-card">
-                  <div className="partner-card__tech-header">
-                    <span className="tech-dot" />
-                    <span className="tech-code">CLI.0{(idx % clientsList.length) + 1}</span>
-                  </div>
                   <div className="partner-card__inner">
                     <div className="partner-card__logo">{p.svgIcon}</div>
                     <span className="partner-card__name">{p.name}</span>
@@ -343,10 +339,6 @@ export default function HomePartnersSection() {
             {[...mediaPartnersList, ...mediaPartnersList].map((p, idx) => (
               <div key={`partner-${p.id}-${idx}`} className="partner-card-wrap">
                 <div className="partner-card">
-                  <div className="partner-card__tech-header">
-                    <span className="tech-dot" />
-                    <span className="tech-code">MED.0{(idx % mediaPartnersList.length) + 1}</span>
-                  </div>
                   <div className="partner-card__inner">
                     <div className="partner-card__logo">{p.svgIcon}</div>
                     <span className="partner-card__name">{p.name}</span>
