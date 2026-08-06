@@ -4,78 +4,79 @@ import React from "react";
 import { motion, useReducedMotion } from "motion/react";
 import BackgroundGrid from "@/components/TechBackground/BackgroundGrid";
 
-type Pillar = {
+type CulturePillar = {
+  id: string;
   icon: React.ReactNode;
-  number: string;
   title: string;
   desc: string;
 };
 
-const pillars: Pillar[] = [
+const culturePillars: CulturePillar[] = [
   {
-    number: "01",
-    title: "Tư Duy Thử Nghiệm",
-    desc: "Khuyến khích mỗi nhân sự liên tục thử nghiệm các mô hình AI & công cụ MarTech mới hàng tuần để tối ưu hiệu suất công việc.",
+    id: "ai-app",
+    title: "ỨNG DỤNG AI",
+    desc: "AI được tích hợp vào quy trình nghiên cứu, sáng tạo, vận hành và phân tích dữ liệu nhằm tăng hiệu suất làm việc.",
     icon: (
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#2095AD" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83" />
-      </svg>
-    ),
-  },
-  {
-    number: "02",
-    title: "Dữ Liệu Dẫn Đường",
-    desc: "Mọi ý tưởng truyền thông và sáng tạo nội dung đều bắt đầu từ insight dữ liệu định lượng, không dựa trên cảm tính thuần túy.",
-    icon: (
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#2095AD" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <ellipse cx="12" cy="5" rx="9" ry="3" />
-        <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3" />
-        <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5" />
-      </svg>
-    ),
-  },
-  {
-    number: "03",
-    title: "Cộng Hưởng Trí Tuệ",
-    desc: "Con người làm chủ định hướng chiến lược, cảm xúc và thông điệp; AI đảm nhận việc tự động hóa, phân tích và gia tăng tốc độ.",
-    icon: (
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#2095AD" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2095AD" strokeWidth="2">
         <rect x="4" y="4" width="16" height="16" rx="2" />
-        <rect x="9" y="9" width="6" height="6" />
-        <path d="M15 2v2M9 2v2M15 20v2M9 20v2M20 15h2M20 9h2M2 15h2M2 9h2" />
+        <circle cx="12" cy="12" r="3" />
       </svg>
     ),
   },
   {
-    number: "04",
-    title: "Học Tập Liên Tục",
-    desc: "Đào tạo nội bộ chuyên sâu về kỹ năng Prompting, Data Analytics & AI Workflow để toàn bộ đội ngũ luôn làm chủ công nghệ mới.",
+    id: "data-driven",
+    title: "QUYẾT ĐỊNH DỰA TRÊN DỮ LIỆU",
+    desc: "Mọi giải pháp đều được xây dựng dựa trên dữ liệu thực và nhu cầu thực của khách hàng.",
     icon: (
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#2095AD" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2095AD" strokeWidth="2">
+        <ellipse cx="12" cy="6" rx="8" ry="3" />
+        <path d="M4 6v6c0 1.66 3.58 3 8 3s8-1.34 8-3V6" />
+        <path d="M4 12v6c0 1.66 3.58 3 8 3s8-1.34 8-3v-6" />
+      </svg>
+    ),
+  },
+  {
+    id: "automation",
+    title: "TỰ ĐỘNG HÓA",
+    desc: "Chuẩn hóa và tự động hóa các quy trình để tiết kiệm thời gian, chi phí và nguồn lực.",
+    icon: (
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2095AD" strokeWidth="2">
+        <circle cx="12" cy="12" r="3" />
+        <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z" />
+      </svg>
+    ),
+  },
+  {
+    id: "learning",
+    title: "HỌC HỎI LIÊN TỤC",
+    desc: "Không ngừng cập nhật các xu hướng công nghệ mới nhằm mang đến cho khách hàng các giải pháp tiên tiến nhất.",
+    icon: (
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2095AD" strokeWidth="2">
         <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
         <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
-        <path d="M12 6v6M9 9h6" />
       </svg>
     ),
   },
   {
-    number: "05",
-    title: "Tốc Độ & Tối Ưu",
-    desc: "Giảm thời gian hoàn thiện dự án xuống 50% bằng cách tinh gọn quy trình làm việc phối hợp giữa con người và các AI Copilot.",
+    id: "innovation",
+    title: "ĐỔI MỚI SÁNG TẠO",
+    desc: "Khuyến khích thử nghiệm những ý tưởng mới để tạo ra giá trị khác biệt.",
     icon: (
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#2095AD" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2095AD" strokeWidth="2">
+        <path d="M9 18h6" />
+        <path d="M10 22h4" />
+        <path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0 0 18 8 6 6 0 0 0 6 8c0 1.55.59 2.94 1.5 4 .76.76 1.23 1.52 1.41 2.5" />
       </svg>
     ),
   },
   {
-    number: "06",
-    title: "Trách Nhiệm & Đạo Đức",
-    desc: "Cam kết ứng dụng AI minh bạch, tôn trọng bản quyền tác giả, bảo mật thông tin và không phát tán thông tin sai lệch.",
+    id: "human-centric",
+    title: "CON NGƯỜI LÀ TRUNG TÂM",
+    desc: "Công nghệ chỉ là công cụ, con người mới quyết định. Tư duy sáng tạo và kinh nghiệm chuyên gia vẫn là yếu tố tạo nên giá trị của QTM.",
     icon: (
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#2095AD" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-        <path d="m9 12 2 2 4-4" />
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2095AD" strokeWidth="2">
+        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+        <circle cx="12" cy="7" r="4" />
       </svg>
     ),
   },
@@ -94,20 +95,21 @@ export default function AboutAiCulture() {
   return (
     <section id="ai-culture" className="section section--ai-culture">
       <BackgroundGrid gridSize={40} opacity={0.06} />
-      <div className="ai-culture__glow" aria-hidden="true" />
 
       <div className="section__content ai-culture__content">
-        {/* Centered Scroll-Highlighted Title */}
+        {/* Title */}
         <motion.h2
           className="ai-culture__main-title"
           variants={fadeUp}
           initial="hidden"
           whileInView="visible"
           viewport={viewport}
-          transition={{ duration: 0.7, delay: 0.05, ease: easeOut }}
+          transition={{ duration: 0.65, delay: 0.05, ease: easeOut }}
         >
-          &ldquo;<span className="highlight-dark">AI không thay thế con người</span>,{" "}
-          <span className="highlight-mint-teal">AI giúp con người làm tốt hơn</span>&rdquo;
+          VĂN HÓA AI — <br />
+          <span className="highlight-mint-teal">
+            AI không thay thế con người. AI giúp con người làm tốt hơn.
+          </span>
         </motion.h2>
 
         <motion.p
@@ -118,42 +120,72 @@ export default function AboutAiCulture() {
           viewport={viewport}
           transition={{ duration: 0.65, delay: 0.1, ease: easeOut }}
         >
-          Triết lý văn hóa làm việc tại QTM xem công nghệ là đòn bẩy gia tăng sức mạnh cho tài năng và trí tuệ con người.
+          QTM xây dựng văn hóa làm việc dựa trên sự kết hợp giữa con người và công nghệ.
         </motion.p>
 
-        {/* 6 Pillars Grid (2 rows x 3 cols) */}
-        <motion.div
-          className="ai-culture__grid"
-          variants={{
-            hidden: {},
-            visible: {
-              transition: { staggerChildren: reduceMotion ? 0 : 0.1, delayChildren: 0.1 },
-            },
-          }}
-          initial="hidden"
-          whileInView="visible"
-          viewport={viewport}
-        >
-          {pillars.map((item) => (
-            <motion.div
-              key={item.number}
-              variants={fadeUp}
-              transition={{ duration: 0.55, ease: easeOut }}
-              className="h-full"
-            >
-              <div className="ai-pillar-card">
-                <div className="pillar-card__top">
-                  <span className="pillar-card__num">// {item.number}</span>
-                  <div className="pillar-card__icon">{item.icon}</div>
-                </div>
-                <h3 className="pillar-card__title">{item.title}</h3>
-                <p className="pillar-card__desc">{item.desc}</p>
-              </div>
-            </motion.div>
-          ))}
-        </motion.div>
+        {/* Split Grid: Left AI Brain Visual & Right 6 Pillars */}
+        <div className="ai-culture-main-split">
+          {/* Left AI Head Visual */}
+          <motion.div
+            className="ai-visual-left-col"
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={viewport}
+            transition={{ duration: 0.7, delay: 0.15, ease: easeOut }}
+          >
+            <div className="ai-brain-graphic-card">
+              <svg viewBox="0 0 300 300" fill="none" xmlns="http://www.w3.org/2000/svg" className="ai-brain-svg">
+                <circle cx="150" cy="150" r="120" fill="url(#aiGlowBg)" opacity="0.15" />
+                <path d="M150 50 C90 50 60 100 60 160 C60 210 90 250 140 250 C150 250 160 240 160 230 C160 220 170 210 180 210 C210 210 240 180 240 140 C240 90 200 50 150 50 Z" stroke="#2095AD" strokeWidth="2.5" strokeDasharray="6 4" />
+                <circle cx="150" cy="120" r="25" stroke="#38CFC8" strokeWidth="2" />
+                <circle cx="110" cy="170" r="15" stroke="#00D4FF" strokeWidth="2" />
+                <circle cx="190" cy="170" r="15" stroke="#00D4FF" strokeWidth="2" />
+                <line x1="150" y1="145" x2="110" y2="155" stroke="#38CFC8" strokeWidth="1.5" />
+                <line x1="150" y1="145" x2="190" y2="155" stroke="#38CFC8" strokeWidth="1.5" />
+                <defs>
+                  <radialGradient id="aiGlowBg" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(150 150) rotate(90) scale(120)">
+                    <stop stopColor="#38CFC8" />
+                    <stop offset="1" stopColor="#2095AD" stopOpacity="0" />
+                  </radialGradient>
+                </defs>
+              </svg>
+              <div className="ai-hud-label">AI &amp; HUMAN SYNERGY</div>
+            </div>
+          </motion.div>
 
-        {/* ── VALUE FORMULA EQUATION BAR ("Công thức giá trị") ── */}
+          {/* Right 6 Pillars Grid */}
+          <motion.div
+            className="ai-culture__grid"
+            variants={{
+              hidden: {},
+              visible: {
+                transition: { staggerChildren: reduceMotion ? 0 : 0.08, delayChildren: 0.15 },
+              },
+            }}
+            initial="hidden"
+            whileInView="visible"
+            viewport={viewport}
+          >
+            {culturePillars.map((pillar) => (
+              <motion.div
+                key={pillar.id}
+                variants={fadeUp}
+                transition={{ duration: 0.5, ease: easeOut }}
+              >
+                <div className="ai-pillar-card">
+                  <div className="pillar-card__top">
+                    <div className="pillar-card__icon">{pillar.icon}</div>
+                  </div>
+                  <h3 className="pillar-card__title">{pillar.title}</h3>
+                  <p className="pillar-card__desc">{pillar.desc}</p>
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+
+        {/* Bottom Value Formula Ribbon */}
         <motion.div
           className="ai-culture__formula-bar"
           variants={fadeUp}
@@ -162,54 +194,32 @@ export default function AboutAiCulture() {
           viewport={viewport}
           transition={{ duration: 0.75, delay: 0.25, ease: easeOut }}
         >
-          <div className="formula-header">
-            <span className="formula-title">CÔNG THỨC GIÁ TRỊ VƯỢT TRỘI</span>
-          </div>
-
           <div className="formula-equation">
-            {/* Element 1: Human */}
             <div className="equation-block">
-              <div className="block-icon">
-                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#123A53" strokeWidth="2">
-                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
-                  <circle cx="12" cy="7" r="4" />
-                </svg>
-              </div>
+              <div className="block-icon">👤</div>
               <div className="block-text">
-                <span className="block-title">Tư Duy Con Người</span>
-                <span className="block-sub">Chiến lược &amp; Cảm xúc</span>
+                <span className="block-title">CON NGƯỜI</span>
+                <span className="block-sub">Sáng tạo - Tư duy - Trải nghiệm</span>
               </div>
             </div>
 
-            {/* Operator: Plus */}
-            <div className="equation-operator">+</div>
+            <span className="equation-operator">+</span>
 
-            {/* Element 2: Tech/AI */}
             <div className="equation-block">
-              <div className="block-icon">
-                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#2095AD" strokeWidth="2">
-                  <path d="M12 2v20M2 12h20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
-                </svg>
-              </div>
+              <div className="block-icon">🤖</div>
               <div className="block-text">
-                <span className="block-title">Công Nghệ AI</span>
-                <span className="block-sub">Dữ liệu &amp; Tự động hóa</span>
+                <span className="block-title">CÔNG NGHỆ</span>
+                <span className="block-sub">AI - Dữ liệu - Tự động hóa</span>
               </div>
             </div>
 
-            {/* Operator: Equals */}
-            <div className="equation-operator equation-operator--equals">=</div>
+            <span className="equation-operator equation-operator--equals">=</span>
 
-            {/* Element 3: Exponential Value */}
             <div className="equation-block equation-block--result">
-              <div className="block-icon">
-                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#00D4FF" strokeWidth="2">
-                  <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
-                </svg>
-              </div>
+              <div className="block-icon">📊</div>
               <div className="block-text">
-                <span className="block-title">Giá Trị Vượt Trội</span>
-                <span className="block-sub">Hiệu quả &amp; ROI Đột phá</span>
+                <span className="block-title">GIÁ TRỊ VƯỢT TRỘI</span>
+                <span className="block-sub">Hiệu quả - Tăng trưởng - Bền vững</span>
               </div>
             </div>
           </div>
