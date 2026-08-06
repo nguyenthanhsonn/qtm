@@ -1,21 +1,15 @@
 "use client";
 
+import { SolutionItem } from "@/types/home";
 import React from "react";
 import "@/scss/home-solutions.scss";
 import Link from "next/link";
 import { motion, useReducedMotion } from "motion/react";
 import Card3DTilt from "@/components/Card3DTilt";
 
-type SolutionItem = {
-  id: string;
-  badge: string;
-  icon: React.ReactNode;
-  title: string;
-  subtitle: string;
-  desc: string;
-  link: string;
-  accentColor: string;
-};
+import CtaGridBackground from "@/components/TechBackground/CtaGridBackground";
+import ParticleField from "@/components/TechBackground/ParticleField";
+import TypewriterText from "@/uiux/Typewriter_text";
 
 const solutionsData: SolutionItem[] = [
   {
@@ -95,22 +89,20 @@ export default function HomeSolutionsSection() {
 
   return (
     <section id="solutions-block" className="section section--home-solutions">
-      {/* Light Grid Background Matrix */}
-      <div className="home-solutions__bg" aria-hidden="true" />
-      <div className="home-solutions__glow" aria-hidden="true" />
+      {/* Exact white grid background from GIÁ TRỊ CỐT LÕI */}
+      <CtaGridBackground />
+
+      {/* Interactive Data Particles */}
+      <ParticleField />
 
       <div className="section__content home-solutions__content">
         {/* Title */}
-        <motion.h2
+        <h2
           className="home-solutions__title"
-          variants={fadeUp}
-          initial="hidden"
-          whileInView="visible"
-          viewport={viewport}
-          transition={{ duration: 0.65, delay: 0.1, ease: easeOut }}
+          data-aos="zoom-in"
         >
           GIẢI PHÁP <span className="title-highlight">TOÀN DIỆN</span>
-        </motion.h2>
+        </h2>
 
         <motion.p
           className="home-solutions__desc"
@@ -120,7 +112,16 @@ export default function HomeSolutionsSection() {
           viewport={viewport}
           transition={{ duration: 0.65, delay: 0.15, ease: easeOut }}
         >
-          Đồng hành cùng doanh nghiệp từ ý tưởng chiến lược đến thực thi sản xuất với 4 trụ cột dịch vụ cốt lõi.
+          <TypewriterText
+            text="Đồng hành cùng doanh nghiệp từ ý tưởng chiến lược đến thực thi sản xuất với 4 trụ cột dịch vụ cốt lõi."
+            highlightText="4 trụ cột dịch vụ cốt lõi"
+            speed={50}
+            deleteSpeed={30}
+            pauseDuration={3000}
+            loop={true}
+            cursorClassName="text-[#2095AD]"
+            highlightClassName="text-[#2095AD] font-semibold ml-1"
+          />
         </motion.p>
 
         {/* 4 Cards Grid */}
@@ -145,39 +146,64 @@ export default function HomeSolutionsSection() {
             >
               <Card3DTilt
                 className="solution-block-card h-full"
-                maxTilt={14}
-                scale={1.035}
+                maxTilt={8}
+                scale={1.02}
                 glareColor={item.accentColor}
-                glareOpacity={0.35}
+                glareOpacity={0.15}
+                style={{ "--accent": item.accentColor } as React.CSSProperties}
               >
-                {/* HUD Corner Brackets */}
-                <div className="corner-mark top-left" aria-hidden="true" />
-                <div className="corner-mark top-right" aria-hidden="true" />
-                <div className="corner-mark bottom-left" aria-hidden="true" />
-                <div className="corner-mark bottom-right" aria-hidden="true" />
+                {/* SVG Blueprint shape for main card */}
+                <svg className="solution-card__bg-svg" viewBox="0 0 290 455" preserveAspectRatio="none" fill="none" aria-hidden="true">
+                  {/* Subtle Tech Glow Path */}
+                  <path
+                    d="M 32 0 H 258 A 32 32 0 0 1 290 32 V 399 H 165 A 16 16 0 0 1 149 415 V 455 H 32 A 32 32 0 0 1 0 423 V 32 A 32 32 0 0 1 32 0 Z"
+                    stroke={item.accentColor}
+                    strokeWidth="3.5"
+                    className="card-glow-path"
+                    vectorEffect="non-scaling-stroke"
+                  />
+                  {/* Solid Dark Tech Card Background */}
+                  <path
+                    d="M 32 0 H 258 A 32 32 0 0 1 290 32 V 399 H 165 A 16 16 0 0 1 149 415 V 455 H 32 A 32 32 0 0 1 0 423 V 32 A 32 32 0 0 1 32 0 Z"
+                    fill="#0c192b"
+                    className="card-bg-path"
+                  />
+                  {/* Teal Border */}
+                  <path
+                    d="M 32 0 H 258 A 32 32 0 0 1 290 32 V 399 H 165 A 16 16 0 0 1 149 415 V 455 H 32 A 32 32 0 0 1 0 423 V 32 A 32 32 0 0 1 32 0 Z"
+                    stroke="rgba(56, 207, 200, 0.4)"
+                    strokeWidth="1.5"
+                    className="card-border-path"
+                    vectorEffect="non-scaling-stroke"
+                  />
+                </svg>
 
-                {/* Card Top Row */}
-                <div className="card-top">
-                  <span className="card-icon" style={{ color: item.accentColor }}>
-                    {item.icon}
-                  </span>
-                  <span className="card-id">{item.id}</span>
+                {/* Main Card Content */}
+                <div className="solution-card__content">
+                  {/* Card Top Row */}
+                  <div className="card-top">
+                    <span className="card-icon">
+                      {item.icon}
+                    </span>
+                    <span className="card-id">{item.id}</span>
+                  </div>
+
+                  {/* Card Main Info */}
+                  <div className="card-body">
+                    <span className="card-subtitle">{item.subtitle}</span>
+                    <h3 className="card-title">{item.title}</h3>
+                    <p className="card-desc">{item.desc}</p>
+                  </div>
+
+                  {/* Divider */}
+                  <div className="card-divider" />
                 </div>
 
-                {/* Card Main Info */}
-                <div className="card-body">
-                  <span className="card-subtitle">{item.subtitle}</span>
-                  <h3 className="card-title">{item.title}</h3>
-                  <p className="card-desc">{item.desc}</p>
-                </div>
-
-                {/* Card CTA Link */}
-                <div className="card-footer">
-                  <Link href={item.link} className="card-cta-btn">
-                    <span>Xem chi tiết</span>
-                    <span className="cta-arrow">→</span>
-                  </Link>
-                </div>
+                {/* Overlapping Tab Badge at bottom-right */}
+                <Link href={item.link} className="solution-card__tab">
+                  <span className="tab-text">Xem chi tiết</span>
+                  <span className="tab-arrow">→</span>
+                </Link>
               </Card3DTilt>
             </motion.div>
           ))}

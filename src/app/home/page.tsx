@@ -1,15 +1,15 @@
 import "@/scss/home.scss";
+import { HomeIconProps } from "@/types/home";
 import CountUp from "@/components/CountUp";
-import HomeCtaSection from "@/components/HomeCtaSection";
-import HomeEcosystemSection from "@/components/HomeEcosystemSection";
-import HomeSolutionsSection from "@/components/HomeSolutionsSection";
-import HomePartnersSection from "@/components/HomePartnersSection";
+import HomeCtaSection from "@/components/Home/HomeCtaSection";
+import HomeEcosystemSection from "@/components/Home/HomeEcosystemSection";
+import HomeSolutionsSection from "@/components/Home/HomeSolutionsSection";
+import HomePartnersSection from "@/components/Home/HomePartnersSection";
 import FooterCtaSection from "@/components/FooterCtaSection";
 import TextType from "@/components/TextType";
-
-type HomeIconProps = {
-  className?: string;
-};
+import CyberText from "@/uiux/cyber_text";
+import HomeTransitionQuote from "@/components/Home/HomeTransitionQuote";
+import CursorGrid from "@/uiux/CursorGrid";
 
 const TrophyIcon = ({ className = "" }: HomeIconProps) => (
   <svg className={className} width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -59,11 +59,23 @@ function HomeHero() {
         loop
         muted
         playsInline
+        preload="auto"
         aria-hidden="true"
       >
         <source src="/kling_20260804_VIDEO_A_cinemati_5058_0.mp4" type="video/mp4" />
       </video>
       <div className="section__bg-overlay" aria-hidden="true" />
+      <div className="absolute inset-0 pointer-events-none z-1 overflow-hidden">
+        <CursorGrid
+          color="#38CFC8"
+          cellSize={65}
+          gridOpacity={0.06}
+          maxOpacity={0.45}
+          fillOpacity={0.14}
+          radius={160}
+          clickPulse={true}
+        />
+      </div>
       <div className="section__bg-grid" aria-hidden="true" />
       <div className="section__particles" aria-hidden="true">
         {Array.from({ length: 20 }).map((_, i) => (
@@ -74,33 +86,31 @@ function HomeHero() {
       {/* Content */}
       <div className="section__content home__content">
         <h1 className="home__title">
-          <span className="home__title-line home__title-line--plain">Strategic</span>
+          <span className="home__title-line home__title-line--plain">
+            <CyberText text="Strategic" />
+          </span>
           <span className="home__title-line home__title-line--gradient-teal-blue">
-            <TextType
-              text="MediaTech Partner"
-              as="span"
-              showCursor={true}
-              cursorCharacter="|"
-              typingSpeed={80}
-              deletingSpeed={40}
-              pauseDuration={3000}
-              loop={true}
-            />
+            <CyberText text="MediaTech Partner" />
           </span>
         </h1>
 
-        <p className="home__desc">
-          15 năm đồng hành cùng doanh nghiệp bằng
-          <br />
-          Chiến lược <span className="desc__dot">•</span> Công nghệ <span className="desc__dot">•</span> Sáng tạo.
-        </p>
+        <div className="home__info-card" data-aos="flip-left" data-aos-delay="300">
+          <div className="info-card__title">
+            <span className="info-card__dot" />
+            15 NĂM ĐỒNG HÀNH CÙNG TRUYỀN THÔNG SỐ
+          </div>
+          <div className="info-card__divider" />
+          <p className="info-card__desc">
+            Đồng hành cùng doanh nghiệp chuyển hóa <span className="desc-highlight">Chiến lược – Công nghệ – Sáng tạo – Dữ liệu</span> thành những giải pháp truyền thông có thể đo lường và tạo ra tăng trưởng bền vững.
+          </p>
+        </div>
 
         <div className="home__badge-pill">
-          <span>Quality</span>
-          <span className="badge-pill__dot">•</span>
-          <span>Technology</span>
-          <span className="badge-pill__dot">•</span>
-          <span>Mindset</span>
+          <span data-aos="zoom-in" data-aos-delay="150" data-aos-duration="900">Quality</span>
+          <span className="badge-pill__dot" data-aos="zoom-in" data-aos-delay="900" data-aos-duration="900">•</span>
+          <span data-aos="zoom-in" data-aos-delay="550" data-aos-duration="1200">Technology</span>
+          <span className="badge-pill__dot" data-aos="zoom-in" data-aos-delay="950" data-aos-duration="900">•</span>
+          <span data-aos="zoom-in" data-aos-delay="1050" data-aos-duration="1400">Mindset</span>
         </div>
 
         {/* CTA buttons */}
@@ -150,6 +160,7 @@ export default function HomePage() {
   return (
     <>
       <HomeHero />
+      <HomeTransitionQuote />
       <HomeCtaSection />
       <HomeEcosystemSection />
       <HomeSolutionsSection />

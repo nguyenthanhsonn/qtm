@@ -1,18 +1,8 @@
 "use client";
 
+import { Card3DTiltProps } from "@/types/components";
 import React, { useRef, useState, useCallback } from "react";
 import { useReducedMotion } from "motion/react";
-
-interface Card3DTiltProps {
-  children: React.ReactNode;
-  className?: string;
-  maxTilt?: number; // Maximum tilt angle in degrees (default: 12)
-  scale?: number; // Scale multiplier on hover (default: 1.03)
-  glareColor?: string; // Color of the interactive light glare spotlight
-  glareOpacity?: number; // Maximum opacity of glare spotlight (default: 0.35)
-  style?: React.CSSProperties;
-  onClick?: () => void;
-}
 
 export default function Card3DTilt({
   children,

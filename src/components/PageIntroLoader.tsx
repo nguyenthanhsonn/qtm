@@ -16,6 +16,7 @@ export default function PageIntroLoader() {
     setTimeout(() => {
       setLoading(false);
       document.body.style.overflow = "";
+      window.dispatchEvent(new CustomEvent("intro-finished"));
     }, 200);
   };
 
@@ -83,7 +84,7 @@ export default function PageIntroLoader() {
           <div className="intro-loader__overlay" aria-hidden="true" />
           <div className="intro-loader__bg-grid" aria-hidden="true" />
 
-          {/* Skip Button Top-Right */}
+          {/* Skip Button Top-Right
           <button
             type="button"
             onClick={handleSkip}
@@ -92,7 +93,7 @@ export default function PageIntroLoader() {
           >
             <span>BỎ QUA INTRO</span>
             <span className="skip-arrow">▶</span>
-          </button>
+          </button> */}
 
           {/* Central Intro Content (Clean Logo & Tagline) */}
           <div className="intro-loader__content">
