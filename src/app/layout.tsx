@@ -4,7 +4,7 @@ import "../scss/globals.css";
 import "@/scss/sections.scss";
 import Footer from "@/components/Footer";
 import Header from "@/components/header";
-import PageIntroLoader from "@/components/PageIntroLoader";
+import ScrollApertureIntro from "@/components/ScrollApertureIntro";
 import ClickSpark from "@/uiux/ClickSpark";
 import "aos/dist/aos.css";
 
@@ -41,7 +41,7 @@ const nunitoSans = Nunito_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Miss Legacy",
+  title: "QTM MediaTech",
   icons: {
     icon: "/icon.png",
   },
@@ -61,7 +61,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           sparkCount={7}
           duration={500}
         >
-          <PageIntroLoader />
+          <ScrollApertureIntro />
           <Header />
           <main className="flex-1">{children}</main>
           <Footer />
