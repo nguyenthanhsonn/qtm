@@ -1,0 +1,208 @@
+@use '@/scss/global/variables' as *;
+
+.modalOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  background: rgba(4, 12, 26, 0.85);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(1rem, 3vw, 2.5rem);
+}
+
+.modalDialog {
+  position: relative;
+  width: 100%;
+  max-width: 920px;
+  max-height: 90vh;
+  overflow-y: auto;
+  border-radius: 24px;
+  background: linear-gradient(135deg, rgba(10, 26, 48, 0.95) 0%, rgba(5, 14, 28, 0.98) 100%);
+  border: 1.5px solid rgba(56, 207, 200, 0.35);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8), 0 0 35px rgba(56, 207, 200, 0.2);
+  color: #FFFFFF;
+  padding: clamp(1.8rem, 4vw, 3rem);
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: rgba(56, 207, 200, 0.3);
+    border-radius: 999px;
+  }
+}
+
+.closeBtn {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #FFFFFF;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background: rgba(234, 0, 41, 0.8);
+    border-color: #EA0029;
+    transform: rotate(90deg);
+  }
+}
+
+.modalHeader {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+
+  .categoryBadge {
+    align-self: flex-start;
+    padding: 4px 12px;
+    border-radius: 999px;
+    background: rgba(56, 207, 200, 0.15);
+    border: 1px solid rgba(56, 207, 200, 0.3);
+    color: #38CFC8;
+    font-family: var(--font-geist-mono), monospace;
+    font-size: 0.75rem;
+    font-weight: 700;
+  }
+
+  .title {
+    font-family: var(--font-heading);
+    font-size: clamp(1.6rem, 3vw, 2.4rem);
+    font-weight: 900;
+    margin: 0;
+    color: #FFFFFF;
+    line-height: 1.25;
+  }
+
+  .clientText {
+    font-size: 0.9rem;
+    color: #94A3B8;
+    margin: 0;
+  }
+}
+
+/* Image Cover Banner */
+.coverImgBox {
+  width: 100%;
+  height: 280px;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(56, 207, 200, 0.25);
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+/* 3 Stat Metrics Cards */
+.metricsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+
+  @media (max-width: 600px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.metricCard {
+  padding: 1.2rem 1rem;
+  border-radius: 14px;
+  background: rgba(14, 38, 68, 0.6);
+  border: 1px solid rgba(56, 207, 200, 0.25);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+
+  .val {
+    font-family: var(--font-heading);
+    font-size: 1.4rem;
+    font-weight: 900;
+    color: #00D4FF;
+  }
+
+  .lbl {
+    font-size: 0.78rem;
+    color: #CBD5E1;
+  }
+}
+
+/* Section Body Split */
+.sectionBody {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.blockBox {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  .blockTitle {
+    font-family: var(--font-heading);
+    font-size: 1.05rem;
+    font-weight: 800;
+    color: #38CFC8;
+    margin: 0;
+  }
+
+  .blockText {
+    font-size: 0.925rem;
+    color: #CBD5E1;
+    line-height: 1.7;
+    margin: 0;
+  }
+}
+
+/* Bottom CTA Row */
+.modalFooter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+
+  .footerText {
+    font-size: 0.85rem;
+    color: #94A3B8;
+  }
+
+  .ctaBtn {
+    padding: 0.8rem 1.6rem;
+    border-radius: 999px;
+    background: linear-gradient(135deg, #38CFC8 0%, #2095AD 100%);
+    border: none;
+    color: #050C1A;
+    font-family: var(--font-heading);
+    font-size: 0.85rem;
+    font-weight: 800;
+    cursor: pointer;
+    box-shadow: 0 0 20px rgba(56, 207, 200, 0.4);
+    transition: all 0.25s ease;
+
+    &:hover {
+      background: linear-gradient(135deg, #00D4FF 0%, #38CFC8 100%);
+      transform: translateY(-2px);
+      box-shadow: 0 0 30px rgba(56, 207, 200, 0.6);
+    }
+  }
+}

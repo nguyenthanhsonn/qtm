@@ -2,13 +2,10 @@
 
 .sectionSolVal {
   position: relative;
-  background-color: #F8FAFC;
-  background-image:
-    radial-gradient(ellipse 80% 50% at 50% 0%, rgba(56, 207, 200, 0.12), transparent 70%),
-    linear-gradient(180deg, #FFFFFF 0%, #F8FAFC 100%);
+  background: transparent;
   padding: clamp(5.5rem, 9vh, 8rem) clamp(1.2rem, 5vw, 4rem);
   overflow: hidden;
-  color: #123A53;
+  color: #FFFFFF;
 }
 
 .solValContent {
@@ -18,22 +15,40 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
-  gap: clamp(1.5rem, 3vh, 2.2rem);
+  gap: clamp(1.2rem, 2.5vh, 1.8rem);
   max-width: 1240px;
   margin: 0 auto;
+}
+
+.solValTagPill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 14px;
+  border-radius: 999px;
+  background: rgba(56, 207, 200, 0.12);
+  border: 1px solid rgba(56, 207, 200, 0.3);
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #38CFC8;
+
+  .tagDot {
+    color: #00D4FF;
+  }
 }
 
 .solValTitle {
   font-size: clamp(2.2rem, 4vw, 3.4rem);
   font-weight: 800;
-  color: #123A53;
+  color: #FFFFFF;
   margin: 0;
   letter-spacing: -0.02em;
 }
 
 .solValSubtitle {
   font-size: clamp(1rem, 1.4vw, 1.15rem);
-  color: #475569;
+  color: #CBD5E1;
   max-width: 720px;
   margin: 0;
   line-height: 1.65;

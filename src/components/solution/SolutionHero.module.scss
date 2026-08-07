@@ -2,41 +2,30 @@
 
 .sectionSolHero {
   position: relative;
-  background-color: #F8FAFC;
-  background-image:
-    radial-gradient(ellipse 80% 50% at 50% 0%, rgba(56, 207, 200, 0.12), transparent 70%),
-    linear-gradient(180deg, #FFFFFF 0%, #F8FAFC 100%);
+  background: transparent;
   padding: clamp(5.5rem, 11vh, 8.5rem) clamp(1.2rem, 5vw, 4rem) clamp(3.5rem, 6vh, 5rem);
   overflow: hidden;
-  color: #123A53;
+  color: #FFFFFF;
 }
 
 .solHeroBg {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
+  display: none;
 }
 
 .solHeroGlow {
-  position: absolute;
-  top: 30%; left: 50%;
-  transform: translate(-50%, -50%);
-  width: min(1000px, 90vw);
-  height: 450px;
-  background: radial-gradient(ellipse at center, rgba(56, 207, 200, 0.15) 0%, transparent 70%);
-  filter: blur(80px);
-  pointer-events: none;
+  display: none;
 }
 
 .solHeroContent {
   position: relative;
   z-index: 3;
-  width: 100%;
-  max-width: 1280px;
-  margin: 0 auto;
   display: flex;
   flex-direction: column;
-  gap: 2.5rem;
+  align-items: center;
+  text-align: center;
+  gap: clamp(1.5rem, 3vh, 2.2rem);
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .solHeroSplitGrid {

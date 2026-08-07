@@ -1,24 +1,18 @@
 "use client";
 
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import styles from "./SolutionFeaturedProjects.module.scss";
-import {
-  motion,
-  useScroll,
-  useTransform,
-  useMotionValue,
-  useSpring,
-  useReducedMotion,
-  MotionValue,
-} from "motion/react";
+import { motion } from "motion/react";
 import SolutionContactModal from "./SolutionContactModal";
 
 type FeaturedProject = {
   id: string;
   category: string;
+  numberTag: string;
   title: string;
   client: string;
   desc: string;
+  highlights: string[];
   graphicSvg: React.ReactNode;
 };
 
@@ -26,18 +20,25 @@ const featuredProjects: FeaturedProject[] = [
   {
     id: "viettel-event",
     category: "EVENT & CONFERENCE",
+    numberTag: "/01",
     title: "Hội Nghị Khách Hàng Toàn Quốc Viettel 2026",
     client: "Viettel Group",
     desc: "Tổ chức hội nghị thượng đỉnh toàn quốc tích hợp công nghệ Check-in AI, AR/3D Spatial Audio và báo cáo sentiment real-time.",
+    highlights: [
+      "Check-in AI & Nhận diện khuôn mặt tự động",
+      "Trình diễn hiệu ứng sân khấu 3D Spatial Audio & Hologram",
+      "Hệ thống báo cáo phân tích Sentiment & Tương tác real-time",
+      "Đo lường chỉ số ROI & hiệu quả truyền thông toàn quốc",
+    ],
     graphicSvg: (
-      <svg viewBox="0 0 500 320" fill="none" className={styles.projectSvg}>
-        <rect width="500" height="320" fill="#0B1C33" />
-        <circle cx="250" cy="160" r="120" fill="url(#p1Grad)" opacity="0.35" />
-        <path d="M60 280 L180 140 L320 140 L440 280 Z" fill="rgba(56, 207, 200, 0.2)" />
-        <circle cx="250" cy="130" r="35" fill="#EA0029" opacity="0.85" />
-        <text x="25" y="40" fill="#38CFC8" fontFamily="var(--font-geist-mono)" fontSize="13" fontWeight="700">// VIETTEL_SUMMIT_2026</text>
+      <svg viewBox="0 0 500 300" fill="none" className={styles.projectSvg}>
+        <rect width="500" height="300" rx="12" fill="#0B1C33" />
+        <circle cx="250" cy="150" r="110" fill="url(#p1Grad)" opacity="0.35" />
+        <path d="M60 260 L180 130 L320 130 L440 260 Z" fill="rgba(56, 207, 200, 0.2)" />
+        <circle cx="250" cy="120" r="32" fill="#EA0029" opacity="0.85" />
+        <text x="25" y="38" fill="#38CFC8" fontFamily="var(--font-geist-mono)" fontSize="13" fontWeight="700">// VIETTEL_SUMMIT_2026</text>
         <defs>
-          <radialGradient id="p1Grad" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(250 160) scale(120)">
+          <radialGradient id="p1Grad" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(250 150) scale(110)">
             <stop stopColor="#EA0029" />
             <stop offset="1" stopColor="#38CFC8" stopOpacity="0" />
           </radialGradient>
@@ -48,239 +49,82 @@ const featuredProjects: FeaturedProject[] = [
   {
     id: "honda-ooh",
     category: "OUTDOOR MEDIA",
+    numberTag: "/02",
     title: "Chiến Dịch Billboard LED Tương Tác Honda",
     client: "Honda Vietnam",
-    desc: "Mạng lưới 1,000+ màn hình LED Outdoor tương tác thời gian thực tích hợp AI Camera đo lường lưu lượng giao thông & nhận diện tệp khách hàng.",
+    desc: "Xây dựng chuỗi màn hình LED tương tác 3D Naked-Eye tại các nút giao thông trọng điểm Hà Nội & TP.HCM.",
+    highlights: [
+      "Kỹ thuật hiển thị 3D Naked-Eye không dùng kính",
+      "Tích hợp cảm biến đếm lưu lượng xe & nhiệt độ thời tiết",
+      "Phủ sóng 5.000.000+ Lượt tiếp cận trực tiếp",
+      "Gia tăng +35% Mức độ nhận diện thương hiệu",
+    ],
     graphicSvg: (
-      <svg viewBox="0 0 500 320" fill="none" className={styles.projectSvg}>
-        <rect width="500" height="320" fill="#081225" />
-        <rect x="70" y="50" width="360" height="180" rx="14" fill="#050C1A" stroke="#38CFC8" strokeWidth="2.5" />
-        <path d="M100 150 L200 100 L300 170 L400 90" stroke="#CC0000" strokeWidth="4.5" fill="none" />
-        <circle cx="400" cy="90" r="8" fill="#CC0000" />
-        <text x="25" y="40" fill="#38CFC8" fontFamily="var(--font-geist-mono)" fontSize="13" fontWeight="700">// HONDA_LED_NETWORK</text>
+      <svg viewBox="0 0 500 300" fill="none" className={styles.projectSvg}>
+        <rect width="500" height="300" rx="12" fill="#0B1C33" />
+        <circle cx="250" cy="150" r="120" fill="url(#p2Grad)" opacity="0.4" />
+        <rect x="80" y="70" width="340" height="160" rx="8" fill="#050C1A" stroke="#38CFC8" strokeWidth="2" />
+        <path d="M120 180 Q 250 90 380 180" stroke="#FF6B00" strokeWidth="4" fill="none" />
+        <text x="25" y="38" fill="#38CFC8" fontFamily="var(--font-geist-mono)" fontSize="13" fontWeight="700">// HONDA_LED_3D_OOH</text>
+        <defs>
+          <radialGradient id="p2Grad" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(250 150) scale(120)">
+            <stop stopColor="#38CFC8" />
+            <stop offset="1" stopColor="#FF6B00" stopOpacity="0" />
+          </radialGradient>
+        </defs>
       </svg>
     ),
   },
   {
-    id: "mobifone-concert",
-    category: "ENTERTAINMENT",
-    title: "Đại Nhạc Hội Mega Concert MobiFone Music Wave",
-    client: "MobiFone Telecommunication",
-    desc: "Sân khấu đại nhạc hội quy mô 30,000 khán giả, hiệu ứng ánh sáng 3D Spatial Audio đỉnh cao thu hút hơn 10 triệu lượt tương tác mạng xã hội.",
+    id: "techcombank-digital",
+    category: "DIGITAL MARKETING",
+    numberTag: "/03",
+    title: "Chiến Dịch Digital Growth Techcombank",
+    client: "Techcombank",
+    desc: "Chiến dịch tăng trưởng người dùng App ngân hàng số kết hợp Performance Marketing & Kịch bản AI Chatbot.",
+    highlights: [
+      "Tự động phân khúc 1.200.000+ Khách hàng mục tiêu",
+      "Chiến dịch Performance Ads đa kênh Meta, Google, TikTok",
+      "Tích hợp AI Bot tư vấn giải pháp tài chính 24/7",
+      "Đạt +120% Mục tiêu tăng trưởng User mới",
+    ],
     graphicSvg: (
-      <svg viewBox="0 0 500 320" fill="none" className={styles.projectSvg}>
-        <rect width="500" height="320" fill="#0B192C" />
-        <path d="M80 0 L180 260 L320 260 L420 0 Z" fill="rgba(0, 212, 255, 0.2)" />
-        <circle cx="250" cy="210" r="55" fill="#005C97" opacity="0.65" />
-        <path d="M30 280 Q 140 230 250 280 T 470 280" stroke="#00D4FF" strokeWidth="3.5" fill="none" />
-        <text x="25" y="40" fill="#38CFC8" fontFamily="var(--font-geist-mono)" fontSize="13" fontWeight="700">// MOBIFONE_CONCERT_LIVE</text>
-      </svg>
-    ),
-  },
-  {
-    id: "damcamau-csr",
-    category: "COMMUNITY IMPACT",
-    title: "Dự Án CSR Vì Nông Dân Việt Đạm Cà Mau",
-    client: "Đạm Cà Mau (PVCFC)",
-    desc: "Chiến dịch CSR trách nhiệm xã hội sâu sắc chuẩn ESG, kiến tạo giá trị bền vững cho cộng đồng và nâng tầm hình ảnh uy tín thương hiệu.",
-    graphicSvg: (
-      <svg viewBox="0 0 500 320" fill="none" className={styles.projectSvg}>
-        <rect width="500" height="320" fill="#050C1A" />
-        <circle cx="250" cy="160" r="85" stroke="#009639" strokeWidth="2.5" strokeDasharray="6 4" />
-        <path d="M250 120 C230 100 200 115 200 140 C200 170 250 195 250 195 C250 195 300 170 300 140 C300 115 270 100 250 120 Z" fill="#009639" />
-        <text x="25" y="40" fill="#38CFC8" fontFamily="var(--font-geist-mono)" fontSize="13" fontWeight="700">// PVCFC_GREEN_ESG</text>
+      <svg viewBox="0 0 500 300" fill="none" className={styles.projectSvg}>
+        <rect width="500" height="300" rx="12" fill="#0B1C33" />
+        <circle cx="250" cy="150" r="110" fill="url(#p3Grad)" opacity="0.35" />
+        <path d="M100 220 L200 140 L300 170 L400 80" stroke="#00D4FF" strokeWidth="4" fill="none" />
+        <circle cx="400" cy="80" r="8" fill="#EA0029" />
+        <text x="25" y="38" fill="#38CFC8" fontFamily="var(--font-geist-mono)" fontSize="13" fontWeight="700">// TECHCOMBANK_DIGITAL_GROWTH</text>
+        <defs>
+          <radialGradient id="p3Grad" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(250 150) scale(110)">
+            <stop stopColor="#00D4FF" />
+            <stop offset="1" stopColor="#EA0029" stopOpacity="0" />
+          </radialGradient>
+        </defs>
       </svg>
     ),
   },
 ];
 
-const viewport = { once: true, amount: 0.2 } as const;
+const viewport = { once: true, amount: 0.15 } as const;
 const cubicEase = [0.22, 1, 0.36, 1] as const;
 
-function ScrollStackCard({
-  proj,
-  index,
-  total,
-  containerScrollProgress,
-  onOpenModal,
-}: {
-  proj: FeaturedProject;
-  index: number;
-  total: number;
-  containerScrollProgress: MotionValue<number>;
-  onOpenModal: (title: string) => void;
-}) {
-  const cardRef = useRef<HTMLDivElement>(null);
-  const [isHovered, setIsHovered] = useState(false);
-
-  const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
-
-  const springConfig = { stiffness: 250, damping: 20 };
-  const imgX = useSpring(mouseX, springConfig);
-  const imgY = useSpring(mouseY, springConfig);
-
-  const targetScale = 1 - (total - index - 1) * 0.05;
-  const startProgress = index / total;
-  const cardScale = useTransform(containerScrollProgress, [startProgress, 1], [1, targetScale]);
-  const cardOpacity = useTransform(containerScrollProgress, [startProgress, 1], [1, 0.85 + index * 0.04]);
-
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!cardRef.current) return;
-    const rect = cardRef.current.getBoundingClientRect();
-    const centerX = rect.left + rect.width / 2;
-    const centerY = rect.top + rect.height / 2;
-    const offsetX = (e.clientX - centerX) / (rect.width / 2);
-    const offsetY = (e.clientY - centerY) / (rect.height / 2);
-
-    mouseX.set(offsetX * 4);
-    mouseY.set(offsetY * 4);
-  };
-
-  const handleMouseLeave = () => {
-    setIsHovered(false);
-    mouseX.set(0);
-    mouseY.set(0);
-  };
-
-  return (
-    <div
-      style={{
-        position: "sticky",
-        top: `${100 + index * 30}px`,
-        zIndex: 10 + index,
-        marginBottom: index < total - 1 ? "60px" : "0px",
-      }}
-    >
-      <motion.div
-        ref={cardRef}
-        className={styles.stickyProjectCardWrapper}
-        style={{
-          scale: cardScale,
-          opacity: cardOpacity,
-          transformOrigin: "top center",
-        }}
-        initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={viewport}
-        transition={{ duration: 0.7, delay: index * 0.12, ease: cubicEase }}
-        whileHover={{
-          scale: 1.02,
-          y: -8,
-          transition: { duration: 0.3, ease: cubicEase },
-        }}
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={handleMouseLeave}
-        onMouseMove={handleMouseMove}
-      >
-        <div className={`${styles.stickyProjectCard}${isHovered ? ` ${styles.isHovered}` : ""}`}>
-          <div className={styles.cardBgFloatingShapes} aria-hidden="true">
-            <motion.div
-              className={`${styles.floatingShape} ${styles.floatingShape1}`}
-              animate={{
-                y: [0, -10, 0],
-                rotate: [0, 3, -3, 0],
-              }}
-              transition={{
-                duration: 7 + index,
-                repeat: Infinity,
-                repeatType: "mirror",
-                ease: "easeInOut",
-              }}
-            />
-            <motion.div
-              className={`${styles.floatingShape} ${styles.floatingShape2}`}
-              animate={{
-                y: [0, 12, 0],
-                rotate: [0, -3, 3, 0],
-              }}
-              transition={{
-                duration: 9 + index,
-                repeat: Infinity,
-                repeatType: "mirror",
-                ease: "easeInOut",
-              }}
-            />
-          </div>
-
-          <div className={styles.cardInnerSplit}>
-            <div className={styles.cardImageCol}>
-              <motion.div
-                className={styles.cardImageStage}
-                style={{ x: imgX, y: imgY }}
-                animate={{
-                  scale: isHovered ? 1.12 : [1, 1.08, 1],
-                }}
-                transition={{
-                  scale: isHovered
-                    ? { duration: 0.5, ease: cubicEase }
-                    : { duration: 6, repeat: Infinity, repeatType: "mirror", ease: "easeInOut" },
-                }}
-              >
-                {proj.graphicSvg}
-              </motion.div>
-            </div>
-
-            <div className={styles.cardTextCol}>
-              <span className={`${styles.projectCategoryTag}${isHovered ? ` ${styles.hoverAccent}` : ""}`}>
-                // {proj.category}
-              </span>
-
-              <h3 className={`${styles.projectCardTitle}${isHovered ? ` ${styles.hoverExpanded}` : ""}`}>
-                {proj.title}
-              </h3>
-
-              <span className={styles.projectClientName}>Đối tác: {proj.client}</span>
-
-              <p className={styles.projectCardDesc}>{proj.desc}</p>
-
-              <motion.button
-                type="button"
-                onClick={() => onOpenModal(`Tư vấn dự án tương tự: ${proj.title}`)}
-                className={styles.projectDetailBtn}
-                whileHover={{ scale: 1.05 }}
-                transition={{ duration: 0.25 }}
-              >
-                <span>Xem chi tiết</span>
-                <motion.span
-                  className={styles.arrow}
-                  animate={{ x: isHovered ? 6 : 0 }}
-                  transition={{ duration: 0.25 }}
-                >
-                  →
-                </motion.span>
-              </motion.button>
-            </div>
-          </div>
-        </div>
-      </motion.div>
-    </div>
-  );
-}
-
 export default function SolutionFeaturedProjects() {
-  const reduceMotion = useReducedMotion();
-  const stackContainerRef = useRef<HTMLDivElement>(null);
   const [modalState, setModalState] = useState<{ isOpen: boolean; title: string }>({
     isOpen: false,
     title: "",
   });
 
-  const { scrollYProgress } = useScroll({
-    target: stackContainerRef,
-    offset: ["start start", "end end"],
-  });
-
   return (
     <>
-      <section id="featured-projects" className={`section ${styles.sectionSolProj}`}>
-        <div className={`section__content ${styles.solProjContent}`}>
+      <section id="featured-projects" className={styles.sectionSolProj}>
+        <div className={styles.solProjContent}>
           <motion.div
             className={styles.solProjTagPill}
             initial={{ opacity: 0, y: -20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={viewport}
-            transition={{ duration: 0.7, delay: 0, ease: cubicEase }}
+            transition={{ duration: 0.7, ease: cubicEase }}
           >
             <span className={styles.tagDot}>•</span>
             <span>PROVEN PORTFOLIO // QTM_PROJECTS</span>
@@ -288,7 +132,7 @@ export default function SolutionFeaturedProjects() {
 
           <motion.h2
             className={styles.solProjTitle}
-            initial={{ opacity: 0, y: 40 }}
+            initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={viewport}
             transition={{ duration: 0.8, delay: 0.15, ease: cubicEase }}
@@ -301,21 +145,59 @@ export default function SolutionFeaturedProjects() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={viewport}
-            transition={{ duration: 0.8, delay: 0.35, ease: cubicEase }}
+            transition={{ duration: 0.8, delay: 0.3, ease: cubicEase }}
           >
             Những chiến dịch truyền thông công nghệ thực chiến tạo nên dấu ấn bứt phá cho các thương hiệu dẫn đầu.
           </motion.p>
 
-          <div ref={stackContainerRef} className={styles.solProjStickyStackContainer}>
-            {featuredProjects.map((proj, index) => (
-              <ScrollStackCard
+          {/* Normal Blog Container - Clean Vertical Flow */}
+          <div className={styles.projectsBlogContainer}>
+            {featuredProjects.map((proj, idx) => (
+              <motion.div
                 key={proj.id}
-                proj={proj}
-                index={index}
-                total={featuredProjects.length}
-                containerScrollProgress={scrollYProgress}
-                onOpenModal={(title) => setModalState({ isOpen: true, title })}
-              />
+                className={styles.blogRowCard}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={viewport}
+                transition={{ duration: 0.6, delay: idx * 0.1, ease: cubicEase }}
+              >
+                <div className={styles.rowAccentIndicator} />
+                
+                <div className={styles.rowHeaderLine}>
+                  <span className={styles.categoryLabel}>// {proj.category}</span>
+                  <span className={styles.numberTag}>{proj.numberTag}</span>
+                </div>
+
+                <h3 className={styles.rowMainTitle}>{proj.title}</h3>
+
+                <div className={styles.rowBodyGrid}>
+                  <div className={styles.leftMediaCol}>
+                    <div className={styles.imageStageBox}>{proj.graphicSvg}</div>
+                    <span className={styles.clientTag}>Khách hàng: {proj.client}</span>
+                    <p className={styles.summaryDesc}>{proj.desc}</p>
+                  </div>
+
+                  <div className={styles.rightContentCol}>
+                    <ul className={styles.highlightsList}>
+                      {proj.highlights.map((item, i) => (
+                        <li key={i} className={styles.highlightItem}>
+                          <span className={styles.plusSymbol}>+</span>
+                          <span className={styles.itemText}>{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+
+                    <button
+                      type="button"
+                      onClick={() => setModalState({ isOpen: true, title: `Tư vấn dự án tương tự: ${proj.title}` })}
+                      className={styles.rowCtaBtn}
+                    >
+                      <span>Xem chi tiết dự án</span>
+                      <span>→</span>
+                    </button>
+                  </div>
+                </div>
+              </motion.div>
             ))}
           </div>
 
@@ -329,10 +211,10 @@ export default function SolutionFeaturedProjects() {
             <button
               type="button"
               onClick={() => setModalState({ isOpen: true, title: "Liên hệ tư vấn tất cả dự án" })}
-              className={`btn btn--outline ${styles.solProjAllBtn}`}
+              className={styles.solProjAllBtn}
             >
               <span>XEM TẤT CẢ DỰ ÁN</span>
-              <span className={styles.arrow}>→</span>
+              <span> →</span>
             </button>
           </motion.div>
         </div>

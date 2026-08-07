@@ -2,19 +2,14 @@
 
 .sectionSolEco {
   position: relative;
-  background: linear-gradient(180deg, #123A53 0%, #050C1A 100%);
+  background: transparent;
   padding: clamp(5.5rem, 10vh, 8.5rem) clamp(1.2rem, 5vw, 4rem);
   overflow: hidden;
   color: #FFFFFF;
 }
 
 .solEcoBgOverlay {
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(ellipse at 50% 30%, rgba(56, 207, 200, 0.18) 0%, transparent 70%),
-    linear-gradient(180deg, rgba(18, 58, 83, 0.9) 0%, rgba(5, 12, 26, 0.95) 100%);
-  pointer-events: none;
+  display: none;
 }
 
 .solEcoBgGrid {

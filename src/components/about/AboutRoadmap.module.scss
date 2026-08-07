@@ -8,11 +8,6 @@
   color: #FFFFFF;
 }
 
-.roadmapBgOverlay,
-.roadmapBgGrid {
-  display: none;
-}
-
 .roadmapContent {
   position: relative;
   z-index: 3;
@@ -20,7 +15,7 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
-  gap: clamp(1.5rem, 3vh, 2.2rem);
+  gap: clamp(1.2rem, 2.5vh, 2rem);
   max-width: 1280px;
   margin: 0 auto;
 }
@@ -41,115 +36,294 @@
   line-height: 1.65;
 }
 
-.roadmapTrajectoryWrapper {
+/* ==========================================================================
+   Vertical Timeline Container
+   ========================================================================== */
+
+.verticalTimelineWrapper {
   position: relative;
   width: 100%;
-  margin-top: 1.5rem;
+  margin-top: 3.5rem;
+  padding-bottom: 2rem;
+}
 
-  .ascendingArrowSvgBg {
-    position: absolute;
-    top: -20px;
-    left: 0;
-    right: 0;
-    height: 120px;
-    z-index: 1;
+/* Central Laser Spine Track */
+.timelineSpineTrack {
+  position: absolute;
+  top: 30px;
+  bottom: 30px;
+  left: 50%;
+  width: 4px;
+  transform: translateX(-50%);
+  background: rgba(56, 207, 200, 0.15);
+  border-radius: 4px;
+  z-index: 1;
 
-    @media (max-width: 900px) {
-      display: none;
-    }
+  @media (max-width: 768px) {
+    left: 28px;
+    transform: none;
   }
 }
 
-.roadmapCardsGrid {
+.timelineSpineProgress {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  background: linear-gradient(180deg, #38CFC8 0%, #00D4FF 50%, #FFC72C 100%);
+  border-radius: 4px;
+  transform-origin: top;
+  box-shadow: 0 0 15px rgba(56, 207, 200, 0.8), 0 0 30px rgba(0, 212, 255, 0.4);
+}
+
+.timelineLaserOrb {
+  position: absolute;
+  left: 50%;
+  width: 16px;
+  height: 16px;
+  margin-left: -8px;
+  margin-top: -8px;
+  border-radius: 50%;
+  background: #00D4FF;
+  box-shadow: 
+    0 0 12px #00D4FF,
+    0 0 24px #38CFC8,
+    0 0 40px #00D4FF;
+  pointer-events: none;
+  z-index: 3;
+}
+
+/* ==========================================================================
+   Timeline Items Grid Layout
+   ========================================================================== */
+
+.timelineItemsList {
   position: relative;
   z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+
+  @media (max-width: 768px) {
+    gap: 3rem;
+  }
+}
+
+.timelineItem {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  align-items: stretch;
-  gap: 1rem;
+  grid-template-columns: 1fr 76px 1fr;
+  align-items: center;
+  position: relative;
+  width: 100%;
 
-  &::before {
-    content: "";
+  @media (max-width: 768px) {
+    display: flex;
+    flex-direction: column;
+    padding-left: 64px;
+  }
+}
+
+.timelineSlotLeft {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+
+  @media (max-width: 768px) {
+    justify-content: flex-start;
+  }
+}
+
+.timelineSlotCenter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  z-index: 4;
+
+  @media (max-width: 768px) {
     position: absolute;
-    top: 36px;
-    left: 6%;
-    right: 6%;
-    height: 2px;
-    border-top: 2px dashed rgba(79, 209, 232, 0.45);
-    z-index: 0;
-    pointer-events: none;
+    left: 28px;
+    top: 24px;
+    transform: translateX(-50%);
+    width: auto;
+  }
+}
 
-    @media (max-width: 1024px) {
-      display: none;
+.timelineSlotRight {
+  display: flex;
+  justify-content: flex-start;
+  width: 100%;
+}
+
+/* Card Container & Connectors */
+.cardContainer {
+  position: relative;
+  width: 100%;
+  max-width: 480px;
+
+  @media (max-width: 768px) {
+    max-width: 100%;
+  }
+}
+
+.connectorLineLeft {
+  position: absolute;
+  top: 50%;
+  right: -38px;
+  width: 38px;
+  height: 2px;
+  background: linear-gradient(90deg, rgba(56, 207, 200, 0.4), #38CFC8);
+  pointer-events: none;
+
+  @media (max-width: 768px) {
+    display: none;
+  }
+}
+
+.connectorLineRight {
+  position: absolute;
+  top: 50%;
+  left: -38px;
+  width: 38px;
+  height: 2px;
+  background: linear-gradient(90deg, #38CFC8, rgba(56, 207, 200, 0.4));
+  pointer-events: none;
+
+  @media (max-width: 768px) {
+    display: none;
+  }
+}
+
+/* ==========================================================================
+   Center Node Badge
+   ========================================================================== */
+
+.spineNodeBadge {
+  position: relative;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: rgba(10, 20, 48, 0.85);
+  border: 2px solid rgba(56, 207, 200, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 20px rgba(56, 207, 200, 0.35);
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+
+  &:hover {
+    transform: scale(1.12);
+    border-color: #00D4FF;
+    box-shadow: 0 0 28px rgba(0, 212, 255, 0.6);
+
+    .nodePulseRing {
+      animation: pulseGlow 1.5s infinite;
     }
   }
 
-  @media (max-width: 1024px) {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.25rem;
-  }
-
-  @media (max-width: 640px) {
-    grid-template-columns: 1fr;
+  @media (max-width: 768px) {
+    width: 46px;
+    height: 46px;
   }
 }
 
-.roadmapNodeCardWrap {
-  height: 100%;
+.nodePulseRing {
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  border: 1.5px dashed rgba(56, 207, 200, 0.4);
+  pointer-events: none;
+}
+
+@keyframes pulseGlow {
+  0% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1.25);
+    opacity: 0.3;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+}
+
+.nodeBadgeIcon {
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
+
+/* ==========================================================================
+   Roadmap Card Styling
+   ========================================================================== */
 
 .roadmapNodeCard {
   position: relative;
-  height: 100%;
-  padding: 1.4rem;
-  border-radius: 16px;
-  background: rgba(15, 27, 61, 0.65);
+  padding: 1.6rem 1.8rem;
+  border-radius: 18px;
+  background: rgba(15, 27, 61, 0.72);
   border: 1.5px solid rgba(79, 209, 232, 0.3);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   text-align: left;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
   gap: 0.75rem;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
 
-  .cardTopYear {
+  &:hover {
+    border-color: rgba(56, 207, 200, 0.7);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), 0 0 25px rgba(56, 207, 200, 0.2);
+  }
+
+  .cardHeader {
     display: flex;
     align-items: center;
     justify-content: space-between;
 
     .yearNumber {
       font-family: var(--font-heading);
-      font-size: 1.6rem;
+      font-size: clamp(1.8rem, 2.5vw, 2.2rem);
       font-weight: 900;
       color: #38CFC8;
+      letter-spacing: -0.01em;
+      text-shadow: 0 0 15px rgba(56, 207, 200, 0.4);
     }
 
-    .iconBadgeBox {
-      width: 44px;
-      height: 44px;
-      border-radius: 12px;
-      background: rgba(56, 207, 200, 0.12);
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    .iconBadgeMobile {
+      display: none;
+
+      @media (max-width: 768px) {
+        display: flex;
+        width: 36px;
+        height: 36px;
+        border-radius: 10px;
+        background: rgba(56, 207, 200, 0.12);
+        align-items: center;
+        justify-content: center;
+      }
     }
   }
 
   .cardNodeTitle {
-    font-size: 0.95rem;
+    font-size: clamp(1.05rem, 1.4vw, 1.2rem);
     font-weight: 800;
     color: #FFFFFF;
     margin: 0;
-    line-height: 1.4;
+    line-height: 1.35;
   }
 
   .cardNodeDesc {
-    font-size: 0.825rem;
-    line-height: 1.6;
+    font-size: clamp(0.85rem, 1.1vw, 0.95rem);
+    line-height: 1.65;
     color: #CBD5E1;
     margin: 0;
   }
 }
+
