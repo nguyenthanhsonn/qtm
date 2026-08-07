@@ -87,8 +87,10 @@ function HomeHero() {
       {/* Content */}
       <div className={`section__content ${styles.homeContent}`}>
         <h1 className={styles.homeTitle}>
-          <span className={`${styles.homeTitleLine} ${styles.homeTitleLinePlain}`}>Strategic</span>
-          <span className={`${styles.homeTitleLine} ${styles.homeTitleLineGradientTealBlue}`}>MediaTech Partner</span>
+          <span data-aos="fade-up"
+            data-aos-anchor-placement="top-bottom" className={`${styles.homeTitleLine} ${styles.homeTitleLinePlain}`}>Strategic</span>
+          <span data-aos="fade-up"
+            data-aos-anchor-placement="top-bottom" className={`${styles.homeTitleLine} ${styles.homeTitleLineGradientTealBlue}`}>MediaTech Partner</span>
         </h1>
 
         <div className={styles.homeInfoCard} data-aos="flip-left" data-aos-delay="300">

@@ -1,18 +1,18 @@
 "use client";
 
-import React, { useState } from "react";
-import styles from "./SolutionHero.module.scss";
+import React from "react";
+import Image from "next/image";
+import Link from "next/link";
 import { motion, useReducedMotion } from "motion/react";
-import BackgroundGrid from "@/components/TechBackground/BackgroundGrid";
+import styles from "./SolutionHero.module.scss";
 import Card3DTilt from "@/components/Card3DTilt";
-import SolutionContactModal from "./SolutionContactModal";
+import CountUp from "@/components/CountUp";
 
-const viewport = { once: true, amount: 0.2 } as const;
+const viewport = { once: true, amount: 0.15 } as const;
 const easeOut = [0.22, 1, 0.36, 1] as const;
 
 export default function SolutionHero() {
   const reduceMotion = useReducedMotion();
-  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const fadeUp = reduceMotion
     ? { hidden: { opacity: 0 }, visible: { opacity: 1 } }
@@ -21,177 +21,318 @@ export default function SolutionHero() {
   return (
     <>
       <section id="solution-hero" className={`section ${styles.sectionSolHero}`}>
-        {/* Light Background + Floating Grid */}
+        {/* Background Gradients & Light Streaks */}
         <div className={styles.solHeroBg} aria-hidden="true" />
         <div className={styles.solHeroGlow} aria-hidden="true" />
-        <BackgroundGrid gridSize={40} opacity={0.06} />
+        <div className={styles.floorLightStreak} aria-hidden="true" />
+
+        {/* Rotated Vertical Decorative Text on Far Left */}
+        <div className={styles.verticalDecoText} aria-hidden="true">
+          ENGINEERING INTELLIGENT CREATIVITY
+        </div>
 
         <div className={`section__content ${styles.solHeroContent}`}>
-          {/* Main 2-Column Split */}
-          <div className={styles.solHeroSplitGrid}>
-            {/* Left Column: Headline, Description & CTA */}
-            <div className={styles.solHeroLeftCol}>
-              <motion.div
-                className={styles.solHeroTagPill}
-                variants={fadeUp}
-                initial="hidden"
-                whileInView="visible"
-                viewport={viewport}
-                transition={{ duration: 0.5, ease: easeOut }}
-              >
-                <span className={styles.tagDot}>•</span>
-                <span>GIẢI PHÁP TRUYỀN THÔNG CÔNG NGHỆ</span>
-              </motion.div>
+          {/* Main 3-Layer Grid Split Layout */}
+          <div className={styles.solHero3LayerGrid}>
 
-              <motion.h1
-                className={styles.solHeroTitle}
-                variants={fadeUp}
-                initial="hidden"
-                whileInView="visible"
-                viewport={viewport}
-                transition={{ duration: 0.65, delay: 0.08, ease: easeOut }}
-              >
-                Giải pháp truyền thông <br />
-                <span className="title-highlight-teal">cho bài toán kinh doanh</span>
-              </motion.h1>
-
-              <motion.p
-                className={styles.solHeroDesc}
-                variants={fadeUp}
-                initial="hidden"
-                whileInView="visible"
-                viewport={viewport}
-                transition={{ duration: 0.65, delay: 0.15, ease: easeOut }}
-              >
-                QTM kết hợp giữa tư duy chiến lược, tư duy sáng tạo đỉnh cao, công nghệ AI và dữ liệu thực chiến để biến những thách thức truyền thông phức tạp thành động lực bứt phá doanh thu cho doanh nghiệp.
-              </motion.p>
-
-              <motion.div
-                className={styles.solHeroActions}
-                variants={fadeUp}
-                initial="hidden"
-                whileInView="visible"
-                viewport={viewport}
-                transition={{ duration: 0.7, delay: 0.22, ease: easeOut }}
-              >
-                <a href="#ecosystem" className={`btn btn--primary ${styles.solHeroBtnFill}`}>
-                  <span>KHÁM PHÁ GIẢI PHÁP</span>
-                  <span className={styles.btnArrow}>↓</span>
-                </a>
-
-                <button
-                  type="button"
-                  onClick={() => setIsModalOpen(true)}
-                  className={`btn btn--outline ${styles.solHeroBtnOutline}`}
-                >
-                  <span>LIÊN HỆ TƯ VẤN 1:1</span>
-                </button>
-              </motion.div>
-            </div>
-
-            {/* Right Column: Executive Photo & Floating Overlapping Glass Dashboard Cards */}
+            {/* ── LỚP TRÁI (~40% width) ────────────────────────────────────────── */}
             <motion.div
-              className={styles.solHeroRightCol}
+              className={styles.layerLeft}
               variants={fadeUp}
               initial="hidden"
               whileInView="visible"
               viewport={viewport}
-              transition={{ duration: 0.75, delay: 0.2, ease: easeOut }}
+              transition={{ duration: 0.65, delay: 0.05, ease: easeOut }}
             >
-              <div className={styles.solHeroImageStage}>
-                {/* Executive Business Background Visual */}
-                <div className={styles.executivePhotoFrame}>
-                  <div className="photo-overlay-gradient" />
-                  <div className={styles.executiveGraphicArt}>
-                    <svg viewBox="0 0 400 320" fill="none" className={styles.executiveSvg}>
-                      <rect width="400" height="320" rx="20" fill="url(#execBg)" />
-                      <path d="M40 280 L120 180 L200 220 L280 120 L360 160" stroke="#38CFC8" strokeWidth="3" strokeDasharray="6 6" />
-                      <circle cx="280" cy="120" r="8" fill="#00D4FF" />
-                      <circle cx="360" cy="160" r="8" fill="#38CFC8" />
-                      <path d="M150 300 C150 250 190 220 230 220 C270 220 310 250 310 300" fill="#123A53" opacity="0.8" />
-                      <circle cx="230" cy="180" r="28" fill="#2095AD" opacity="0.9" />
+              {/* Eyebrow Tag Label */}
+              <div className={styles.eyebrowLabelGroup}>
+                <span className={styles.labelDash}>—</span>
+                <span className={styles.labelText}>GIẢI PHÁP QTM</span>
+              </div>
+
+              {/* Main Heading (3 Lines) */}
+              <h1 className={styles.mainHeroTitle}>
+                <span>GIẢI PHÁP TRUYỀN THÔNG</span>
+                <span className={styles.titleLineHighlight}>CHO BÀI TOÁN KINH DOANH</span>
+              </h1>
+
+              {/* Description */}
+              <p className={styles.mainHeroDesc}>
+                QTM kết hợp giữa tư duy chiến lược, tư duy sáng tạo đỉnh cao, công nghệ AI và dữ liệu thực chiến để biến những thách thức truyền thông phức tạp thành động lực bứt phá doanh thu cho doanh nghiệp.
+              </p>
+
+              {/* CTA Button */}
+              <div className={styles.ctaButtonGroup}>
+                <Link href="/contact" className={styles.btnCtaGradient}>
+                  <span>KHÁM PHÁ GIẢI PHÁP</span>
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                    <line x1="5" y1="12" x2="19" y2="12" />
+                    <polyline points="12 5 19 12 12 19" />
+                  </svg>
+                </Link>
+              </div>
+
+              {/* Dải 4 Icon-Tags & QTM Logo Row */}
+              <div className={styles.leftTagsAndLogoRow}>
+                {/* Logo QTM MediaTech */}
+                <div className={styles.qtmBrandStamp}>
+                  <svg width="110" height="34" viewBox="0 0 160 48" fill="none">
+                    <circle cx="20" cy="18" r="4" fill="#4FD1E8" />
+                    <circle cx="34" cy="10" r="4" fill="#38CFC8" />
+                    <circle cx="34" cy="26" r="4" fill="#38CFC8" />
+                    <circle cx="48" cy="18" r="4" fill="#4FD1E8" />
+                    <line x1="20" y1="18" x2="34" y2="10" stroke="#38CFC8" strokeWidth="2" />
+                    <line x1="20" y1="18" x2="34" y2="26" stroke="#38CFC8" strokeWidth="2" />
+                    <line x1="34" y1="10" x2="48" y2="18" stroke="#38CFC8" strokeWidth="2" />
+                    <line x1="34" y1="26" x2="48" y2="18" stroke="#38CFC8" strokeWidth="2" />
+                    <text x="60" y="28" fill="#FFFFFF" fontFamily="var(--font-heading)" fontSize="26" fontWeight="900">QTM</text>
+                    <text x="60" y="42" fill="#38CFC8" fontFamily="var(--font-geist-mono)" fontSize="11" fontWeight="700">MediaTech</text>
+                  </svg>
+                </div>
+
+                {/* 4 Icon Tags */}
+                <div className={styles.fourTagsGrid}>
+                  <div className={styles.tagItem}>
+                    <div className={styles.tagIconCircle}>
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#4FD1E8" strokeWidth="2">
+                        <circle cx="12" cy="12" r="10" />
+                        <circle cx="12" cy="12" r="4" />
+                      </svg>
+                    </div>
+                    <div className={styles.tagTextGroup}>
+                      <span className={styles.tagTitle}>CHIẾN LƯỢC</span>
+                      <span className={styles.tagSub}>DẪN DẮT</span>
+                    </div>
+                  </div>
+
+                  <div className={styles.tagDivider} />
+
+                  <div className={styles.tagItem}>
+                    <div className={styles.tagIconCircle}>
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#38CFC8" strokeWidth="2">
+                        <path d="M9 18h6" />
+                        <path d="M10 22h4" />
+                        <path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0 0 18 8 6 6 0 0 0 6 8c0 1.55.59 2.94 1.5 4 .76.76 1.23 1.52 1.41 2.5" />
+                      </svg>
+                    </div>
+                    <div className={styles.tagTextGroup}>
+                      <span className={styles.tagTitle}>SÁNG TẠO</span>
+                      <span className={styles.tagSub}>KHÁC BIỆT</span>
+                    </div>
+                  </div>
+
+                  <div className={styles.tagDivider} />
+
+                  <div className={styles.tagItem}>
+                    <div className={styles.tagIconCircle}>
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" strokeWidth="2">
+                        <rect x="4" y="4" width="16" height="16" rx="2" />
+                        <rect x="9" y="9" width="6" height="6" />
+                      </svg>
+                    </div>
+                    <div className={styles.tagTextGroup}>
+                      <span className={styles.tagTitle}>CÔNG NGHỆ</span>
+                      <span className={styles.tagSub}>TIÊN PHONG</span>
+                    </div>
+                  </div>
+
+                  <div className={styles.tagDivider} />
+
+                  <div className={styles.tagItem}>
+                    <div className={styles.tagIconCircle}>
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10B981" strokeWidth="2">
+                        <line x1="18" y1="20" x2="18" y2="10" />
+                        <line x1="12" y1="20" x2="12" y2="4" />
+                        <line x1="6" y1="20" x2="6" y2="14" />
+                      </svg>
+                    </div>
+                    <div className={styles.tagTextGroup}>
+                      <span className={styles.tagTitle}>HIỆU QUẢ</span>
+                      <span className={styles.tagSub}>ĐO LƯỜNG</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+
+
+            {/* ── LỚP GIỮA (~35% width): Executive Photo & 3 Overlapping Cards ──── */}
+            <motion.div
+              className={styles.layerMiddle}
+              variants={fadeUp}
+              initial="hidden"
+              whileInView="visible"
+              viewport={viewport}
+              transition={{ duration: 0.75, delay: 0.15, ease: easeOut }}
+            >
+              <div className={styles.middleVisualStage}>
+                {/* Executive Leader Background Photo */}
+                <div className={styles.execPhotoWrapper}>
+                  <Image
+                    src="/solution/img_executive.png"
+                    alt="Người dẫn dắt tầm nhìn chiến lược QTM"
+                    width={580}
+                    height={700}
+                    className={styles.execImage}
+                    priority
+                  />
+                  <div className={styles.execPhotoGlowOverlay} />
+                </div>
+
+                {/* 3 Overlapping Floating Glass Cards */}
+                {/* Floating Card 1: Event */}
+                <Card3DTilt className={`${styles.floatingPhotoCard} ${styles.photoCard1}`} maxTilt={6} scale={1.02}>
+                  <div className={styles.cardImageInner}>
+                    <Image src="/solution/img_event.png" alt="Sự kiện hội nghị QTM" width={180} height={120} className={styles.thumbImg} />
+                    <div className={styles.photoCardPill}>SỰ KIỆN // CONVENTION</div>
+                  </div>
+                </Card3DTilt>
+
+                {/* Floating Card 2: Billboard */}
+                <Card3DTilt className={`${styles.floatingPhotoCard} ${styles.photoCard2}`} maxTilt={6} scale={1.02}>
+                  <div className={styles.cardImageInner}>
+                    <Image src="/solution/img_billboard.png" alt="Billboard DOOH QTM" width={180} height={120} className={styles.thumbImg} />
+                    <div className={styles.photoCardPill}>OUTDOOR // DOOH</div>
+                  </div>
+                </Card3DTilt>
+
+                {/* Floating Card 3: Stage */}
+                <Card3DTilt className={`${styles.floatingPhotoCard} ${styles.photoCard3}`} maxTilt={6} scale={1.02}>
+                  <div className={styles.cardImageInner}>
+                    <Image src="/solution/img_stage.png" alt="Sân khấu ánh sáng QTM" width={180} height={120} className={styles.thumbImg} />
+                    <div className={styles.photoCardPill}>VISUAL // LIGHTING STAGE</div>
+                  </div>
+                </Card3DTilt>
+              </div>
+            </motion.div>
+
+
+            {/* ── LỚP PHẢI (~25% width): Dashboard Panel (Glassmorphism) ───────── */}
+            <motion.div
+              className={styles.layerRight}
+              variants={fadeUp}
+              initial="hidden"
+              whileInView="visible"
+              viewport={viewport}
+              transition={{ duration: 0.8, delay: 0.2, ease: easeOut }}
+            >
+              <div className={styles.dashboardContainer}>
+                
+                {/* Card 1: HIỆU QUẢ CHIẾN DỊCH */}
+                <div className={styles.dashCard}>
+                  <div className={styles.dashCardHeader}>
+                    <span className={styles.dashCardTitle}>HIỆU QUẢ CHIẾN DỊCH</span>
+                    <span className={styles.dashLiveDot} />
+                  </div>
+                  <div className={styles.kpiMetricsRow}>
+                    <div className={styles.kpiItem}>
+                      <span className={styles.kpiValue}>+<CountUp to={250} duration={2.2} />%</span>
+                      <span className={styles.kpiLabel}>Tiếp cận</span>
+                    </div>
+                    <div className={styles.kpiItem}>
+                      <span className={styles.kpiValue}>+<CountUp to={180} duration={2} />%</span>
+                      <span className={styles.kpiLabel}>Tương tác</span>
+                    </div>
+                    <div className={styles.kpiItem}>
+                      <span className={styles.kpiValue}>+<CountUp to={45} duration={1.8} />%</span>
+                      <span className={styles.kpiLabel}>Chuyển đổi</span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Card 2: TỶ LỆ TƯƠNG TÁC (Donut + Breakdown) */}
+                <div className={styles.dashCard}>
+                  <div className={styles.dashCardHeader}>
+                    <span className={styles.dashCardTitle}>TỶ LỆ TƯƠNG TÁC</span>
+                    <span className={styles.dashSubTag}>REAL-TIME</span>
+                  </div>
+                  
+                  <div className={styles.donutBreakdownRow}>
+                    {/* Donut Chart SVG */}
+                    <div className={styles.donutChartWrap}>
+                      <svg width="72" height="72" viewBox="0 0 36 36" className={styles.donutSvg}>
+                        <path className={styles.donutBg} d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="rgba(255,255,255,0.1)" strokeWidth="3.8" />
+                        <path className={styles.donutVal} strokeDasharray="98.5, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="#38CFC8" strokeWidth="3.8" strokeLinecap="round" />
+                      </svg>
+                      <div className={styles.donutTextInside}>
+                        <span className={styles.donutPercent}><CountUp to={98} duration={2} />%</span>
+                      </div>
+                    </div>
+
+                    {/* Breakdown Bars */}
+                    <div className={styles.breakdownList}>
+                      <div className={styles.bdRow}>
+                        <span className={styles.bdName}>Social Media</span>
+                        <div className={styles.bdTrack}><div className={styles.bdFill} style={{ width: "85%", background: "#4FD1E8" }} /></div>
+                      </div>
+                      <div className={styles.bdRow}>
+                        <span className={styles.bdName}>Sự kiện</span>
+                        <div className={styles.bdTrack}><div className={styles.bdFill} style={{ width: "65%", background: "#38CFC8" }} /></div>
+                      </div>
+                      <div className={styles.bdRow}>
+                        <span className={styles.bdName}>Báo chí</span>
+                        <div className={styles.bdTrack}><div className={styles.bdFill} style={{ width: "50%", background: "#3B82F6" }} /></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Card 3: HIỆU QUẢ THEO THỜI GIAN (Line Chart) */}
+                <div className={styles.dashCard}>
+                  <div className={styles.dashCardHeader}>
+                    <span className={styles.dashCardTitle}>HIỆU QUẢ THEO THỜI GIAN</span>
+                    <span className={styles.dashSubTag}>12 THÁNG</span>
+                  </div>
+                  
+                  <div className={styles.lineChartWrap}>
+                    <svg viewBox="0 0 200 60" fill="none" className={styles.lineSvg}>
+                      <path d="M0 50 Q 40 40, 80 25 T 140 18 T 200 8" stroke="url(#lineGrad)" strokeWidth="2.5" fill="none" />
+                      <path d="M0 50 Q 40 40, 80 25 T 140 18 T 200 8 V 60 H 0 Z" fill="url(#areaGrad)" opacity="0.25" />
+                      <circle cx="200" cy="8" r="4" fill="#38CFC8" />
                       <defs>
-                        <linearGradient id="execBg" x1="0" y1="0" x2="400" y2="320" gradientUnits="userSpaceOnUse">
-                          <stop stopColor="#F1F5F9" />
-                          <stop offset="100%" stopColor="#E2E8F0" />
+                        <linearGradient id="lineGrad" x1="0" y1="0" x2="200" y2="0" gradientUnits="userSpaceOnUse">
+                          <stop stopColor="#3B82F6" />
+                          <stop offset="100%" stopColor="#38CFC8" />
+                        </linearGradient>
+                        <linearGradient id="areaGrad" x1="0" y1="0" x2="0" y2="60" gradientUnits="userSpaceOnUse">
+                          <stop stopColor="#38CFC8" />
+                          <stop offset="100%" stopColor="#38CFC8" stopOpacity="0" />
                         </linearGradient>
                       </defs>
                     </svg>
                   </div>
                 </div>
 
-                {/* Overlapping Floating Glass Card 1 */}
-                <Card3DTilt className={`${styles.floatingGlassCard} ${styles.floatingGlassCard1}`} maxTilt={10} scale={1.03}>
-                  <div className={styles.cardDotIndicator} />
-                  <div className={styles.cardInfo}>
-                    <span className={styles.cardVal}>+240%</span>
-                    <span className={styles.cardLbl}>Tăng trưởng ROI</span>
+                {/* Dải 5 Icon Nhỏ Phía Dưới Panel */}
+                <div className={styles.fiveIconsRow}>
+                  <div className={styles.fiveIconItem}>
+                    <div className={styles.iconMiniCircle}>🧠</div>
+                    <span className={styles.iconMiniLabel}>Chiến lược</span>
                   </div>
-                </Card3DTilt>
+                  <div className={styles.fiveIconItem}>
+                    <div className={styles.iconMiniCircle}>💡</div>
+                    <span className={styles.iconMiniLabel}>Sáng tạo</span>
+                  </div>
+                  <div className={styles.fiveIconItem}>
+                    <div className={styles.iconMiniCircle}>⚙️</div>
+                    <span className={styles.iconMiniLabel}>Công nghệ</span>
+                  </div>
+                  <div className={styles.fiveIconItem}>
+                    <div className={styles.iconMiniCircle}>🚀</div>
+                    <span className={styles.iconMiniLabel}>Triển khai</span>
+                  </div>
+                  <div className={styles.fiveIconItem}>
+                    <div className={styles.iconMiniCircle}>📊</div>
+                    <span className={styles.iconMiniLabel}>Đo lường</span>
+                  </div>
+                </div>
 
-                {/* Overlapping Floating Glass Card 2 */}
-                <Card3DTilt className={`${styles.floatingGlassCard} ${styles.floatingGlassCard2}`} maxTilt={10} scale={1.03}>
-                  <div className={`${styles.cardDotIndicator} ${styles.cardDotIndicatorMint}`} />
-                  <div className={styles.cardInfo}>
-                    <span className={styles.cardVal}>98.5%</span>
-                    <span className={styles.cardLbl}>Tỷ lệ tương tác</span>
-                  </div>
-                </Card3DTilt>
-
-                {/* Overlapping Floating Glass Card 3 */}
-                <Card3DTilt className={`${styles.floatingGlassCard} ${styles.floatingGlassCard3}`} maxTilt={10} scale={1.03}>
-                  <div className={`${styles.cardDotIndicator} ${styles.cardDotIndicatorBlue}`} />
-                  <div className={styles.cardInfo}>
-                    <span className={styles.cardVal}>-40%</span>
-                    <span className={styles.cardLbl}>Tối ưu chi phí</span>
-                  </div>
-                </Card3DTilt>
               </div>
             </motion.div>
-          </div>
 
-          {/* Bottom 5 Core Values Row */}
-          <motion.div
-            className={styles.solHeroValuesRow}
-            variants={fadeUp}
-            initial="hidden"
-            whileInView="visible"
-            viewport={viewport}
-            transition={{ duration: 0.75, delay: 0.3, ease: easeOut }}
-          >
-            <div className={styles.valChip}>
-              <span className={styles.chipIcon}>🧠</span>
-              <span className="chip-label">Chiến lược</span>
-            </div>
-            <div className={styles.valDivider}>•</div>
-            <div className={styles.valChip}>
-              <span className={styles.chipIcon}>💡</span>
-              <span className="chip-label">Sáng tạo</span>
-            </div>
-            <div className={styles.valDivider}>•</div>
-            <div className={styles.valChip}>
-              <span className={styles.chipIcon}>⚙️</span>
-              <span className="chip-label">Công nghệ</span>
-            </div>
-            <div className={styles.valDivider}>•</div>
-            <div className={styles.valChip}>
-              <span className={styles.chipIcon}>✨</span>
-              <span className="chip-label">Trải nghiệm</span>
-            </div>
-            <div className={styles.valDivider}>•</div>
-            <div className={styles.valChip}>
-              <span className={styles.chipIcon}>📊</span>
-              <span className="chip-label">Đo lường</span>
-            </div>
-          </motion.div>
-        </div>
+          </div>{/* /solHero3LayerGrid */}
+        </div>{/* /solHeroContent */}
       </section>
-
-      <SolutionContactModal
-        isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
-        contextTitle="Liên hệ tư vấn giải pháp tổng thể"
-      />
     </>
   );
 }

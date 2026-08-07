@@ -1,12 +1,11 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import MissLegacyHero from "@/components/missLegacy/MissLegacyHero";
 import MissLegacyMission from "@/components/missLegacy/MissLegacyMission";
 import MissLegacyImpact from "@/components/missLegacy/MissLegacyImpact";
 import MissLegacyAwards from "@/components/missLegacy/MissLegacyAwards";
 import MissLegacyPartners from "@/components/missLegacy/MissLegacyPartners";
-import MissLegacyStoryProgress from "@/components/missLegacy/MissLegacyStoryProgress";
 import ContactModal from "@/components/about/ContactModal";
 
 export default function MissLegacyPage() {
@@ -14,6 +13,16 @@ export default function MissLegacyPage() {
     isOpen: false,
     title: "",
   });
+
+  useEffect(() => {
+    document.documentElement.classList.add("hide-scrollbar");
+    document.body.classList.add("hide-scrollbar");
+
+    return () => {
+      document.documentElement.classList.remove("hide-scrollbar");
+      document.body.classList.remove("hide-scrollbar");
+    };
+  }, []);
 
   const handleOpenModal = (title: string) => {
     setModalState({ isOpen: true, title });
@@ -24,10 +33,7 @@ export default function MissLegacyPage() {
   };
 
   return (
-    <main style={{ width: "100%", overflow: "visible", backgroundColor: "#04140D", position: "relative" }}>
-      {/* Floating Story Chapter Navigation */}
-      <MissLegacyStoryProgress />
-
+    <main style={{ width: "100%", overflow: "visible", backgroundColor: "#0A3A26", position: "relative" }}>
       {/* CHAPTER 1: HERO & OVERVIEW */}
       <MissLegacyHero onOpenModal={handleOpenModal} />
 

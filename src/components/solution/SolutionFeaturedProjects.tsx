@@ -1,230 +1,202 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
+import Image from "next/image";
+import Link from "next/link";
 import styles from "./SolutionFeaturedProjects.module.scss";
-import { motion } from "motion/react";
-import SolutionContactModal from "./SolutionContactModal";
+import { motion, useReducedMotion } from "motion/react";
+import ParticleField from "@/components/TechBackground/ParticleField";
 
-type FeaturedProject = {
+type ProjectItem = {
   id: string;
+  num: string;
   category: string;
-  numberTag: string;
   title: string;
   client: string;
   desc: string;
+  imageSrc: string;
   highlights: string[];
-  graphicSvg: React.ReactNode;
 };
 
-const featuredProjects: FeaturedProject[] = [
+const projectsData: ProjectItem[] = [
   {
-    id: "viettel-event",
-    category: "EVENT & CONFERENCE",
-    numberTag: "/01",
-    title: "Hội Nghị Khách Hàng Toàn Quốc Viettel 2026",
-    client: "Viettel Group",
-    desc: "Tổ chức hội nghị thượng đỉnh toàn quốc tích hợp công nghệ Check-in AI, AR/3D Spatial Audio và báo cáo sentiment real-time.",
+    id: "techcombank-summit",
+    num: "01",
+    category: "HỘI NGHỊ - HỘI THẢO",
+    title: "HỘI NGHỊ KHÁCH HÀNG TOÀN QUỐC 2024",
+    client: "Techcombank",
+    desc: "Hội nghị thượng đỉnh toàn quốc dành cho 2,000+ đối tác chiến lược của Techcombank, tích hợp công nghệ check-in AI và trình diễn ánh sáng hologram 3D.",
+    imageSrc: "/solution/img_proj_techcombank.png",
     highlights: [
       "Check-in AI & Nhận diện khuôn mặt tự động",
-      "Trình diễn hiệu ứng sân khấu 3D Spatial Audio & Hologram",
-      "Hệ thống báo cáo phân tích Sentiment & Tương tác real-time",
-      "Đo lường chỉ số ROI & hiệu quả truyền thông toàn quốc",
+      "Sân khấu 3D Spatial Audio & Hologram đỉnh cao",
+      "Đo lường sentiment & độ hài lòng của 2,000+ khách mời",
     ],
-    graphicSvg: (
-      <svg viewBox="0 0 500 300" fill="none" className={styles.projectSvg}>
-        <rect width="500" height="300" rx="12" fill="#0B1C33" />
-        <circle cx="250" cy="150" r="110" fill="url(#p1Grad)" opacity="0.35" />
-        <path d="M60 260 L180 130 L320 130 L440 260 Z" fill="rgba(56, 207, 200, 0.2)" />
-        <circle cx="250" cy="120" r="32" fill="#EA0029" opacity="0.85" />
-        <text x="25" y="38" fill="#38CFC8" fontFamily="var(--font-geist-mono)" fontSize="13" fontWeight="700">// VIETTEL_SUMMIT_2026</text>
-        <defs>
-          <radialGradient id="p1Grad" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(250 150) scale(110)">
-            <stop stopColor="#EA0029" />
-            <stop offset="1" stopColor="#38CFC8" stopOpacity="0" />
-          </radialGradient>
-        </defs>
-      </svg>
-    ),
   },
   {
-    id: "honda-ooh",
-    category: "OUTDOOR MEDIA",
-    numberTag: "/02",
-    title: "Chiến Dịch Billboard LED Tương Tác Honda",
-    client: "Honda Vietnam",
-    desc: "Xây dựng chuỗi màn hình LED tương tác 3D Naked-Eye tại các nút giao thông trọng điểm Hà Nội & TP.HCM.",
+    id: "vinfast-billboard",
+    num: "02",
+    category: "BILLBOARD",
+    title: "CHIẾN DỊCH BILLBOARD TOÀN QUỐC",
+    client: "VinFast",
+    desc: "Chuỗi màn hình Outdoor 3D Naked-Eye phủ sóng tại các giao lộ huyết mạch trên toàn quốc, tạo hiệu ứng thị giác bùng nổ cho VinFast.",
+    imageSrc: "/solution/img_proj_vinfast.png",
     highlights: [
       "Kỹ thuật hiển thị 3D Naked-Eye không dùng kính",
-      "Tích hợp cảm biến đếm lưu lượng xe & nhiệt độ thời tiết",
-      "Phủ sóng 5.000.000+ Lượt tiếp cận trực tiếp",
-      "Gia tăng +35% Mức độ nhận diện thương hiệu",
+      "Phủ sóng 5,000,000+ Lượt tiếp cận khách hàng mục tiêu",
+      "Tăng +35% Mức độ nhận diện thương hiệu VinFast",
     ],
-    graphicSvg: (
-      <svg viewBox="0 0 500 300" fill="none" className={styles.projectSvg}>
-        <rect width="500" height="300" rx="12" fill="#0B1C33" />
-        <circle cx="250" cy="150" r="120" fill="url(#p2Grad)" opacity="0.4" />
-        <rect x="80" y="70" width="340" height="160" rx="8" fill="#050C1A" stroke="#38CFC8" strokeWidth="2" />
-        <path d="M120 180 Q 250 90 380 180" stroke="#FF6B00" strokeWidth="4" fill="none" />
-        <text x="25" y="38" fill="#38CFC8" fontFamily="var(--font-geist-mono)" fontSize="13" fontWeight="700">// HONDA_LED_3D_OOH</text>
-        <defs>
-          <radialGradient id="p2Grad" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(250 150) scale(120)">
-            <stop stopColor="#38CFC8" />
-            <stop offset="1" stopColor="#FF6B00" stopOpacity="0" />
-          </radialGradient>
-        </defs>
-      </svg>
-    ),
   },
   {
-    id: "techcombank-digital",
-    category: "DIGITAL MARKETING",
-    numberTag: "/03",
-    title: "Chiến Dịch Digital Growth Techcombank",
-    client: "Techcombank",
-    desc: "Chiến dịch tăng trưởng người dùng App ngân hàng số kết hợp Performance Marketing & Kịch bản AI Chatbot.",
+    id: "viettel-liveshow",
+    num: "03",
+    category: "CHƯƠNG TRÌNH NGHỆ THUẬT",
+    title: "LIVESHOW CA NHẠC KẾT NỐI CẢM XÚC",
+    client: "Viettel",
+    desc: "Đại nhạc hội quy tụ 30,000+ khán giả với hệ thống âm thanh 3D Spatial Audio và hiệu ứng trình diễn laser công nghệ đỉnh cao từ Viettel.",
+    imageSrc: "/solution/img_proj_viettel.png",
     highlights: [
-      "Tự động phân khúc 1.200.000+ Khách hàng mục tiêu",
-      "Chiến dịch Performance Ads đa kênh Meta, Google, TikTok",
-      "Tích hợp AI Bot tư vấn giải pháp tài chính 24/7",
-      "Đạt +120% Mục tiêu tăng trưởng User mới",
+      "Đại nhạc hội quy tụ 30,000+ khán giả cuồng nhiệt",
+      "Hệ thống laser show & 3D Spatial Audio hiện đại",
+      "Lan tỏa 10,000,000+ Lượt thảo luận trên MXH",
     ],
-    graphicSvg: (
-      <svg viewBox="0 0 500 300" fill="none" className={styles.projectSvg}>
-        <rect width="500" height="300" rx="12" fill="#0B1C33" />
-        <circle cx="250" cy="150" r="110" fill="url(#p3Grad)" opacity="0.35" />
-        <path d="M100 220 L200 140 L300 170 L400 80" stroke="#00D4FF" strokeWidth="4" fill="none" />
-        <circle cx="400" cy="80" r="8" fill="#EA0029" />
-        <text x="25" y="38" fill="#38CFC8" fontFamily="var(--font-geist-mono)" fontSize="13" fontWeight="700">// TECHCOMBANK_DIGITAL_GROWTH</text>
-        <defs>
-          <radialGradient id="p3Grad" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(250 150) scale(110)">
-            <stop stopColor="#00D4FF" />
-            <stop offset="1" stopColor="#EA0029" stopOpacity="0" />
-          </radialGradient>
-        </defs>
-      </svg>
-    ),
+  },
+  {
+    id: "unilever-csr",
+    num: "04",
+    category: "CSR",
+    title: "CHƯƠNG TRÌNH CSR VÌ TƯƠNG LAI XANH",
+    client: "Unilever",
+    desc: "Chiến dịch cộng đồng nâng cao nhận thức bảo vệ môi trường, lan tỏa thông điệp ESG phát triển bền vững cùng Unilever.",
+    imageSrc: "/solution/img_proj_unilever.png",
+    highlights: [
+      "Chuỗi chiến dịch ESG cộng đồng lan tỏa giá trị xanh",
+      "Kết nối 50+ Cơ quan báo chí truyền thông hàng đầu",
+      "Định vị hình ảnh doanh nghiệp xanh phát triển bền vững",
+    ],
   },
 ];
 
 const viewport = { once: true, amount: 0.15 } as const;
-const cubicEase = [0.22, 1, 0.36, 1] as const;
+const easeOut = [0.22, 1, 0.36, 1] as const;
 
 export default function SolutionFeaturedProjects() {
-  const [modalState, setModalState] = useState<{ isOpen: boolean; title: string }>({
-    isOpen: false,
-    title: "",
-  });
+  const reduceMotion = useReducedMotion();
+
+  const fadeUp = reduceMotion
+    ? { hidden: { opacity: 0 }, visible: { opacity: 1 } }
+    : { hidden: { opacity: 0, y: 32 }, visible: { opacity: 1, y: 0 } };
 
   return (
-    <>
-      <section id="featured-projects" className={styles.sectionSolProj}>
-        <div className={styles.solProjContent}>
-          <motion.div
-            className={styles.solProjTagPill}
-            initial={{ opacity: 0, y: -20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={viewport}
-            transition={{ duration: 0.7, ease: cubicEase }}
-          >
-            <span className={styles.tagDot}>•</span>
-            <span>PROVEN PORTFOLIO // QTM_PROJECTS</span>
-          </motion.div>
+    <section id="featured-projects" className={`section ${styles.sectionSolProj}`}>
+      <ParticleField />
 
-          <motion.h2
-            className={styles.solProjTitle}
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={viewport}
-            transition={{ duration: 0.8, delay: 0.15, ease: cubicEase }}
-          >
-            DỰ ÁN <span className="title-highlight-teal">TIÊU BIỂU</span>
-          </motion.h2>
+      <div className={`section__content ${styles.solProjContent}`}>
+        {/* ── 1. Header (Centered & Single Line) ─────────────────────────────────── */}
+        <motion.div
+          className={styles.sectionTopHeader}
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewport}
+          transition={{ duration: 0.6, ease: easeOut }}
+        >
+          <div className={styles.eyebrowTag}>
+            <span className={styles.tagDash}>—</span>
+            <span className={styles.tagText}>PROVEN PORTFOLIO // QTM_PROJECTS</span>
+          </div>
 
-          <motion.p
-            className={styles.solProjSubtitle}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={viewport}
-            transition={{ duration: 0.8, delay: 0.3, ease: cubicEase }}
-          >
+          <h2 className={styles.mainTitleHead}>
+            DỰ ÁN <span className={styles.titleHighlightCyan}>TIÊU BIỂU</span>
+          </h2>
+
+          <div className={styles.titleUnderlineAccent} />
+
+          <p className={styles.mainSubtitleDesc}>
             Những chiến dịch truyền thông công nghệ thực chiến tạo nên dấu ấn bứt phá cho các thương hiệu dẫn đầu.
-          </motion.p>
+          </p>
+        </motion.div>
 
-          {/* Normal Blog Container - Clean Vertical Flow */}
-          <div className={styles.projectsBlogContainer}>
-            {featuredProjects.map((proj, idx) => (
-              <motion.div
-                key={proj.id}
-                className={styles.blogRowCard}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={viewport}
-                transition={{ duration: 0.6, delay: idx * 0.1, ease: cubicEase }}
-              >
-                <div className={styles.rowAccentIndicator} />
-                
-                <div className={styles.rowHeaderLine}>
-                  <span className={styles.categoryLabel}>// {proj.category}</span>
-                  <span className={styles.numberTag}>{proj.numberTag}</span>
+        {/* ── 2. Buttery-Smooth CSS Sticky Stacking Container ─────────────────── */}
+        <div className={styles.stickyStackList}>
+          {projectsData.map((project, idx) => (
+            <div
+              key={project.id}
+              className={styles.stickyStackCardItem}
+              style={{
+                top: `calc(110px + ${idx * 24}px)`,
+                zIndex: idx + 1,
+              }}
+            >
+              <div className={styles.cardInternalGrid}>
+                {/* Left Col: Photo Image */}
+                <div className={styles.cardPhotoCol}>
+                  <div className={styles.photoFrame}>
+                    <Image
+                      src={project.imageSrc}
+                      alt={project.title}
+                      width={600}
+                      height={400}
+                      className={styles.projectPhotoImg}
+                      priority
+                    />
+                    <div className={styles.photoOverlay} />
+                    <div className={styles.clientTagBadge}>
+                      <span className={styles.clientTagLabel}>Khách hàng:</span>
+                      <span className={styles.clientTagVal}>{project.client}</span>
+                    </div>
+                  </div>
                 </div>
 
-                <h3 className={styles.rowMainTitle}>{proj.title}</h3>
-
-                <div className={styles.rowBodyGrid}>
-                  <div className={styles.leftMediaCol}>
-                    <div className={styles.imageStageBox}>{proj.graphicSvg}</div>
-                    <span className={styles.clientTag}>Khách hàng: {proj.client}</span>
-                    <p className={styles.summaryDesc}>{proj.desc}</p>
+                {/* Right Col: Details */}
+                <div className={styles.cardDetailsCol}>
+                  <div className={styles.cardTopRow}>
+                    <span className={styles.categoryPill}>// {project.category}</span>
+                    <span className={styles.numberBadge}>{project.num}</span>
                   </div>
 
-                  <div className={styles.rightContentCol}>
-                    <ul className={styles.highlightsList}>
-                      {proj.highlights.map((item, i) => (
-                        <li key={i} className={styles.highlightItem}>
-                          <span className={styles.plusSymbol}>+</span>
-                          <span className={styles.itemText}>{item}</span>
+                  <h3 className={styles.projectTitleText}>{project.title}</h3>
+                  <p className={styles.projectDescText}>{project.desc}</p>
+
+                  <div className={styles.highlightsBox}>
+                    <span className={styles.hlHeading}>ĐIỂM NỔI BẬT:</span>
+                    <ul className={styles.hlList}>
+                      {project.highlights.map((hl, i) => (
+                        <li key={i} className={styles.hlItem}>
+                          <span className={styles.checkIcon}>✓</span>
+                          <span>{hl}</span>
                         </li>
                       ))}
                     </ul>
+                  </div>
 
-                    <button
-                      type="button"
-                      onClick={() => setModalState({ isOpen: true, title: `Tư vấn dự án tương tự: ${proj.title}` })}
-                      className={styles.rowCtaBtn}
-                    >
+                  <div className={styles.cardCtaRow}>
+                    <Link href="/projects" className={styles.cardCtaLink}>
                       <span>Xem chi tiết dự án</span>
                       <span>→</span>
-                    </button>
+                    </Link>
                   </div>
                 </div>
-              </motion.div>
-            ))}
-          </div>
-
-          <motion.div
-            className={styles.solProjFooterAction}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={viewport}
-            transition={{ duration: 0.8, delay: 0.5, ease: cubicEase }}
-          >
-            <button
-              type="button"
-              onClick={() => setModalState({ isOpen: true, title: "Liên hệ tư vấn tất cả dự án" })}
-              className={styles.solProjAllBtn}
-            >
-              <span>XEM TẤT CẢ DỰ ÁN</span>
-              <span> →</span>
-            </button>
-          </motion.div>
+              </div>
+            </div>
+          ))}
         </div>
-      </section>
 
-      <SolutionContactModal
-        isOpen={modalState.isOpen}
-        onClose={() => setModalState({ isOpen: false, title: "" })}
-        contextTitle={modalState.title}
-      />
-    </>
+        {/* ── 3. Bottom All Projects Action Button ───────────────────────────── */}
+        <motion.div
+          className={styles.solProjFooterAction}
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewport}
+          transition={{ duration: 0.6, delay: 0.2, ease: easeOut }}
+        >
+          <Link href="/projects" className={styles.solProjAllBtn}>
+            <span>XEM TẤT CẢ DỰ ÁN</span>
+            <span className={styles.btnArrow}>→</span>
+          </Link>
+        </motion.div>
+      </div>
+    </section>
   );
 }

@@ -4,291 +4,328 @@
   position: relative;
   width: 100%;
   min-height: 100vh;
-  background-image: 
-    linear-gradient(90deg, rgba(4, 20, 13, 0.92) 0%, rgba(4, 20, 13, 0.75) 50%, rgba(4, 20, 13, 0.2) 100%),
-    url('/miss-legacy-awards-bg.jpg');
+  background-color: #0A3A26;
+  background-image:
+    linear-gradient(180deg, rgba(8, 48, 32, 0.45) 0%, rgba(12, 65, 43, 0.25) 50%, rgba(6, 38, 25, 0.65) 100%),
+    url('/miss-legacy-awards-bg-harmonious.jpg');
   background-size: cover;
-  background-position: center right;
+  background-position: center center;
   background-repeat: no-repeat;
   color: #FFFFFF;
-  padding: clamp(5.5rem, 9vh, 8rem) clamp(1.2rem, 5vw, 4rem);
+  padding: clamp(5.5rem, 8vh, 7.5rem) 0 4rem 0;
   overflow: hidden;
+}
 
-  @media (max-width: 900px) {
-    background-image: 
-      linear-gradient(180deg, rgba(4, 20, 13, 0.92) 0%, rgba(4, 20, 13, 0.85) 100%),
-      url('/miss-legacy-awards-bg.jpg');
+.awardsContentWrapper {
+  position: relative;
+  z-index: 3;
+  max-width: 1400px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 clamp(1.2rem, 4vw, 3.5rem);
+  display: flex;
+  flex-direction: column;
+  gap: clamp(2.5rem, 4vh, 3.5rem);
+}
+
+.mainGrid {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: clamp(2rem, 4vw, 4rem);
+  align-items: center;
+
+  @media (max-width: 1100px) {
+    grid-template-columns: 1fr;
   }
 }
 
-.awardsContent {
-  position: relative;
-  z-index: 3;
-  max-width: 1240px;
-  margin: 0 auto;
+.leftCol {
   display: flex;
   flex-direction: column;
-  gap: clamp(2rem, 4vh, 3.5rem);
+  gap: 1.2rem;
+  text-align: left;
 }
 
-.headerBadge {
+.eyebrowRow {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.eyebrowDash {
+  color: #D4AF37;
+  font-weight: 800;
+}
+
+.eyebrowText {
   font-family: var(--font-geist-mono), monospace;
   font-size: 0.85rem;
-  font-weight: 700;
-  color: #E6C687;
-  letter-spacing: 0.1em;
-}
-
-/* Main Split Grid: Left Text Area */
-.mainSplitGrid {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-  max-width: 680px;
-  text-align: left;
-}
-
-.leftContentCol {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-  text-align: left;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  color: #CBD5E1;
+  text-transform: uppercase;
 }
 
 .titleWrap {
   display: flex;
-  align-items: center;
-  gap: 1rem;
+  flex-direction: column;
+}
 
-  .sectionTitle {
-    font-family: var(--font-heading);
-    font-size: clamp(2.4rem, 4.5vw, 4rem);
-    font-weight: 900;
-    margin: 0;
-    line-height: 1.1;
-    background: linear-gradient(135deg, #FFF5D0 0%, #D4AF37 50%, #AA7C11 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
+.sectionTitle {
+  font-family: $font-heading;
+  font-size: clamp(3rem, 5.5vw, 5.2rem);
+  font-weight: 900;
+  line-height: 1.05;
+  color: #FFFFFF;
+  margin: 0;
+  letter-spacing: -0.01em;
+  display: flex;
+  flex-direction: column;
 
-  .lotusIcon {
-    width: 45px;
-    height: auto;
-    filter: drop-shadow(0 0 15px rgba(212, 175, 55, 0.6));
+  .titleLine1 {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
   }
+}
+
+.titleHighlightGold {
+  background: linear-gradient(135deg, #F5E0A3 0%, #D4AF37 60%, #AA7C11 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0 0 14px rgba(212, 175, 55, 0.4));
+}
+
+.titleLotusIcon {
+  width: clamp(45px, 5vw, 65px);
+  height: auto;
+  filter: drop-shadow(0 0 14px rgba(212, 175, 55, 0.6));
+}
+
+.paragraphsGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  max-width: 640px;
 }
 
 .descText {
-  font-size: clamp(0.95rem, 1.3vw, 1.075rem);
+  font-family: $font-body;
+  font-size: clamp(0.95rem, 1.2vw, 1.08rem);
+  line-height: 1.65;
   color: #E2E8F0;
-  line-height: 1.75;
   margin: 0;
+  font-weight: 400;
 }
 
-/* 4 Action Badges Grid */
-.badgesGrid {
+/* 4 Circular Action Badges */
+.badgesGrid4 {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 0.9rem;
+  gap: 1rem;
   margin-top: 0.5rem;
 
-  @media (max-width: 600px) {
+  @media (max-width: 768px) {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
-.badgeCard {
+.badgeCardNode {
+  background: transparent;
+  border: none;
+  padding: 0.5rem 0;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  gap: 0.4rem;
-  padding: 1rem 0.75rem;
-  border-radius: 14px;
-  background: rgba(14, 46, 33, 0.6);
-  border: 1.5px solid rgba(212, 175, 55, 0.3);
+  gap: 0.35rem;
+  transition: transform 0.3s ease;
 
-  .badgeIcon {
-    width: 36px;
-    height: 36px;
-    border-radius: 10px;
-    background: rgba(212, 175, 55, 0.15);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .badgeTitle {
-    font-family: var(--font-heading);
-    font-size: 0.85rem;
-    font-weight: 800;
-    color: #F5E0A3;
-    letter-spacing: 0.04em;
-  }
-
-  .badgeDesc {
-    font-size: 0.725rem;
-    color: #CBD5E1;
-    line-height: 1.3;
+  &:hover {
+    transform: translateY(-4px);
   }
 }
 
-/* Stat Highlights Row */
-.statsRow4 {
+.badgeIconCircle {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(212, 175, 55, 0.15);
+  border: 1px solid rgba(212, 175, 55, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.2rem;
+  box-shadow: 0 0 16px rgba(212, 175, 55, 0.25);
+  backdrop-filter: blur(8px);
+}
+
+.badgeTitle {
+  font-family: $font-heading;
+  font-size: 0.85rem;
+  font-weight: 900;
+  color: #F5E0A3;
+  letter-spacing: 0.08em;
+}
+
+.badgeDesc {
+  font-family: $font-body;
+  font-size: 0.72rem;
+  color: #CBD5E1;
+  line-height: 1.35;
+}
+
+.rightStageSpacer {
+  min-height: 400px;
+
+  @media (max-width: 1100px) {
+    display: none;
+  }
+}
+
+/* Bottom Horizontal Metrics Ribbon */
+.bottomMetricsRibbon {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 1rem;
-  padding: 1rem 1.25rem;
-  border-radius: 16px;
-  background: rgba(8, 30, 21, 0.75);
-  border: 1px solid rgba(212, 175, 55, 0.25);
+  gap: 1.2rem;
+  background: transparent;
+  border: none;
+  padding: 0.5rem 0;
 
-  @media (max-width: 600px) {
+  @media (max-width: 900px) {
     grid-template-columns: repeat(2, 1fr);
+    gap: 1.2rem;
   }
 }
 
-.statItem {
+.metricItem {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
-
-  .icon {
-    font-size: 1.25rem;
-    color: #D4AF37;
-  }
-
-  .textGroup {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .val {
-    font-family: var(--font-heading);
-    font-size: 1.25rem;
-    font-weight: 900;
-    color: #FFF5D0;
-    line-height: 1;
-  }
-
-  .lbl {
-    font-size: 0.725rem;
-    color: #94A3B8;
-    line-height: 1.2;
-  }
+  gap: 0.8rem;
+  background: transparent;
 }
 
-/* Right Column: Gala Stage Gold Trophy Visual */
-.rightStageCol {
-  position: relative;
-  width: 100%;
-  min-height: 420px;
+.metricIconBox {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  background: rgba(212, 175, 55, 0.15);
+  border: 1px solid rgba(212, 175, 55, 0.35);
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 0 14px rgba(212, 175, 55, 0.25);
+  backdrop-filter: blur(8px);
 }
 
-.galaStageBox {
+.metricTextWrap {
+  display: flex;
+  flex-direction: column;
+}
+
+.numRow {
+  display: flex;
+  align-items: baseline;
+  gap: 2px;
+}
+
+.metricNum {
+  font-family: $font-heading;
+  font-size: 1.55rem;
+  font-weight: 900;
+  color: #F5E0A3;
+  line-height: 1;
+}
+
+.metricSuffix {
+  font-family: $font-heading;
+  font-size: 1.35rem;
+  font-weight: 900;
+  color: #D4AF37;
+  line-height: 1;
+}
+
+.metricLabel {
+  font-family: $font-body;
+  font-size: 0.73rem;
+  color: #CBD5E1;
+  line-height: 1.3;
+}
+
+/* Bottom Highlighted Slogan Banner (Transparent Glass Block with Thin Gold Border) */
+.highlightedSloganBanner {
   position: relative;
   width: 100%;
-  max-width: 480px;
-  height: 420px;
-  border-radius: 24px;
-  background: radial-gradient(circle at 50% 40%, rgba(20, 70, 48, 0.8) 0%, rgba(6, 25, 17, 0.95) 100%);
-  border: 2px solid rgba(212, 175, 55, 0.4);
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7), 0 0 40px rgba(212, 175, 55, 0.2);
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  overflow: hidden;
   text-align: center;
-  padding: 2rem;
-
-  .stageArch {
-    position: absolute;
-    width: 280px;
-    height: 320px;
-    border-radius: 140px 140px 0 0;
-    border: 2.5px stroke #D4AF37;
-    box-shadow: 0 0 30px rgba(212, 175, 55, 0.3);
-    top: 30px;
-    pointer-events: none;
-  }
-
-  .galaTitle {
-    font-family: var(--font-heading);
-    font-size: 1.8rem;
-    font-weight: 900;
-    background: linear-gradient(135deg, #FFF5D0 0%, #D4AF37 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    margin-top: 1rem;
-    letter-spacing: 0.04em;
-  }
-
-  .galaSubtitle {
-    font-size: 0.85rem;
-    color: #F5E0A3;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-  }
-
-  .trophyPedestal {
-    margin-top: auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .trophyIcon {
-    width: 75px;
-    height: auto;
-    filter: drop-shadow(0 0 20px rgba(212, 175, 55, 0.7));
-  }
-
-  .pedestalBase {
-    width: 140px;
-    padding: 6px 0;
-    background: linear-gradient(180deg, #1A1A1A 0%, #0A0A0A 100%);
-    border: 1.5px solid #D4AF37;
-    border-radius: 6px;
-    font-family: var(--font-heading);
-    font-size: 0.75rem;
-    font-weight: 800;
-    color: #D4AF37;
-    margin-top: 0.5rem;
-  }
+  gap: 0.6rem;
+  background: rgba(10, 50, 34, 0.32);
+  border: 1px solid rgba(212, 175, 55, 0.35);
+  border-radius: 20px;
+  padding: 1.4rem 2.2rem;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 245, 208, 0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  margin-top: 0.5rem;
 }
 
-/* Bottom Closing Quote Box */
-.quoteBox {
+.sloganContent {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  max-width: 900px;
+}
+
+.quoteMarkGold {
+  font-size: 2.6rem;
+  color: #D4AF37;
+  line-height: 1;
+  font-family: Georgia, serif;
+  display: inline-block;
+  vertical-align: middle;
+  filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.4));
+}
+
+.sloganText {
+  font-family: $font-heading;
+  font-size: clamp(1.05rem, 1.5vw, 1.28rem);
+  font-weight: 800;
+  color: #F5E0A3;
+  line-height: 1.5;
+  font-style: italic;
+  margin: 0;
+  letter-spacing: 0.01em;
+  text-shadow: 0 0 14px rgba(212, 175, 55, 0.35);
+}
+
+.sloganLotusFooter {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 1rem;
-  padding: 1.25rem 2rem;
-  border-radius: 16px;
-  background: rgba(8, 30, 21, 0.85);
-  border: 1px solid rgba(212, 175, 55, 0.3);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  max-width: 680px;
-  text-align: center;
+  width: 100%;
+  max-width: 380px;
+  margin-top: 0.2rem;
+}
 
-  .quoteMark {
-    font-size: 2rem;
-    color: #D4AF37;
-    font-family: Georgia, serif;
-    line-height: 1;
-  }
+.sloganLineLeft,
+.sloganLineRight {
+  flex-grow: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, rgba(212, 175, 55, 0.5) 100%);
+}
 
-  .quoteText {
-    font-size: clamp(0.95rem, 1.3vw, 1.1rem);
-    color: #F5E0A3;
-    font-style: italic;
-    margin: 0;
-  }
+.sloganLineRight {
+  background: linear-gradient(90deg, rgba(212, 175, 55, 0.5) 0%, transparent 100%);
+}
+
+.sloganLotusIcon {
+  width: 28px;
+  height: auto;
+  filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.6));
 }
