@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import { motion, useReducedMotion } from "motion/react";
 import Card3DTilt from "@/components/Card3DTilt";
-import ParticleField from "@/components/TechBackground/ParticleField";
+import styles from "./AboutRoadmap.module.scss";
 
 type RoadmapNode = {
   year: string;
@@ -106,16 +106,11 @@ export default function AboutRoadmap() {
     : { hidden: { opacity: 0, y: 32 }, visible: { opacity: 1, y: 0 } };
 
   return (
-    <section id="roadmap" className="section section--roadmap">
-      {/* Background Particles & Grid */}
-      <div className="roadmap__bg-overlay" aria-hidden="true" />
-      <div className="roadmap__bg-grid" aria-hidden="true" />
-      <ParticleField />
-
-      <div className="section__content roadmap__content">
+    <section id="roadmap" className={`section ${styles.sectionRoadmap}`}>
+      <div className={`section__content ${styles.roadmapContent}`}>
         {/* Title */}
         <motion.h2
-          className="roadmap__title"
+          className={styles.roadmapTitle}
           variants={fadeUp}
           initial="hidden"
           whileInView="visible"
@@ -126,7 +121,7 @@ export default function AboutRoadmap() {
         </motion.h2>
 
         <motion.p
-          className="roadmap__subtitle"
+          className={styles.roadmapSubtitle}
           variants={fadeUp}
           initial="hidden"
           whileInView="visible"
@@ -138,7 +133,7 @@ export default function AboutRoadmap() {
 
         {/* 5 Milestone Cards Grid with Ascending Trajectory Arrow */}
         <motion.div
-          className="roadmap-trajectory-wrapper"
+          className={styles.roadmapTrajectoryWrapper}
           variants={fadeUp}
           initial="hidden"
           whileInView="visible"
@@ -146,7 +141,7 @@ export default function AboutRoadmap() {
           transition={{ duration: 0.75, delay: 0.18, ease: easeOut }}
         >
           {/* Background Ascending Arrow SVG */}
-          <div className="ascending-arrow-svg-bg" aria-hidden="true">
+          <div className={styles.ascendingArrowSvgBg} aria-hidden="true">
             <svg viewBox="0 0 1000 120" preserveAspectRatio="none" className="w-full h-full">
               <path
                 d="M 20,100 Q 250,90 500,60 T 960,15"
@@ -167,28 +162,28 @@ export default function AboutRoadmap() {
           </div>
 
           {/* 5 Cards Row */}
-          <div className="roadmap-cards-grid">
+          <div className={styles.roadmapCardsGrid}>
             {roadmapNodes.map((node, index) => (
               <div
                 key={node.year}
-                className={`roadmap-node-card-wrap node-idx-${index}`}
+                className={styles.roadmapNodeCardWrap}
                 onMouseEnter={() => setActiveHoverNode(index)}
                 onMouseLeave={() => setActiveHoverNode(null)}
               >
                 <Card3DTilt
-                  className="roadmap-node-card"
+                  className={styles.roadmapNodeCard}
                   maxTilt={8}
                   scale={1.03}
                   glareColor="rgba(56, 207, 200, 0.35)"
                   glareOpacity={0.35}
                 >
-                  <div className="card-top-year">
-                    <span className="year-number">{node.year}</span>
-                    <div className="icon-badge-box">{node.iconSvg}</div>
+                  <div className={styles.cardTopYear}>
+                    <span className={styles.yearNumber}>{node.year}</span>
+                    <div className={styles.iconBadgeBox}>{node.iconSvg}</div>
                   </div>
 
-                  <h3 className="card-node-title">{node.title}</h3>
-                  <p className="card-node-desc">{node.desc}</p>
+                  <h3 className={styles.cardNodeTitle}>{node.title}</h3>
+                  <p className={styles.cardNodeDesc}>{node.desc}</p>
                 </Card3DTilt>
               </div>
             ))}

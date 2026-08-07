@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useRef, useEffect } from "react";
-import "@/scss/footer-cta.scss";
+import styles from "./FooterCtaSection.module.scss";
 import { motion, AnimatePresence, useReducedMotion } from "motion/react";
 import { useRouter } from "next/navigation";
 
@@ -45,11 +45,11 @@ export default function FooterCtaSection() {
 
   return (
     <>
-      <section className="section--footer-cta" id="build-next">
+      <section className={styles.sectionFooterCta} id="build-next">
         {/* Background Video */}
         <video
           ref={bgVideoRef}
-          className="fcta-bg-video"
+          className={styles.fctaBgVideo}
           autoPlay
           loop
           muted
@@ -61,44 +61,44 @@ export default function FooterCtaSection() {
         </video>
 
         {/* Dark Gradient Overlay */}
-        <div className="fcta-bg-overlay" aria-hidden="true" />
+        <div className={styles.fctaBgOverlay} aria-hidden="true" />
 
         {/* Radiant Background Layer */}
-        <div className="fcta-bg" aria-hidden="true">
+        <div className={styles.fctaBg} aria-hidden="true">
           {/* Concentric Halo Circles */}
-          <div className="fcta-halo-circle fcta-halo-circle--1" />
-          <div className="fcta-halo-circle fcta-halo-circle--2" />
-          <div className="fcta-halo-circle fcta-halo-circle--3" />
+          <div className={`${styles.fctaHaloCircle} ${styles.fctaHaloCircle1}`} />
+          <div className={`${styles.fctaHaloCircle} ${styles.fctaHaloCircle2}`} />
+          <div className={`${styles.fctaHaloCircle} ${styles.fctaHaloCircle3}`} />
 
           {/* Dynamic Light Waves */}
-          <div className="fcta-wave-left" />
-          <div className="fcta-wave-right" />
+          <div className={styles.fctaWaveLeft} />
+          <div className={styles.fctaWaveRight} />
 
           {/* Perspective Ground Grid Lines */}
-          <div className="fcta-ground-grid" />
+          <div className={styles.fctaGroundGrid} />
 
           {/* Glowing Doorway Portal at bottom center */}
-          <div className="fcta-portal-door">
-            <div className="door-frame" />
-            <div className="door-light-beam" />
+          <div className={styles.fctaPortalDoor}>
+            <div className={styles.doorFrame} />
+            <div className={styles.doorLightBeam} />
           </div>
         </div>
 
-        <div className="fcta-content">
+        <div className={styles.fctaContent}>
           {/* Top Tag Badge */}
           <div
-            className="fcta-badge-wrapper"
+            className={styles.fctaBadgeWrapper}
             data-aos="fade-down"
             data-aos-duration="600"
           >
-            <div className="fcta-badge-dash" />
-            <span className="fcta-badge-text">LET&apos;S BUILD THE NEXT</span>
-            <div className="fcta-badge-dash" />
+            <div className={styles.fctaBadgeDash} />
+            <span className={styles.fctaBadgeText}>LET&apos;S BUILD THE NEXT</span>
+            <div className={styles.fctaBadgeDash} />
           </div>
 
           {/* Title */}
           <h2
-            className="fcta-title"
+            className={styles.fctaTitle}
             data-aos="fade-up"
             data-aos-delay="150"
             data-aos-duration="800"
@@ -109,7 +109,7 @@ export default function FooterCtaSection() {
 
           {/* Sub-description */}
           <p
-            className="fcta-desc"
+            className={styles.fctaDesc}
             data-aos="fade-up"
             data-aos-delay="300"
             data-aos-duration="800"
@@ -121,76 +121,76 @@ export default function FooterCtaSection() {
 
           {/* Action Button */}
           <div
-            className="fcta-action"
+            className={styles.fctaAction}
             data-aos="zoom-in"
             data-aos-delay="450"
             data-aos-duration="700"
           >
-            <button onClick={handleStartProject} className="fcta-btn">
+            <button onClick={handleStartProject} className={styles.fctaBtn}>
               <span>BẮT ĐẦU DỰ ÁN</span>
-              <span className="fcta-btn-arrow">→</span>
+              <span className={styles.fctaBtnArrow}>→</span>
             </button>
           </div>
 
-          {/* 3 Pillars List (Lắng nghe thấu hiểu | Phân tích chiến lược | Kiến tạo giải pháp) */}
+          {/* 3 Pillars List */}
           <div
-            className="fcta-pillars"
+            className={styles.fctaPillars}
             data-aos="fade-up"
             data-aos-delay="600"
             data-aos-duration="900"
           >
-            <div className="fcta-pillar">
-              <span className="pillar-icon">
+            <div className={styles.fctaPillar}>
+              <span className={styles.pillarIcon}>
                 <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
                 </svg>
               </span>
-              <div className="pillar-text">
-                <span className="pillar-title">Lắng nghe</span>
-                <span className="pillar-subtitle">thấu hiểu</span>
+              <div className={styles.pillarText}>
+                <span className={styles.pillarTitle}>Lắng nghe</span>
+                <span className={styles.pillarSubtitle}>thấu hiểu</span>
               </div>
             </div>
 
-            <div className="fcta-divider" />
+            <div className={styles.fctaDivider} />
 
-            <div className="fcta-pillar">
-              <span className="pillar-icon">
+            <div className={styles.fctaPillar}>
+              <span className={styles.pillarIcon}>
                 <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M9 18h6" />
                   <path d="M10 22h4" />
                   <path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0 0 18 8 6 6 0 0 0 6 8c0 1.55.59 2.94 1.5 4 .76.76 1.23 1.52 1.41 2.5" />
                 </svg>
               </span>
-              <div className="pillar-text">
-                <span className="pillar-title">Phân tích</span>
-                <span className="pillar-subtitle">chiến lược</span>
+              <div className={styles.pillarText}>
+                <span className={styles.pillarTitle}>Phân tích</span>
+                <span className={styles.pillarSubtitle}>chiến lược</span>
               </div>
             </div>
 
-            <div className="fcta-divider" />
+            <div className={styles.fctaDivider} />
 
-            <div className="fcta-pillar">
-              <span className="pillar-icon">
+            <div className={styles.fctaPillar}>
+              <span className={styles.pillarIcon}>
                 <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
                   <circle cx="12" cy="12" r="10" />
                   <circle cx="12" cy="12" r="6" />
                   <circle cx="12" cy="12" r="2" />
                 </svg>
               </span>
-              <div className="pillar-text">
-                <span className="pillar-title">Kiến tạo</span>
-                <span className="pillar-subtitle">giải pháp</span>
+              <div className={styles.pillarText}>
+                <span className={styles.pillarTitle}>Kiến tạo</span>
+                <span className={styles.pillarSubtitle}>giải pháp</span>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Cinematic Portal Video Modal Overlay with Smooth AnimatePresence */}
+      {/* Cinematic Portal Video Modal Overlay */}
       <AnimatePresence>
         {isPlayingVideo && (
           <motion.div
-            className="fcta-video-overlay"
+            className={styles.fctaVideoOverlay}
             initial={{ opacity: 0, scale: 0.98 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.98 }}
@@ -199,14 +199,14 @@ export default function FooterCtaSection() {
             <video
               ref={videoRef}
               src="/kling_20260805_VIDEO_L_m_chuy_n_5195_0.mp4"
-              className="fcta-video-player"
+              className={styles.fctaVideoPlayer}
               autoPlay
               playsInline
               preload="auto"
               onEnded={handleTransitionToContact}
               onError={handleTransitionToContact}
             />
-            <button onClick={handleTransitionToContact} className="fcta-skip-btn">
+            <button onClick={handleTransitionToContact} className={styles.fctaSkipBtn}>
               <span>Bỏ qua</span>
               <span>→</span>
             </button>

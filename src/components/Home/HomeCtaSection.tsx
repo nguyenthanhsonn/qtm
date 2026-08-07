@@ -1,6 +1,6 @@
 "use client";
 
-import "@/scss/home-cta.scss";
+import styles from "./HomeCtaSection.module.scss";
 import { CoreValue } from "@/types/home";
 import { motion, useReducedMotion } from "motion/react";
 import ParticleField from "@/components/TechBackground/ParticleField";
@@ -54,24 +54,12 @@ const coreValues: CoreValue[] = [
   },
   {
     title: "MINDSET",
-    subtitle: "TƯ DUY TẠO NÊN SỰ KHÁC BIỆT",
+    subtitle: "TƯ DUY & VĂN HÓA ĐỒNG HÀNH",
     items: [
-      {
-        head: "Tư duy chiến lược",
-        desc: "Nhìn xa, hiểu sâu và xây dựng giải pháp dựa trên mục tiêu kinh doanh.",
-      },
-      {
-        head: "Sáng tạo không ngừng",
-        desc: "Khuyến khích ý tưởng mới và dám khác biệt để tạo ra giá trị vượt trội.",
-      },
-      {
-        head: "Học hỏi liên tục",
-        desc: "Không ngừng học hỏi để thích ứng và phát triển mỗi ngày.",
-      },
-      {
-        head: "Đồng hành dài hạn",
-        desc: "Xây dựng mối quan hệ bền vững, cùng nhau phát triển và tạo giá trị lâu dài.",
-      },
+      { head: "Tư duy đối tác (Partner Mindset)", desc: "Xem sự thành công của khách hàng là thước đo giá trị của QTM." },
+      { head: "Tinh gọn & Linh hoạt (Agile & Lean)", desc: "Tối ưu nguồn lực, phản ứng nhanh với biến động thị trường." },
+      { head: "Minh bạch & Tin cậy (Transparency & Trust)", desc: "Rõ ràng trong chi phí, quy trình và báo cáo hiệu quả." },
+      { head: "Hướng tới giá trị bền vững", desc: "Xây dựng nền tảng truyền thông dài hạn thay vì các chiến dịch ngắn hạn." },
     ],
   },
 ];
@@ -87,27 +75,25 @@ export default function HomeCtaSection() {
     : { hidden: { opacity: 0, y: 32 }, visible: { opacity: 1, y: 0 } };
 
   return (
-    <section id="values" className="section section--home-cta">
+    <section id="values" className={`section ${styles.sectionHomeCta}`}>
       {/* Redesigned Premium Background Grid */}
       <CtaGridBackground />
 
       {/* Interactive Data Particles */}
       <ParticleField />
 
-
-
-      <div className="section__content home-cta__content">
+      <div className={`section__content ${styles.homeCtaContent}`}>
 
         {/* Title & Desc */}
         <h2
-          className="home-cta__title"
+          className={styles.homeCtaTitle}
           data-aos="zoom-in"
         >
-          GIÁ TRỊ <span className="title-highlight">CỐT LÕI</span>
+          GIÁ <span className={styles.techBoxHighlight}>TRỊ</span> <span className={styles.textNavy}>CỐT</span> <span className={styles.titleHighlight}>LÕI</span>
         </h2>
 
         <motion.p
-          className="home-cta__desc"
+          className={styles.homeCtaDesc}
           variants={fadeUp}
           initial="hidden"
           whileInView="visible"
@@ -117,9 +103,9 @@ export default function HomeCtaSection() {
           Những giá trị cốt lõi là kim chỉ nam cho mọi hành động của QTM, tạo nên sự khác biệt và giá trị bền vững cho khách hàng.
         </motion.p>
 
-        {/* 3 HUD Cards with User's Exact HTML/CSS Structure */}
+        {/* 3 HUD Cards */}
         <motion.div
-          className="home-cta__values-grid"
+          className={styles.homeCtaValuesGrid}
           variants={{
             hidden: {},
             visible: {
@@ -138,22 +124,20 @@ export default function HomeCtaSection() {
               className="h-full"
             >
               <Card3DTilt
-                className="hud-card h-full"
+                className={`${styles.hudCard} h-full`}
                 maxTilt={14}
                 scale={1.035}
                 glareColor="rgba(56, 207, 200, 0.35)"
                 glareOpacity={0.45}
               >
-
-
                 {/* Nội dung Card */}
-                <div className="hud-title">
+                <div className={styles.hudTitle}>
                   <span>{val.title}</span>
-                  <span className="hud-sub-label">{val.subtitle}</span>
+                  <span className={styles.hudSubLabel}>{val.subtitle}</span>
                 </div>
 
-                <div className="hud-content">
-                  <ul className="card-list">
+                <div className={styles.hudContent}>
+                  <ul className={styles.cardList}>
                     {val.items.map((item, itemIdx) => (
                       <li
                         key={item.head}
@@ -161,10 +145,10 @@ export default function HomeCtaSection() {
                         data-aos-delay={(colIdx + itemIdx) * 100 + 100}
                         data-aos-duration="600"
                       >
-                        <span className="item-head">
-                          <span className="scifi-bullet-dot" /> {item.head}:
+                        <span className={styles.itemHead}>
+                          <span className={styles.scifiBulletDot} /> {item.head}:
                         </span>
-                        <span className="item-desc">{item.desc}</span>
+                        <span className={styles.itemDesc}>{item.desc}</span>
                       </li>
                     ))}
                   </ul>
@@ -176,7 +160,7 @@ export default function HomeCtaSection() {
 
         {/* Redesigned Striking Tech Quote Card Block */}
         <motion.div
-          className="home-cta__quote-card"
+          className={styles.homeCtaQuoteCard}
           variants={fadeUp}
           initial="hidden"
           whileInView="visible"
@@ -184,37 +168,37 @@ export default function HomeCtaSection() {
           transition={{ duration: 0.75, delay: 0.2, ease: easeOut }}
         >
           {/* Tech Corner Accent Marks */}
-          <div className="corner-mark top-left" aria-hidden="true" />
-          <div className="corner-mark top-right" aria-hidden="true" />
-          <div className="corner-mark bottom-left" aria-hidden="true" />
-          <div className="corner-mark bottom-right" aria-hidden="true" />
+          <div className={`${styles.cornerMark} ${styles.topLeft}`} aria-hidden="true" />
+          <div className={`${styles.cornerMark} ${styles.topRight}`} aria-hidden="true" />
+          <div className={`${styles.cornerMark} ${styles.bottomLeft}`} aria-hidden="true" />
+          <div className={`${styles.cornerMark} ${styles.bottomRight}`} aria-hidden="true" />
 
           {/* Brand Manifesto Tag & Icon */}
-          <div className="quote-brand-header">
-            <span className="quote-brand-icon">
+          <div className={styles.quoteBrandHeader}>
+            <span className={styles.quoteBrandIcon}>
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2095AD" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M12 2L2 7l10 5 10-5-10-5z" />
                 <path d="M2 17l10 5 10-5" />
                 <path d="M2 12l10 5 10-5" />
               </svg>
             </span>
-            <span className="quote-brand-tag">TUYÊN NGÔN THƯƠNG HIỆU</span>
+            <span className={styles.quoteBrandTag}>TUYÊN NGÔN THƯƠNG HIỆU</span>
           </div>
 
           {/* Top Accent Line */}
-          <div className="quote-divider" aria-hidden="true" />
+          <div className={styles.quoteDivider} aria-hidden="true" />
 
           {/* Quote Text Container with Watermark */}
-          <div className="quote-text-container">
-            <span className="quote-watermark-mark" aria-hidden="true">&ldquo;</span>
+          <div className={styles.quoteTextContainer}>
+            <span className={styles.quoteWatermarkMark} aria-hidden="true">&ldquo;</span>
 
-            <p className="quote-text">
-              &ldquo;Ba giá trị cốt lõi kết hợp tạo nên <span className="quote-accent">DNA QTM</span>, là nền tảng cho mọi giải pháp và cam kết đồng hành cùng doanh nghiệp trên hành trình <span className="quote-accent">tăng trưởng bền vững</span>.&rdquo;
+            <p className={styles.quoteText}>
+              &ldquo;Ba giá trị cốt lõi kết hợp tạo nên <span className={styles.quoteAccent}>DNA QTM</span>, là nền tảng cho mọi giải pháp và cam kết đồng hành cùng doanh nghiệp trên hành trình <span className={styles.quoteAccent}>tăng trưởng bền vững</span>.&rdquo;
             </p>
           </div>
 
           {/* Bottom Accent Line */}
-          <div className="quote-divider" aria-hidden="true" />
+          <div className={styles.quoteDivider} aria-hidden="true" />
         </motion.div>
 
       </div>

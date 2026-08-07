@@ -1,6 +1,6 @@
-@use 'variables' as *;
+@use '@/scss/global/variables' as *;
 
-.section.section--home-ecosystem {
+.sectionHomeEcosystem {
   position: relative;
   min-height: auto;
   text-align: center;
@@ -14,8 +14,7 @@
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
 }
 
-// Technical Cyber Matrix Grid
-.home-ecosystem__bg {
+.homeEcosystemBg {
   position: absolute;
   inset: 0;
   pointer-events: none;
@@ -38,18 +37,18 @@
   }
 }
 
-.home-ecosystem__content {
+.homeEcosystemContent {
   position: relative;
   z-index: 1;
   max-width: 1400px;
   margin: 0 auto;
 }
 
-.home-ecosystem__header {
+.homeEcosystemHeader {
   margin-bottom: clamp(2rem, 4vh, 3rem);
 }
 
-.home-ecosystem__lead {
+.homeEcosystemLead {
   margin: 0 0 0.75rem;
   font-family: var(--font-heading);
   font-size: clamp(1rem, 2vw, 1.25rem);
@@ -65,7 +64,7 @@
   }
 }
 
-.home-ecosystem__title {
+.homeEcosystemTitle {
   margin: 0;
   font-size: clamp(2rem, 4vw, 3.2rem);
   font-weight: 800;
@@ -74,7 +73,7 @@
   color: #ffffff;
 }
 
-.home-ecosystem__title-gradient {
+.homeEcosystemTitleGradient {
   background: linear-gradient(90deg, #00D4FF 0%, #4FD1E8 40%, #7C4DFF 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -82,16 +81,16 @@
   text-shadow: 0 0 30px rgba(79, 209, 232, 0.3);
 }
 
-.home-ecosystem__title-dot {
+.homeEcosystemTitleDot {
   color: #00D4FF;
 }
 
 @media (max-width: 560px) {
-  .home-ecosystem__lead {
+  .homeEcosystemLead {
     font-size: 0.9rem;
   }
 
-  .home-ecosystem__title {
+  .homeEcosystemTitle {
     font-size: clamp(1.5rem, 6.5vw, 2.1rem);
   }
 }

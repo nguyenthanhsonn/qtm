@@ -1,26 +1,21 @@
-@use 'variables' as *;
+@use '@/scss/global/variables' as *;
 
-// ════════════════════════════════════════════════════════════
-// CONTACT — visual only (layout → Tailwind in TSX)
-// ════════════════════════════════════════════════════════════
-
-// Detail text styles
-.contact-detail__label {
+.contactDetailLabel {
   font-size: 11px;
   font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: $text-dim;
 }
-.contact-detail__value {
+
+.contactDetailValue {
   font-size: 15px;
   color: $text-white;
   font-weight: 500;
   margin-top: 2px;
 }
 
-// Form container visual
-.contact__form {
+.contactForm {
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
@@ -40,7 +35,7 @@
   }
 }
 
-.contact__success {
+.contactSuccess {
   padding: 12px 16px;
   border-radius: 10px;
   background: rgba($cyan, 0.1);
@@ -50,8 +45,7 @@
   font-weight: 500;
 }
 
-// Form field visual
-.form-label {
+.formLabel {
   font-size: 12px;
   font-weight: 600;
   letter-spacing: 0.08em;
@@ -59,7 +53,7 @@
   color: $text-muted;
 }
 
-.form-input {
+.formInput {
   background: rgba(255,255,255,0.04);
   border: 1px solid rgba(255,255,255,0.1);
   border-radius: 10px;
@@ -78,4 +72,4 @@
   }
 }
 
-.form-textarea { resize: vertical; min-height: 120px; }
+.formTextarea { resize: vertical; min-height: 120px; }

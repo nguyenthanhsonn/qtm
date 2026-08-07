@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
+import styles from "./SolutionPainPoints.module.scss";
 import { motion, useReducedMotion } from "motion/react";
 import ParticleField from "@/components/TechBackground/ParticleField";
 
@@ -95,16 +96,16 @@ export default function SolutionPainPoints() {
     : { hidden: { opacity: 0, y: 32 }, visible: { opacity: 1, y: 0 } };
 
   return (
-    <section id="pain-points" className="section section--sol-pain">
+    <section id="pain-points" className={`section ${styles.sectionSolPain}`}>
       {/* Background Overlay & Network Pattern */}
-      <div className="sol-pain__bg-overlay" aria-hidden="true" />
-      <div className="sol-pain__bg-grid" aria-hidden="true" />
+      <div className={styles.solPainBgOverlay} aria-hidden="true" />
+      <div className={styles.solPainBgGrid} aria-hidden="true" />
       <ParticleField />
 
-      <div className="section__content sol-pain__content">
+      <div className={`section__content ${styles.solPainContent}`}>
         {/* Title */}
         <motion.h2
-          className="sol-pain__title"
+          className={styles.solPainTitle}
           variants={fadeUp}
           initial="hidden"
           whileInView="visible"
@@ -115,7 +116,7 @@ export default function SolutionPainPoints() {
         </motion.h2>
 
         <motion.p
-          className="sol-pain__subtitle"
+          className={styles.solPainSubtitle}
           variants={fadeUp}
           initial="hidden"
           whileInView="visible"
@@ -127,7 +128,7 @@ export default function SolutionPainPoints() {
 
         {/* ── 5 PAIN POINTS COVERFLOW CAROUSEL ── */}
         <motion.div
-          className="sol-pain-carousel-wrapper"
+          className={styles.solPainCarouselWrapper}
           variants={fadeUp}
           initial="hidden"
           whileInView="visible"
@@ -138,7 +139,7 @@ export default function SolutionPainPoints() {
           onTouchStart={handleTouchStart}
           onTouchEnd={handleTouchEnd}
         >
-          <div className="pain-carousel-track">
+          <div className={styles.painCarouselTrack}>
             {painPoints.map((item, index) => {
               let offset = index - activeIndex;
               const half = Math.floor(painPoints.length / 2);
@@ -159,7 +160,7 @@ export default function SolutionPainPoints() {
                 <div
                   key={item.id}
                   onClick={() => setActiveIndex(index)}
-                  className={`pain-card ${isCenter ? "is-active" : ""}`}
+                  className={`${styles.painCard}${isCenter ? ` ${styles.isActive}` : ""}`}
                   style={{
                     transform: `translate(calc(-50% + ${translateX}px), -50%) scale(${scale})`,
                     zIndex,
@@ -167,33 +168,33 @@ export default function SolutionPainPoints() {
                     filter: `blur(${blur}px)`,
                   }}
                 >
-                  <div className="card-top-tag">{item.code}</div>
-                  <div className="card-icon">{item.icon}</div>
-                  <h3 className="card-title">{item.title}</h3>
-                  <p className="card-desc">{item.desc}</p>
+                  <div className={styles.cardTopTag}>{item.code}</div>
+                  <div className={styles.cardIcon}>{item.icon}</div>
+                  <h3 className={styles.cardTitle}>{item.title}</h3>
+                  <p className={styles.cardDesc}>{item.desc}</p>
                 </div>
               );
             })}
           </div>
 
           {/* Carousel Controls */}
-          <div className="pain-carousel-controls">
+          <div className={styles.painCarouselControls}>
             <button
               type="button"
               onClick={handlePrev}
-              className="pain-nav-btn pain-nav-btn--prev"
+              className={styles.painNavBtn}
               aria-label="Rào cản trước"
             >
               ‹
             </button>
 
-            <div className="pain-dots">
+            <div className={styles.painDots}>
               {painPoints.map((item, idx) => (
                 <button
                   key={item.id}
                   type="button"
                   onClick={() => setActiveIndex(idx)}
-                  className={`pain-dot ${idx === activeIndex ? "active" : ""}`}
+                  className={`${styles.painDot}${idx === activeIndex ? ` ${styles.active}` : ""}`}
                   aria-label={`Chuyển đến rào cản ${idx + 1}`}
                 />
               ))}
@@ -202,7 +203,7 @@ export default function SolutionPainPoints() {
             <button
               type="button"
               onClick={handleNext}
-              className="pain-nav-btn pain-nav-btn--next"
+              className={styles.painNavBtn}
               aria-label="Rào cản tiếp theo"
             >
               ›
@@ -210,32 +211,32 @@ export default function SolutionPainPoints() {
           </div>
         </motion.div>
 
-        {/* ── STAT-BAR NGANG (Dark Glass + Aqua Mint numbers) ── */}
+        {/* ── STAT-BAR NGANG ── */}
         <motion.div
-          className="sol-pain-stat-bar"
+          className={styles.solPainStatBar}
           variants={fadeUp}
           initial="hidden"
           whileInView="visible"
           viewport={viewport}
           transition={{ duration: 0.75, delay: 0.25, ease: easeOut }}
         >
-          <div className="stat-item">
-            <span className="stat-number">23%</span>
-            <span className="stat-label">Chỉ 23% khách hàng nhớ thương hiệu sau sự kiện đơn lẻ</span>
+          <div className={styles.statItem}>
+            <span className={styles.statNumber}>23%</span>
+            <span className={styles.statLabel}>Chỉ 23% khách hàng nhớ thương hiệu sau sự kiện đơn lẻ</span>
           </div>
 
-          <div className="stat-divider" />
+          <div className={styles.statDivider} />
 
-          <div className="stat-item">
-            <span className="stat-number">85%</span>
-            <span className="stat-label">85% ngân sách lãng phí nếu thiếu hệ thống đo lường real-time</span>
+          <div className={styles.statItem}>
+            <span className={styles.statNumber}>85%</span>
+            <span className={styles.statLabel}>85% ngân sách lãng phí nếu thiếu hệ thống đo lường real-time</span>
           </div>
 
-          <div className="stat-divider" />
+          <div className={styles.statDivider} />
 
-          <div className="stat-item">
-            <span className="stat-number">68%</span>
-            <span className="stat-label">68% thương hiệu gặp khó khăn trong kết nối trải nghiệm đa kênh</span>
+          <div className={styles.statItem}>
+            <span className={styles.statNumber}>68%</span>
+            <span className={styles.statLabel}>68% thương hiệu gặp khó khăn trong kết nối trải nghiệm đa kênh</span>
           </div>
         </motion.div>
       </div>

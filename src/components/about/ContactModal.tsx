@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import Card3DTilt from "@/components/Card3DTilt";
+import styles from "./ContactModal.module.scss";
 
 interface ContactModalProps {
   isOpen: boolean;
@@ -38,9 +39,9 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
   return (
     <AnimatePresence>
       {isOpen && (
-        <div className="contact-modal-backdrop" onClick={onClose} role="dialog" aria-modal="true">
+        <div className={styles.contactModalBackdrop} onClick={onClose} role="dialog" aria-modal="true">
           <motion.div
-            className="contact-modal-container"
+            className={styles.contactModalContainer}
             onClick={(e) => e.stopPropagation()}
             initial={{ opacity: 0, scale: 0.92, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -48,7 +49,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
             transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
           >
             <Card3DTilt
-              className="dark-glass-modal"
+              className={styles.darkGlassModal}
               maxTilt={4}
               scale={1}
               glareColor="rgba(56, 207, 200, 0.3)"
@@ -56,7 +57,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
             >
               {/* Close Button */}
               <button
-                className="modal-close-btn"
+                className={styles.modalCloseBtn}
                 onClick={onClose}
                 aria-label="Đóng modal liên hệ"
               >
@@ -64,46 +65,46 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
               </button>
 
               {/* HUD Header */}
-              <div className="modal-hud-header">
-                <span className="hud-tag">// QTM_CONTACT_GATEWAY</span>
-                <h3 className="modal-title">
-                  LIÊN HỆ VỚI <span className="gradient-teal-mint">QTM MEDIA</span>
+              <div className={styles.modalHudHeader}>
+                <span className={styles.hudTag}>// QTM_CONTACT_GATEWAY</span>
+                <h3 className={styles.modalTitle}>
+                  LIÊN HỆ VỚI <span className={styles.gradientTealMint}>QTM MEDIA</span>
                 </h3>
-                <p className="modal-desc">
+                <p className={styles.modalDesc}>
                   Để lại thông tin để nhận tư vấn giải pháp truyền thông công nghệ riêng cho doanh nghiệp của bạn.
                 </p>
               </div>
 
               {/* Contact Information Bar */}
-              <div className="modal-info-bar">
-                <div className="info-item">
-                  <span className="info-icon">📧</span>
-                  <div className="info-text">
-                    <span className="info-label">Email:</span>
-                    <a href="mailto:contact@qtm.vn" className="info-val">contact@qtm.vn</a>
+              <div className={styles.modalInfoBar}>
+                <div className={styles.infoItem}>
+                  <span className={styles.infoIcon}>📧</span>
+                  <div className={styles.infoText}>
+                    <span className={styles.infoLabel}>Email:</span>
+                    <a href="mailto:contact@qtm.vn" className={styles.infoVal}>contact@qtm.vn</a>
                   </div>
                 </div>
-                <div className="info-item">
-                  <span className="info-icon">📞</span>
-                  <div className="info-text">
-                    <span className="info-label">Hotline:</span>
-                    <a href="tel:02439998888" className="info-val">024.3999.8888</a>
+                <div className={styles.infoItem}>
+                  <span className={styles.infoIcon}>📞</span>
+                  <div className={styles.infoText}>
+                    <span className={styles.infoLabel}>Hotline:</span>
+                    <a href="tel:02439998888" className={styles.infoVal}>024.3999.8888</a>
                   </div>
                 </div>
-                <div className="info-item">
-                  <span className="info-icon">📍</span>
-                  <div className="info-text">
-                    <span className="info-label">Địa chỉ:</span>
-                    <span className="info-val">Tầng 12, QTM Building, Hà Nội &amp; TP.HCM</span>
+                <div className={styles.infoItem}>
+                  <span className={styles.infoIcon}>📍</span>
+                  <div className={styles.infoText}>
+                    <span className={styles.infoLabel}>Địa chỉ:</span>
+                    <span className={styles.infoVal}>Tầng 12, QTM Building, Hà Nội &amp; TP.HCM</span>
                   </div>
                 </div>
               </div>
 
               {/* Form */}
-              <form onSubmit={handleSubmit} className="modal-form">
+              <form onSubmit={handleSubmit} className={styles.modalForm}>
                 {submitted && (
                   <motion.div
-                    className="modal-success-msg"
+                    className={styles.modalSuccessMsg}
                     initial={{ opacity: 0, y: -10 }}
                     animate={{ opacity: 1, y: 0 }}
                   >
@@ -111,8 +112,8 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                   </motion.div>
                 )}
 
-                <div className="form-grid">
-                  <div className="form-group">
+                <div className={styles.formGrid}>
+                  <div className={styles.formGroup}>
                     <label htmlFor="modal-name">Họ và tên *</label>
                     <input
                       id="modal-name"
@@ -124,7 +125,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                     />
                   </div>
 
-                  <div className="form-group">
+                  <div className={styles.formGroup}>
                     <label htmlFor="modal-email">Email doanh nghiệp *</label>
                     <input
                       id="modal-email"
@@ -137,7 +138,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                   </div>
                 </div>
 
-                <div className="form-group">
+                <div className={styles.formGroup}>
                   <label htmlFor="modal-phone">Số điện thoại / Zalo</label>
                   <input
                     id="modal-phone"
@@ -148,7 +149,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                   />
                 </div>
 
-                <div className="form-group">
+                <div className={styles.formGroup}>
                   <label htmlFor="modal-msg">Nội dung trao đổi *</label>
                   <textarea
                     id="modal-msg"
@@ -160,9 +161,9 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                   />
                 </div>
 
-                <button type="submit" className="modal-submit-btn">
+                <button type="submit" className={styles.modalSubmitBtn}>
                   <span>GỬI THÔNG TIN TƯ VẤN</span>
-                  <span className="arrow">→</span>
+                  <span className={styles.arrow}>→</span>
                 </button>
               </form>
             </Card3DTilt>

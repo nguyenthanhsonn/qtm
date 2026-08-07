@@ -1,0 +1,155 @@
+@use '@/scss/global/variables' as *;
+
+.sectionRoadmap {
+  position: relative;
+  background: transparent;
+  padding: clamp(5.5rem, 10vh, 8rem) clamp(1.2rem, 5vw, 4rem);
+  overflow: hidden;
+  color: #FFFFFF;
+}
+
+.roadmapBgOverlay,
+.roadmapBgGrid {
+  display: none;
+}
+
+.roadmapContent {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: clamp(1.5rem, 3vh, 2.2rem);
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.roadmapTitle {
+  font-size: clamp(2.4rem, 4.5vw, 3.8rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: #FFFFFF;
+  margin: 0;
+}
+
+.roadmapSubtitle {
+  font-size: clamp(1rem, 1.4vw, 1.15rem);
+  color: #CBD5E1;
+  max-width: 720px;
+  margin: 0;
+  line-height: 1.65;
+}
+
+.roadmapTrajectoryWrapper {
+  position: relative;
+  width: 100%;
+  margin-top: 1.5rem;
+
+  .ascendingArrowSvgBg {
+    position: absolute;
+    top: -20px;
+    left: 0;
+    right: 0;
+    height: 120px;
+    z-index: 1;
+
+    @media (max-width: 900px) {
+      display: none;
+    }
+  }
+}
+
+.roadmapCardsGrid {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  align-items: stretch;
+  gap: 1rem;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 36px;
+    left: 6%;
+    right: 6%;
+    height: 2px;
+    border-top: 2px dashed rgba(79, 209, 232, 0.45);
+    z-index: 0;
+    pointer-events: none;
+
+    @media (max-width: 1024px) {
+      display: none;
+    }
+  }
+
+  @media (max-width: 1024px) {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+  }
+
+  @media (max-width: 640px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.roadmapNodeCardWrap {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.roadmapNodeCard {
+  position: relative;
+  height: 100%;
+  padding: 1.4rem;
+  border-radius: 16px;
+  background: rgba(15, 27, 61, 0.65);
+  border: 1.5px solid rgba(79, 209, 232, 0.3);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 0.75rem;
+
+  .cardTopYear {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .yearNumber {
+      font-family: var(--font-heading);
+      font-size: 1.6rem;
+      font-weight: 900;
+      color: #38CFC8;
+    }
+
+    .iconBadgeBox {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: rgba(56, 207, 200, 0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
+  .cardNodeTitle {
+    font-size: 0.95rem;
+    font-weight: 800;
+    color: #FFFFFF;
+    margin: 0;
+    line-height: 1.4;
+  }
+
+  .cardNodeDesc {
+    font-size: 0.825rem;
+    line-height: 1.6;
+    color: #CBD5E1;
+    margin: 0;
+  }
+}

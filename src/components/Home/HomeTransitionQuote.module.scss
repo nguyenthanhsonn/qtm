@@ -1,0 +1,127 @@
+@use '@/scss/global/variables' as *;
+
+.homeQuoteFloatingWrapper {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, 50%);
+  width: 90%;
+  max-width: 920px;
+  z-index: 100;
+  pointer-events: auto;
+}
+
+.homeQuoteCard {
+  position: relative;
+  background: rgba(5, 12, 26, 0.94);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(56, 207, 200, 0.35);
+  border-radius: 16px;
+  padding: 2.2rem 3rem;
+  box-shadow:
+    0 20px 50px rgba(0, 0, 0, 0.5),
+    0 0 30px rgba(56, 207, 200, 0.15),
+    inset 0 0 20px rgba(56, 207, 200, 0.08);
+  text-align: center;
+  overflow: hidden;
+
+  .quoteCorner {
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    border: 2px solid #38CFC8;
+    transition: all 0.3s ease;
+
+    &Tl {
+      top: 0;
+      left: 0;
+      border-right: none;
+      border-bottom: none;
+      border-top-left-radius: 16px;
+    }
+
+    &Tr {
+      top: 0;
+      right: 0;
+      border-left: none;
+      border-bottom: none;
+      border-top-right-radius: 16px;
+    }
+
+    &Bl {
+      bottom: 0;
+      left: 0;
+      border-right: none;
+      border-top: none;
+      border-bottom-left-radius: 16px;
+    }
+
+    &Br {
+      bottom: 0;
+      right: 0;
+      border-left: none;
+      border-top: none;
+      border-bottom-right-radius: 16px;
+    }
+  }
+
+  .quoteHudAccent {
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 30px;
+    height: 4px;
+    background: linear-gradient(90deg, transparent, #38CFC8, transparent);
+    opacity: 0.7;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: -3px;
+      left: 13px;
+      width: 4px;
+      height: 4px;
+      background-color: #38CFC8;
+      border-radius: 50%;
+      box-shadow: 0 0 8px #38CFC8;
+    }
+  }
+
+  .quoteCardText {
+    font-size: clamp(15px, 1.7vw, 20px);
+    color: #e2e8f0;
+    line-height: 1.8;
+    font-weight: 300;
+    margin: 0;
+    font-style: italic;
+
+    .highlight {
+      color: #38CFC8;
+      font-weight: 600;
+      font-style: normal;
+      text-shadow: 0 0 10px rgba(56, 207, 200, 0.15);
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .homeQuoteFloatingWrapper {
+    width: 94%;
+  }
+
+  .homeQuoteCard {
+    padding: 1.5rem 1.5rem;
+
+    .quoteCardText {
+      font-size: 0.925rem;
+      line-height: 1.6;
+    }
+
+    .quoteCorner {
+      width: 12px;
+      height: 12px;
+    }
+  }
+}

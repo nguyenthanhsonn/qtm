@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useRef } from "react";
+import styles from "./SolutionFeaturedProjects.module.scss";
 import {
   motion,
   useScroll,
@@ -29,7 +30,7 @@ const featuredProjects: FeaturedProject[] = [
     client: "Viettel Group",
     desc: "Tổ chức hội nghị thượng đỉnh toàn quốc tích hợp công nghệ Check-in AI, AR/3D Spatial Audio và báo cáo sentiment real-time.",
     graphicSvg: (
-      <svg viewBox="0 0 500 320" fill="none" className="project-svg">
+      <svg viewBox="0 0 500 320" fill="none" className={styles.projectSvg}>
         <rect width="500" height="320" fill="#0B1C33" />
         <circle cx="250" cy="160" r="120" fill="url(#p1Grad)" opacity="0.35" />
         <path d="M60 280 L180 140 L320 140 L440 280 Z" fill="rgba(56, 207, 200, 0.2)" />
@@ -51,7 +52,7 @@ const featuredProjects: FeaturedProject[] = [
     client: "Honda Vietnam",
     desc: "Mạng lưới 1,000+ màn hình LED Outdoor tương tác thời gian thực tích hợp AI Camera đo lường lưu lượng giao thông & nhận diện tệp khách hàng.",
     graphicSvg: (
-      <svg viewBox="0 0 500 320" fill="none" className="project-svg">
+      <svg viewBox="0 0 500 320" fill="none" className={styles.projectSvg}>
         <rect width="500" height="320" fill="#081225" />
         <rect x="70" y="50" width="360" height="180" rx="14" fill="#050C1A" stroke="#38CFC8" strokeWidth="2.5" />
         <path d="M100 150 L200 100 L300 170 L400 90" stroke="#CC0000" strokeWidth="4.5" fill="none" />
@@ -67,7 +68,7 @@ const featuredProjects: FeaturedProject[] = [
     client: "MobiFone Telecommunication",
     desc: "Sân khấu đại nhạc hội quy mô 30,000 khán giả, hiệu ứng ánh sáng 3D Spatial Audio đỉnh cao thu hút hơn 10 triệu lượt tương tác mạng xã hội.",
     graphicSvg: (
-      <svg viewBox="0 0 500 320" fill="none" className="project-svg">
+      <svg viewBox="0 0 500 320" fill="none" className={styles.projectSvg}>
         <rect width="500" height="320" fill="#0B192C" />
         <path d="M80 0 L180 260 L320 260 L420 0 Z" fill="rgba(0, 212, 255, 0.2)" />
         <circle cx="250" cy="210" r="55" fill="#005C97" opacity="0.65" />
@@ -83,7 +84,7 @@ const featuredProjects: FeaturedProject[] = [
     client: "Đạm Cà Mau (PVCFC)",
     desc: "Chiến dịch CSR trách nhiệm xã hội sâu sắc chuẩn ESG, kiến tạo giá trị bền vững cho cộng đồng và nâng tầm hình ảnh uy tín thương hiệu.",
     graphicSvg: (
-      <svg viewBox="0 0 500 320" fill="none" className="project-svg">
+      <svg viewBox="0 0 500 320" fill="none" className={styles.projectSvg}>
         <rect width="500" height="320" fill="#050C1A" />
         <circle cx="250" cy="160" r="85" stroke="#009639" strokeWidth="2.5" strokeDasharray="6 4" />
         <path d="M250 120 C230 100 200 115 200 140 C200 170 250 195 250 195 C250 195 300 170 300 140 C300 115 270 100 250 120 Z" fill="#009639" />
@@ -96,7 +97,6 @@ const featuredProjects: FeaturedProject[] = [
 const viewport = { once: true, amount: 0.2 } as const;
 const cubicEase = [0.22, 1, 0.36, 1] as const;
 
-/** True Framer Motion Sticky Stacking Card Component */
 function ScrollStackCard({
   proj,
   index,
@@ -113,7 +113,6 @@ function ScrollStackCard({
   const cardRef = useRef<HTMLDivElement>(null);
   const [isHovered, setIsHovered] = useState(false);
 
-  // Parallax Mouse Motion Values
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
 
@@ -121,7 +120,6 @@ function ScrollStackCard({
   const imgX = useSpring(mouseX, springConfig);
   const imgY = useSpring(mouseY, springConfig);
 
-  // Dynamic Scroll Stack Scaling & Dimming as card gets covered
   const targetScale = 1 - (total - index - 1) * 0.05;
   const startProgress = index / total;
   const cardScale = useTransform(containerScrollProgress, [startProgress, 1], [1, targetScale]);
@@ -135,7 +133,6 @@ function ScrollStackCard({
     const offsetX = (e.clientX - centerX) / (rect.width / 2);
     const offsetY = (e.clientY - centerY) / (rect.height / 2);
 
-    // Mouse Parallax: Image moves up to 4px
     mouseX.set(offsetX * 4);
     mouseY.set(offsetY * 4);
   };
@@ -148,7 +145,6 @@ function ScrollStackCard({
 
   return (
     <div
-      className="sticky-card-outer-slot"
       style={{
         position: "sticky",
         top: `${100 + index * 30}px`,
@@ -158,7 +154,7 @@ function ScrollStackCard({
     >
       <motion.div
         ref={cardRef}
-        className="sticky-project-card-wrapper"
+        className={styles.stickyProjectCardWrapper}
         style={{
           scale: cardScale,
           opacity: cardOpacity,
@@ -177,11 +173,10 @@ function ScrollStackCard({
         onMouseLeave={handleMouseLeave}
         onMouseMove={handleMouseMove}
       >
-        <div className={`sticky-project-card ${isHovered ? "is-hovered" : ""}`}>
-          {/* Floating Geometric Background Shapes behind Image */}
-          <div className="card-bg-floating-shapes" aria-hidden="true">
+        <div className={`${styles.stickyProjectCard}${isHovered ? ` ${styles.isHovered}` : ""}`}>
+          <div className={styles.cardBgFloatingShapes} aria-hidden="true">
             <motion.div
-              className="floating-shape floating-shape--1"
+              className={`${styles.floatingShape} ${styles.floatingShape1}`}
               animate={{
                 y: [0, -10, 0],
                 rotate: [0, 3, -3, 0],
@@ -194,7 +189,7 @@ function ScrollStackCard({
               }}
             />
             <motion.div
-              className="floating-shape floating-shape--2"
+              className={`${styles.floatingShape} ${styles.floatingShape2}`}
               animate={{
                 y: [0, 12, 0],
                 rotate: [0, -3, 3, 0],
@@ -208,12 +203,10 @@ function ScrollStackCard({
             />
           </div>
 
-          {/* Card Content Split: Left Image Graphic + Right Info */}
-          <div className="card-inner-split">
-            {/* Image Container with Mouse Parallax & Zoom */}
-            <div className="card-image-col">
+          <div className={styles.cardInnerSplit}>
+            <div className={styles.cardImageCol}>
               <motion.div
-                className="card-image-stage"
+                className={styles.cardImageStage}
                 style={{ x: imgX, y: imgY }}
                 animate={{
                   scale: isHovered ? 1.12 : [1, 1.08, 1],
@@ -228,33 +221,29 @@ function ScrollStackCard({
               </motion.div>
             </div>
 
-            {/* Text Content Column */}
-            <div className="card-text-col">
-              {/* Micro Interaction 1: Category label fades to accent color on hover */}
-              <span className={`project-category-tag ${isHovered ? "hover-accent" : ""}`}>
+            <div className={styles.cardTextCol}>
+              <span className={`${styles.projectCategoryTag}${isHovered ? ` ${styles.hoverAccent}` : ""}`}>
                 // {proj.category}
               </span>
 
-              {/* Micro Interaction 2: Project title letter-spacing expands on hover */}
-              <h3 className={`project-card-title ${isHovered ? "hover-expanded" : ""}`}>
+              <h3 className={`${styles.projectCardTitle}${isHovered ? ` ${styles.hoverExpanded}` : ""}`}>
                 {proj.title}
               </h3>
 
-              <span className="project-client-name">Đối tác: {proj.client}</span>
+              <span className={styles.projectClientName}>Đối tác: {proj.client}</span>
 
-              <p className="project-card-desc">{proj.desc}</p>
+              <p className={styles.projectCardDesc}>{proj.desc}</p>
 
-              {/* Button Hover Animation */}
               <motion.button
                 type="button"
                 onClick={() => onOpenModal(`Tư vấn dự án tương tự: ${proj.title}`)}
-                className="project-detail-btn"
+                className={styles.projectDetailBtn}
                 whileHover={{ scale: 1.05 }}
                 transition={{ duration: 0.25 }}
               >
                 <span>Xem chi tiết</span>
                 <motion.span
-                  className="arrow"
+                  className={styles.arrow}
                   animate={{ x: isHovered ? 6 : 0 }}
                   transition={{ duration: 0.25 }}
                 >
@@ -277,7 +266,6 @@ export default function SolutionFeaturedProjects() {
     title: "",
   });
 
-  // Track scroll progress for the scroll stack container
   const { scrollYProgress } = useScroll({
     target: stackContainerRef,
     offset: ["start start", "end end"],
@@ -285,23 +273,21 @@ export default function SolutionFeaturedProjects() {
 
   return (
     <>
-      <section id="featured-projects" className="section section--sol-proj">
-        <div className="section__content sol-proj__content">
-          {/* Section Entrance 1: Tag Pill */}
+      <section id="featured-projects" className={`section ${styles.sectionSolProj}`}>
+        <div className={`section__content ${styles.solProjContent}`}>
           <motion.div
-            className="sol-proj-tag-pill"
+            className={styles.solProjTagPill}
             initial={{ opacity: 0, y: -20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={viewport}
             transition={{ duration: 0.7, delay: 0, ease: cubicEase }}
           >
-            <span className="tag-dot">•</span>
+            <span className={styles.tagDot}>•</span>
             <span>PROVEN PORTFOLIO // QTM_PROJECTS</span>
           </motion.div>
 
-          {/* Section Entrance 2: Title (fades in + 40px up, duration 0.8s, easeOut) */}
           <motion.h2
-            className="sol-proj__title"
+            className={styles.solProjTitle}
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={viewport}
@@ -310,9 +296,8 @@ export default function SolutionFeaturedProjects() {
             DỰ ÁN <span className="title-highlight-teal">TIÊU BIỂU</span>
           </motion.h2>
 
-          {/* Section Entrance 3: Subtitle (fades in after title) */}
           <motion.p
-            className="sol-proj__subtitle"
+            className={styles.solProjSubtitle}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={viewport}
@@ -321,8 +306,7 @@ export default function SolutionFeaturedProjects() {
             Những chiến dịch truyền thông công nghệ thực chiến tạo nên dấu ấn bứt phá cho các thương hiệu dẫn đầu.
           </motion.p>
 
-          {/* True Scroll Stack Cards Container */}
-          <div ref={stackContainerRef} className="sol-proj-sticky-stack-container">
+          <div ref={stackContainerRef} className={styles.solProjStickyStackContainer}>
             {featuredProjects.map((proj, index) => (
               <ScrollStackCard
                 key={proj.id}
@@ -335,9 +319,8 @@ export default function SolutionFeaturedProjects() {
             ))}
           </div>
 
-          {/* Section Entrance 4: CTA Button (fades in + 20px up, delay 0.5s) */}
           <motion.div
-            className="sol-proj-footer-action"
+            className={styles.solProjFooterAction}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={viewport}
@@ -346,10 +329,10 @@ export default function SolutionFeaturedProjects() {
             <button
               type="button"
               onClick={() => setModalState({ isOpen: true, title: "Liên hệ tư vấn tất cả dự án" })}
-              className="btn btn--outline sol-proj-all-btn"
+              className={`btn btn--outline ${styles.solProjAllBtn}`}
             >
               <span>XEM TẤT CẢ DỰ ÁN</span>
-              <span className="arrow">→</span>
+              <span className={styles.arrow}>→</span>
             </button>
           </motion.div>
         </div>

@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import styles from "./SolutionEcosystem.module.scss";
 import { motion, useReducedMotion } from "motion/react";
 import ParticleField from "@/components/TechBackground/ParticleField";
 import SolutionContactModal from "./SolutionContactModal";
@@ -15,7 +16,7 @@ type SubBlock = {
   contextTitle: string;
   imageAlt: string;
   imageGraphicSvg: React.ReactNode;
-  align: "left" | "right"; // left = image left / text right; right = text left / image right
+  align: "left" | "right";
 };
 
 const subBlocks: SubBlock[] = [
@@ -34,9 +35,8 @@ const subBlocks: SubBlock[] = [
     imageAlt: "Hội nghị hội thảo doanh nghiệp QTM",
     align: "left",
     imageGraphicSvg: (
-      <svg viewBox="0 0 400 260" fill="none" className="eco-svg">
+      <svg viewBox="0 0 400 260" fill="none" className={styles.ecoSvg}>
         <rect width="400" height="260" rx="16" fill="url(#confBg)" />
-        {/* Conference Stage & Audience Light Beam Visual */}
         <path d="M50 220 L150 100 L250 100 L350 220 Z" fill="rgba(56, 207, 200, 0.15)" />
         <circle cx="200" cy="90" r="35" fill="#38CFC8" opacity="0.8" />
         <path d="M120 180 Q200 130 280 180" stroke="#00D4FF" strokeWidth="3" fill="none" />
@@ -68,9 +68,8 @@ const subBlocks: SubBlock[] = [
     imageAlt: "Billboard outdoor media QTM",
     align: "right",
     imageGraphicSvg: (
-      <svg viewBox="0 0 400 260" fill="none" className="eco-svg">
+      <svg viewBox="0 0 400 260" fill="none" className={styles.ecoSvg}>
         <rect width="400" height="260" rx="16" fill="url(#oohBg)" />
-        {/* Billboard Structure & Traffic Line Visual */}
         <rect x="80" y="40" width="240" height="130" rx="10" fill="#050C1A" stroke="#38CFC8" strokeWidth="2" />
         <line x1="200" y1="170" x2="200" y2="240" stroke="#2095AD" strokeWidth="6" />
         <path d="M100 110 L160 80 L220 120 L300 70" stroke="#00D4FF" strokeWidth="3" fill="none" />
@@ -100,9 +99,8 @@ const subBlocks: SubBlock[] = [
     imageAlt: "Concert entertainment marketing QTM",
     align: "left",
     imageGraphicSvg: (
-      <svg viewBox="0 0 400 260" fill="none" className="eco-svg">
+      <svg viewBox="0 0 400 260" fill="none" className={styles.ecoSvg}>
         <rect width="400" height="260" rx="16" fill="url(#concertBg)" />
-        {/* Concert Stage Spotlights & Soundwaves Visual */}
         <path d="M80 0 L150 200 L250 200 L320 0 Z" fill="rgba(0, 212, 255, 0.12)" />
         <path d="M120 0 L180 200 L220 200 L280 0 Z" fill="rgba(56, 207, 200, 0.2)" />
         <circle cx="200" cy="180" r="40" fill="#38CFC8" opacity="0.3" />
@@ -132,9 +130,8 @@ const subBlocks: SubBlock[] = [
     imageAlt: "CSR community impact QTM",
     align: "right",
     imageGraphicSvg: (
-      <svg viewBox="0 0 400 260" fill="none" className="eco-svg">
+      <svg viewBox="0 0 400 260" fill="none" className={styles.ecoSvg}>
         <rect width="400" height="260" rx="16" fill="url(#csrBg)" />
-        {/* Heart/Community Globe Graphic Visual */}
         <circle cx="200" cy="130" r="60" fill="rgba(56, 207, 200, 0.1)" stroke="#38CFC8" strokeWidth="2" strokeDasharray="4 4" />
         <path d="M200 100 C180 80 150 95 150 120 C150 150 200 175 200 175 C200 175 250 150 250 120 C250 95 220 80 200 100 Z" fill="#00D4FF" opacity="0.8" />
         <text x="20" y="35" fill="#38CFC8" fontFamily="var(--font-geist-mono)" fontSize="12" fontWeight="700">// ESG_COMMUNITY_HUB</text>
@@ -169,45 +166,45 @@ export default function SolutionEcosystem() {
 
   return (
     <>
-      <section id="ecosystem" className="section section--sol-eco">
+      <section id="ecosystem" className={`section ${styles.sectionSolEco}`}>
         {/* Darkest Tech Background Overlay */}
-        <div className="sol-eco__bg-overlay" aria-hidden="true" />
-        <div className="sol-eco__bg-grid" aria-hidden="true" />
+        <div className={styles.solEcoBgOverlay} aria-hidden="true" />
+        <div className={styles.solEcoBgGrid} aria-hidden="true" />
         <ParticleField />
 
-        <div className="section__content sol-eco__content">
-          {/* Main Title with Glowing Aqua Mint Text */}
+        <div className={`section__content ${styles.solEcoContent}`}>
+          {/* Main Title */}
           <motion.div
-            className="sol-eco__header"
+            className={styles.solEcoHeader}
             variants={fadeUp}
             initial="hidden"
             whileInView="visible"
             viewport={viewport}
             transition={{ duration: 0.65, delay: 0.05, ease: easeOut }}
           >
-            <span className="sol-eco__tag-pill">// INTEGRATED SOLUTIONS ECOSYSTEM</span>
-            <h2 className="sol-eco__title">
+            <span className={styles.solEcoTagPill}>// INTEGRATED SOLUTIONS ECOSYSTEM</span>
+            <h2 className={styles.solEcoTitle}>
               HỆ SINH THÁI GIẢI PHÁP <span className="text-glow-mint">QTM</span>
             </h2>
-            <p className="sol-eco__subtitle">
+            <p className={styles.solEcoSubtitle}>
               Bộ 4 giải pháp truyền thông công nghệ toàn diện giúp doanh nghiệp bứt phá mọi mục tiêu chiến lược.
             </p>
           </motion.div>
 
           {/* Vertical Connecting Line running through all 4 Sub-blocks */}
-          <div className="eco-connecting-timeline-line" aria-hidden="true">
+          <div className={styles.ecoConnectingTimelineLine} aria-hidden="true">
             <div className="timeline-pulse-dot" />
           </div>
 
           {/* 4 Alternating Sub-Blocks */}
-          <div className="sol-eco-subblocks-container">
+          <div className={styles.solEcoSubblocksContainer}>
             {subBlocks.map((block, index) => {
               const isImageLeft = block.align === "left";
 
               return (
                 <motion.div
                   key={block.id}
-                  className={`eco-subblock-row ${isImageLeft ? "img-left" : "img-right"}`}
+                  className={`${styles.ecoSubblockRow} ${isImageLeft ? styles.imgLeft : styles.imgRight}`}
                   variants={fadeUp}
                   initial="hidden"
                   whileInView="visible"
@@ -215,23 +212,23 @@ export default function SolutionEcosystem() {
                   transition={{ duration: 0.75, delay: 0.1 + index * 0.1, ease: easeOut }}
                 >
                   {/* Image Graphic Block */}
-                  <div className="subblock-image-col">
-                    <div className="eco-image-frame">
+                  <div className={styles.subblockImageCol}>
+                    <div className={styles.ecoImageFrame}>
                       {block.imageGraphicSvg}
                       <div className="eco-image-glow-border" />
                     </div>
                   </div>
 
                   {/* Text Content Block */}
-                  <div className="subblock-text-col">
-                    <span className="subblock-code">{block.code}</span>
-                    <h3 className="subblock-title">{block.title}</h3>
-                    <p className="subblock-desc">{block.desc}</p>
+                  <div className={styles.subblockTextCol}>
+                    <span className={styles.subblockCode}>{block.code}</span>
+                    <h3 className={styles.subblockTitle}>{block.title}</h3>
+                    <p className={styles.subblockDesc}>{block.desc}</p>
 
-                    <ul className="subblock-bullets">
+                    <ul className={styles.subblockBullets}>
                       {block.bullets.map((b) => (
                         <li key={b}>
-                          <span className="bullet-check">✓</span>
+                          <span className={styles.bulletCheck}>✓</span>
                           <span>{b}</span>
                         </li>
                       ))}
@@ -240,10 +237,10 @@ export default function SolutionEcosystem() {
                     <button
                       type="button"
                       onClick={() => handleOpenModal(block.contextTitle)}
-                      className="subblock-cta-btn"
+                      className={styles.subblockCtaBtn}
                     >
                       <span>{block.ctaLabel}</span>
-                      <span className="arrow">→</span>
+                      <span className={styles.arrow}>→</span>
                     </button>
                   </div>
                 </motion.div>
