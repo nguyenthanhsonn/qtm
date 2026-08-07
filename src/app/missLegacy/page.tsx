@@ -1,6 +1,6 @@
 "use client";
 
-import "@/scss/missLegacy.scss";
+import styles from "./MissLegacyPage.module.scss";
 import Card3DTilt from "@/components/Card3DTilt";
 
 const projects = [
@@ -57,7 +57,7 @@ export default function ProjectsSection() {
           {projects.map((p) => (
             <Card3DTilt
               key={p.id}
-              className="project-card h-full"
+              className={`${styles.projectCard} h-full`}
               maxTilt={12}
               scale={1.03}
               glareColor={p.color}
@@ -65,17 +65,17 @@ export default function ProjectsSection() {
               style={{ "--accent": p.color } as React.CSSProperties}
             >
               <div className="flex items-center justify-between mb-4">
-                <span className="project-card__id">{p.id}</span>
-                <span className="project-card__category">{p.category}</span>
+                <span className={styles.projectCardId}>{p.id}</span>
+                <span className={styles.projectCardCategory}>{p.category}</span>
               </div>
-              <h3 className="project-card__name">{p.name}</h3>
-              <p className="project-card__desc">{p.desc}</p>
-              <div className="flex flex-wrap gap-1.5 project-card__tags">
+              <h3 className={styles.projectCardName}>{p.name}</h3>
+              <p className={styles.projectCardDesc}>{p.desc}</p>
+              <div className={`flex flex-wrap gap-1.5 ${styles.projectCardTags}`}>
                 {p.tech.map((t) => (
                   <span key={t} className="tag tag--accent">{t}</span>
                 ))}
               </div>
-              <div className="project-card__bar" aria-hidden="true" />
+              <div className={styles.projectCardBar} aria-hidden="true" />
             </Card3DTilt>
           ))}
         </div>

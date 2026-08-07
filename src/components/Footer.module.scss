@@ -1,21 +1,14 @@
-// ── SCSS Variables ──────────────────────────────────────────
-$cyan:        #4FD1E8;
-$cyan-bright: #00D4FF;
-$purple:      #7C4DFF;
-$cyan-hover:  #5EEAD4;
-$text-white:  #ffffff;
-$text-muted:  #CBD5E1;
-$text-dim:    #94A3B8;
-$bg-footer:   #040915;
+@use '@/scss/global/variables' as *;
 
-.footer-root {
+$bg-footer: #040915;
+
+.footerRoot {
   position: relative;
   background-color: $bg-footer;
   color: $text-white;
   overflow: hidden;
   border-top: 1px solid rgba(255, 255, 255, 0.08);
 
-  // Glow line at top edge
   &::before {
     content: "";
     position: absolute;
@@ -34,37 +27,36 @@ $bg-footer:   #040915;
   }
 }
 
-// Background Orbs & Ambient Light
-.footer-ambient {
+.footerAmbient {
   position: absolute;
   inset: 0;
   pointer-events: none;
   overflow: hidden;
 
-  .footer-orb {
+  .footerOrb {
     position: absolute;
     border-radius: 50%;
     filter: blur(120px);
     opacity: 0.15;
+
+    &Cyan {
+      top: -100px;
+      left: -50px;
+      width: 350px;
+      height: 350px;
+      background: $cyan;
+    }
+
+    &Purple {
+      bottom: -100px;
+      right: -50px;
+      width: 400px;
+      height: 400px;
+      background: $purple;
+    }
   }
 
-  .footer-orb--cyan {
-    top: -100px;
-    left: -50px;
-    width: 350px;
-    height: 350px;
-    background: $cyan;
-  }
-
-  .footer-orb--purple {
-    bottom: -100px;
-    right: -50px;
-    width: 400px;
-    height: 400px;
-    background: $purple;
-  }
-
-  .footer-grid-pattern {
+  .footerGridPattern {
     position: absolute;
     inset: 0;
     background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px);
@@ -73,8 +65,7 @@ $bg-footer:   #040915;
   }
 }
 
-// Main Container
-.footer-container {
+.footerContainer {
   position: relative;
   z-index: 2;
   max-width: 1440px;
@@ -82,8 +73,7 @@ $bg-footer:   #040915;
   padding: clamp(3rem, 6vw, 5rem) clamp(1.5rem, 5vw, 4.5rem) 2rem;
 }
 
-// Grid Layout
-.footer-grid {
+.footerGrid {
   display: grid;
   grid-template-columns: 1.5fr 1fr 1fr 1.3fr;
   gap: clamp(2rem, 4vw, 3.5rem);
@@ -98,12 +88,11 @@ $bg-footer:   #040915;
   }
 }
 
-// Column Styling
-.footer-col {
+.footerCol {
   display: flex;
   flex-direction: column;
 
-  .footer-logo {
+  .footerLogo {
     display: inline-block;
     margin-bottom: 1.25rem;
     transition: transform 0.3s ease;
@@ -113,16 +102,16 @@ $bg-footer:   #040915;
     }
   }
 
-  .footer-desc {
-    color: $text-muted;
+  .footerDesc {
+    color: #CBD5E1;
     font-size: 0.9375rem;
     line-height: 1.65;
     margin-bottom: 1.5rem;
     max-width: 380px;
   }
 
-  .footer-heading {
-    font-family: var(--font-heading); /* SVN-Aguda: section heading label */
+  .footerHeading {
+    font-family: var(--font-heading);
     font-size: 1.1rem;
     font-weight: 700;
     color: $text-white;
@@ -144,13 +133,12 @@ $bg-footer:   #040915;
   }
 }
 
-// Social Media Links
-.footer-socials {
+.footerSocials {
   display: flex;
   align-items: center;
   gap: 0.75rem;
 
-  .social-icon {
+  .socialIcon {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -159,7 +147,7 @@ $bg-footer:   #040915;
     border-radius: 10px;
     background: rgba(255, 255, 255, 0.04);
     border: 1px solid rgba(255, 255, 255, 0.1);
-    color: $text-muted;
+    color: #CBD5E1;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
     &:hover {
@@ -172,8 +160,7 @@ $bg-footer:   #040915;
   }
 }
 
-// Link Lists
-.footer-links {
+.footerLinks {
   list-style: none;
   padding: 0;
   margin: 0;
@@ -182,7 +169,7 @@ $bg-footer:   #040915;
   gap: 0.85rem;
 
   li a {
-    color: $text-muted;
+    color: #CBD5E1;
     font-size: 0.9375rem;
     text-decoration: none;
     display: inline-flex;
@@ -190,7 +177,7 @@ $bg-footer:   #040915;
     gap: 0.5rem;
     transition: all 0.25s ease;
 
-    .link-bullet {
+    .linkBullet {
       width: 5px;
       height: 5px;
       border-radius: 50%;
@@ -202,7 +189,7 @@ $bg-footer:   #040915;
       color: $text-white;
       transform: translateX(5px);
 
-      .link-bullet {
+      .linkBullet {
         background: $cyan;
         box-shadow: 0 0 8px $cyan;
       }
@@ -210,8 +197,7 @@ $bg-footer:   #040915;
   }
 }
 
-// Contact Info List
-.footer-contact-list {
+.footerContactList {
   list-style: none;
   padding: 0;
   margin: 0 0 1.5rem 0;
@@ -223,18 +209,18 @@ $bg-footer:   #040915;
     display: flex;
     align-items: flex-start;
     gap: 0.75rem;
-    color: $text-muted;
+    color: #CBD5E1;
     font-size: 0.90rem;
     line-height: 1.5;
 
-    .contact-icon {
+    .contactIcon {
       color: $cyan;
       flex-shrink: 0;
       margin-top: 2px;
     }
 
     a {
-      color: $text-muted;
+      color: #CBD5E1;
       text-decoration: none;
       transition: color 0.25s ease;
 
@@ -245,15 +231,14 @@ $bg-footer:   #040915;
   }
 }
 
-// Newsletter Form
-.footer-newsletter {
+.footerNewsletter {
   p {
     font-size: 0.875rem;
-    color: $text-dim;
+    color: #94A3B8;
     margin-bottom: 0.75rem;
   }
 
-  .newsletter-form {
+  .newsletterForm {
     display: flex;
     gap: 0.5rem;
     position: relative;
@@ -274,7 +259,7 @@ $bg-footer:   #040915;
       transition: all 0.3s ease;
 
       &::placeholder {
-        color: $text-dim;
+        color: #94A3B8;
       }
 
       &:focus {
@@ -304,7 +289,7 @@ $bg-footer:   #040915;
     }
   }
 
-  .newsletter-msg {
+  .newsletterMsg {
     font-size: 0.8rem;
     color: $cyan-hover;
     margin-top: 0.5rem;
@@ -312,8 +297,7 @@ $bg-footer:   #040915;
   }
 }
 
-// Bottom Bar
-.footer-bottom {
+.footerBottom {
   position: relative;
   z-index: 2;
   border-top: 1px solid rgba(255, 255, 255, 0.06);
@@ -325,17 +309,17 @@ $bg-footer:   #040915;
   flex-wrap: wrap;
 
   .copyright {
-    color: $text-dim;
+    color: #94A3B8;
     font-size: 0.875rem;
   }
 
-  .footer-legal {
+  .footerLegal {
     display: flex;
     align-items: center;
     gap: 1.5rem;
 
     a {
-      color: $text-dim;
+      color: #94A3B8;
       font-size: 0.85rem;
       text-decoration: none;
       transition: color 0.25s ease;
@@ -345,19 +329,18 @@ $bg-footer:   #040915;
       }
     }
 
-    .legal-divider {
+    .legalDivider {
       color: rgba(255, 255, 255, 0.15);
     }
   }
 
-  // Back to top button
-  .back-to-top-btn {
+  .backToTopBtn {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.1);
-    color: $text-muted;
+    color: #CBD5E1;
     font-size: 0.85rem;
     font-weight: 500;
     padding: 0.5rem 1rem;
@@ -365,7 +348,7 @@ $bg-footer:   #040915;
     cursor: pointer;
     transition: all 0.3s ease;
 
-    .arrow-top {
+    .arrowTop {
       font-style: normal;
       transition: transform 0.3s ease;
     }
@@ -376,7 +359,7 @@ $bg-footer:   #040915;
       background: rgba(79, 209, 232, 0.08);
       box-shadow: 0 0 15px rgba(79, 209, 232, 0.2);
 
-      .arrow-top {
+      .arrowTop {
         transform: translateY(-3px);
       }
     }

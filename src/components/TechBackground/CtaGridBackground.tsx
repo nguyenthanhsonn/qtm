@@ -129,8 +129,8 @@ export default function CtaGridBackground() {
     <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden bg-white" aria-hidden="true">
       <style>{cssKeyframes}</style>
 
-      {/* Lớp overlay Grid Pattern ĐẬM NÉT RÕ RỆT (Teal Blue #2095AD opacity ~45%) */}
-      <div className="absolute inset-0 opacity-[0.45] z-0">
+      {/* Lớp overlay Grid Pattern MỊN MÀNG & SUBTLE (Teal Blue #2095AD opacity ~12%) */}
+      <div className="absolute inset-0 opacity-[0.12] z-0">
         <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
           <defs>
             <pattern
@@ -143,31 +143,19 @@ export default function CtaGridBackground() {
                 d={`M ${gridSize} 0 L 0 0 0 ${gridSize}`}
                 fill="none"
                 stroke="#2095AD"
-                strokeWidth="1.5"
+                strokeWidth="1.2"
               />
-              {/* Chấm điểm giao cắt kỹ thuật số (Crosshair nodes) */}
-              <circle cx="0" cy="0" r="2.2" fill="#2095AD" />
-              <circle cx={gridSize} cy="0" r="2.2" fill="#2095AD" />
-              <circle cx="0" cy={gridSize} r="2.2" fill="#2095AD" />
+              <circle cx="0" cy="0" r="1.8" fill="#2095AD" />
+              <circle cx={gridSize} cy="0" r="1.8" fill="#2095AD" />
+              <circle cx="0" cy={gridSize} r="1.8" fill="#2095AD" />
             </pattern>
           </defs>
           <rect width="100%" height="100%" fill="url(#cta-grid-pattern)" />
         </svg>
       </div>
 
-      {/* Dải Laser Scanline quét công nghệ trôi từ trên xuống */}
-      <div
-        className="absolute left-0 right-0 h-[120px] z-0 pointer-events-none opacity-80"
-        style={{
-          background: "linear-gradient(180deg, transparent 0%, rgba(56, 207, 200, 0.4) 50%, transparent 100%)",
-          borderBottom: "2px solid rgba(56, 207, 200, 0.8)",
-          filter: "drop-shadow(0 0 14px rgba(56, 207, 200, 0.6))",
-          animation: "laserGridScan 8s infinite linear",
-        }}
-      />
-
-      {/* Các ô vuông highlight trôi nổi ĐẬM & NỔI BẬT (14 ô) */}
-      {highlights.map((h, i) => (
+      {/* các ô vuông highlight trôi nổi nhẹ nhàng */}
+      {highlights.slice(0, 6).map((h, i) => (
         <div
           key={`h-${i}`}
           className="absolute z-0"
@@ -176,9 +164,9 @@ export default function CtaGridBackground() {
             top: h.top,
             width: `${h.size}px`,
             height: `${h.size}px`,
-            background: "linear-gradient(135deg, rgba(56, 207, 200, 0.5) 0%, rgba(32, 149, 173, 0.15) 100%)",
-            border: "1.8px solid rgba(56, 207, 200, 0.5)",
-            boxShadow: "0 0 16px rgba(56, 207, 200, 0.35)",
+            background: "linear-gradient(135deg, rgba(56, 207, 200, 0.12) 0%, rgba(32, 149, 173, 0.04) 100%)",
+            border: "1px solid rgba(56, 207, 200, 0.2)",
+            boxShadow: "0 0 10px rgba(56, 207, 200, 0.1)",
             animation: `float-h-${i} ${h.duration} ease-in-out infinite`,
             animationDelay: h.delay,
             transformOrigin: "center center",
@@ -186,11 +174,10 @@ export default function CtaGridBackground() {
         />
       ))}
 
-      {/* Canvas Sóng Hạt Kỹ thuật số uốn lượn */}
+      {/* Canvas Sóng Hạt Kỹ thuật số uốn lượn nhẹ nhàng */}
       <canvas
         ref={canvasRef}
-        className="absolute inset-0 w-full h-full z-0"
-        style={{ opacity: 1 }}
+        className="absolute inset-0 w-full h-full z-0 opacity-40"
       />
     </div>
   );

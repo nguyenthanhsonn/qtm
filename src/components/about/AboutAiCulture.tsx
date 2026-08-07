@@ -2,7 +2,7 @@
 
 import React from "react";
 import { motion, useReducedMotion } from "motion/react";
-import BackgroundGrid from "@/components/TechBackground/BackgroundGrid";
+import styles from "./AboutAiCulture.module.scss";
 
 type CulturePillar = {
   id: string;
@@ -93,13 +93,11 @@ export default function AboutAiCulture() {
     : { hidden: { opacity: 0, y: 32 }, visible: { opacity: 1, y: 0 } };
 
   return (
-    <section id="ai-culture" className="section section--ai-culture">
-      <BackgroundGrid gridSize={40} opacity={0.06} />
-
-      <div className="section__content ai-culture__content">
+    <section id="ai-culture" className={`section ${styles.sectionAiCulture}`}>
+      <div className={`section__content ${styles.aiCultureContent}`}>
         {/* Title */}
         <motion.h2
-          className="ai-culture__main-title"
+          className={styles.aiCultureMainTitle}
           variants={fadeUp}
           initial="hidden"
           whileInView="visible"
@@ -113,7 +111,7 @@ export default function AboutAiCulture() {
         </motion.h2>
 
         <motion.p
-          className="ai-culture__desc"
+          className={styles.aiCultureDesc}
           variants={fadeUp}
           initial="hidden"
           whileInView="visible"
@@ -124,18 +122,18 @@ export default function AboutAiCulture() {
         </motion.p>
 
         {/* Split Grid: Left AI Brain Visual & Right 6 Pillars */}
-        <div className="ai-culture-main-split">
+        <div className={styles.aiCultureMainSplit}>
           {/* Left AI Head Visual */}
           <motion.div
-            className="ai-visual-left-col"
+            className={styles.aiVisualLeftCol}
             variants={fadeUp}
             initial="hidden"
             whileInView="visible"
             viewport={viewport}
             transition={{ duration: 0.7, delay: 0.15, ease: easeOut }}
           >
-            <div className="ai-brain-graphic-card">
-              <svg viewBox="0 0 300 300" fill="none" xmlns="http://www.w3.org/2000/svg" className="ai-brain-svg">
+            <div className={styles.aiBrainGraphicCard}>
+              <svg viewBox="0 0 300 300" fill="none" xmlns="http://www.w3.org/2000/svg" className={styles.aiBrainSvg}>
                 <circle cx="150" cy="150" r="120" fill="url(#aiGlowBg)" opacity="0.15" />
                 <path d="M150 50 C90 50 60 100 60 160 C60 210 90 250 140 250 C150 250 160 240 160 230 C160 220 170 210 180 210 C210 210 240 180 240 140 C240 90 200 50 150 50 Z" stroke="#2095AD" strokeWidth="2.5" strokeDasharray="6 4" />
                 <circle cx="150" cy="120" r="25" stroke="#38CFC8" strokeWidth="2" />
@@ -150,13 +148,13 @@ export default function AboutAiCulture() {
                   </radialGradient>
                 </defs>
               </svg>
-              <div className="ai-hud-label">AI &amp; HUMAN SYNERGY</div>
+              <div className={styles.aiHudLabel}>AI &amp; HUMAN SYNERGY</div>
             </div>
           </motion.div>
 
           {/* Right 6 Pillars Grid */}
           <motion.div
-            className="ai-culture__grid"
+            className={styles.aiCultureGrid}
             variants={{
               hidden: {},
               visible: {
@@ -173,12 +171,12 @@ export default function AboutAiCulture() {
                 variants={fadeUp}
                 transition={{ duration: 0.5, ease: easeOut }}
               >
-                <div className="ai-pillar-card">
-                  <div className="pillar-card__top">
-                    <div className="pillar-card__icon">{pillar.icon}</div>
+                <div className={styles.aiPillarCard}>
+                  <div className={styles.pillarCardTop}>
+                    <div className={styles.pillarCardIcon}>{pillar.icon}</div>
                   </div>
-                  <h3 className="pillar-card__title">{pillar.title}</h3>
-                  <p className="pillar-card__desc">{pillar.desc}</p>
+                  <h3 className={styles.pillarCardTitle}>{pillar.title}</h3>
+                  <p className={styles.pillarCardDesc}>{pillar.desc}</p>
                 </div>
               </motion.div>
             ))}
@@ -187,39 +185,39 @@ export default function AboutAiCulture() {
 
         {/* Bottom Value Formula Ribbon */}
         <motion.div
-          className="ai-culture__formula-bar"
+          className={styles.aiCultureFormulaBar}
           variants={fadeUp}
           initial="hidden"
           whileInView="visible"
           viewport={viewport}
           transition={{ duration: 0.75, delay: 0.25, ease: easeOut }}
         >
-          <div className="formula-equation">
-            <div className="equation-block">
-              <div className="block-icon">👤</div>
-              <div className="block-text">
-                <span className="block-title">CON NGƯỜI</span>
-                <span className="block-sub">Sáng tạo - Tư duy - Trải nghiệm</span>
+          <div className={styles.formulaEquation}>
+            <div className={styles.equationBlock}>
+              <div className={styles.blockIcon}>👤</div>
+              <div className={styles.blockText}>
+                <span className={styles.blockTitle}>CON NGƯỜI</span>
+                <span className={styles.blockSub}>Sáng tạo - Tư duy - Trải nghiệm</span>
               </div>
             </div>
 
-            <span className="equation-operator">+</span>
+            <span className={styles.equationOperator}>+</span>
 
-            <div className="equation-block">
-              <div className="block-icon">🤖</div>
-              <div className="block-text">
-                <span className="block-title">CÔNG NGHỆ</span>
-                <span className="block-sub">AI - Dữ liệu - Tự động hóa</span>
+            <div className={styles.equationBlock}>
+              <div className={styles.blockIcon}>🤖</div>
+              <div className={styles.blockText}>
+                <span className={styles.blockTitle}>CÔNG NGHỆ</span>
+                <span className={styles.blockSub}>AI - Dữ liệu - Tự động hóa</span>
               </div>
             </div>
 
-            <span className="equation-operator equation-operator--equals">=</span>
+            <span className={`${styles.equationOperator} ${styles.equationOperatorEquals}`}>=</span>
 
-            <div className="equation-block equation-block--result">
-              <div className="block-icon">📊</div>
-              <div className="block-text">
-                <span className="block-title">GIÁ TRỊ VƯỢT TRỘI</span>
-                <span className="block-sub">Hiệu quả - Tăng trưởng - Bền vững</span>
+            <div className={`${styles.equationBlock} ${styles.equationBlockResult}`}>
+              <div className={styles.blockIcon}>📊</div>
+              <div className={styles.blockText}>
+                <span className={styles.blockTitle}>GIÁ TRỊ VƯỢT TRỘI</span>
+                <span className={styles.blockSub}>Hiệu quả - Tăng trưởng - Bền vững</span>
               </div>
             </div>
           </div>

@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import styles from "./SolutionHero.module.scss";
 import { motion, useReducedMotion } from "motion/react";
 import BackgroundGrid from "@/components/TechBackground/BackgroundGrid";
 import Card3DTilt from "@/components/Card3DTilt";
@@ -19,31 +20,31 @@ export default function SolutionHero() {
 
   return (
     <>
-      <section id="solution-hero" className="section section--sol-hero">
+      <section id="solution-hero" className={`section ${styles.sectionSolHero}`}>
         {/* Light Background + Floating Grid */}
-        <div className="sol-hero__bg" aria-hidden="true" />
-        <div className="sol-hero__glow" aria-hidden="true" />
+        <div className={styles.solHeroBg} aria-hidden="true" />
+        <div className={styles.solHeroGlow} aria-hidden="true" />
         <BackgroundGrid gridSize={40} opacity={0.06} />
 
-        <div className="section__content sol-hero__content">
+        <div className={`section__content ${styles.solHeroContent}`}>
           {/* Main 2-Column Split */}
-          <div className="sol-hero-split-grid">
+          <div className={styles.solHeroSplitGrid}>
             {/* Left Column: Headline, Description & CTA */}
-            <div className="sol-hero-left-col">
+            <div className={styles.solHeroLeftCol}>
               <motion.div
-                className="sol-hero-tag-pill"
+                className={styles.solHeroTagPill}
                 variants={fadeUp}
                 initial="hidden"
                 whileInView="visible"
                 viewport={viewport}
                 transition={{ duration: 0.5, ease: easeOut }}
               >
-                <span className="tag-dot">•</span>
+                <span className={styles.tagDot}>•</span>
                 <span>GIẢI PHÁP TRUYỀN THÔNG CÔNG NGHỆ</span>
               </motion.div>
 
               <motion.h1
-                className="sol-hero__title"
+                className={styles.solHeroTitle}
                 variants={fadeUp}
                 initial="hidden"
                 whileInView="visible"
@@ -55,7 +56,7 @@ export default function SolutionHero() {
               </motion.h1>
 
               <motion.p
-                className="sol-hero__desc"
+                className={styles.solHeroDesc}
                 variants={fadeUp}
                 initial="hidden"
                 whileInView="visible"
@@ -66,22 +67,22 @@ export default function SolutionHero() {
               </motion.p>
 
               <motion.div
-                className="sol-hero__actions"
+                className={styles.solHeroActions}
                 variants={fadeUp}
                 initial="hidden"
                 whileInView="visible"
                 viewport={viewport}
                 transition={{ duration: 0.7, delay: 0.22, ease: easeOut }}
               >
-                <a href="#ecosystem" className="btn btn--primary sol-hero__btn-fill">
+                <a href="#ecosystem" className={`btn btn--primary ${styles.solHeroBtnFill}`}>
                   <span>KHÁM PHÁ GIẢI PHÁP</span>
-                  <span className="btn-arrow">↓</span>
+                  <span className={styles.btnArrow}>↓</span>
                 </a>
 
                 <button
                   type="button"
                   onClick={() => setIsModalOpen(true)}
-                  className="btn btn--outline sol-hero__btn-outline"
+                  className={`btn btn--outline ${styles.solHeroBtnOutline}`}
                 >
                   <span>LIÊN HỆ TƯ VẤN 1:1</span>
                 </button>
@@ -90,21 +91,20 @@ export default function SolutionHero() {
 
             {/* Right Column: Executive Photo & Floating Overlapping Glass Dashboard Cards */}
             <motion.div
-              className="sol-hero-right-col"
+              className={styles.solHeroRightCol}
               variants={fadeUp}
               initial="hidden"
               whileInView="visible"
               viewport={viewport}
               transition={{ duration: 0.75, delay: 0.2, ease: easeOut }}
             >
-              <div className="sol-hero-image-stage">
+              <div className={styles.solHeroImageStage}>
                 {/* Executive Business Background Visual */}
-                <div className="executive-photo-frame">
+                <div className={styles.executivePhotoFrame}>
                   <div className="photo-overlay-gradient" />
-                  <div className="executive-graphic-art">
-                    <svg viewBox="0 0 400 320" fill="none" className="executive-svg">
+                  <div className={styles.executiveGraphicArt}>
+                    <svg viewBox="0 0 400 320" fill="none" className={styles.executiveSvg}>
                       <rect width="400" height="320" rx="20" fill="url(#execBg)" />
-                      {/* Stylized AI Dashboard & Business Figure */}
                       <path d="M40 280 L120 180 L200 220 L280 120 L360 160" stroke="#38CFC8" strokeWidth="3" strokeDasharray="6 6" />
                       <circle cx="280" cy="120" r="8" fill="#00D4FF" />
                       <circle cx="360" cy="160" r="8" fill="#38CFC8" />
@@ -120,30 +120,30 @@ export default function SolutionHero() {
                   </div>
                 </div>
 
-                {/* Overlapping Floating Glass Card 1 (Top Right) */}
-                <Card3DTilt className="floating-glass-card floating-card--1" maxTilt={10} scale={1.03}>
-                  <div className="card-dot-indicator" />
-                  <div className="card-info">
-                    <span className="card-val">+240%</span>
-                    <span className="card-lbl">Tăng trưởng ROI</span>
+                {/* Overlapping Floating Glass Card 1 */}
+                <Card3DTilt className={`${styles.floatingGlassCard} ${styles.floatingGlassCard1}`} maxTilt={10} scale={1.03}>
+                  <div className={styles.cardDotIndicator} />
+                  <div className={styles.cardInfo}>
+                    <span className={styles.cardVal}>+240%</span>
+                    <span className={styles.cardLbl}>Tăng trưởng ROI</span>
                   </div>
                 </Card3DTilt>
 
-                {/* Overlapping Floating Glass Card 2 (Bottom Left) */}
-                <Card3DTilt className="floating-glass-card floating-card--2" maxTilt={10} scale={1.03}>
-                  <div className="card-dot-indicator card-dot--mint" />
-                  <div className="card-info">
-                    <span className="card-val">98.5%</span>
-                    <span className="card-lbl">Tỷ lệ tương tác</span>
+                {/* Overlapping Floating Glass Card 2 */}
+                <Card3DTilt className={`${styles.floatingGlassCard} ${styles.floatingGlassCard2}`} maxTilt={10} scale={1.03}>
+                  <div className={`${styles.cardDotIndicator} ${styles.cardDotIndicatorMint}`} />
+                  <div className={styles.cardInfo}>
+                    <span className={styles.cardVal}>98.5%</span>
+                    <span className={styles.cardLbl}>Tỷ lệ tương tác</span>
                   </div>
                 </Card3DTilt>
 
-                {/* Overlapping Floating Glass Card 3 (Bottom Right) */}
-                <Card3DTilt className="floating-glass-card floating-card--3" maxTilt={10} scale={1.03}>
-                  <div className="card-dot-indicator card-dot--blue" />
-                  <div className="card-info">
-                    <span className="card-val">-40%</span>
-                    <span className="card-lbl">Tối ưu chi phí</span>
+                {/* Overlapping Floating Glass Card 3 */}
+                <Card3DTilt className={`${styles.floatingGlassCard} ${styles.floatingGlassCard3}`} maxTilt={10} scale={1.03}>
+                  <div className={`${styles.cardDotIndicator} ${styles.cardDotIndicatorBlue}`} />
+                  <div className={styles.cardInfo}>
+                    <span className={styles.cardVal}>-40%</span>
+                    <span className={styles.cardLbl}>Tối ưu chi phí</span>
                   </div>
                 </Card3DTilt>
               </div>
@@ -152,35 +152,35 @@ export default function SolutionHero() {
 
           {/* Bottom 5 Core Values Row */}
           <motion.div
-            className="sol-hero-values-row"
+            className={styles.solHeroValuesRow}
             variants={fadeUp}
             initial="hidden"
             whileInView="visible"
             viewport={viewport}
             transition={{ duration: 0.75, delay: 0.3, ease: easeOut }}
           >
-            <div className="val-chip">
-              <span className="chip-icon">🧠</span>
+            <div className={styles.valChip}>
+              <span className={styles.chipIcon}>🧠</span>
               <span className="chip-label">Chiến lược</span>
             </div>
-            <div className="val-divider">•</div>
-            <div className="val-chip">
-              <span className="chip-icon">💡</span>
+            <div className={styles.valDivider}>•</div>
+            <div className={styles.valChip}>
+              <span className={styles.chipIcon}>💡</span>
               <span className="chip-label">Sáng tạo</span>
             </div>
-            <div className="val-divider">•</div>
-            <div className="val-chip">
-              <span className="chip-icon">⚙️</span>
+            <div className={styles.valDivider}>•</div>
+            <div className={styles.valChip}>
+              <span className={styles.chipIcon}>⚙️</span>
               <span className="chip-label">Công nghệ</span>
             </div>
-            <div className="val-divider">•</div>
-            <div className="val-chip">
-              <span className="chip-icon">✨</span>
+            <div className={styles.valDivider}>•</div>
+            <div className={styles.valChip}>
+              <span className={styles.chipIcon}>✨</span>
               <span className="chip-label">Trải nghiệm</span>
             </div>
-            <div className="val-divider">•</div>
-            <div className="val-chip">
-              <span className="chip-icon">📊</span>
+            <div className={styles.valDivider}>•</div>
+            <div className={styles.valChip}>
+              <span className={styles.chipIcon}>📊</span>
               <span className="chip-label">Đo lường</span>
             </div>
           </motion.div>

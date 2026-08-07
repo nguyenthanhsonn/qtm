@@ -3,7 +3,7 @@
 import { TextTypeProps } from '@/types/components';
 import { ElementType, useEffect, useRef, useState, createElement, useMemo, useCallback } from 'react';
 import { gsap } from 'gsap';
-import '../scss/TextType.css';
+import styles from './TextType.module.scss';
 
 const TextType = ({
   text,
@@ -155,16 +155,16 @@ const TextType = ({
     Component,
     {
       ref: containerRef,
-      className: `text-type ${className}`,
+      className: `${styles.textType} ${className}`,
       ...props
     },
-    <span className="text-type__content" style={{ color: getCurrentTextColor() || 'inherit' }}>
+    <span className={styles.textTypeContent} style={{ color: getCurrentTextColor() || 'inherit' }}>
       {displayedText}
     </span>,
     showCursor && (
       <span
         ref={cursorRef}
-        className={`text-type__cursor ${cursorClassName} ${shouldHideCursor ? 'text-type__cursor--hidden' : ''}`}
+        className={`${styles.textTypeCursor} ${cursorClassName} ${shouldHideCursor ? styles.textTypeCursorHidden : ''}`}
       >
         {cursorCharacter}
       </span>
@@ -173,3 +173,4 @@ const TextType = ({
 };
 
 export default TextType;
+

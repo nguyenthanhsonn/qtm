@@ -1,6 +1,6 @@
-@use 'variables' as *;
+@use '@/scss/global/variables' as *;
 
-.section.section--home-solutions {
+.sectionHomeSolutions {
   position: relative;
   min-height: auto;
   text-align: center;
@@ -14,8 +14,7 @@
   border-bottom: 1px solid rgba(32, 149, 173, 0.12);
 }
 
-// Background Polygon Texture SVG container
-.home-solutions__poly-bg {
+.homeSolutionsPolyBg {
   position: absolute;
   inset: 0;
   width: 100%;
@@ -25,8 +24,7 @@
   overflow: hidden;
 }
 
-// Dark Grid Matrix with Technical Glow
-.home-solutions__bg {
+.homeSolutionsBg {
   position: absolute;
   inset: 0;
   z-index: 1;
@@ -38,8 +36,7 @@
   pointer-events: none;
 }
 
-// Ambient Radial Glow
-.home-solutions__glow {
+.homeSolutionsGlow {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -52,7 +49,7 @@
   z-index: 1;
 }
 
-.home-solutions__content {
+.homeSolutionsContent {
   position: relative;
   z-index: 3;
   display: flex;
@@ -63,8 +60,7 @@
   margin: 0 auto;
 }
 
-// Badge & Headers
-.home-solutions__badge {
+.homeSolutionsBadge {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
@@ -73,7 +69,6 @@
   background: rgba(32, 149, 173, 0.06);
   border: 1px solid rgba(32, 149, 173, 0.2);
   font-family: var(--font-heading);
-  /* SVN-Aguda: eyebrow badge label */
   font-size: 0.825rem;
   font-weight: 600;
   color: #2095AD;
@@ -82,16 +77,16 @@
   box-shadow: 0 2px 10px rgba(32, 149, 173, 0.08);
 }
 
-.home-solutions__title {
+.homeSolutionsTitle {
   font-family: var(--font-heading);
   font-size: clamp(2rem, 4vw, 3.2rem);
   font-weight: 800;
   line-height: 1.2;
-  color: #123A53; // dark navy on white
+  color: #123A53;
   margin: 0;
   letter-spacing: -0.02em;
 
-  .title-highlight {
+  .titleHighlight {
     background: linear-gradient(90deg, #17398F 0%, #2095AD 50%, #38CFC8 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -99,23 +94,22 @@
   }
 }
 
-.home-solutions__desc {
+.homeSolutionsDesc {
   font-family: var(--font-body);
   font-size: clamp(1rem, 1.5vw, 1.15rem);
-  color: #475569; // readable mid-gray on white
+  color: #475569;
   line-height: 1.65;
   max-width: 920px;
-  min-height: 2em; // Single line height lock
+  min-height: 2em;
   display: flex;
   align-items: center;
   justify-content: center;
   margin: 0;
   font-weight: 400;
-  white-space: nowrap; // Prevent wrapping on large screens
+  white-space: nowrap;
 }
 
-// 4-Column Cards Grid
-.home-solutions__grid {
+.homeSolutionsGrid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: clamp(1.25rem, 2vw, 1.75rem);
@@ -133,24 +127,22 @@
   }
 }
 
-/* Solution Block Card Styling — Tech Blueprint Solid Shape */
-.solution-block-card {
+.solutionBlockCard {
   position: relative;
   width: 300px;
-  height: 455px; // Increased height by ~18% for ample breathing room
+  height: 455px;
   margin: 0 auto;
   background: transparent;
   border: none;
   box-shadow: none;
-  overflow: visible; // Allow tab to stick out
+  overflow: visible;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   transform-style: preserve-3d;
   transition: transform 0.35s cubic-bezier(0.25, 1, 0.5, 1);
 
-  // SVG background paths layout
-  .solution-card__bg-svg {
+  .solutionCardBgSvg {
     position: absolute;
     inset: 0;
     width: 100%;
@@ -160,86 +152,83 @@
     overflow: visible;
     filter: drop-shadow(0 8px 24px rgba(0, 0, 0, 0.4));
 
-    .card-glow-path {
+    .cardGlowPath {
       opacity: 0.15;
       transition: opacity 0.3s ease;
       filter: blur(4px);
     }
 
-    .card-bg-path {
-      fill: #121a29; // Solid Tech Dark Background
+    .cardBgPath {
+      fill: #121a29;
       transition: fill 0.3s ease;
     }
 
-    .card-border-path {
-      stroke: rgba(120, 170, 255, 0.35); // Tech border
+    .cardBorderPath {
+      stroke: rgba(120, 170, 255, 0.35);
       stroke-width: 1.5px;
       transition: stroke 0.3s ease;
     }
   }
 
-  // Hover animations
   &:hover {
-    .solution-card__bg-svg {
-      .card-glow-path {
-        opacity: 0.65; // Bright tech glow behind card
+    .solutionCardBgSvg {
+      .cardGlowPath {
+        opacity: 0.65;
       }
 
-      .card-border-path {
-        stroke: rgba(120, 170, 255, 0.85); // Brighter border on hover
+      .cardBorderPath {
+        stroke: rgba(120, 170, 255, 0.85);
       }
     }
 
-    .solution-card__tab {
+    .solutionCardTab {
       border-color: var(--accent);
       background: var(--accent);
       color: #ffffff;
       box-shadow: 0 4px 18px rgba(56, 207, 200, 0.4);
 
-      .tab-arrow {
+      .tabArrow {
         transform: translateX(4px);
       }
     }
 
-    .card-top {
+    .cardTop {
       transform: translateZ(28px);
 
-      .card-icon {
+      .cardIcon {
         transform: scale(1.05);
         border-color: rgba(120, 170, 255, 0.55);
       }
     }
 
-    .card-body {
+    .cardBody {
       transform: translateZ(20px);
     }
   }
 }
 
-// Content wrapper (sitting above SVG) with 32px padding on all sides
-.solution-card__content {
+.solutionCardContent {
   position: relative;
   z-index: 3;
   height: 100%;
-  padding: 32px 32px 0; // Increased padding to 32px
+  padding: 32px 32px 0;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
   pointer-events: none;
 }
 
-// Card Inner Sections
-.card-top {
+.cardTop {
   display: flex;
   align-items: center;
   justify-content: space-between;
   transform-style: preserve-3d;
   transform: translateZ(20px);
   transition: transform 0.35s ease;
-  margin-bottom: 20px; // Gap icon -> eyebrow (20px)
+  margin-bottom: 20px;
   pointer-events: auto;
 
-  .card-icon {
+  .cardIcon {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -258,19 +247,18 @@
     }
   }
 
-  .card-id {
+  .cardId {
     font-family: var(--font-heading);
-    /* SVN-Aguda: numeric label 01/02/03 */
     font-size: 2.2rem;
     font-weight: 800;
-    color: rgba(56, 207, 200, 0.25); // Subtle opacity for 01/02/03
+    color: rgba(56, 207, 200, 0.25);
     line-height: 1;
     letter-spacing: -0.05em;
     opacity: 0.7;
   }
 }
 
-.card-body {
+.cardBody {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -281,28 +269,26 @@
   transition: transform 0.35s ease;
   pointer-events: auto;
 
-  .card-subtitle {
+  .cardSubtitle {
     font-family: var(--font-heading);
-    /* Eyebrow: 12.5px, letter-spacing 1.8px, uppercase */
     font-size: 12.5px;
     font-weight: 700;
     letter-spacing: 1.8px;
-    color: #38CFC8; // Bright Aqua Mint
+    color: #38CFC8;
     text-transform: uppercase;
-    margin-bottom: 16px; // Gap eyebrow -> title (16px)
+    margin-bottom: 16px;
     text-align: center;
     width: 100%;
   }
 
-  .card-title {
+  .cardTitle {
     font-family: var(--font-heading);
-    /* Title: 23px, line-height 1.3 */
     font-size: 23px;
     font-weight: 700;
     line-height: 1.3;
-    color: #FFFFFF; // Pure white
-    margin: 0 0 16px 0; // Gap title -> desc (16px)
-    min-height: 2.6em; // Standardize height so 1-line & 2-line titles align perfectly
+    color: #FFFFFF;
+    margin: 0 0 16px 0;
+    min-height: 2.6em;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -310,12 +296,11 @@
     width: 100%;
   }
 
-  .card-desc {
+  .cardDesc {
     font-family: var(--font-body);
-    /* Desc: 16px, line-height 1.6 */
     font-size: 16px;
     line-height: 1.6;
-    color: #E2E8F0; // Slightly brighter slate text for crystal clear contrast
+    color: #E2E8F0;
     margin: 0;
     font-weight: 400;
     text-align: center;
@@ -323,16 +308,15 @@
   }
 }
 
-.card-divider {
+.cardDivider {
   width: 100%;
   height: 1px;
-  background: rgba(56, 207, 200, 0.25); // Subtle cyan line
-  margin-top: 20px; // Gap desc -> divider (20px)
+  background: rgba(56, 207, 200, 0.25);
+  margin-top: 20px;
   margin-bottom: 50px;
 }
 
-// Small overlapping badge tab at bottom-right - matching card background (#0c192b)
-.solution-card__tab {
+.solutionCardTab {
   position: absolute;
   bottom: 6px;
   right: 8px;
@@ -344,21 +328,21 @@
   width: 125px;
   height: 42px;
   border-radius: 16px;
-  background: #0c192b; // SAME color as card background!
-  border: 1.5px solid rgba(56, 207, 200, 0.4); // Matching border
+  background: #0c192b;
+  border: 1.5px solid rgba(56, 207, 200, 0.4);
   text-decoration: none;
   font-family: var(--font-body);
   font-size: 0.875rem;
   font-weight: 700;
-  color: #38CFC8; // Bright cyan text
+  color: #38CFC8;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
   transition: background 0.3s ease, border-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
 
-  .tab-text {
+  .tabText {
     white-space: nowrap;
   }
 
-  .tab-arrow {
+  .tabArrow {
     font-size: 1rem;
     line-height: 1;
     transition: transform 0.25s ease;

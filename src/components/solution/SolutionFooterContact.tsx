@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import styles from "./SolutionFooterContact.module.scss";
 import { motion, useReducedMotion } from "motion/react";
 import ParticleField from "@/components/TechBackground/ParticleField";
 import SolutionContactModal from "./SolutionContactModal";
@@ -18,26 +19,26 @@ export default function SolutionFooterContact() {
 
   return (
     <>
-      <section id="solution-contact" className="section section--sol-contact">
-        <div className="sol-contact__bg-overlay" aria-hidden="true" />
-        <div className="sol-contact__bg-grid" aria-hidden="true" />
+      <section id="solution-contact" className={`section ${styles.sectionSolContact}`}>
+        <div className={styles.solContactBgOverlay} aria-hidden="true" />
+        <div className={styles.solContactBgGrid} aria-hidden="true" />
         <ParticleField />
 
-        <div className="section__content sol-contact__content">
+        <div className={`section__content ${styles.solContactContent}`}>
           {/* Header */}
           <motion.div
-            className="sol-contact__header"
+            className={styles.solContactHeader}
             variants={fadeUp}
             initial="hidden"
             whileInView="visible"
             viewport={viewport}
             transition={{ duration: 0.65, delay: 0.05, ease: easeOut }}
           >
-            <span className="sol-contact__tag-pill">// CONNECT WITH QTM MEDIATECH</span>
-            <h2 className="sol-contact__title">
+            <span className={styles.solContactTagPill}>// CONNECT WITH QTM MEDIATECH</span>
+            <h2 className={styles.solContactTitle}>
               LIÊN HỆ <span className="title-highlight-mint">TƯ VẤN GIẢI PHÁP</span>
             </h2>
-            <p className="sol-contact__subtitle">
+            <p className={styles.solContactSubtitle}>
               Kết nối ngay với đội ngũ chuyên gia công nghệ truyền thông của QTM để nhận đề xuất chiến lược tối ưu nhất.
             </p>
           </motion.div>
@@ -101,11 +102,9 @@ export default function SolutionFooterContact() {
                 <h3 className="card-heading">MÃ QR &amp; BẢN ĐỒ KẾT NỐI</h3>
 
                 <div className="qr-map-box">
-                  {/* QR Code Container */}
                   <div className="qr-container">
                     <svg viewBox="0 0 120 120" fill="none" className="qr-svg">
                       <rect width="120" height="120" rx="8" fill="#FFFFFF" />
-                      {/* Stylized QR Matrix */}
                       <rect x="10" y="10" width="35" height="35" fill="#050C1A" />
                       <rect x="15" y="15" width="25" height="25" fill="#FFFFFF" />
                       <rect x="20" y="20" width="15" height="15" fill="#050C1A" />
@@ -126,7 +125,6 @@ export default function SolutionFooterContact() {
                     <span className="qr-sub">Quét mã Zalo OA QTM</span>
                   </div>
 
-                  {/* Map Preview Graphic */}
                   <div className="mini-map-preview">
                     <svg viewBox="0 0 160 120" fill="none" className="map-svg">
                       <rect width="160" height="120" rx="8" fill="#0B1C33" />

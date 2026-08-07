@@ -1,15 +1,15 @@
-@use 'variables' as *;
+@use '@/scss/global/variables' as *;
 
-.section.section--home {
+.sectionHome {
   position: relative;
   text-align: center;
-  overflow: visible; // Allow floating quote card to overlap down
-  z-index: 20;       // Stack above section below
+  overflow: visible;
+  z-index: 30;
   background: #050c1a;
-  padding-bottom: clamp(6.5rem, 12vh, 10rem); // Room for stats bar above floating card
+  padding-bottom: clamp(6.5rem, 12vh, 10rem);
 }
 
-.section__bg-video {
+.sectionBgVideo {
   position: absolute;
   inset: 0;
   width: 100%;
@@ -21,7 +21,7 @@
   filter: saturate(1.1) brightness(0.85);
 }
 
-.section__bg-overlay {
+.sectionBgOverlay {
   position: absolute;
   inset: 0;
   z-index: 0;
@@ -31,9 +31,7 @@
   pointer-events: none;
 }
 
-
-// bg grid overlay
-.section__bg-grid {
+.sectionBgGrid {
   position: absolute;
   inset: 0;
   z-index: 0;
@@ -44,8 +42,7 @@
   mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
 }
 
-// floating particles (CSS custom property animation)
-.section__particles {
+.sectionParticles {
   position: absolute;
   inset: 0;
   z-index: 0;
@@ -70,22 +67,19 @@
     opacity: 0;
     transform: translateY(0);
   }
-
   20% {
     opacity: 0.6;
   }
-
   80% {
     opacity: 0.3;
   }
-
   100% {
     opacity: 0;
     transform: translateY(-80px);
   }
 }
 
-.section__content.home__content {
+.homeContent {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -97,8 +91,7 @@
   margin: 0 auto;
 }
 
-// Badge pill
-.home__badge-pill {
+.homeBadgePill {
   display: inline-flex;
   align-items: center;
   gap: 12px;
@@ -114,7 +107,7 @@
   backdrop-filter: blur(8px);
   box-shadow: 0 0 20px rgba($cyan, 0.05);
 
-  .badge-pill__dot {
+  .badgePillDot {
     color: $cyan-bright;
     font-size: 14px;
     animation: pulse-dot 2.5s infinite;
@@ -122,20 +115,16 @@
 }
 
 @keyframes pulse-dot {
-
-  0%,
-  100% {
+  0%, 100% {
     opacity: 0.4;
   }
-
   50% {
     opacity: 1;
     filter: drop-shadow(0 0 4px $cyan-bright);
   }
 }
 
-// Responsive text sizes
-.home__title {
+.homeTitle {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -148,23 +137,23 @@
   margin: 0;
 }
 
-.home__title-line {
+.homeTitleLine {
   display: block;
   width: 100%;
+
+  &Plain {
+    color: $text-white;
+  }
+
+  &GradientTealBlue {
+    background: linear-gradient(90deg, #4FD1C5 0%, #3B82F6 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
 }
 
-.home__title-line--plain {
-  color: $text-white;
-}
-
-.home__title-line--gradient-teal-blue {
-  background: linear-gradient(90deg, #4FD1C5 0%, #3B82F6 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.home__info-card {
+.homeInfoCard {
   max-width: 680px;
   background: rgba(5, 12, 26, 0.45);
   backdrop-filter: blur(12px);
@@ -180,7 +169,6 @@
   position: relative;
   overflow: hidden;
 
-  // Cyber corner highlights
   &::before {
     content: "";
     position: absolute;
@@ -204,7 +192,7 @@
   }
 }
 
-.info-card__title {
+.infoCardTitle {
   font-family: var(--font-heading);
   font-size: clamp(13px, 1.2vw, 15px);
   font-weight: 700;
@@ -217,7 +205,7 @@
   text-transform: uppercase;
 }
 
-.info-card__dot {
+.infoCardDot {
   width: 6px;
   height: 6px;
   background-color: #38CFC8;
@@ -225,21 +213,21 @@
   box-shadow: 0 0 8px #38CFC8;
 }
 
-.info-card__divider {
+.infoCardDivider {
   height: 1px;
   width: 100%;
   background: linear-gradient(90deg, rgba(56, 207, 200, 0.3) 0%, rgba(56, 207, 200, 0.05) 100%);
   margin-bottom: 0.75rem;
 }
 
-.info-card__desc {
+.infoCardDesc {
   font-size: clamp(14px, 1.3vw, 16px);
   color: #E2E8F0;
   line-height: 1.6;
   font-weight: 300;
   margin: 0;
 
-  .desc-highlight {
+  .descHighlight {
     color: #38CFC8;
     font-weight: 600;
     text-transform: uppercase;
@@ -248,7 +236,7 @@
   }
 }
 
-.home__actions {
+.homeActions {
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -258,51 +246,50 @@
   width: 100%;
 }
 
-.home__cta {
+.homeCta {
   min-width: 170px;
   justify-content: center;
   padding: 14px 32px;
   font-size: 15.5px;
   letter-spacing: 0.08em;
-}
 
-.home__cta--primary {
-  background: linear-gradient(135deg, #4FD1C5, #3B82F6);
-  color: #050c1a;
-  border: none;
-  box-shadow: 0 0 24px rgba(#4FD1C5, 0.25);
-
-  &:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 0 40px rgba(#4FD1C5, 0.45);
+  &Primary {
+    background: linear-gradient(135deg, #4FD1C5, #3B82F6);
     color: #050c1a;
-  }
-}
+    border: none;
+    box-shadow: 0 0 24px rgba(#4FD1C5, 0.25);
 
-.home__cta--outline {
-  border: 1px solid rgba(255, 255, 255, 0.22);
-  color: $text-white;
-  background: rgba(255, 255, 255, 0.03);
-  backdrop-filter: blur(4px);
-
-  .btn__arrow {
-    display: inline-block;
-    transition: transform 0.25s ease;
-    margin-left: 6px;
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 40px rgba(#4FD1C5, 0.45);
+      color: #050c1a;
+    }
   }
 
-  &:hover {
-    border-color: rgba(#4FD1C5, 0.45);
-    background: rgba(#4FD1C5, 0.05);
+  &Outline {
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    color: $text-white;
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(4px);
 
-    .btn__arrow {
-      transform: translateX(4px);
+    .btnArrow {
+      display: inline-block;
+      transition: transform 0.25s ease;
+      margin-left: 6px;
+    }
+
+    &:hover {
+      border-color: rgba(#4FD1C5, 0.45);
+      background: rgba(#4FD1C5, 0.05);
+
+      .btnArrow {
+        transform: translateX(4px);
+      }
     }
   }
 }
 
-// Stats bar container
-.home__stats-bar {
+.homeStatsBar {
   background: rgba(10, 22, 40, 0.4);
   backdrop-filter: blur(12px);
   border: 1px solid rgba(255, 255, 255, 0.08);
@@ -316,27 +303,26 @@
   align-self: center;
 }
 
-.home__stat-col {
+.homeStatCol {
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 0.9rem;
   padding: 0 1rem;
+
+  & + &::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 15%;
+    bottom: 15%;
+    width: 1px;
+    background: rgba(255, 255, 255, 0.1);
+  }
 }
 
-// Stats dividers (vertical lines)
-.home__stat-col+.home__stat-col::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 15%;
-  bottom: 15%;
-  width: 1px;
-  background: rgba(255, 255, 255, 0.1);
-}
-
-.stat-col__icon {
+.statColIcon {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -350,28 +336,28 @@
   flex-shrink: 0;
 }
 
-.stat-col__info {
+.statColInfo {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   gap: 2px;
 }
 
-.stat-col__value {
+.statColValue {
   font-size: clamp(30px, 2.6vw, 36px);
   font-weight: 800;
   color: $text-white;
   line-height: 1.1;
 }
 
-.stat-col__label {
+.statColLabel {
   font-size: clamp(14px, 1.2vw, 15.5px);
   color: #94A3B8;
   font-weight: 500;
   white-space: nowrap;
 }
 
-.home__scroll {
+.homeScroll {
   position: absolute;
   left: 50%;
   bottom: clamp(1.2rem, 3vh, 2rem);
@@ -383,7 +369,7 @@
   transform: translateX(-50%);
 }
 
-.home__scroll-dot {
+.homeScrollDot {
   position: absolute;
   top: 8px;
   left: 50%;
@@ -397,13 +383,10 @@
 }
 
 @keyframes scroll-dot {
-
-  0%,
-  100% {
+  0%, 100% {
     opacity: 0.35;
     transform: translate(-50%, 0);
   }
-
   45% {
     opacity: 1;
     transform: translate(-50%, 12px);
@@ -411,7 +394,7 @@
 }
 
 @media (max-width: 900px) {
-  .home__stats-bar {
+  .homeStatsBar {
     grid-template-columns: repeat(2, 1fr);
     gap: 1.5rem 1rem;
     padding: 1.5rem;
@@ -419,47 +402,47 @@
     max-width: 600px;
   }
 
-  .home__stat-col {
+  .homeStatCol {
     justify-content: flex-start;
     padding: 0 1rem;
-  }
 
-  .home__stat-col+.home__stat-col::before {
-    display: none;
-  }
+    & + &::before {
+      display: none;
+    }
 
-  .home__stat-col:nth-child(even)::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 10%;
-    bottom: 10%;
-    width: 1px;
-    background: rgba(255, 255, 255, 0.1);
+    &:nth-child(even)::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 10%;
+      bottom: 10%;
+      width: 1px;
+      background: rgba(255, 255, 255, 0.1);
+    }
   }
 }
 
 @media (max-width: 768px) {
-  .home__content {
+  .homeContent {
     gap: 1.2rem;
   }
 
-  .home__title {
+  .homeTitle {
     font-size: clamp(2.5rem, 11vw, 4.2rem);
     line-height: 1.1;
   }
 
-  .home__info-card {
+  .homeInfoCard {
     max-width: 28rem;
     padding: 1.25rem 1.5rem;
   }
 
-  .home__actions {
+  .homeActions {
     width: 100%;
     gap: 1rem;
   }
 
-  .home__cta {
+  .homeCta {
     min-width: calc(50% - 0.5rem);
     flex-grow: 1;
     padding: 12px 20px;
@@ -467,11 +450,11 @@
 }
 
 @media (max-width: 560px) {
-  .section--home {
+  .sectionHome {
     padding-bottom: 5.5rem;
   }
 
-  .home__stats-bar {
+  .homeStatsBar {
     grid-template-columns: 1fr;
     gap: 1.2rem;
     max-width: 320px;
@@ -479,149 +462,22 @@
     margin-right: auto;
   }
 
-  .home__stat-col {
+  .homeStatCol {
     justify-content: flex-start;
     padding: 0;
-  }
 
-  .home__stat-col:nth-child(even)::before {
-    display: none;
-  }
+    &:nth-child(even)::before {
+      display: none;
+    }
 
-  .home__stat-col+.home__stat-col::after {
-    content: "";
-    position: absolute;
-    left: 10%;
-    right: 10%;
-    top: -0.6rem;
-    height: 1px;
-    background: rgba(255, 255, 255, 0.08);
-  }
-}
-
-/* --- Floating Tech Quote Card Between Hero (Dark) and CTA (White) Sections --- */
-.home-quote-floating-wrapper {
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translate(-50%, 50%);
-  width: 90%;
-  max-width: 920px;
-  z-index: 30;
-  pointer-events: auto;
-}
-
-.home-quote__card {
-  position: relative;
-  background: rgba(5, 12, 26, 0.92);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(56, 207, 200, 0.35);
-  border-radius: 16px;
-  padding: 2.5rem 3rem;
-  box-shadow:
-    0 20px 50px rgba(0, 0, 0, 0.5),
-    0 0 30px rgba(56, 207, 200, 0.15),
-    inset 0 0 20px rgba(56, 207, 200, 0.08);
-  text-align: center;
-  overflow: hidden;
-
-  .quote-corner {
-    position: absolute;
-    width: 16px;
-    height: 16px;
-    border: 2px solid #38CFC8;
-    transition: all 0.3s ease;
-  }
-
-  .quote-corner-tl {
-    top: 0;
-    left: 0;
-    border-right: none;
-    border-bottom: none;
-    border-top-left-radius: 16px;
-  }
-
-  .quote-corner-tr {
-    top: 0;
-    right: 0;
-    border-left: none;
-    border-bottom: none;
-    border-top-right-radius: 16px;
-  }
-
-  .quote-corner-bl {
-    bottom: 0;
-    left: 0;
-    border-right: none;
-    border-top: none;
-    border-bottom-left-radius: 16px;
-  }
-
-  .quote-corner-br {
-    bottom: 0;
-    right: 0;
-    border-left: none;
-    border-top: none;
-    border-bottom-right-radius: 16px;
-  }
-
-  .quote-hud-accent {
-    position: absolute;
-    top: 10px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 30px;
-    height: 4px;
-    background: linear-gradient(90deg, transparent, #38CFC8, transparent);
-    opacity: 0.7;
-
-    &::before {
+    & + &::after {
       content: "";
       position: absolute;
-      top: -3px;
-      left: 13px;
-      width: 4px;
-      height: 4px;
-      background-color: #38CFC8;
-      border-radius: 50%;
-      box-shadow: 0 0 8px #38CFC8;
-    }
-  }
-
-  .quote-card__text {
-    font-size: clamp(16px, 1.8vw, 21px);
-    color: #e2e8f0;
-    line-height: 1.8;
-    font-weight: 300;
-    margin: 0;
-    font-style: italic;
-
-    .highlight {
-      color: #38CFC8;
-      font-weight: 600;
-      font-style: normal;
-      text-shadow: 0 0 10px rgba(56, 207, 200, 0.15);
-    }
-  }
-}
-
-@media (max-width: 768px) {
-  .home-quote-floating-wrapper {
-    width: 94%;
-  }
-
-  .home-quote__card {
-    padding: 1.5rem 1.5rem;
-
-    .quote-card__text {
-      font-size: 0.95rem;
-      line-height: 1.6;
-    }
-
-    .quote-corner {
-      width: 12px;
-      height: 12px;
+      left: 10%;
+      right: 10%;
+      top: -0.6rem;
+      height: 1px;
+      background: rgba(255, 255, 255, 0.08);
     }
   }
 }

@@ -1,17 +1,10 @@
-// ── Variables ──────────────────────────────────────────────
-$cyan:        #4FD1E8;
-$cyan-bright: #00D4FF;
-$purple:      #7C4DFF;
-$cyan-hover:  #5EEAD4;
-$text-white:  #ffffff;
-$text-muted:  #CBD5E1;
-$text-dim:    #94A3B8;
-$bg-dark:     rgba(10, 15, 30, 0.88);
-$bg-drawer:   rgba(10, 15, 30, 0.97);
+@use '@/scss/global/variables' as *;
+
+$bg-dark: rgba(10, 15, 30, 0.88);
+$bg-drawer: rgba(10, 15, 30, 0.97);
 $bg-dropdown: rgba(10, 15, 30, 0.95);
 
-// ── Header Root ────────────────────────────────────────────
-.header-root {
+.headerRoot {
   position: fixed;
   top: 0;
   left: 0;
@@ -25,7 +18,7 @@ $bg-dropdown: rgba(10, 15, 30, 0.95);
   background: transparent;
   border-bottom: 1px solid transparent;
   transition: background 0.35s ease, border-color 0.35s ease, backdrop-filter 0.35s ease;
-  padding-left:  max(clamp(1rem, 5vw, 4.5rem), env(safe-area-inset-left));
+  padding-left: max(clamp(1rem, 5vw, 4.5rem), env(safe-area-inset-left));
   padding-right: max(clamp(1rem, 5vw, 4.5rem), env(safe-area-inset-right));
 
   &.scrolled {
@@ -34,12 +27,11 @@ $bg-dropdown: rgba(10, 15, 30, 0.95);
     -webkit-backdrop-filter: blur(12px);
     border-bottom-color: rgba(255, 255, 255, 0.08);
 
-    .header-glow-line { width: 100%; }
+    .headerGlowLine { width: 100%; }
   }
 }
 
-// ── Inner layout ───────────────────────────────────────────
-.header-inner {
+.headerInner {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -49,8 +41,7 @@ $bg-dropdown: rgba(10, 15, 30, 0.95);
   gap: 2rem;
 }
 
-// ── Logo ───────────────────────────────────────────────────
-.header-logo {
+.headerLogo {
   flex-shrink: 0;
   display: flex;
   align-items: center;
@@ -66,9 +57,8 @@ $bg-dropdown: rgba(10, 15, 30, 0.95);
   &:hover img { opacity: 0.85; }
 }
 
-// ── Desktop Navigation ─────────────────────────────────────
-.header-nav {
-  position: relative;  // needed for .nav-indicator absolute positioning
+.headerNav {
+  position: relative;
   display: flex;
   align-items: center;
   gap: clamp(1rem, 2.5vw, 2.5rem);
@@ -79,7 +69,7 @@ $bg-dropdown: rgba(10, 15, 30, 0.95);
   li { position: relative; }
 
   a,
-  button.nav-btn {
+  button.navBtn {
     font-family: inherit;
     font-size: clamp(12px, 1.1vw, 14px);
     font-weight: 600;
@@ -119,12 +109,10 @@ $bg-dropdown: rgba(10, 15, 30, 0.95);
     }
   }
 
-  // Active item text highlight
-  a.active, button.nav-btn.active { color: $cyan-hover; }
+  a.active, button.navBtn.active { color: $cyan-hover; }
 }
 
-// ── Sliding active indicator (driven by JS CSS vars) ────────
-.nav-indicator {
+.navIndicator {
   position: absolute;
   bottom: -3px;
   left: 0;
@@ -142,8 +130,7 @@ $bg-dropdown: rgba(10, 15, 30, 0.95);
   pointer-events: none;
 }
 
-// ── Dropdown arrow ─────────────────────────────────────────
-.arrow-icon {
+.arrowIcon {
   display: inline-block;
   font-size: 10px;
   line-height: 1;
@@ -152,8 +139,7 @@ $bg-dropdown: rgba(10, 15, 30, 0.95);
   &.open { transform: rotate(180deg); }
 }
 
-// ── Dropdown panel ─────────────────────────────────────────
-.dropdown-panel {
+.dropdownPanel {
   position: absolute;
   top: calc(100% + 14px);
   left: 50%;
@@ -182,7 +168,7 @@ $bg-dropdown: rgba(10, 15, 30, 0.95);
     display: block;
     padding: 10px 20px;
     font-size: 13px;
-    color: $text-muted;
+    color: #CBD5E1;
     text-decoration: none;
     font-weight: 500;
     letter-spacing: 0.04em;
@@ -198,8 +184,7 @@ $bg-dropdown: rgba(10, 15, 30, 0.95);
   }
 }
 
-// ── CTA Button ─────────────────────────────────────────────
-.cta-btn {
+.ctaBtn {
   flex-shrink: 0;
   display: flex;
   align-items: center;
@@ -230,15 +215,14 @@ $bg-dropdown: rgba(10, 15, 30, 0.95);
   }
 }
 
-.cta-arrow {
+.ctaArrow {
   font-style: normal;
   transition: transform 0.2s;
 
-  .cta-btn:hover & { transform: translateX(3px); }
+  .ctaBtn:hover & { transform: translateX(3px); }
 }
 
-// ── Hamburger ──────────────────────────────────────────────
-.hamburger-btn {
+.hamburgerBtn {
   display: none;
   flex-direction: column;
   justify-content: center;
@@ -256,13 +240,13 @@ $bg-dropdown: rgba(10, 15, 30, 0.95);
   &:hover { background: rgba(255, 255, 255, 0.08); }
 
   &.open {
-    .hamburger-bar:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-    .hamburger-bar:nth-child(2) { opacity: 0; width: 0; }
-    .hamburger-bar:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .hamburgerBar:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburgerBar:nth-child(2) { opacity: 0; width: 0; }
+    .hamburgerBar:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
   }
 }
 
-.hamburger-bar {
+.hamburgerBar {
   display: block;
   width: 22px;
   height: 2px;
@@ -272,8 +256,7 @@ $bg-dropdown: rgba(10, 15, 30, 0.95);
   transition: transform 0.3s ease, opacity 0.3s ease, width 0.3s ease;
 }
 
-// ── Mobile overlay ─────────────────────────────────────────
-.mobile-overlay {
+.mobileOverlay {
   display: none;
   position: fixed;
   inset: 0;
@@ -289,8 +272,7 @@ $bg-dropdown: rgba(10, 15, 30, 0.95);
   }
 }
 
-// ── Mobile Drawer ──────────────────────────────────────────
-.mobile-drawer {
+.mobileDrawer {
   position: fixed;
   top: 0;
   right: 0;
@@ -311,8 +293,7 @@ $bg-dropdown: rgba(10, 15, 30, 0.95);
   &.open { transform: translateX(0); }
 }
 
-// ── Mobile Nav ─────────────────────────────────────────────
-.mobile-nav {
+.mobileNav {
   list-style: none;
   margin: 0;
   padding: 0;
@@ -329,7 +310,7 @@ $bg-dropdown: rgba(10, 15, 30, 0.95);
     font-weight: 600;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: $text-muted;
+    color: #CBD5E1;
     text-decoration: none;
     background: none;
     border: none;
@@ -348,8 +329,7 @@ $bg-dropdown: rgba(10, 15, 30, 0.95);
   a.active { color: $cyan-bright; }
 }
 
-// ── Mobile sub-menu ────────────────────────────────────────
-.mobile-sub {
+.mobileSub {
   list-style: none;
   padding: 4px 0 4px 16px;
   margin: 0;
@@ -365,24 +345,22 @@ $bg-dropdown: rgba(10, 15, 30, 0.95);
   a {
     font-size: 13px;
     padding: 10px 12px;
-    color: $text-dim;
+    color: #94A3B8;
   }
 }
 
-// ── Mobile CTA ─────────────────────────────────────────────
-.mobile-cta-wrap {
+.mobileCtaWrap {
   margin-top: auto;
   padding-top: 2rem;
   border-top: 1px solid rgba(255, 255, 255, 0.06);
 
-  .cta-btn {
+  .ctaBtn {
     width: 100%;
     justify-content: center;
   }
 }
 
-// ── Glow line ──────────────────────────────────────────────
-.header-glow-line {
+.headerGlowLine {
   position: absolute;
   bottom: 0;
   left: 50%;
@@ -393,19 +371,18 @@ $bg-dropdown: rgba(10, 15, 30, 0.95);
   transition: width 0.5s ease;
 }
 
-// ── Responsive ─────────────────────────────────────────────
 @media (max-width: 1024px) {
-  .header-nav {
+  .headerNav {
     gap: clamp(0.75rem, 2vw, 1.5rem);
   }
 }
 
 @media (max-width: 768px) {
-  .header-nav,
-  .cta-btn {
+  .headerNav,
+  .ctaBtn {
     display: none;
   }
 
-  .hamburger-btn  { display: flex; }
-  .mobile-overlay { display: block; }
+  .hamburgerBtn  { display: flex; }
+  .mobileOverlay { display: block; }
 }

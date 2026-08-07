@@ -7,11 +7,10 @@ import SolutionEcosystem from "@/components/solution/SolutionEcosystem";
 import SolutionValueReceived from "@/components/solution/SolutionValueReceived";
 import SolutionFeaturedProjects from "@/components/solution/SolutionFeaturedProjects";
 import SolutionFooterContact from "@/components/solution/SolutionFooterContact";
-import "@/scss/solution.scss";
 
 export default function SolutionsPage() {
   return (
-    <main className="solutions-page-root">
+    <main style={{ width: "100%", overflow: "visible" }}>
       {/* BLOCK 1 - HERO */}
       <SolutionHero />
 

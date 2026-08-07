@@ -1,0 +1,225 @@
+@use '@/scss/global/variables' as *;
+
+.sectionAboutVm {
+  position: relative;
+  background: transparent;
+  padding: clamp(5rem, 9vh, 7.5rem) clamp(1.2rem, 5vw, 4rem);
+  overflow: hidden;
+}
+
+.aboutVmBg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(135deg, rgba(79, 209, 232, 0.07) 1px, transparent 1px),
+      linear-gradient(135deg, rgba(79, 209, 232, 0.05) 1px, transparent 1px);
+    background-size: 280px 280px, 560px 560px;
+    background-position: 0 0, 140px 140px;
+    mask-image: radial-gradient(ellipse 90% 80% at 50% 50%, black 40%, transparent 85%);
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 70% 50% at 50% 30%, rgba(79, 209, 232, 0.08), transparent 65%);
+  }
+}
+
+.aboutVmGlow {
+  position: absolute;
+  top: -80px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(900px, 90vw);
+  height: 400px;
+  background: radial-gradient(ellipse at center, rgba(56, 207, 200, 0.1) 0%, transparent 65%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.aboutVmContent {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: clamp(1.5rem, 3vh, 2.2rem);
+  max-width: 1240px;
+  margin: 0 auto;
+}
+
+.aboutVmTitle {
+  font-size: clamp(2.2rem, 4vw, 3.4rem);
+  font-weight: 800;
+  color: #FFFFFF;
+  margin: 0;
+  letter-spacing: -0.02em;
+
+  .titleHighlight {
+    background: linear-gradient(90deg, #4FD1E8 0%, #38CFC8 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+}
+
+.aboutVmSubtitle {
+  font-size: clamp(1rem, 1.4vw, 1.15rem);
+  color: #CBD5E1;
+  max-width: 720px;
+  margin: 0;
+  line-height: 1.65;
+}
+
+.aboutVmGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(1.5rem, 2.5vw, 2.5rem);
+  width: 100%;
+
+  @media (max-width: 860px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.vmLightCard {
+  background: rgba(15, 27, 61, 0.65);
+  border: 1.5px solid rgba(79, 209, 232, 0.25);
+  border-radius: 20px;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  padding: clamp(2rem, 3.5vw, 2.5rem);
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+
+  &:hover {
+    border-color: rgba(79, 209, 232, 0.55);
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.45), 0 0 25px rgba(79, 209, 232, 0.2);
+    transform: translateY(-4px);
+  }
+
+  .vmCardTopIcon {
+    margin-bottom: 0.4rem;
+
+    .iconCircle {
+      width: 56px;
+      height: 56px;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      &Blue {
+        background: linear-gradient(135deg, rgba(79, 209, 232, 0.2), rgba(79, 209, 232, 0.04));
+        border: 1px solid rgba(79, 209, 232, 0.3);
+      }
+
+      &Teal {
+        background: linear-gradient(135deg, rgba(56, 207, 200, 0.2), rgba(56, 207, 200, 0.04));
+        border: 1px solid rgba(56, 207, 200, 0.3);
+      }
+    }
+  }
+
+  .vmCardTitle {
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: #FFFFFF;
+    margin: 0;
+    letter-spacing: 0.04em;
+  }
+
+  .vmCardHighlightSub {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #4FD1E8;
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  .vmCardText {
+    font-size: 0.95rem;
+    line-height: 1.65;
+    color: #CBD5E1;
+    margin: 0;
+  }
+}
+
+.aboutVmPillarsRow {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1rem;
+  width: 100%;
+  margin-top: 1rem;
+
+  @media (max-width: 960px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @media (max-width: 600px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .vmPillarItem {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: 1rem 0.8rem;
+    border-radius: 14px;
+    background: rgba(15, 27, 61, 0.65);
+    border: 1px solid rgba(79, 209, 232, 0.18);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    text-align: center;
+    transition: all 0.3s ease;
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: rgba(79, 209, 232, 0.6);
+      box-shadow: 0 0 6px rgba(79, 209, 232, 0.5);
+    }
+
+    .pillarIconBox {
+      font-size: 1.5rem;
+    }
+
+    .pillarText {
+      font-size: 0.825rem;
+      font-weight: 700;
+      color: #E2E8F0;
+      line-height: 1.35;
+    }
+
+    &:hover {
+      transform: translateY(-4px);
+      border-color: rgba(79, 209, 232, 0.55);
+      box-shadow: 0 8px 25px rgba(79, 209, 232, 0.2);
+
+      &::after {
+        background: #4FD1E8;
+        box-shadow: 0 0 10px rgba(79, 209, 232, 0.8);
+      }
+    }
+  }
+}

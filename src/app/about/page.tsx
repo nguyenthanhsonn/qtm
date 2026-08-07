@@ -1,6 +1,6 @@
 "use client";
 
-import "@/scss/about.scss";
+import AboutBackground from "@/components/about/AboutBackground";
 import AboutHero from "@/components/about/AboutHero";
 import AboutVisionMission from "@/components/about/AboutVisionMission";
 import AboutRoadmap from "@/components/about/AboutRoadmap";
@@ -10,24 +10,29 @@ import AboutCommitments from "@/components/about/AboutCommitments";
 
 export default function AboutPage() {
   return (
-    <main className="about-page-wrapper">
-      {/* BLOCK 1 - HERO (Dark #050c1a) */}
-      <AboutHero />
+    <div className="about-page-root">
+      {/* Global Fixed Background Layer for Entire About Page */}
+      <AboutBackground />
 
-      {/* BLOCK 2 - TẦM NHÌN & SỨ MỆNH (Light #F8FAFC) */}
-      <AboutVisionMission />
+      <main className="about-page-wrapper">
+        {/* BLOCK 1 - HERO */}
+        <AboutHero />
 
-      {/* BLOCK 3 - ROADMAP 5 NĂM (Dark #050c1a) */}
-      <AboutRoadmap />
+        {/* BLOCK 2 - TẦM NHÌN & SỨ MỆNH */}
+        <AboutVisionMission />
 
-      {/* BLOCK 4 - VĂN HÓA AI (Light #F8FAFC) */}
-      <AboutAiCulture />
+        {/* BLOCK 3 - ROADMAP 5 NĂM */}
+        <AboutRoadmap />
 
-      {/* BLOCK 5 - KHÁCH HÀNG MỤC TIÊU & ĐỐI TÁC (Dark #081225) */}
-      <AboutTargetAudience />
+        {/* BLOCK 4 - VĂN HÓA AI */}
+        <AboutAiCulture />
 
-      {/* BLOCK 6 - CAM KẾT (Light + Dark CTA Band) */}
-      <AboutCommitments />
-    </main>
+        {/* BLOCK 5 - KHÁCH HÀNG MỤC TIÊU & ĐỐI TÁC */}
+        <AboutTargetAudience />
+
+        {/* BLOCK 6 - CAM KẾT */}
+        <AboutCommitments />
+      </main>
+    </div>
   );
 }

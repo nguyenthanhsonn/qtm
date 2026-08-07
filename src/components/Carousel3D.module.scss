@@ -1,12 +1,6 @@
-// ── Technical 3D Cylinder Arc Carousel Styles ──────────────
-$cyan:        #4FD1E8;
-$cyan-bright: #00D4FF;
-$purple:      #7C4DFF;
-$cyan-hover:  #5EEAD4;
-$text-white:  #ffffff;
-$text-muted:  #CBD5E1;
+@use '@/scss/global/variables' as *;
 
-.c3d-root {
+.c3dRoot {
   position: relative;
   width: 100%;
   max-width: 1400px;
@@ -21,13 +15,12 @@ $text-muted:  #CBD5E1;
   }
 }
 
-// Technical HUD Background Grid & Orbs
-.c3d-hud-bg {
+.c3dHudBg {
   position: absolute;
   inset: 0;
   pointer-events: none;
 
-  .hud-line-glow {
+  .hudLineGlow {
     position: absolute;
     left: 5%;
     right: 5%;
@@ -38,7 +31,7 @@ $text-muted:  #CBD5E1;
     filter: blur(1px);
   }
 
-  .hud-circle-center {
+  .hudCircleCenter {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -52,8 +45,7 @@ $text-muted:  #CBD5E1;
   }
 }
 
-// 3D Stage with perspective
-.c3d-stage {
+.c3dStage {
   position: relative;
   width: 100%;
   height: clamp(390px, 48vh, 530px);
@@ -64,8 +56,7 @@ $text-muted:  #CBD5E1;
   overflow: hidden;
 }
 
-// Cylinder Track
-.c3d-cylinder-track {
+.c3dCylinderTrack {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -76,8 +67,7 @@ $text-muted:  #CBD5E1;
   will-change: transform;
 }
 
-// 3D Cylinder Card
-.c3d-card {
+.c3dCard {
   position: absolute;
   width: clamp(210px, 20vw, 260px);
   height: clamp(340px, 42vh, 460px);
@@ -87,7 +77,7 @@ $text-muted:  #CBD5E1;
   -webkit-backface-visibility: hidden;
   transition: box-shadow 0.4s ease, border-color 0.4s ease;
 
-  .c3d-card-inner {
+  .c3dCardInner {
     position: relative;
     width: 100%;
     height: 100%;
@@ -104,9 +94,8 @@ $text-muted:  #CBD5E1;
     transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.4s ease, border-color 0.4s ease;
   }
 
-  // Active / Front Card Technical HUD Reticle
-  &.c3d-card--front {
-    .c3d-card-inner {
+  &.c3dCardFront {
+    .c3dCardInner {
       border-color: rgba(0, 212, 255, 0.8);
       box-shadow: 0 25px 65px rgba(0, 0, 0, 0.75),
                   0 0 40px rgba(0, 212, 255, 0.5),
@@ -114,7 +103,6 @@ $text-muted:  #CBD5E1;
       transform: translateZ(25px);
     }
 
-    // Laser Scanline Effect on Active Card
     &::after {
       content: "";
       position: absolute;
@@ -133,30 +121,29 @@ $text-muted:  #CBD5E1;
   &:hover {
     z-index: 50;
 
-    .c3d-card-inner {
+    .c3dCardInner {
       border-color: rgba(0, 212, 255, 1);
       box-shadow: 0 35px 85px rgba(0, 0, 0, 0.9),
                   0 0 60px rgba(0, 212, 255, 0.7);
       transform: translateZ(50px) scale(1.05);
     }
 
-    .c3d-card-image {
+    .c3dCardImage {
       transform: scale(1.08) translateZ(10px);
     }
 
-    .c3d-card-overlay {
+    .c3dCardOverlay {
       transform: translateZ(35px);
     }
 
-    .c3d-card-hud-corner {
+    .c3dCardHudCorner {
       transform: translateZ(40px);
       box-shadow: 0 0 10px $cyan-bright;
     }
   }
 }
 
-// Media Image Container
-.c3d-card-image {
+.c3dCardImage {
   position: relative;
   width: 100%;
   height: 100%;
@@ -166,7 +153,6 @@ $text-muted:  #CBD5E1;
   transition: transform 0.5s ease;
   overflow: hidden;
 
-  // Dark Tech Vignette Overlay
   &::after {
     content: "";
     position: absolute;
@@ -181,8 +167,7 @@ $text-muted:  #CBD5E1;
   }
 }
 
-// HUD Corner Brackets on Cards
-.c3d-card-hud-corner {
+.c3dCardHudCorner {
   position: absolute;
   width: 12px;
   height: 12px;
@@ -192,14 +177,13 @@ $text-muted:  #CBD5E1;
   pointer-events: none;
   opacity: 0.8;
 
-  &--tl { top: 10px; left: 10px; border-width: 2px 0 0 2px; }
-  &--tr { top: 10px; right: 10px; border-width: 2px 2px 0 0; }
-  &--bl { bottom: 10px; left: 10px; border-width: 0 0 2px 2px; }
-  &--br { bottom: 10px; right: 10px; border-width: 0 2px 2px 0; }
+  &Tl { top: 10px; left: 10px; border-width: 2px 0 0 2px; }
+  &Tr { top: 10px; right: 10px; border-width: 2px 2px 0 0; }
+  &Bl { bottom: 10px; left: 10px; border-width: 0 0 2px 2px; }
+  &Br { bottom: 10px; right: 10px; border-width: 0 2px 2px 0; }
 }
 
-// Overlay Info
-.c3d-card-overlay {
+.c3dCardOverlay {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -212,7 +196,7 @@ $text-muted:  #CBD5E1;
   border-bottom-left-radius: 15px;
   border-bottom-right-radius: 15px;
 
-  .c3d-card-tag {
+  .c3dCardTag {
     font-size: 0.75rem;
     font-weight: 600;
     letter-spacing: 0.12em;
@@ -223,7 +207,7 @@ $text-muted:  #CBD5E1;
     text-shadow: 0 0 8px rgba(0, 212, 255, 0.5);
   }
 
-  .c3d-card-title {
+  .c3dCardTitle {
     font-family: var(--font-heading);
     font-size: 0.925rem;
     font-weight: 600;
@@ -232,8 +216,7 @@ $text-muted:  #CBD5E1;
   }
 }
 
-// Real-Time Tech HUD System Status Bar
-.c3d-tech-status-bar {
+.c3dTechStatusBar {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -247,7 +230,7 @@ $text-muted:  #CBD5E1;
   border-radius: 30px;
   font-family: var(--font-geist-mono), monospace;
   font-size: 0.78rem;
-  color: $text-muted;
+  color: #CBD5E1;
 
   @media (max-width: 640px) {
     flex-direction: column;
@@ -255,12 +238,12 @@ $text-muted:  #CBD5E1;
     border-radius: 16px;
   }
 
-  .status-item {
+  .statusItem {
     display: flex;
     align-items: center;
     gap: 0.5rem;
 
-    .status-dot {
+    .statusDot {
       width: 8px;
       height: 8px;
       border-radius: 50%;
@@ -269,7 +252,7 @@ $text-muted:  #CBD5E1;
       animation: pulseDot 1.5s infinite ease-in-out;
     }
 
-    .val-highlight {
+    .valHighlight {
       color: $cyan-bright;
       font-weight: 600;
     }
