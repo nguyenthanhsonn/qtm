@@ -1,0 +1,97 @@
+@use '@/scss/global/variables' as *;
+
+.sectionHero {
+  position: relative;
+  width: 100%;
+  padding: clamp(6rem, 11vh, 8.5rem) clamp(1.2rem, 5vw, 4rem) clamp(2.5rem, 5vh, 3.5rem);
+  color: #FFFFFF;
+  text-align: center;
+}
+
+.heroContent {
+  position: relative;
+  z-index: 3;
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(1.2rem, 2.5vh, 2rem);
+}
+
+.tagPill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 18px;
+  border-radius: 999px;
+  background: rgba(56, 207, 200, 0.12);
+  border: 1px solid rgba(56, 207, 200, 0.3);
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #38CFC8;
+
+  .tagDot {
+    color: #00D4FF;
+  }
+}
+
+.mainTitle {
+  font-family: var(--font-heading);
+  font-size: clamp(2.4rem, 4.8vw, 4.2rem);
+  font-weight: 900;
+  margin: 0;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  background: linear-gradient(135deg, #FFFFFF 0%, #38CFC8 50%, #00D4FF 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.subTitle {
+  font-size: clamp(1rem, 1.4vw, 1.175rem);
+  color: #CBD5E1;
+  max-width: 760px;
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* Category Filter Pills Bar */
+.filterBar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+}
+
+.filterBtn {
+  padding: 0.6rem 1.3rem;
+  border-radius: 999px;
+  background: rgba(10, 22, 46, 0.6);
+  border: 1.5px solid rgba(56, 207, 200, 0.25);
+  color: #94A3B8;
+  font-family: var(--font-heading);
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+  backdrop-filter: blur(10px);
+  transition: all 0.25s ease;
+
+  &:hover {
+    color: #FFFFFF;
+    border-color: #38CFC8;
+    background: rgba(56, 207, 200, 0.15);
+    transform: translateY(-2px);
+  }
+
+  &.active {
+    background: linear-gradient(135deg, #38CFC8 0%, #2095AD 100%);
+    border-color: #00D4FF;
+    color: #050C1A;
+    box-shadow: 0 0 20px rgba(56, 207, 200, 0.5);
+  }
+}
