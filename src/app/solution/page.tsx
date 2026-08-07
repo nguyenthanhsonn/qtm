@@ -1,33 +1,36 @@
 "use client";
 
 import React from "react";
+import AboutBackground from "@/components/about/AboutBackground";
 import SolutionHero from "@/components/solution/SolutionHero";
 import SolutionPainPoints from "@/components/solution/SolutionPainPoints";
 import SolutionEcosystem from "@/components/solution/SolutionEcosystem";
 import SolutionValueReceived from "@/components/solution/SolutionValueReceived";
 import SolutionFeaturedProjects from "@/components/solution/SolutionFeaturedProjects";
-import SolutionFooterContact from "@/components/solution/SolutionFooterContact";
 
 export default function SolutionsPage() {
   return (
-    <main style={{ width: "100%", overflow: "visible" }}>
-      {/* BLOCK 1 - HERO */}
-      <SolutionHero />
+    <div style={{ position: "relative", width: "100%", minHeight: "100vh" }}>
+      {/* Global Fixed Background Layer for Entire Solution Page */}
+      <AboutBackground />
 
-      {/* BLOCK 2 - DOANH NGHIỆP ĐANG GẶP ĐIỀU GÌ */}
-      <SolutionPainPoints />
+      <main style={{ position: "relative", zIndex: 2, width: "100%", overflow: "visible" }}>
+        {/* BLOCK 1 - HERO */}
+        <SolutionHero />
 
-      {/* BLOCK 3 - HỆ SINH THÁI GIẢI PHÁP QTM */}
-      <SolutionEcosystem />
+        {/* BLOCK 2 - DOANH NGHIỆP ĐANG GẶP ĐIỀU GÌ */}
+        <SolutionPainPoints />
 
-      {/* BLOCK 4 - GIÁ TRỊ KHÁCH HÀNG NHẬN ĐƯỢC */}
-      <SolutionValueReceived />
+        {/* BLOCK 3 - HỆ SINH THÁI GIẢI PHÁP QTM */}
+        <SolutionEcosystem />
 
-      {/* BLOCK 5 - DỰ ÁN TIÊU BIỂU */}
-      <SolutionFeaturedProjects />
+        {/* BLOCK 4 - GIÁ TRỊ KHÁCH HÀNG NHẬN ĐƯỢC */}
+        <SolutionValueReceived />
 
-      {/* BLOCK 6 - CONTACT / FOOTER */}
-      <SolutionFooterContact />
-    </main>
+        {/* BLOCK 5 - DỰ ÁN TIÊU BIỂU */}
+        <SolutionFeaturedProjects />
+      </main>
+    </div>
   );
 }
+

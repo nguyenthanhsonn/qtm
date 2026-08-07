@@ -12,8 +12,8 @@ const NAV_ITEMS: { label: string; href: string }[] = [
   { label: "Trang chủ",   href: "/home" },
   { label: "Về chúng tôi",  href: "/about" },
   { label: "Giải pháp",   href: "/solution" },
+  { label: "Dự án",      href: "/projects" },
   { label: "Miss Legacy", href: "/missLegacy" },
-  { label: "Liên hệ",    href: "/contact"  },
 ];
 
 export default function Header() {

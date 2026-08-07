@@ -2,219 +2,216 @@
 
 .sectionSolProj {
   position: relative;
-  background-color: #F1F5F9;
-  padding: clamp(5.5rem, 9vh, 8rem) clamp(1.2rem, 5vw, 4rem);
-  overflow: visible;
-  color: #123A53;
+  width: 100%;
+  padding: clamp(5rem, 9vh, 8rem) clamp(1.2rem, 5vw, 4rem);
+  color: #FFFFFF;
 }
 
 .solProjContent {
   position: relative;
   z-index: 3;
+  max-width: 1240px;
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: clamp(1.8rem, 3.5vh, 3rem);
   text-align: center;
-  gap: clamp(1.2rem, 2.5vh, 1.8rem);
-  max-width: 1240px;
-  margin: 0 auto;
 }
 
 .solProjTagPill {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  padding: 5px 14px;
+  gap: 8px;
+  padding: 6px 18px;
   border-radius: 999px;
-  background: rgba(32, 149, 173, 0.12);
-  border: 1px solid rgba(32, 149, 173, 0.28);
+  background: rgba(56, 207, 200, 0.12);
+  border: 1px solid rgba(56, 207, 200, 0.3);
   font-family: var(--font-geist-mono), monospace;
-  font-size: 0.78rem;
+  font-size: 0.8rem;
   font-weight: 700;
-  color: #2095AD;
+  color: #38CFC8;
 
   .tagDot {
-    color: #38CFC8;
+    color: #00D4FF;
   }
 }
 
 .solProjTitle {
-  font-size: clamp(2.2rem, 4vw, 3.4rem);
-  font-weight: 800;
-  color: #123A53;
+  font-family: var(--font-heading);
+  font-size: clamp(2.2rem, 4.5vw, 3.8rem);
+  font-weight: 900;
   margin: 0;
-  letter-spacing: -0.02em;
+  color: #FFFFFF;
 }
 
 .solProjSubtitle {
-  font-size: clamp(1rem, 1.4vw, 1.15rem);
-  color: #475569;
+  font-size: clamp(0.95rem, 1.3vw, 1.1rem);
+  color: #94A3B8;
   max-width: 720px;
   margin: 0;
-  line-height: 1.65;
 }
 
-.solProjStickyStackContainer {
+/* Projects Blog List - Normal Clean Flow (No Scroll Stack Pinning) */
+.projectsBlogContainer {
   display: flex;
   flex-direction: column;
-  gap: 5rem;
+  gap: 2.5rem;
   width: 100%;
-  max-width: 1080px;
-  margin-top: 2rem;
-  padding-bottom: 6rem;
+  margin-top: 1rem;
 }
 
-.stickyProjectCardWrapper {
-  width: 100%;
-  will-change: transform, opacity;
-}
-
-.stickyProjectCard {
+.blogRowCard {
   position: relative;
   width: 100%;
-  border-radius: 24px;
-  background: #FFFFFF;
-  border: 1.5px solid rgba(32, 149, 173, 0.22);
-  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.06);
-  padding: clamp(1.4rem, 2.5vw, 2.2rem);
-  overflow: hidden;
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 0;
+  background: transparent;
+  border: none;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  padding: clamp(2.5rem, 4vw, 3.5rem) 0 1rem 0;
+  text-align: left;
+  transition: border-color 0.3s ease;
 
-  &.isHovered {
-    border-color: #38CFC8;
-    box-shadow: 0 25px 65px rgba(56, 207, 200, 0.35);
+  &:hover {
+    border-top-color: #38CFC8;
+  }
+}
+
+.rowAccentIndicator {
+  position: absolute;
+  top: -1px;
+  left: 0;
+  width: 50px;
+  height: 2px;
+  background: linear-gradient(90deg, #EA0029 0%, #FF6B00 100%);
+  border-radius: 999px;
+}
+
+.rowHeaderLine {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.25rem;
+
+  .categoryLabel {
+    font-family: var(--font-geist-mono), monospace;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #38CFC8;
+    letter-spacing: 0.1em;
   }
 
-  .cardBgFloatingShapes {
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    z-index: 0;
-
-    .floatingShape {
-      position: absolute;
-      border-radius: 50%;
-      opacity: 0.15;
-
-      &1 {
-        top: -20px; right: 10%;
-        width: 140px; height: 140px;
-        background: radial-gradient(circle, #38CFC8 0%, transparent 70%);
-      }
-
-      &2 {
-        bottom: -30px; left: 5%;
-        width: 180px; height: 180px;
-        background: radial-gradient(circle, #0284C7 0%, transparent 70%);
-      }
-    }
+  .numberTag {
+    font-family: var(--font-geist-mono), monospace;
+    font-size: 1rem;
+    font-weight: 800;
+    color: rgba(255, 255, 255, 0.4);
   }
+}
 
-  .cardInnerSplit {
-    position: relative;
-    z-index: 2;
-    display: grid;
-    grid-template-columns: 1.1fr 1fr;
-    gap: clamp(1.5rem, 3vw, 2.5rem);
-    align-items: center;
+.rowMainTitle {
+  font-family: var(--font-heading);
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
+  font-weight: 900;
+  color: #FFFFFF;
+  line-height: 1.3;
+  margin: 0 0 1.5rem 0;
+}
 
-    @media (max-width: 860px) {
-      grid-template-columns: 1fr;
-    }
+.rowBodyGrid {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 2rem;
+  align-items: center;
+
+  @media (max-width: 900px) {
+    grid-template-columns: 1fr;
   }
+}
 
-  .cardImageCol {
+.leftMediaCol {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  .imageStageBox {
     width: 100%;
-    overflow: hidden;
     border-radius: 16px;
-    border: 1px solid rgba(32, 149, 173, 0.18);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
-  }
-
-  .cardImageStage {
-    width: 100%;
-    height: clamp(220px, 28vw, 300px);
+    overflow: hidden;
+    border: 1px solid rgba(56, 207, 200, 0.25);
 
     .projectSvg {
       width: 100%;
-      height: 100%;
-      object-fit: cover;
+      height: auto;
+      display: block;
     }
   }
 
-  .cardTextCol {
+  .clientTag {
+    font-family: var(--font-geist-mono), monospace;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #00D4FF;
+  }
+
+  .summaryDesc {
+    font-size: 0.9rem;
+    color: #CBD5E1;
+    line-height: 1.6;
+    margin: 0;
+  }
+}
+
+.rightContentCol {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+
+  .highlightsList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    text-align: left;
     gap: 0.75rem;
 
-    .projectCategoryTag {
-      font-family: var(--font-geist-mono), monospace;
-      font-size: 0.78rem;
-      font-weight: 700;
-      color: #2095AD;
-      transition: color 0.3s ease;
+    .highlightItem {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      font-size: 0.9rem;
+      color: #E2E8F0;
+      line-height: 1.5;
 
-      &.hoverAccent {
+      .plusSymbol {
         color: #38CFC8;
+        font-weight: 900;
+        font-size: 1rem;
       }
     }
+  }
 
-    .projectCardTitle {
-      font-size: clamp(1.3rem, 2.2vw, 1.75rem);
-      font-weight: 800;
-      color: #123A53;
-      margin: 0;
-      line-height: 1.3;
-      letter-spacing: 0;
-      transition: letter-spacing 0.2s ease, color 0.2s ease;
+  .rowCtaBtn {
+    align-self: flex-start;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.6rem;
+    border-radius: 999px;
+    background: linear-gradient(135deg, #38CFC8 0%, #2095AD 100%);
+    border: none;
+    color: #050C1A;
+    font-family: var(--font-heading);
+    font-size: 0.825rem;
+    font-weight: 800;
+    cursor: pointer;
+    box-shadow: 0 0 20px rgba(56, 207, 200, 0.35);
+    transition: all 0.25s ease;
 
-      &.hoverExpanded {
-        letter-spacing: 0.02em;
-        color: #17398F;
-      }
-    }
-
-    .projectClientName {
-      font-size: 0.85rem;
-      font-weight: 600;
-      color: #64748B;
-    }
-
-    .projectCardDesc {
-      font-size: 0.925rem;
-      line-height: 1.65;
-      color: #475569;
-      margin: 0;
-    }
-
-    .projectDetailBtn {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      margin-top: 0.5rem;
-      padding: 10px 24px;
-      border-radius: 999px;
-      background: linear-gradient(135deg, #123A53 0%, #17398F 100%);
-      color: #FFFFFF;
-      font-size: 0.85rem;
-      font-weight: 700;
-      border: none;
-      cursor: pointer;
-      box-shadow: 0 4px 15px rgba(18, 58, 83, 0.2);
-      transition: all 0.25s ease;
-
-      .arrow {
-        display: inline-block;
-        transition: transform 0.25s ease;
-      }
-
-      &:hover {
-        background: linear-gradient(135deg, #38CFC8 0%, #2095AD 100%);
-        color: #050C1A;
-        box-shadow: 0 0 25px rgba(56, 207, 200, 0.4);
-      }
+    &:hover {
+      background: linear-gradient(135deg, #00D4FF 0%, #38CFC8 100%);
+      transform: translateY(-2px);
+      box-shadow: 0 0 30px rgba(56, 207, 200, 0.55);
     }
   }
 }
@@ -223,22 +220,21 @@
   margin-top: 1rem;
 
   .solProjAllBtn {
-    border-color: #2095AD;
-    color: #123A53;
-    font-weight: 700;
-    padding: 14px 34px;
-
-    .arrow {
-      transition: transform 0.25s ease;
-    }
+    padding: 0.85rem 2.2rem;
+    border-radius: 999px;
+    border: 1.5px solid #38CFC8;
+    background: transparent;
+    color: #38CFC8;
+    font-family: var(--font-heading);
+    font-size: 0.85rem;
+    font-weight: 800;
+    cursor: pointer;
+    transition: all 0.25s ease;
 
     &:hover {
-      background: #123A53;
-      color: #FFFFFF;
-
-      .arrow {
-        transform: translateX(4px);
-      }
+      background: #38CFC8;
+      color: #050C1A;
+      box-shadow: 0 0 25px rgba(56, 207, 200, 0.5);
     }
   }
 }

@@ -1,7 +1,13 @@
 "use client";
 
-import React, { useState } from "react";
-import { motion, useReducedMotion } from "motion/react";
+import React, { useRef } from "react";
+import {
+  motion,
+  useScroll,
+  useSpring,
+  useTransform,
+  useReducedMotion,
+} from "motion/react";
 import Card3DTilt from "@/components/Card3DTilt";
 import styles from "./AboutRoadmap.module.scss";
 
@@ -18,7 +24,16 @@ const roadmapNodes: RoadmapNode[] = [
     title: "HOÀN THIỆN MÔ HÌNH MEDIATECH",
     desc: "Xây dựng nền tảng vững chắc về chiến lược - sáng tạo - công nghệ.",
     iconSvg: (
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#38CFC8" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <svg
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="#38CFC8"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
         <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.71 1.26-1.55 1.66-2.48l-2.18-2.18c-.93.4-1.77.95-2.48 1.66z" />
         <path d="M15 9l-6 6" />
         <path d="M9 15l-1.5-1.5" />
@@ -33,7 +48,16 @@ const roadmapNodes: RoadmapNode[] = [
     title: "CHUẨN HÓA HỆ THỐNG AI & AUTOMATION",
     desc: "Tích hợp AI vào dòng công việc, tối ưu hóa quy trình để nâng cao hiệu suất và tính chính xác.",
     iconSvg: (
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#00D4FF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <svg
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="#00D4FF"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
         <rect x="4" y="4" width="16" height="16" rx="2" />
         <rect x="9" y="9" width="6" height="6" />
         <line x1="9" y1="1" x2="9" y2="4" />
@@ -52,7 +76,16 @@ const roadmapNodes: RoadmapNode[] = [
     title: "XÂY DỰNG NỀN TẢNG DỮ LIỆU KHÁCH HÀNG",
     desc: "Phát triển hệ thống dữ liệu thông minh, cá nhân hóa trải nghiệm và tối ưu trải nghiệm khách hàng.",
     iconSvg: (
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#38CFC8" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <svg
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="#38CFC8"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
         <ellipse cx="12" cy="5" rx="9" ry="3" />
         <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3" />
         <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5" />
@@ -64,7 +97,16 @@ const roadmapNodes: RoadmapNode[] = [
     title: "MỞ RỘNG HỆ SINH THÁI GIẢI PHÁP",
     desc: "Đa dạng hóa giải pháp, kết nối đối tác và mở rộng quy mô thị trường ngoài nước.",
     iconSvg: (
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#00D4FF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <svg
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="#00D4FF"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
         <circle cx="12" cy="12" r="3" />
         <circle cx="19" cy="5" r="2" />
         <circle cx="5" cy="19" r="2" />
@@ -82,7 +124,16 @@ const roadmapNodes: RoadmapNode[] = [
     title: "TRỞ THÀNH STRATEGIC MEDIATECH PARTNER",
     desc: "Trở thành đối tác chiến lược thiết yếu giai đoạn 2026-2030, cùng công nghệ và dữ liệu mở đường tương lai.",
     iconSvg: (
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#FFC72C" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <svg
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="#FFC72C"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
         <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6" />
         <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18" />
         <path d="M4 22h16" />
@@ -99,7 +150,21 @@ const easeOut = [0.22, 1, 0.36, 1] as const;
 
 export default function AboutRoadmap() {
   const reduceMotion = useReducedMotion();
-  const [activeHoverNode, setActiveHoverNode] = useState<number | null>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  // Scroll Progress setup for the vertical timeline laser beam
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start 65%", "end 75%"],
+  });
+
+  const smoothProgress = useSpring(scrollYProgress, {
+    stiffness: 120,
+    damping: 30,
+    restDelta: 0.001,
+  });
+
+  const orbTop = useTransform(smoothProgress, [0, 1], ["0%", "100%"]);
 
   const fadeUp = reduceMotion
     ? { hidden: { opacity: 0 }, visible: { opacity: 1 } }
@@ -131,65 +196,128 @@ export default function AboutRoadmap() {
           QTM không ngừng đổi mới và mở rộng năng lực để trở thành đối tác truyền thông chiến lược hàng đầu tại Việt Nam.
         </motion.p>
 
-        {/* 5 Milestone Cards Grid with Ascending Trajectory Arrow */}
-        <motion.div
-          className={styles.roadmapTrajectoryWrapper}
-          variants={fadeUp}
-          initial="hidden"
-          whileInView="visible"
-          viewport={viewport}
-          transition={{ duration: 0.75, delay: 0.18, ease: easeOut }}
-        >
-          {/* Background Ascending Arrow SVG */}
-          <div className={styles.ascendingArrowSvgBg} aria-hidden="true">
-            <svg viewBox="0 0 1000 120" preserveAspectRatio="none" className="w-full h-full">
-              <path
-                d="M 20,100 Q 250,90 500,60 T 960,15"
-                fill="none"
-                stroke="url(#arrowGrad)"
-                strokeWidth="3"
-                strokeDasharray="6 6"
-              />
-              <path d="M 960,15 L 945,8 L 948,22 Z" fill="#00D4FF" />
-              <defs>
-                <linearGradient id="arrowGrad" x1="0" y1="0" x2="1" y2="0">
-                  <stop offset="0%" stopColor="#38CFC8" opacity="0.3" />
-                  <stop offset="50%" stopColor="#00D4FF" opacity="0.7" />
-                  <stop offset="100%" stopColor="#6366F1" opacity="1" />
-                </linearGradient>
-              </defs>
-            </svg>
+        {/* Vertical Timeline Wrapper */}
+        <div ref={containerRef} className={styles.verticalTimelineWrapper}>
+          {/* Central Laser Spine Track */}
+          <div className={styles.timelineSpineTrack}>
+            <motion.div
+              className={styles.timelineSpineProgress}
+              style={{ scaleY: smoothProgress }}
+            />
+            <motion.div
+              className={styles.timelineLaserOrb}
+              style={{ top: orbTop }}
+            />
           </div>
 
-          {/* 5 Cards Row */}
-          <div className={styles.roadmapCardsGrid}>
-            {roadmapNodes.map((node, index) => (
-              <div
-                key={node.year}
-                className={styles.roadmapNodeCardWrap}
-                onMouseEnter={() => setActiveHoverNode(index)}
-                onMouseLeave={() => setActiveHoverNode(null)}
-              >
-                <Card3DTilt
-                  className={styles.roadmapNodeCard}
-                  maxTilt={8}
-                  scale={1.03}
-                  glareColor="rgba(56, 207, 200, 0.35)"
-                  glareOpacity={0.35}
+          {/* Timeline Items (Alternating Left & Right on Desktop) */}
+          <div className={styles.timelineItemsList}>
+            {roadmapNodes.map((node, index) => {
+              const isRight = index % 2 === 1; // 0: left, 1: right, 2: left, 3: right, 4: left
+
+              return (
+                <div
+                  key={node.year}
+                  className={`${styles.timelineItem} ${
+                    isRight ? styles.itemRight : styles.itemLeft
+                  }`}
                 >
-                  <div className={styles.cardTopYear}>
-                    <span className={styles.yearNumber}>{node.year}</span>
-                    <div className={styles.iconBadgeBox}>{node.iconSvg}</div>
+                  {/* Left Slot */}
+                  <div className={styles.timelineSlotLeft}>
+                    {!isRight && (
+                      <motion.div
+                        className={styles.cardContainer}
+                        initial={
+                          reduceMotion
+                            ? { opacity: 0 }
+                            : { opacity: 0, x: -45, y: 15 }
+                        }
+                        whileInView={{ opacity: 1, x: 0, y: 0 }}
+                        viewport={{ once: true, amount: 0.3 }}
+                        transition={{ duration: 0.6, delay: 0.05, ease: easeOut }}
+                      >
+                        <Card3DTilt
+                          className={styles.roadmapNodeCard}
+                          maxTilt={7}
+                          scale={1.02}
+                          glareColor="rgba(56, 207, 200, 0.35)"
+                          glareOpacity={0.35}
+                        >
+                          <div className={styles.cardHeader}>
+                            <span className={styles.yearNumber}>{node.year}</span>
+                            <div className={styles.iconBadgeMobile}>
+                              {node.iconSvg}
+                            </div>
+                          </div>
+                          <h3 className={styles.cardNodeTitle}>{node.title}</h3>
+                          <p className={styles.cardNodeDesc}>{node.desc}</p>
+                        </Card3DTilt>
+                        <div className={styles.connectorLineLeft} />
+                      </motion.div>
+                    )}
                   </div>
 
-                  <h3 className={styles.cardNodeTitle}>{node.title}</h3>
-                  <p className={styles.cardNodeDesc}>{node.desc}</p>
-                </Card3DTilt>
-              </div>
-            ))}
+                  {/* Center Node Badge */}
+                  <motion.div
+                    className={styles.timelineSlotCenter}
+                    initial={
+                      reduceMotion
+                        ? { opacity: 0 }
+                        : { opacity: 0, scale: 0.6 }
+                    }
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true, amount: 0.4 }}
+                    transition={{ duration: 0.5, delay: 0.1, ease: easeOut }}
+                  >
+                    <div className={styles.spineNodeBadge}>
+                      <div className={styles.nodePulseRing} />
+                      <div className={styles.nodeBadgeIcon}>
+                        {node.iconSvg}
+                      </div>
+                    </div>
+                  </motion.div>
+
+                  {/* Right Slot */}
+                  <div className={styles.timelineSlotRight}>
+                    {isRight && (
+                      <motion.div
+                        className={styles.cardContainer}
+                        initial={
+                          reduceMotion
+                            ? { opacity: 0 }
+                            : { opacity: 0, x: 45, y: 15 }
+                        }
+                        whileInView={{ opacity: 1, x: 0, y: 0 }}
+                        viewport={{ once: true, amount: 0.3 }}
+                        transition={{ duration: 0.6, delay: 0.05, ease: easeOut }}
+                      >
+                        <div className={styles.connectorLineRight} />
+                        <Card3DTilt
+                          className={styles.roadmapNodeCard}
+                          maxTilt={7}
+                          scale={1.02}
+                          glareColor="rgba(56, 207, 200, 0.35)"
+                          glareOpacity={0.35}
+                        >
+                          <div className={styles.cardHeader}>
+                            <span className={styles.yearNumber}>{node.year}</span>
+                            <div className={styles.iconBadgeMobile}>
+                              {node.iconSvg}
+                            </div>
+                          </div>
+                          <h3 className={styles.cardNodeTitle}>{node.title}</h3>
+                          <p className={styles.cardNodeDesc}>{node.desc}</p>
+                        </Card3DTilt>
+                      </motion.div>
+                    )}
+                  </div>
+                </div>
+              );
+            })}
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );
 }
+
