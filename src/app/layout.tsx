@@ -2,8 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono, Poppins, Montserrat, Nunito_Sans } from "next/font/google";
 import "../scss/globals.css";
 import "@/scss/sections.scss";
-import Footer from "@/components/Footer";
-import Header from "@/components/header";
+import LayoutWrapper from "@/components/LayoutWrapper";
 import ScrollApertureIntro from "@/components/ScrollApertureIntro";
 import ClickSpark from "@/uiux/ClickSpark";
 import "aos/dist/aos.css";
@@ -62,9 +61,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           duration={500}
         >
           <ScrollApertureIntro />
-          <Header />
-          <main className="flex-1">{children}</main>
-          <Footer />
+          <LayoutWrapper>{children}</LayoutWrapper>
         </ClickSpark>
       </body>
     </html>
