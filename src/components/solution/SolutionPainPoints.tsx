@@ -1,95 +1,105 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from "react";
-import styles from "./SolutionPainPoints.module.scss";
+import React from "react";
+import Image from "next/image";
 import { motion, useReducedMotion } from "motion/react";
-import ParticleField from "@/components/TechBackground/ParticleField";
+import styles from "./SolutionPainPoints.module.scss";
+import Card3DTilt from "@/components/Card3DTilt";
 
-type PainPointItem = {
+type PainCardItem = {
   id: string;
-  icon: string;
+  num: string;
   title: string;
   desc: string;
-  code: string;
+  imageSrc: string;
+  isFeatured?: boolean;
+  gradientClass: string;
+  iconSvg: React.ReactNode;
 };
 
-const painPoints: PainPointItem[] = [
+const painCards: PainCardItem[] = [
   {
     id: "brand-impression",
-    code: "PAIN_01",
-    icon: "🎯",
-    title: "Khó tạo dấu ấn",
-    desc: "Thông điệp thương hiệu dễ bị mờ nhạt giữa hàng ngàn chiến dịch truyền thông của đối thủ trên thị trường.",
+    num: "01",
+    title: "KHÓ TẠO DẤU ẤN",
+    desc: "Thương hiệu chưa đủ khác biệt, dễ bị hòa lẫn giữa hàng ngàn chiến dịch truyền thông của đối thủ trên thị trường.",
+    imageSrc: "/solution/img_pain_chess.png",
+    gradientClass: styles.iconGradCyan,
+    iconSvg: (
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <circle cx="12" cy="12" r="10" />
+        <circle cx="12" cy="12" r="6" />
+        <circle cx="12" cy="12" r="2" />
+      </svg>
+    ),
   },
   {
     id: "reach-virality",
-    code: "PAIN_02",
-    icon: "📢",
-    title: "Thiếu sức lan tỏa",
-    desc: "Ngân sách đầu tư lớn nhưng hiệu ứng lan tỏa không như kỳ vọng, không tiếp cận đúng tệp khách hàng mục tiêu.",
+    num: "02",
+    title: "THIẾU SỨC LAN TỎA",
+    desc: "Ngân sách đầu tư lớn nhưng chiến dịch chưa tạo được hiệu ứng bùng nổ, không tiếp cận đúng tệp khách hàng mục tiêu.",
+    imageSrc: "/solution/img_pain_meeting.png",
+    isFeatured: true,
+    gradientClass: styles.iconGradBlue,
+    iconSvg: (
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M11 5L6 9H2v6h4l5 4V5z" />
+        <path d="M19.07 4.93a10 10 0 0 1 0 14.14" />
+        <path d="M15.54 8.46a5 5 0 0 1 0 7.07" />
+      </svg>
+    ),
   },
   {
-    id: "multichannel-gap",
-    code: "PAIN_03",
-    icon: "🔗",
-    title: "Thiếu kết nối",
-    desc: "Sự đứt gãy rào cản giữa kênh Online và Offline khiến trải nghiệm khách hàng không liên tục và thiếu gắn kết.",
+    id: "lack-connection",
+    num: "03",
+    title: "THIẾU SỰ KẾT NỐI",
+    desc: "Đứt gãy trải nghiệm giữa các kênh Online & Offline khiến khách hàng thiếu sự gắn kết lâu dài với thương hiệu.",
+    imageSrc: "/solution/img_pain_connect.png",
+    gradientClass: styles.iconGradPurple,
+    iconSvg: (
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+        <circle cx="9" cy="7" r="4" />
+        <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+        <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+      </svg>
+    ),
   },
   {
-    id: "roi-measurement",
-    code: "PAIN_04",
-    icon: "📊",
-    title: "Khó đo lường",
-    desc: "Không thể minh bạch hóa bộ chỉ số đo lường hiệu quả (ROI), khó xác định chính xác tỷ lệ chuyển đổi từ chiến dịch.",
+    id: "hard-roi",
+    num: "04",
+    title: "KHÓ ĐO LƯỜNG HIỆU QUẢ TRUYỀN THÔNG",
+    desc: "Thiếu bộ chỉ số ROI và báo cáo real-time rõ ràng, khó xác định tỷ lệ chuyển đổi thực tế từ hoạt động truyền thông.",
+    imageSrc: "/solution/img_pain_roi.png",
+    gradientClass: styles.iconGradTeal,
+    iconSvg: (
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <line x1="18" y1="20" x2="18" y2="10" />
+        <line x1="12" y1="20" x2="12" y2="4" />
+        <line x1="6" y1="20" x2="6" y2="14" />
+      </svg>
+    ),
   },
   {
     id: "operation-cost",
-    code: "PAIN_05",
-    icon: "⚡",
-    title: "Chi phí vận hành lớn",
-    desc: "Quy trình triển khai thủ công cồng kềnh kéo dài thời gian, tiêu tốn nhiều nhân lực và ngân sách doanh nghiệp.",
+    num: "05",
+    title: "CHI PHÍ VẬN HÀNH QUÁ LỚN",
+    desc: "Quy trình triển khai thủ công cồng kềnh kéo dài thời gian, làm tiêu tốn nhiều nhân lực và ngân sách của doanh nghiệp.",
+    imageSrc: "/solution/img_pain_cost.png",
+    gradientClass: styles.iconGradOrange,
+    iconSvg: (
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+      </svg>
+    ),
   },
 ];
 
-const viewport = { once: true, amount: 0.2 } as const;
+const viewport = { once: true, amount: 0.15 } as const;
 const easeOut = [0.22, 1, 0.36, 1] as const;
 
 export default function SolutionPainPoints() {
   const reduceMotion = useReducedMotion();
-  const [activeIndex, setActiveIndex] = useState(0);
-  const [isPaused, setIsPaused] = useState(false);
-  const touchStartX = useRef<number | null>(null);
-
-  // Auto-play timer
-  useEffect(() => {
-    if (isPaused) return;
-    const interval = setInterval(() => {
-      setActiveIndex((prev) => (prev + 1) % painPoints.length);
-    }, 4000);
-    return () => clearInterval(interval);
-  }, [isPaused]);
-
-  const handlePrev = () => {
-    setActiveIndex((prev) => (prev - 1 + painPoints.length) % painPoints.length);
-  };
-
-  const handleNext = () => {
-    setActiveIndex((prev) => (prev + 1) % painPoints.length);
-  };
-
-  const handleTouchStart = (e: React.TouchEvent) => {
-    touchStartX.current = e.touches[0].clientX;
-  };
-
-  const handleTouchEnd = (e: React.TouchEvent) => {
-    if (touchStartX.current === null) return;
-    const diffX = e.changedTouches[0].clientX - touchStartX.current;
-    if (Math.abs(diffX) > 40) {
-      if (diffX > 0) handlePrev();
-      else handleNext();
-    }
-    touchStartX.current = null;
-  };
 
   const fadeUp = reduceMotion
     ? { hidden: { opacity: 0 }, visible: { opacity: 1 } }
@@ -97,148 +107,96 @@ export default function SolutionPainPoints() {
 
   return (
     <section id="pain-points" className={`section ${styles.sectionSolPain}`}>
-      {/* Background Overlay & Network Pattern */}
-      <div className={styles.solPainBgOverlay} aria-hidden="true" />
-      <div className={styles.solPainBgGrid} aria-hidden="true" />
-      <ParticleField />
-
       <div className={`section__content ${styles.solPainContent}`}>
-        {/* Title */}
-        <motion.h2
-          className={styles.solPainTitle}
-          variants={fadeUp}
-          initial="hidden"
-          whileInView="visible"
-          viewport={viewport}
-          transition={{ duration: 0.65, delay: 0.05, ease: easeOut }}
-        >
-          DOANH NGHIỆP ĐANG GẶP <span className="title-highlight-mint">ĐIỀU GÌ?</span>
-        </motion.h2>
-
-        <motion.p
-          className={styles.solPainSubtitle}
-          variants={fadeUp}
-          initial="hidden"
-          whileInView="visible"
-          viewport={viewport}
-          transition={{ duration: 0.65, delay: 0.1, ease: easeOut }}
-        >
-          Những rào cản phổ biến cản trở sự tăng trưởng thương hiệu và hiệu quả kinh doanh trong thời đại số.
-        </motion.p>
-
-        {/* ── 5 PAIN POINTS COVERFLOW CAROUSEL ── */}
+        
+        {/* ── 1. Top Section Header (Centered) ───────────────────────────────── */}
         <motion.div
-          className={styles.solPainCarouselWrapper}
+          className={styles.sectionTopHeader}
           variants={fadeUp}
           initial="hidden"
           whileInView="visible"
           viewport={viewport}
-          transition={{ duration: 0.75, delay: 0.18, ease: easeOut }}
-          onMouseEnter={() => setIsPaused(true)}
-          onMouseLeave={() => setIsPaused(false)}
-          onTouchStart={handleTouchStart}
-          onTouchEnd={handleTouchEnd}
+          transition={{ duration: 0.6, ease: easeOut }}
         >
-          <div className={styles.painCarouselTrack}>
-            {painPoints.map((item, index) => {
-              let offset = index - activeIndex;
-              const half = Math.floor(painPoints.length / 2);
-              if (offset > half) offset -= painPoints.length;
-              if (offset < -half) offset += painPoints.length;
+          <div className={styles.eyebrowTag}>
+            <span className={styles.tagDash}>—</span>
+            <span className={styles.tagText}>THÁCH THỨC TRUYỀN THÔNG</span>
+          </div>
 
-              const absOffset = Math.abs(offset);
-              if (absOffset > 2) return null;
+          <h2 className={styles.mainTitleHead}>
+            DOANH NGHIỆP ĐANG GẶP <span className={styles.titleHighlightCyan}>ĐIỀU GÌ?</span>
+          </h2>
 
-              const isCenter = offset === 0;
-              const translateX = offset * 240;
-              const scale = isCenter ? 1.12 : Math.max(0.72, 0.88 - absOffset * 0.14);
-              const opacity = isCenter ? 1 : Math.max(0.4, 0.8 - absOffset * 0.25);
-              const zIndex = 10 - absOffset;
-              const blur = isCenter ? 0 : absOffset * 3;
+          <div className={styles.titleUnderlineAccent} />
 
-              return (
-                <div
-                  key={item.id}
-                  onClick={() => setActiveIndex(index)}
-                  className={`${styles.painCard}${isCenter ? ` ${styles.isActive}` : ""}`}
-                  style={{
-                    transform: `translate(calc(-50% + ${translateX}px), -50%) scale(${scale})`,
-                    zIndex,
-                    opacity,
-                    filter: `blur(${blur}px)`,
-                  }}
-                >
-                  <div className={styles.cardTopTag}>{item.code}</div>
-                  <div className={styles.cardIcon}>{item.icon}</div>
-                  <h3 className={styles.cardTitle}>{item.title}</h3>
-                  <p className={styles.cardDesc}>{item.desc}</p>
+          <p className={styles.mainSubtitleDesc}>
+            Những rào cản phổ biến cản trở sự tăng trưởng thương hiệu và hiệu quả kinh doanh trong thời đại số.
+          </p>
+        </motion.div>
+
+
+        {/* ── 2. 5 Vertical Cards Grid Row ─────────────────────────────────── */}
+        <motion.div
+          className={styles.fiveCardsGridRow}
+          variants={{
+            hidden: {},
+            visible: {
+              transition: { staggerChildren: reduceMotion ? 0 : 0.08, delayChildren: 0.12 },
+            },
+          }}
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewport}
+        >
+          {painCards.map((card) => (
+            <motion.div
+              key={card.id}
+              variants={fadeUp}
+              transition={{ duration: 0.55, ease: easeOut }}
+              className={`${styles.cardWrapperItem} ${card.isFeatured ? styles.isFeaturedCardWrapper : ""}`}
+            >
+              <Card3DTilt
+                className={`${styles.painPointGlassCard} ${card.isFeatured ? styles.featuredCard : ""}`}
+                maxTilt={6}
+                scale={card.isFeatured ? 1.03 : 1.01}
+                glareColor="rgba(79, 209, 232, 0.25)"
+                glareOpacity={0.25}
+              >
+                {/* Number & Accent at Top Left */}
+                <div className={styles.cardHeaderNumRow}>
+                  <span className={styles.cardNumber}>{card.num}</span>
+                  <div className={styles.numUnderline} />
                 </div>
-              );
-            })}
-          </div>
 
-          {/* Carousel Controls */}
-          <div className={styles.painCarouselControls}>
-            <button
-              type="button"
-              onClick={handlePrev}
-              className={styles.painNavBtn}
-              aria-label="Rào cản trước"
-            >
-              ‹
-            </button>
+                {/* Photo Image Frame */}
+                <div className={styles.cardPhotoFrame}>
+                  <Image
+                    src={card.imageSrc}
+                    alt={card.title}
+                    width={320}
+                    height={240}
+                    className={styles.cardPhotoImg}
+                    priority
+                  />
+                  <div className={styles.photoOverlayGlow} />
 
-            <div className={styles.painDots}>
-              {painPoints.map((item, idx) => (
-                <button
-                  key={item.id}
-                  type="button"
-                  onClick={() => setActiveIndex(idx)}
-                  className={`${styles.painDot}${idx === activeIndex ? ` ${styles.active}` : ""}`}
-                  aria-label={`Chuyển đến rào cản ${idx + 1}`}
-                />
-              ))}
-            </div>
+                  {/* Round Overlapping Icon Badge */}
+                  <div className={`${styles.overlappingIconBadge} ${card.gradientClass}`}>
+                    {card.iconSvg}
+                  </div>
+                </div>
 
-            <button
-              type="button"
-              onClick={handleNext}
-              className={styles.painNavBtn}
-              aria-label="Rào cản tiếp theo"
-            >
-              ›
-            </button>
-          </div>
+                {/* Content Details */}
+                <div className={styles.cardContentBody}>
+                  <h3 className={styles.cardTitleText}>{card.title}</h3>
+                  <div className={styles.titleAccentLine} />
+                  <p className={styles.cardDescText}>{card.desc}</p>
+                </div>
+              </Card3DTilt>
+            </motion.div>
+          ))}
         </motion.div>
 
-        {/* ── STAT-BAR NGANG ── */}
-        <motion.div
-          className={styles.solPainStatBar}
-          variants={fadeUp}
-          initial="hidden"
-          whileInView="visible"
-          viewport={viewport}
-          transition={{ duration: 0.75, delay: 0.25, ease: easeOut }}
-        >
-          <div className={styles.statItem}>
-            <span className={styles.statNumber}>23%</span>
-            <span className={styles.statLabel}>Chỉ 23% khách hàng nhớ thương hiệu sau sự kiện đơn lẻ</span>
-          </div>
-
-          <div className={styles.statDivider} />
-
-          <div className={styles.statItem}>
-            <span className={styles.statNumber}>85%</span>
-            <span className={styles.statLabel}>85% ngân sách lãng phí nếu thiếu hệ thống đo lường real-time</span>
-          </div>
-
-          <div className={styles.statDivider} />
-
-          <div className={styles.statItem}>
-            <span className={styles.statNumber}>68%</span>
-            <span className={styles.statLabel}>68% thương hiệu gặp khó khăn trong kết nối trải nghiệm đa kênh</span>
-          </div>
-        </motion.div>
       </div>
     </section>
   );

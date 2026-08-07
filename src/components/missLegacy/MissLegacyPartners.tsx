@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 import { motion } from "motion/react";
 import styles from "./MissLegacyPartners.module.scss";
 
@@ -10,82 +11,157 @@ const cubicEase = [0.22, 1, 0.36, 1] as const;
 export default function MissLegacyPartners() {
   return (
     <section className={styles.sectionPartners} id="partners">
-      <div className={styles.partnersContent}>
-        {/* Title Group */}
+      {/* Top Right Watermark Emblem */}
+      <div className={styles.topRightEmblem}>
+        <svg className={styles.topRightLotusSvg} viewBox="0 0 100 80" fill="none">
+          <path
+            d="M50 5 C55 25 70 35 90 40 C75 55 55 60 50 75 C45 60 25 55 10 40 C30 35 45 25 50 5 Z"
+            fill="url(#topRightLotusGrad)"
+            stroke="#D4AF37"
+            strokeWidth="1.5"
+          />
+          <defs>
+            <linearGradient id="topRightLotusGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#FFF5D0" />
+              <stop offset="100%" stopColor="#D4AF37" />
+            </linearGradient>
+          </defs>
+        </svg>
+        <span className={styles.topRightBrand}>MISS LEGACY</span>
+        <span className={styles.topRightTagline}>TINH HOA SẮC VIỆT</span>
+      </div>
+
+      <div className={styles.partnersContentWrapper}>
+        {/* Header Block */}
         <motion.div
-          className={styles.titleGroup}
-          initial={{ opacity: 0, y: 30 }}
+          className={styles.headerBlock}
+          initial={{ opacity: 0, y: 25 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={viewport}
-          transition={{ duration: 0.7, delay: 0.1, ease: cubicEase }}
+          transition={{ duration: 0.75, delay: 0.1, ease: cubicEase }}
         >
-          <h2 className={styles.sectionTitle}>Đơn vị đồng hành</h2>
-          <svg className={styles.lotusIcon} viewBox="0 0 100 80" fill="none">
-            <path
-              d="M50 5 C55 25 70 35 90 40 C75 55 55 60 50 75 C45 60 25 55 10 40 C30 35 45 25 50 5 Z"
-              fill="#D4AF37"
-            />
-          </svg>
-          <span className={styles.sponsorSubtitle}>ĐƠN VỊ BẢO TRỢ TRUYỀN THÔNG</span>
+          {/* Eyebrow */}
+          <div className={styles.eyebrowRow}>
+            <span className={styles.eyebrowDash}>—</span>
+            <span className={styles.eyebrowText}>ĐƠN VỊ ĐỒNG HÀNH</span>
+          </div>
+
+          {/* Title */}
+          <h2 className={styles.sectionTitle}>
+            <span>Đơn vị</span> <span className={styles.titleHighlightGold}>đồng hành</span>
+          </h2>
+
+          <div className={styles.titleLotusDivider}>
+            <div className={styles.dividerLineLeft} />
+            <svg className={styles.dividerLotusIcon} viewBox="0 0 100 80" fill="none">
+              <path
+                d="M50 5 C55 25 70 35 90 40 C75 55 55 60 50 75 C45 60 25 55 10 40 C30 35 45 25 50 5 Z"
+                fill="url(#partnersDividerLotusGrad)"
+                stroke="#D4AF37"
+                strokeWidth="1.5"
+              />
+              <defs>
+                <linearGradient id="partnersDividerLotusGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stopColor="#FFF5D0" />
+                  <stop offset="100%" stopColor="#D4AF37" />
+                </linearGradient>
+              </defs>
+            </svg>
+            <div className={styles.dividerLineRight} />
+          </div>
+
+          <h3 className={styles.sponsorSubtitle}>ĐƠN VỊ BẢO TRỢ TRUYỀN THÔNG</h3>
+
+          <p className={styles.subtitleDesc}>
+            Để bảo đảm tính uy tín và sức lan tỏa của chương trình, Miss Legacy nhận được sự
+            đồng hành của các cơ quan báo chí và truyền thông.
+          </p>
         </motion.div>
 
-        <motion.p
-          className={styles.descText}
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={viewport}
-          transition={{ duration: 0.7, delay: 0.2, ease: cubicEase }}
-        >
-          Để đảm bảo tính uy tín và sức lan tỏa của chương trình, Miss Legacy nhận được
-          sự đồng hành của các cơ quan báo chí và truyền thông.
-        </motion.p>
-
-        {/* 2 Partner Cards Grid */}
+        {/* 2 Large Media Partner Cards Grid (Equal Compact Size) */}
         <div className={styles.partnersGrid2}>
-          {/* Card 1: Tạp Chí An Ninh Mạng */}
+          {/* Card 1: Tạp Chí An Ninh Mạng Image */}
           <motion.div
-            className={styles.partnerCard}
+            className={styles.partnerGlassCard}
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={viewport}
-            transition={{ duration: 0.7, delay: 0.3, ease: cubicEase }}
+            transition={{ duration: 0.7, delay: 0.25, ease: cubicEase }}
+            whileHover={{ y: -6, transition: { duration: 0.25 } }}
           >
-            <span className={styles.subHeader}>TẠP CHÍ</span>
-            <div className={styles.mainLogoText}>
-              AN NINH <span className={styles.redHighlight}>MẠNG</span>
+            <div className={styles.cardCornerTL} />
+            <div className={styles.cardCornerTR} />
+            <div className={styles.cardCornerBL} />
+            <div className={styles.cardCornerBR} />
+
+            <div className={styles.logoImageWrap}>
+              <Image
+                src="/missLegacy/block5_1.png"
+                alt="Tạp Chí An Ninh Mạng"
+                width={360}
+                height={160}
+                className={styles.partnerLogoImg}
+                priority
+              />
             </div>
-            <p className={styles.sloganText}>VÌ AN NINH TỔ QUỐC VÀ HẠNH PHÚC NHÂN DÂN</p>
           </motion.div>
 
-          {/* Card 2: Báo Phụ Nữ Việt Nam */}
+          {/* Card 2: Báo Phụ Nữ Việt Nam Image */}
           <motion.div
-            className={styles.partnerCard}
+            className={styles.partnerGlassCard}
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={viewport}
-            transition={{ duration: 0.7, delay: 0.4, ease: cubicEase }}
+            transition={{ duration: 0.7, delay: 0.35, ease: cubicEase }}
+            whileHover={{ y: -6, transition: { duration: 0.25 } }}
           >
-            <span className={styles.subHeader}>BÁO</span>
-            <div className={styles.mainLogoText}>
-              Phụ nữ <span className={styles.redHighlight}>Việt Nam</span>
+            <div className={styles.cardCornerTL} />
+            <div className={styles.cardCornerTR} />
+            <div className={styles.cardCornerBL} />
+            <div className={styles.cardCornerBR} />
+
+            <div className={styles.logoImageWrap}>
+              <Image
+                src="/missLegacy/block5_2.png"
+                alt="Báo Phụ Nữ Việt Nam"
+                width={360}
+                height={160}
+                className={styles.partnerLogoImg}
+                priority
+              />
             </div>
-            <p className={styles.sloganText}>CƠ QUAN TRUNG ƯƠNG HỘI LHPN VIỆT NAM</p>
           </motion.div>
         </div>
 
-        {/* Bottom Thank You Note */}
+        {/* Bottom Appreciation Banner */}
         <motion.div
-          className={styles.thankYouBox}
+          className={styles.thankYouBanner}
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={viewport}
-          transition={{ duration: 0.8, delay: 0.5, ease: cubicEase }}
+          transition={{ duration: 0.8, delay: 0.45, ease: cubicEase }}
         >
-          <span className={styles.wreathIcon}>🌿</span>
+          <svg className={styles.laurelIconLeft} viewBox="0 0 60 40" fill="none">
+            <path
+              d="M10 35 C15 25 25 15 45 5 M15 30 C22 22 30 15 50 10"
+              stroke="#D4AF37"
+              strokeWidth="2"
+              strokeLinecap="round"
+            />
+          </svg>
+
           <p className={styles.thankYouText}>
             Trân trọng cảm ơn sự đồng hành và ủng hộ của các cơ quan báo chí và truyền thông.
           </p>
-          <span className={styles.wreathIcon}>🌿</span>
+
+          <svg className={styles.laurelIconRight} viewBox="0 0 60 40" fill="none">
+            <path
+              d="M50 35 C45 25 35 15 15 5 M45 30 C38 22 30 15 10 10"
+              stroke="#D4AF37"
+              strokeWidth="2"
+              strokeLinecap="round"
+            />
+          </svg>
         </motion.div>
       </div>
     </section>

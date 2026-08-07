@@ -1,12 +1,14 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 import { motion, useReducedMotion } from "motion/react";
+import Card3DTilt from "@/components/Card3DTilt";
 import styles from "./AboutCommitments.module.scss";
 
 type CommitmentItem = {
   id: string;
-  iconBgClass: string;
+  gradientClass: string;
   iconSvg: React.ReactNode;
   title: string;
   desc: string;
@@ -17,9 +19,9 @@ const commitmentItems: CommitmentItem[] = [
     id: "long-term",
     title: "ĐỒNG HÀNH DÀI HẠN",
     desc: "Không chỉ là nhà cung cấp, chúng tôi là đối tác tin cậy trên hành trình phát triển.",
-    iconBgClass: styles.iconCircleTeal,
+    gradientClass: styles.iconGradTeal,
     iconSvg: (
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0D9488" strokeWidth="2">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
         <circle cx="9" cy="7" r="4" />
         <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
@@ -31,9 +33,9 @@ const commitmentItems: CommitmentItem[] = [
     id: "tailored-solution",
     title: "GIẢI PHÁP PHÙ HỢP VỚI MỤC TIÊU KINH DOANH",
     desc: "Mỗi giải pháp được thiết kế riêng, đáp ứng mục tiêu và đặc thù của từng doanh nghiệp.",
-    iconBgClass: styles.iconCircleBlue,
+    gradientClass: styles.iconGradBlue,
     iconSvg: (
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0284C7" strokeWidth="2">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <circle cx="12" cy="12" r="10" />
         <circle cx="12" cy="12" r="6" />
         <circle cx="12" cy="12" r="2" />
@@ -44,9 +46,9 @@ const commitmentItems: CommitmentItem[] = [
     id: "transparent-process",
     title: "QUY TRÌNH MINH BẠCH",
     desc: "Minh bạch trong mọi quy trình, rõ ràng trong mọi cam kết, tin cậy trong mọi hành động.",
-    iconBgClass: styles.iconCirclePurple,
+    gradientClass: styles.iconGradPurple,
     iconSvg: (
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#7C3AED" strokeWidth="2">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2" />
         <rect x="8" y="2" width="8" height="4" rx="1" ry="1" />
         <path d="m9 14 2 2 4-4" />
@@ -57,9 +59,9 @@ const commitmentItems: CommitmentItem[] = [
     id: "measurable-roi",
     title: "HIỆU QUẢ CÓ THỂ ĐO LƯỜNG",
     desc: "Đo lường rõ ràng, tối ưu liên tục, đảm bảo hiệu quả thực tế cho khách hàng.",
-    iconBgClass: styles.iconCircleBlue,
+    gradientClass: styles.iconGradDeepBlue,
     iconSvg: (
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0284C7" strokeWidth="2">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <line x1="18" y1="20" x2="18" y2="10" />
         <line x1="12" y1="20" x2="12" y2="4" />
         <line x1="6" y1="20" x2="6" y2="14" />
@@ -70,11 +72,15 @@ const commitmentItems: CommitmentItem[] = [
     id: "new-tech",
     title: "ỨNG DỤNG CÔNG NGHỆ MỚI",
     desc: "Luôn tiên phong ứng dụng AI, dữ liệu và công nghệ mới để mang lại giá trị vượt trội.",
-    iconBgClass: styles.iconCircleTeal,
+    gradientClass: styles.iconGradCyan,
     iconSvg: (
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0D9488" strokeWidth="2">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <rect x="4" y="4" width="16" height="16" rx="2" />
-        <path d="M9 9h6v6H9z" />
+        <rect x="9" y="9" width="6" height="6" />
+        <line x1="9" y1="1" x2="9" y2="4" />
+        <line x1="15" y1="1" x2="15" y2="4" />
+        <line x1="9" y1="20" x2="9" y2="23" />
+        <line x1="15" y1="20" x2="15" y2="23" />
       </svg>
     ),
   },
@@ -82,17 +88,18 @@ const commitmentItems: CommitmentItem[] = [
     id: "cost-optimization",
     title: "TỐI ƯU CHI PHÍ VÀ NGUỒN LỰC",
     desc: "Tối ưu nguồn lực và chi phí, giúp doanh nghiệp tăng trưởng bền vững và hiệu quả.",
-    iconBgClass: styles.iconCircleTeal,
+    gradientClass: styles.iconGradGreen,
     iconSvg: (
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0D9488" strokeWidth="2">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <circle cx="12" cy="12" r="10" />
-        <polyline points="12 6 12 12 16 14" />
+        <path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8" />
+        <line x1="12" y1="6" x2="12" y2="18" />
       </svg>
     ),
   },
 ];
 
-const viewport = { once: true, amount: 0.2 } as const;
+const viewport = { once: true, amount: 0.15 } as const;
 const easeOut = [0.22, 1, 0.36, 1] as const;
 
 export default function AboutCommitments() {
@@ -100,90 +107,55 @@ export default function AboutCommitments() {
 
   const fadeUp = reduceMotion
     ? { hidden: { opacity: 0 }, visible: { opacity: 1 } }
-    : { hidden: { opacity: 0, y: 28 }, visible: { opacity: 1, y: 0 } };
+    : { hidden: { opacity: 0, y: 32 }, visible: { opacity: 1, y: 0 } };
 
   return (
-    <>
-      <section id="commitments" className={`section ${styles.sectionCommitments}`}>
-        <div className={`section__content ${styles.commitmentsContent}`}>
-          {/* Header Title */}
-          <motion.h2
-            className={styles.commitmentsTitle}
-            variants={fadeUp}
-            initial="hidden"
-            whileInView="visible"
-            viewport={viewport}
-            transition={{ duration: 0.65, delay: 0.05, ease: easeOut }}
-          >
-            CAM KẾT CỦA <span className="title-highlight">QTM MEDIA</span>
-          </motion.h2>
+    <section id="commitments" className={`section ${styles.sectionCommitments}`}>
+      {/* Background decor */}
+      <div className={styles.commitmentsBg} aria-hidden="true" />
+      <div className={styles.commitmentsGlow} aria-hidden="true" />
 
-          <motion.p
-            className={styles.commitmentsSubtitle}
-            variants={fadeUp}
-            initial="hidden"
-            whileInView="visible"
-            viewport={viewport}
-            transition={{ duration: 0.65, delay: 0.1, ease: easeOut }}
-          >
-            Chúng tôi không chỉ cung cấp dịch vụ. <br />
-            <strong className="text-teal-dark">
+      <div className={`section__content ${styles.commitmentsContent}`}>
+
+        {/* ── 1. Top Section Header (Centered) ───────────────────────────────── */}
+        <motion.div
+          className={styles.sectionTopHeader}
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewport}
+          transition={{ duration: 0.6, ease: easeOut }}
+        >
+          <h2 className={styles.commitmentsTitle}>CAM KẾT CỦA QTM</h2>
+          <div className={styles.titleUnderlineAccent} />
+
+          <div className={styles.subtitleGroup}>
+            <p className={styles.subtitleWhite}>Chúng tôi không chỉ cung cấp dịch vụ.</p>
+            <p className={styles.subtitleCyan}>
               Chúng tôi cam kết đồng hành cùng doanh nghiệp trên hành trình phát triển.
-            </strong>
-          </motion.p>
+            </p>
+          </div>
+        </motion.div>
+        
+        {/* ── 2. Main Split Layout: Left 6 Cards & Right Image Graphic ───────── */}
+        <div className={styles.commitmentsSplitLayout}>
 
-          {/* Main 2-Column Split: Left Shield Visual & Right 2x3 Grid */}
-          <div className={styles.commitmentsMainSplit}>
-            {/* Left Visual Shield Graphic */}
+          {/* ── CỘT TRÁI (~68% width): 6 Cards Grid (3x2) ────────────────────── */}
+          <motion.div
+            className={styles.leftContentBlock}
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={viewport}
+            transition={{ duration: 0.65, delay: 0.08, ease: easeOut }}
+          >
+            {/* 6 Cards Grid (3 cols x 2 rows) */}
             <motion.div
-              className={styles.commitmentsShieldVisual}
-              variants={fadeUp}
-              initial="hidden"
-              whileInView="visible"
-              viewport={viewport}
-              transition={{ duration: 0.7, delay: 0.15, ease: easeOut }}
-            >
-              <div className={styles.shieldCardGraphic}>
-                <div className={styles.shieldQtmLogoHeader}>
-                  <svg width="140" height="42" viewBox="0 0 160 48" fill="none">
-                    <circle cx="20" cy="18" r="4" fill="#00D4FF" />
-                    <circle cx="34" cy="10" r="4" fill="#38CFC8" />
-                    <circle cx="34" cy="26" r="4" fill="#38CFC8" />
-                    <circle cx="48" cy="18" r="4" fill="#00D4FF" />
-                    <line x1="20" y1="18" x2="34" y2="10" stroke="#38CFC8" strokeWidth="2" />
-                    <line x1="20" y1="18" x2="34" y2="26" stroke="#38CFC8" strokeWidth="2" />
-                    <line x1="34" y1="10" x2="48" y2="18" stroke="#38CFC8" strokeWidth="2" />
-                    <line x1="34" y1="26" x2="48" y2="18" stroke="#38CFC8" strokeWidth="2" />
-                    <text x="60" y="28" fill="#123A53" fontFamily="var(--font-heading)" fontSize="26" fontWeight="900">QTM</text>
-                    <text x="60" y="42" fill="#2095AD" fontFamily="var(--font-geist-mono)" fontSize="11" fontWeight="700">MediaTech</text>
-                  </svg>
-                </div>
-
-                <div className={styles.shieldCentralIcon}>
-                  <svg viewBox="0 0 200 200" fill="none" className={styles.shieldSvg}>
-                    <circle cx="100" cy="100" r="85" fill="url(#shieldGlow)" opacity="0.2" />
-                    <path d="M100 30 L160 60 V110 C160 150 100 180 100 180 C100 180 40 150 40 110 V60 Z" fill="linear-gradient(180deg, #0284C7 0%, #0D9488 100%)" stroke="#38CFC8" strokeWidth="3" />
-                    <path d="m80 100 15 15 30-30" stroke="#FFFFFF" strokeWidth="5" strokeLinecap="round" strokeLinejoin="round" />
-                    <defs>
-                      <radialGradient id="shieldGlow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(100 100) scale(85)">
-                        <stop stopColor="#38CFC8" />
-                        <stop offset="1" stopColor="#0284C7" stopOpacity="0" />
-                      </radialGradient>
-                    </defs>
-                  </svg>
-                </div>
-
-                <div className={styles.shieldBottomLabel}>ISO // TRUSTED_MEDIATECH_PARTNER</div>
-              </div>
-            </motion.div>
-
-            {/* Right 2x3 Grid */}
-            <motion.div
-              className={styles.commitmentsCardsGrid}
+              className={styles.commitmentsGrid3x2}
               variants={{
                 hidden: {},
                 visible: {
-                  transition: { staggerChildren: reduceMotion ? 0 : 0.08, delayChildren: 0.15 },
+                  transition: { staggerChildren: reduceMotion ? 0 : 0.08, delayChildren: 0.12 },
                 },
               }}
               initial="hidden"
@@ -195,20 +167,84 @@ export default function AboutCommitments() {
                   key={item.id}
                   variants={fadeUp}
                   transition={{ duration: 0.5, ease: easeOut }}
+                  className={styles.gridItemWrapper}
                 >
-                  <div className={styles.commitmentLightCard}>
-                    <div className={styles.cardIconHeader}>
-                      <div className={`${styles.iconCircle} ${item.iconBgClass}`}>{item.iconSvg}</div>
+                  <Card3DTilt
+                    className={styles.commitmentGlassCard}
+                    maxTilt={4}
+                    scale={1.01}
+                    glareColor="rgba(79, 209, 232, 0.22)"
+                    glareOpacity={0.2}
+                  >
+                    {/* Round Gradient Icon */}
+                    <div className={`${styles.iconRoundCircle} ${item.gradientClass}`}>
+                      {item.iconSvg}
                     </div>
+
+                    {/* Title */}
                     <h3 className={styles.cardItemTitle}>{item.title}</h3>
+
+                    {/* Short Underline Accent */}
+                    <div className={styles.itemAccentLine} />
+
+                    {/* Description */}
                     <p className={styles.cardItemDesc}>{item.desc}</p>
-                  </div>
+                  </Card3DTilt>
                 </motion.div>
               ))}
             </motion.div>
-          </div>
-        </div>
-      </section>
-    </>
+          </motion.div>
+
+
+          {/* ── CỘT PHẢI (~32% width): Image Graphic Minh Họa ───────────────── */}
+          <motion.div
+            className={styles.rightImageBlock}
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={viewport}
+            transition={{ duration: 0.75, delay: 0.15, ease: easeOut }}
+          >
+            <Card3DTilt
+              className={styles.imageGlassFrame}
+              maxTilt={5}
+              scale={1.01}
+              glareColor="rgba(56, 207, 200, 0.3)"
+              glareOpacity={0.3}
+            >
+              {/* HUD Header */}
+              <div className={styles.hudHeader}>
+                <span className={styles.hudBadge}>QTM TRUST &amp; SECURITY</span>
+                <span className={styles.hudLiveDot} />
+              </div>
+
+              {/* Graphic Image */}
+              <div className={styles.imageWrap}>
+                <Image
+                  src="/about_us/img_commitment_shield.png"
+                  alt="Biểu tượng cam kết và đối tác tin cậy QTM MediaTech"
+                  width={520}
+                  height={520}
+                  className={styles.imgCover}
+                  priority
+                />
+                <div className={styles.imageOverlay} />
+
+                {/* Floating Badge */}
+                <div className={styles.floatingBadgeOverlay}>
+                  <div className={styles.badgePulseDot} />
+                  <div className={styles.badgeTextWrap}>
+                    <span className={styles.badgeTitle}>100% CAM KẾT HIỆU QUẢ</span>
+                    <span className={styles.badgeSub}>Đối tác chiến lược tin cậy</span>
+                  </div>
+                </div>
+              </div>
+            </Card3DTilt>
+          </motion.div>
+
+        </div>{/* /commitmentsSplitLayout */}
+
+      </div>
+    </section>
   );
 }

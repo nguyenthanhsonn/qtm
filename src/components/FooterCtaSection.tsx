@@ -77,11 +77,7 @@ export default function FooterCtaSection() {
           {/* Perspective Ground Grid Lines */}
           <div className={styles.fctaGroundGrid} />
 
-          {/* Glowing Doorway Portal at bottom center */}
-          <div className={styles.fctaPortalDoor}>
-            <div className={styles.doorFrame} />
-            <div className={styles.doorLightBeam} />
-          </div>
+
         </div>
 
         <div className={styles.fctaContent}>
