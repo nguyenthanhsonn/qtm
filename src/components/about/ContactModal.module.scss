@@ -1,0 +1,238 @@
+@use '@/scss/global/variables' as *;
+
+.contactModalBackdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  background: rgba(5, 12, 26, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.contactModalContainer {
+  position: relative;
+  width: 100%;
+  max-width: 680px;
+  max-height: 90vh;
+  overflow-y: auto;
+
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: rgba(56, 207, 200, 0.3);
+    border-radius: 4px;
+  }
+}
+
+.darkGlassModal {
+  position: relative;
+  padding: clamp(1.8rem, 3.5vw, 2.4rem);
+  border-radius: 24px;
+  background: rgba(12, 28, 52, 0.92);
+  border: 1.5px solid rgba(56, 207, 200, 0.35);
+  box-shadow: 0 25px 65px rgba(0, 0, 0, 0.6), 0 0 40px rgba(56, 207, 200, 0.15);
+  color: #FFFFFF;
+  text-align: left;
+}
+
+.modalCloseBtn {
+  position: absolute;
+  top: 1.25rem;
+  right: 1.25rem;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #FFFFFF;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  z-index: 10;
+
+  &:hover {
+    background: rgba(56, 207, 200, 0.2);
+    border-color: #38CFC8;
+    color: #38CFC8;
+    transform: rotate(90deg);
+  }
+}
+
+.modalHudHeader {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-bottom: 1.25rem;
+
+  .hudTag {
+    font-family: var(--font-geist-mono), monospace;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #38CFC8;
+    letter-spacing: 0.05em;
+  }
+
+  .modalTitle {
+    font-size: clamp(1.4rem, 2.5vw, 1.8rem);
+    font-weight: 800;
+    color: #FFFFFF;
+    margin: 0;
+    line-height: 1.25;
+
+    .gradientTealMint {
+      background: linear-gradient(90deg, #38CFC8 0%, #00D4FF 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+  }
+
+  .modalDesc {
+    font-size: 0.875rem;
+    color: #CBD5E1;
+    line-height: 1.55;
+    margin: 0;
+  }
+}
+
+.modalInfoBar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.25rem;
+  padding: 0.85rem 1rem;
+  border-radius: 12px;
+  background: rgba(56, 207, 200, 0.08);
+  border: 1px solid rgba(56, 207, 200, 0.2);
+  margin-bottom: 1.5rem;
+
+  .infoItem {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.8rem;
+  }
+
+  .infoIcon {
+    font-size: 0.95rem;
+  }
+
+  .infoText {
+    display: flex;
+    gap: 0.35rem;
+
+    .infoLabel {
+      color: #94A3B8;
+    }
+
+    .infoVal {
+      color: #FFFFFF;
+      font-weight: 600;
+      text-decoration: none;
+
+      &:hover {
+        color: #38CFC8;
+      }
+    }
+  }
+}
+
+.modalForm {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.modalSuccessMsg {
+  padding: 0.85rem 1.2rem;
+  border-radius: 10px;
+  background: rgba(56, 207, 200, 0.18);
+  border: 1px solid #38CFC8;
+  color: #FFFFFF;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.formGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+
+  @media (max-width: 580px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+
+  label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #CBD5E1;
+  }
+
+  input,
+  textarea {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border-radius: 10px;
+    background: rgba(5, 12, 26, 0.6);
+    border: 1px solid rgba(56, 207, 200, 0.25);
+    color: #FFFFFF;
+    font-family: inherit;
+    font-size: 0.875rem;
+    outline: none;
+    transition: border-color 0.25s ease, box-shadow 0.25s ease;
+
+    &::placeholder {
+      color: rgba(203, 213, 225, 0.4);
+    }
+
+    &:focus {
+      border-color: #38CFC8;
+      box-shadow: 0 0 15px rgba(56, 207, 200, 0.25);
+    }
+  }
+}
+
+.modalSubmitBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 100%;
+  padding: 0.9rem 1.5rem;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #38CFC8 0%, #2095AD 100%);
+  border: none;
+  color: #050C1A;
+  font-size: 0.9rem;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 0 25px rgba(56, 207, 200, 0.35);
+  transition: all 0.3s ease;
+  margin-top: 0.5rem;
+
+  .arrow {
+    transition: transform 0.25s ease;
+  }
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 40px rgba(56, 207, 200, 0.55);
+
+    .arrow {
+      transform: translateX(4px);
+    }
+  }
+}

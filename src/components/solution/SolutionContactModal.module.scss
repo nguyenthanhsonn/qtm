@@ -1,0 +1,219 @@
+@use '@/scss/global/variables' as *;
+
+.contactModalBackdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(5, 12, 26, 0.85);
+  backdrop-filter: blur(12px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  overflow-y: auto;
+}
+
+.contactModalContainer {
+  width: 100%;
+  max-width: 680px;
+  position: relative;
+}
+
+.darkGlassModal {
+  position: relative;
+  width: 100%;
+  padding: clamp(1.8rem, 3vw, 2.8rem);
+  border-radius: 24px;
+  background: rgba(10, 25, 47, 0.92);
+  border: 1.5px solid rgba(56, 207, 200, 0.35);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6), 0 0 30px rgba(56, 207, 200, 0.2);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  box-sizing: border-box;
+
+  .modalCloseBtn {
+    position: absolute;
+    top: 1.2rem; right: 1.2rem;
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: #94A3B8;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+
+    &:hover {
+      background: rgba(239, 68, 68, 0.2);
+      color: #EF4444;
+      border-color: #EF4444;
+    }
+  }
+
+  .modalHudHeader {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    text-align: left;
+
+    .hudTag {
+      font-family: var(--font-geist-mono), monospace;
+      font-size: 0.725rem;
+      font-weight: 700;
+      color: #38CFC8;
+    }
+
+    .modalTitle {
+      font-size: clamp(1.35rem, 2.2vw, 1.75rem);
+      font-weight: 800;
+      color: #FFFFFF;
+      margin: 0;
+
+      .gradientTealMint {
+        background: linear-gradient(90deg, #38CFC8 0%, #00D4FF 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+    }
+
+    .modalDesc {
+      font-size: 0.875rem;
+      line-height: 1.6;
+      color: #CBD5E1;
+      margin: 0;
+    }
+  }
+
+  .modalInfoBar {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.75rem;
+    padding: 1rem;
+    border-radius: 14px;
+    background: rgba(5, 12, 26, 0.6);
+    border: 1px solid rgba(56, 207, 200, 0.2);
+
+    @media (max-width: 600px) {
+      grid-template-columns: 1fr;
+    }
+
+    .infoItem {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+
+      .infoIcon {
+        font-size: 1.1rem;
+      }
+
+      .infoText {
+        display: flex;
+        flex-direction: column;
+        text-align: left;
+      }
+
+      .infoLabel {
+        font-size: 0.68rem;
+        color: #94A3B8;
+      }
+
+      .infoVal {
+        font-size: 0.8rem;
+        font-weight: 700;
+        color: #38CFC8;
+        text-decoration: none;
+      }
+    }
+  }
+
+  .modalForm {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    text-align: left;
+
+    .modalSuccessMsg {
+      padding: 0.85rem 1.2rem;
+      border-radius: 12px;
+      background: rgba(34, 197, 94, 0.15);
+      border: 1px solid rgba(34, 197, 94, 0.35);
+      color: #4ADE80;
+      font-size: 0.875rem;
+      font-weight: 600;
+      line-height: 1.5;
+    }
+
+    .formGrid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+
+      @media (max-width: 550px) {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .formGroup {
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+
+      label {
+        font-size: 0.8rem;
+        font-weight: 700;
+        color: #E2E8F0;
+      }
+
+      input, textarea {
+        width: 100%;
+        padding: 10px 14px;
+        border-radius: 10px;
+        background: rgba(5, 12, 26, 0.7);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        color: #FFFFFF;
+        font-size: 0.875rem;
+        outline: none;
+        box-sizing: border-box;
+
+        &:focus {
+          border-color: #38CFC8;
+          box-shadow: 0 0 12px rgba(56, 207, 200, 0.3);
+        }
+      }
+    }
+
+    .modalSubmitBtn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #38CFC8 0%, #2095AD 100%);
+      color: #050C1A;
+      font-weight: 800;
+      font-size: 0.9rem;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 0 20px rgba(56, 207, 200, 0.4);
+      transition: all 0.25s ease;
+
+      .arrow {
+        transition: transform 0.25s ease;
+      }
+
+      &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 0 30px rgba(56, 207, 200, 0.6);
+
+        .arrow {
+          transform: translateX(4px);
+        }
+      }
+    }
+  }
+}

@@ -1,9 +1,6 @@
-@use 'variables' as *;
+@use '@/scss/global/variables' as *;
 
-// ════════════════════════════════════════════════════════════
-// PROJECTS — visual card only (grid + header → Tailwind in TSX)
-// ════════════════════════════════════════════════════════════
-.project-card {
+.projectCard {
   position: relative;
   padding: 2rem;
   border-radius: 20px;
@@ -19,29 +16,29 @@
     border-color: rgba(var(--accent, #{$cyan}), 0.5);
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 25px rgba(0, 212, 255, 0.2);
 
-    .project-card__id {
+    .projectCardId {
       transform: translateZ(20px);
       color: rgba(255, 255, 255, 0.15);
     }
-    .project-card__category {
+    .projectCardCategory {
       transform: translateZ(25px);
     }
-    .project-card__name {
+    .projectCardName {
       transform: translateZ(35px);
     }
-    .project-card__desc {
+    .projectCardDesc {
       transform: translateZ(20px);
     }
-    .project-card__tags {
+    .projectCardTags {
       transform: translateZ(30px);
     }
-    .project-card__bar {
+    .projectCardBar {
       transform: translateZ(15px);
       height: 3px;
     }
   }
 
-  &__id {
+  .projectCardId {
     font-size: 2rem;
     font-weight: 800;
     color: rgba(255,255,255,0.07);
@@ -50,7 +47,7 @@
     transition: transform 0.35s ease, color 0.35s ease;
   }
 
-  &__category {
+  .projectCardCategory {
     font-size: 11px;
     font-weight: 600;
     letter-spacing: 0.08em;
@@ -61,7 +58,7 @@
     transition: transform 0.35s ease;
   }
 
-  &__name {
+  .projectCardName {
     font-size: 1.2rem;
     font-weight: 700;
     color: $text-white;
@@ -70,7 +67,7 @@
     transition: transform 0.35s ease;
   }
 
-  &__desc {
+  .projectCardDesc {
     font-size: 13.5px;
     color: $text-muted;
     line-height: 1.6;
@@ -79,13 +76,12 @@
     transition: transform 0.35s ease;
   }
 
-  &__tags {
+  .projectCardTags {
     transform: translateZ(20px);
     transition: transform 0.35s ease;
   }
 
-  // Top accent bar driven by CSS custom property
-  &__bar {
+  .projectCardBar {
     position: absolute;
     top: 0; left: 0; right: 0;
     height: 2px;

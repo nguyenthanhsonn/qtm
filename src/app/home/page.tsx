@@ -1,5 +1,5 @@
 import Link from "next/link";
-import "@/scss/home.scss";
+import styles from "@/components/Home/HomeHero.module.scss";
 import { HomeIconProps } from "@/types/home";
 import CountUp from "@/components/CountUp";
 import HomeCtaSection from "@/components/Home/HomeCtaSection";
@@ -53,9 +53,9 @@ function HomeHero() {
   ];
 
   return (
-    <section id="home" className="section section--home">
+    <section id="home" className={`section ${styles.sectionHome}`}>
       <video
-        className="section__bg-video"
+        className={styles.sectionBgVideo}
         autoPlay
         loop
         muted
@@ -65,7 +65,7 @@ function HomeHero() {
       >
         <source src="/kling_20260804_VIDEO_A_cinemati_5058_0.mp4" type="video/mp4" />
       </video>
-      <div className="section__bg-overlay" aria-hidden="true" />
+      <div className={styles.sectionBgOverlay} aria-hidden="true" />
       <div className="absolute inset-0 pointer-events-none z-1 overflow-hidden">
         <CursorGrid
           color="#38CFC8"
@@ -77,65 +77,65 @@ function HomeHero() {
           clickPulse={true}
         />
       </div>
-      <div className="section__bg-grid" aria-hidden="true" />
-      <div className="section__particles" aria-hidden="true">
+      <div className={styles.sectionBgGrid} aria-hidden="true" />
+      <div className={styles.sectionParticles} aria-hidden="true">
         {Array.from({ length: 20 }).map((_, i) => (
-          <span key={i} className="particle" style={{ "--i": i } as React.CSSProperties} />
+          <span key={i} className={styles.particle} style={{ "--i": i } as React.CSSProperties} />
         ))}
       </div>
 
       {/* Content */}
-      <div className="section__content home__content">
-        <h1 className="home__title">
-          <span className="home__title-line home__title-line--plain">Strategic</span>
-          <span className="home__title-line home__title-line--gradient-teal-blue">MediaTech Partner</span>
+      <div className={`section__content ${styles.homeContent}`}>
+        <h1 className={styles.homeTitle}>
+          <span className={`${styles.homeTitleLine} ${styles.homeTitleLinePlain}`}>Strategic</span>
+          <span className={`${styles.homeTitleLine} ${styles.homeTitleLineGradientTealBlue}`}>MediaTech Partner</span>
         </h1>
 
-        <div className="home__info-card" data-aos="flip-left" data-aos-delay="300">
-          <div className="info-card__title">
-            <span className="info-card__dot" />
+        <div className={styles.homeInfoCard} data-aos="flip-left" data-aos-delay="300">
+          <div className={styles.infoCardTitle}>
+            <span className={styles.infoCardDot} />
             15 NĂM ĐỒNG HÀNH CÙNG TRUYỀN THÔNG SỐ
           </div>
-          <div className="info-card__divider" />
-          <p className="info-card__desc">
-            Đồng hành cùng doanh nghiệp chuyển hóa <span className="desc-highlight">Chiến lược – Công nghệ – Sáng tạo – Dữ liệu</span> thành những giải pháp truyền thông có thể đo lường và tạo ra tăng trưởng bền vững.
+          <div className={styles.infoCardDivider} />
+          <p className={styles.infoCardDesc}>
+            Đồng hành cùng doanh nghiệp chuyển hóa <span className={styles.descHighlight}>Chiến lược – Công nghệ – Sáng tạo – Dữ liệu</span> thành những giải pháp truyền thông có thể đo lường và tạo ra tăng trưởng bền vững.
           </p>
         </div>
 
-        <div className="home__badge-pill">
+        <div className={styles.homeBadgePill}>
           <span data-aos="zoom-in" data-aos-delay="150" data-aos-duration="900">Quality</span>
-          <span className="badge-pill__dot" data-aos="zoom-in" data-aos-delay="900" data-aos-duration="900">•</span>
+          <span className={styles.badgePillDot} data-aos="zoom-in" data-aos-delay="900" data-aos-duration="900">•</span>
           <span data-aos="zoom-in" data-aos-delay="550" data-aos-duration="1200">Technology</span>
-          <span className="badge-pill__dot" data-aos="zoom-in" data-aos-delay="950" data-aos-duration="900">•</span>
+          <span className={styles.badgePillDot} data-aos="zoom-in" data-aos-delay="950" data-aos-duration="900">•</span>
           <span data-aos="zoom-in" data-aos-delay="1050" data-aos-duration="1400">Mindset</span>
         </div>
 
         {/* CTA buttons */}
-        <div className="home__actions">
-          <Link href="/contact" className="btn btn--primary home__cta home__cta--primary">
+        <div className={styles.homeActions}>
+          <Link href="/contact" className={`btn btn--primary ${styles.homeCta} ${styles.homeCtaPrimary}`}>
             LIÊN HỆ TƯ VẤN
           </Link>
-          <Link href="/missLegacy" className="btn btn--outline home__cta home__cta--outline">
-            KHÁM PHÁ MISS LEGACY <span className="btn__arrow">→</span>
+          <Link href="/missLegacy" className={`btn btn--outline ${styles.homeCta} ${styles.homeCtaOutline}`}>
+            KHÁM PHÁ MISS LEGACY <span className={styles.btnArrow}>→</span>
           </Link>
         </div>
 
         {/* Stats bar */}
-        <div className="home__stats-bar">
+        <div className={styles.homeStatsBar}>
           {stats.map((s, i) => {
             const Icon = s.icon;
 
             return (
-              <div key={s.label} className="home__stat-col">
-                <span className="stat-col__icon">
+              <div key={s.label} className={styles.homeStatCol}>
+                <span className={styles.statColIcon}>
                   <Icon />
                 </span>
-                <div className="stat-col__info">
-                  <span className="stat-col__value">
+                <div className={styles.statColInfo}>
+                  <span className={styles.statColValue}>
                     <CountUp to={s.value} duration={2} delay={i * 0.15} />
                     {s.suffix}
                   </span>
-                  <span className="stat-col__label">{s.label}</span>
+                  <span className={styles.statColLabel}>{s.label}</span>
                 </div>
               </div>
             );
@@ -143,14 +143,14 @@ function HomeHero() {
         </div>
       </div>
 
-      <div className="home__scroll" aria-hidden="true">
-        <span className="home__scroll-dot" />
+      <div className={styles.homeScroll} aria-hidden="true">
+        <span className={styles.homeScrollDot} />
       </div>
 
       <div className="orb orb--cyan" aria-hidden="true" />
       <div className="orb orb--purple" aria-hidden="true" />
 
-      {/* Overlapping Tech Quote Card positioned absolutely at bottom boundary */}
+      {/* Floating Tech Quote Card positioned relative to HomeHero */}
       <HomeTransitionQuote />
     </section>
   );

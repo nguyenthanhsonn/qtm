@@ -1,6 +1,6 @@
 "use client";
 
-import "@/scss/contact.scss";
+import styles from "./ContactPage.module.scss";
 import { useState } from "react";
 import Card3DTilt from "@/components/Card3DTilt";
 import Input from "@/uiux/input_form";
@@ -79,8 +79,8 @@ export default function ContactSection() {
                 <div key={d.label} className="flex items-start gap-4">
                   <span className="text-2xl shrink-0">{d.icon}</span>
                   <div>
-                    <div className="contact-detail__label">{d.label}</div>
-                    <div className="contact-detail__value">{d.value}</div>
+                    <div className={styles.contactDetailLabel}>{d.label}</div>
+                    <div className={styles.contactDetailValue}>{d.value}</div>
                   </div>
                 </div>
               ))}
@@ -95,9 +95,9 @@ export default function ContactSection() {
             glareColor="rgba(0, 212, 255, 0.3)"
             glareOpacity={0.35}
           >
-            <form className="contact__form flex flex-col gap-4" onSubmit={handleSubmit} noValidate>
+            <form className={`${styles.contactForm} flex flex-col gap-4`} onSubmit={handleSubmit} noValidate>
               {sent && (
-                <div className="contact__success" role="status">
+                <div className={styles.contactSuccess} role="status">
                   ✅ Yêu cầu tư vấn của bạn đã được gửi thành công!
                 </div>
               )}

@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import styles from "./SolutionValueReceived.module.scss";
 import { motion, useReducedMotion } from "motion/react";
 import BackgroundGrid from "@/components/TechBackground/BackgroundGrid";
 import CountUp from "@/components/CountUp";
@@ -62,13 +63,13 @@ export default function SolutionValueReceived() {
     : { hidden: { opacity: 0, y: 32 }, visible: { opacity: 1, y: 0 } };
 
   return (
-    <section id="values" className="section section--sol-val">
+    <section id="values" className={`section ${styles.sectionSolVal}`}>
       <BackgroundGrid gridSize={40} opacity={0.06} />
 
-      <div className="section__content sol-val__content">
+      <div className={`section__content ${styles.solValContent}`}>
         {/* Title */}
         <motion.h2
-          className="sol-val__title"
+          className={styles.solValTitle}
           variants={fadeUp}
           initial="hidden"
           whileInView="visible"
@@ -79,7 +80,7 @@ export default function SolutionValueReceived() {
         </motion.h2>
 
         <motion.p
-          className="sol-val__subtitle"
+          className={styles.solValSubtitle}
           variants={fadeUp}
           initial="hidden"
           whileInView="visible"
@@ -91,7 +92,7 @@ export default function SolutionValueReceived() {
 
         {/* 6 Vertical Pill-Cards Grid */}
         <motion.div
-          className="sol-val-pills-grid"
+          className={styles.solValPillsGrid}
           variants={{
             hidden: {},
             visible: {
@@ -107,55 +108,55 @@ export default function SolutionValueReceived() {
               key={pill.id}
               variants={fadeUp}
               transition={{ duration: 0.5, ease: easeOut }}
-              className="vertical-pill-card"
+              className={styles.verticalPillCard}
             >
-              <div className="pill-top-icon">{pill.icon}</div>
-              <h3 className="pill-title">{pill.title}</h3>
-              <p className="pill-desc">{pill.desc}</p>
+              <div className={styles.pillTopIcon}>{pill.icon}</div>
+              <h3 className={styles.pillTitle}>{pill.title}</h3>
+              <p className={styles.pillDesc}>{pill.desc}</p>
             </motion.div>
           ))}
         </motion.div>
 
         {/* Bottom Horizontal Stat Bar */}
         <motion.div
-          className="sol-val-stats-bar"
+          className={styles.solValStatsBar}
           variants={fadeUp}
           initial="hidden"
           whileInView="visible"
           viewport={viewport}
           transition={{ duration: 0.75, delay: 0.25, ease: easeOut }}
         >
-          <div className="stat-box">
-            <span className="stat-num">
+          <div className={styles.statBox}>
+            <span className={styles.statNum}>
               <CountUp to={10} duration={2} />+
             </span>
-            <span className="stat-lbl">Năm kinh nghiệm</span>
+            <span className={styles.statLbl}>Năm kinh nghiệm</span>
           </div>
 
-          <div className="stat-box">
-            <span className="stat-num">
+          <div className={styles.statBox}>
+            <span className={styles.statNum}>
               <CountUp to={500} duration={2.2} />+
             </span>
-            <span className="stat-lbl">Dự án thành công</span>
+            <span className={styles.statLbl}>Dự án thành công</span>
           </div>
 
-          <div className="stat-box">
-            <span className="stat-num">
+          <div className={styles.statBox}>
+            <span className={styles.statNum}>
               <CountUp to={200} duration={2.2} />+
             </span>
-            <span className="stat-lbl">Đối tác đồng hành</span>
+            <span className={styles.statLbl}>Đối tác đồng hành</span>
           </div>
 
-          <div className="stat-box">
-            <span className="stat-num">
+          <div className={styles.statBox}>
+            <span className={styles.statNum}>
               <CountUp to={1000} duration={2.5} />+
             </span>
-            <span className="stat-lbl">Vị trí truyền thông</span>
+            <span className={styles.statLbl}>Vị trí truyền thông</span>
           </div>
 
-          <div className="stat-box">
-            <span className="stat-num">98%</span>
-            <span className="stat-lbl">Tỷ lệ hài lòng</span>
+          <div className={styles.statBox}>
+            <span className={styles.statNum}>98%</span>
+            <span className={styles.statLbl}>Tỷ lệ hài lòng</span>
           </div>
         </motion.div>
       </div>

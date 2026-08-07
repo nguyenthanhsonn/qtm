@@ -2,7 +2,7 @@
 
 import React from "react";
 import { motion, useReducedMotion } from "motion/react";
-import ParticleField from "@/components/TechBackground/ParticleField";
+import styles from "./AboutTargetAudience.module.scss";
 
 type TargetColumn = {
   id: string;
@@ -17,7 +17,7 @@ const targetColumns: TargetColumn[] = [
   {
     id: "state-owned",
     title: "DOANH NGHIỆP NHÀ NƯỚC",
-    badgeClass: "badge-blue",
+    badgeClass: styles.colBadgeBlue,
     desc: "Đồng hành cùng các tập đoàn truyền thông chính sách, tổ chức sự kiện và chuyển đổi số.",
     logos: [
       {
@@ -57,7 +57,7 @@ const targetColumns: TargetColumn[] = [
   {
     id: "fdi",
     title: "DOANH NGHIỆP FDI",
-    badgeClass: "badge-green",
+    badgeClass: styles.colBadgeGreen,
     desc: "Đối tác tin cậy của các tập đoàn quốc tế tại Việt Nam trong xây dựng thương hiệu, phát triển trải nghiệm KH.",
     logos: [
       {
@@ -97,7 +97,7 @@ const targetColumns: TargetColumn[] = [
   {
     id: "fmcg",
     title: "FMCG & RETAIL",
-    badgeClass: "badge-orange",
+    badgeClass: styles.colBadgeOrange,
     desc: "Đồng hành xây dựng các chiến dịch truyền thông kích hoạt thương hiệu hàng đầu.",
     logos: [
       {
@@ -137,7 +137,7 @@ const targetColumns: TargetColumn[] = [
   {
     id: "sme",
     title: "DOANH NGHIỆP SME",
-    badgeClass: "badge-purple",
+    badgeClass: styles.colBadgePurple,
     desc: "Hỗ trợ doanh nghiệp tăng trưởng bằng các giải pháp truyền thông tối ưu chi phí.",
     smeFeatures: [
       "⚡ Chuẩn hóa & Tự động hóa",
@@ -161,15 +161,11 @@ export default function AboutTargetAudience() {
     : { hidden: { opacity: 0, y: 32 }, visible: { opacity: 1, y: 0 } };
 
   return (
-    <section id="target-audience" className="section section--target-audience">
-      <div className="target-aud__bg-overlay" aria-hidden="true" />
-      <div className="target-aud__bg-grid" aria-hidden="true" />
-      <ParticleField />
-
-      <div className="section__content target-aud__content">
+    <section id="target-audience" className={`section ${styles.sectionTargetAudience}`}>
+      <div className={`section__content ${styles.targetAudContent}`}>
         {/* Title Header */}
         <motion.h2
-          className="target-aud__title"
+          className={styles.targetAudTitle}
           variants={fadeUp}
           initial="hidden"
           whileInView="visible"
@@ -180,7 +176,7 @@ export default function AboutTargetAudience() {
         </motion.h2>
 
         <motion.p
-          className="target-aud__subtitle"
+          className={styles.targetAudSubtitle}
           variants={fadeUp}
           initial="hidden"
           whileInView="visible"
@@ -192,7 +188,7 @@ export default function AboutTargetAudience() {
 
         {/* 4 Vertical Column Cards */}
         <motion.div
-          className="target-aud-columns-grid"
+          className={styles.targetAudColumnsGrid}
           variants={{
             hidden: {},
             visible: {
@@ -208,19 +204,19 @@ export default function AboutTargetAudience() {
               key={col.id}
               variants={fadeUp}
               transition={{ duration: 0.55, ease: easeOut }}
-              className="target-col-card"
+              className={styles.targetColCard}
             >
-              <div className={`col-badge ${col.badgeClass}`}>
-                <span className="badge-dot" />
-                <span className="badge-title">{col.title}</span>
+              <div className={`${styles.colBadge} ${col.badgeClass}`}>
+                <span className={styles.badgeDot} />
+                <span className={styles.badgeTitle}>{col.title}</span>
               </div>
 
-              <p className="col-desc">{col.desc}</p>
+              <p className={styles.colDesc}>{col.desc}</p>
 
               {col.logos ? (
-                <div className="col-logo-grid">
+                <div className={styles.colLogoGrid}>
                   {col.logos.map((logo, idx) => (
-                    <div key={`${logo.name}-${idx}`} className="logo-box-mini">
+                    <div key={`${logo.name}-${idx}`} className={styles.logoBoxMini}>
                       <svg width="100" height="32" viewBox="0 0 110 32" fill="none">
                         {logo.iconSvg}
                       </svg>
@@ -228,16 +224,16 @@ export default function AboutTargetAudience() {
                   ))}
                 </div>
               ) : (
-                <div className="col-features-list">
+                <div className={styles.colFeaturesList}>
                   {col.smeFeatures?.map((feat) => (
-                    <div key={feat} className="sme-feat-chip">
+                    <div key={feat} className={styles.smeFeatChip}>
                       {feat}
                     </div>
                   ))}
                 </div>
               )}
 
-              <button type="button" className="col-action-btn">
+              <button type="button" className={styles.colActionBtn}>
                 <span>Xem thêm</span>
                 <span>→</span>
               </button>

@@ -1,6 +1,6 @@
 "use client";
 
-import "@/scss/home-ecosystem.scss";
+import styles from "./HomeEcosystemSection.module.scss";
 import Carousel3D from "@/components/Carousel3D";
 import { CarouselItem } from "@/types/components";
 import { motion, useReducedMotion } from "motion/react";
@@ -62,7 +62,7 @@ export default function HomeEcosystemSection() {
     : { hidden: { opacity: 0, y: 32 }, visible: { opacity: 1, y: 0 } };
 
   return (
-    <section id="ecosystem" className="section section--home-ecosystem">
+    <section id="ecosystem" className={`section ${styles.sectionHomeEcosystem}`}>
       <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
         <CursorGrid
           color="#38CFC8"
@@ -74,22 +74,22 @@ export default function HomeEcosystemSection() {
           clickPulse={true}
         />
       </div>
-      <div className="home-ecosystem__bg" aria-hidden="true" />
+      <div className={styles.homeEcosystemBg} aria-hidden="true" />
 
-      <div className="section__content home-ecosystem__content">
+      <div className={`section__content ${styles.homeEcosystemContent}`}>
         <motion.header
-          className="home-ecosystem__header"
+          className={styles.homeEcosystemHeader}
           variants={fadeUp}
           initial="hidden"
           whileInView="visible"
           viewport={viewport}
           transition={{ duration: 0.65, ease: easeOut }}
         >
-          <p className="home-ecosystem__lead">Chúng tôi không tạo chiến dịch.</p>
-          <h2 className="home-ecosystem__title">
+          <p className={styles.homeEcosystemLead}>Chúng tôi không tạo chiến dịch.</p>
+          <h2 className={styles.homeEcosystemTitle}>
             Chúng tôi kiến tạo{" "}
-            <span className="home-ecosystem__title-gradient">hệ sinh thái truyền thông</span>
-            <span className="home-ecosystem__title-dot">.</span>
+            <span className={styles.homeEcosystemTitleGradient}>hệ sinh thái truyền thông</span>
+            <span className={styles.homeEcosystemTitleDot}>.</span>
           </h2>
         </motion.header>
 

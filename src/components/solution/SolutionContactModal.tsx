@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import styles from "./SolutionContactModal.module.scss";
 import { motion, AnimatePresence } from "motion/react";
 
 interface SolutionContactModalProps {
@@ -50,72 +51,72 @@ export default function SolutionContactModal({
   return (
     <AnimatePresence>
       {isOpen && (
-        <div className="contact-modal-backdrop" onClick={onClose}>
+        <div className={styles.contactModalBackdrop} onClick={onClose}>
           <motion.div
-            className="contact-modal-container"
+            className={styles.contactModalContainer}
             onClick={(e) => e.stopPropagation()}
             initial={{ opacity: 0, scale: 0.9, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.9, y: 20 }}
             transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
           >
-            <div className="dark-glass-modal">
+            <div className={styles.darkGlassModal}>
               {/* Close Button */}
               <button
                 type="button"
                 onClick={onClose}
-                className="modal-close-btn"
+                className={styles.modalCloseBtn}
                 aria-label="Đóng cửa sổ"
               >
                 ✕
               </button>
 
               {/* Modal Header */}
-              <div className="modal-hud-header">
-                <span className="hud-tag">// QTM_SOLUTIONS_CONSULTING</span>
-                <h3 className="modal-title">
-                  <span className="gradient-teal-mint">{contextTitle}</span>
+              <div className={styles.modalHudHeader}>
+                <span className={styles.hudTag}>// QTM_SOLUTIONS_CONSULTING</span>
+                <h3 className={styles.modalTitle}>
+                  <span className={styles.gradientTealMint}>{contextTitle}</span>
                 </h3>
-                <p className="modal-desc">
+                <p className={styles.modalDesc}>
                   Để lại thông tin, chuyên gia truyền thông của QTM sẽ kết nối và tư vấn giải pháp chuyên biệt cho doanh nghiệp của bạn trong vòng 24h.
                 </p>
               </div>
 
               {/* Quick Contact Info Row */}
-              <div className="modal-info-bar">
-                <div className="info-item">
-                  <span className="info-icon">📞</span>
-                  <div className="info-text">
-                    <span className="info-label">Hotline tư vấn</span>
-                    <a href="tel:0988888888" className="info-val">098.888.8888</a>
+              <div className={styles.modalInfoBar}>
+                <div className={styles.infoItem}>
+                  <span className={styles.infoIcon}>📞</span>
+                  <div className={styles.infoText}>
+                    <span className={styles.infoLabel}>Hotline tư vấn</span>
+                    <a href="tel:0988888888" className={styles.infoVal}>098.888.8888</a>
                   </div>
                 </div>
-                <div className="info-item">
-                  <span className="info-icon">✉️</span>
-                  <div className="info-text">
-                    <span className="info-label">Email hỗ trợ</span>
-                    <a href="mailto:contact@qtm.vn" className="info-val">contact@qtm.vn</a>
+                <div className={styles.infoItem}>
+                  <span className={styles.infoIcon}>✉️</span>
+                  <div className={styles.infoText}>
+                    <span className={styles.infoLabel}>Email hỗ trợ</span>
+                    <a href="mailto:contact@qtm.vn" className={styles.infoVal}>contact@qtm.vn</a>
                   </div>
                 </div>
-                <div className="info-item">
-                  <span className="info-icon">📍</span>
-                  <div className="info-text">
-                    <span className="info-label">Trụ sở chính</span>
-                    <span className="info-val">Hà Nội &amp; TP.HCM</span>
+                <div className={styles.infoItem}>
+                  <span className={styles.infoIcon}>📍</span>
+                  <div className={styles.infoText}>
+                    <span className={styles.infoLabel}>Trụ sở chính</span>
+                    <span className={styles.infoVal}>Hà Nội &amp; TP.HCM</span>
                   </div>
                 </div>
               </div>
 
               {/* Form */}
-              <form onSubmit={handleSubmit} className="modal-form">
+              <form onSubmit={handleSubmit} className={styles.modalForm}>
                 {isSubmitted && (
-                  <div className="modal-success-msg">
+                  <div className={styles.modalSuccessMsg}>
                     ✓ Đã gửi thông tin yêu cầu tư vấn thành công! QTM sẽ liên hệ với bạn trong thời gian sớm nhất.
                   </div>
                 )}
 
-                <div className="form-grid">
-                  <div className="form-group">
+                <div className={styles.formGrid}>
+                  <div className={styles.formGroup}>
                     <label htmlFor="modal-name">Họ và tên *</label>
                     <input
                       id="modal-name"
@@ -127,7 +128,7 @@ export default function SolutionContactModal({
                     />
                   </div>
 
-                  <div className="form-group">
+                  <div className={styles.formGroup}>
                     <label htmlFor="modal-email">Email doanh nghiệp *</label>
                     <input
                       id="modal-email"
@@ -140,8 +141,8 @@ export default function SolutionContactModal({
                   </div>
                 </div>
 
-                <div className="form-grid">
-                  <div className="form-group">
+                <div className={styles.formGrid}>
+                  <div className={styles.formGroup}>
                     <label htmlFor="modal-phone">Số điện thoại *</label>
                     <input
                       id="modal-phone"
@@ -153,7 +154,7 @@ export default function SolutionContactModal({
                     />
                   </div>
 
-                  <div className="form-group">
+                  <div className={styles.formGroup}>
                     <label htmlFor="modal-company">Tên doanh nghiệp</label>
                     <input
                       id="modal-company"
@@ -165,7 +166,7 @@ export default function SolutionContactModal({
                   </div>
                 </div>
 
-                <div className="form-group">
+                <div className={styles.formGroup}>
                   <label htmlFor="modal-message">Nhu cầu / Thách thức cần tư vấn</label>
                   <textarea
                     id="modal-message"
@@ -176,9 +177,9 @@ export default function SolutionContactModal({
                   />
                 </div>
 
-                <button type="submit" className="modal-submit-btn">
+                <button type="submit" className={styles.modalSubmitBtn}>
                   <span>GỬI YÊU CẦU TƯ VẤN</span>
-                  <span className="arrow">→</span>
+                  <span className={styles.arrow}>→</span>
                 </button>
               </form>
             </div>

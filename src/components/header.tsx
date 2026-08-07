@@ -1,6 +1,6 @@
 "use client";
 
-import "@/scss/header.scss";
+import styles from "./Header.module.scss";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -94,7 +94,12 @@ export default function Header() {
       });
     };
 
-    // Listen to the custom event from the intro loader
+    try {
+      if ((window as any).aosInitialized || sessionStorage.getItem("qtm_intro_v3")) {
+        initAOS();
+      }
+    } catch {}
+
     window.addEventListener("intro-finished", initAOS);
 
     return () => {
@@ -102,32 +107,42 @@ export default function Header() {
     };
   }, []);
 
-  // Refresh AOS on client-side route navigation
   useEffect(() => {
-    if ((window as any).aosInitialized) {
-      import("aos").then((AOS) => {
+    import("aos").then((AOS) => {
+      if ((window as any).aosInitialized) {
         AOS.refresh();
-      });
-    }
+      } else {
+        try {
+          if (sessionStorage.getItem("qtm_intro_v3")) {
+            AOS.init({
+              duration: 1500,
+              once: true,
+              easing: "ease-out-quad",
+            });
+            (window as any).aosInitialized = true;
+          }
+        } catch {}
+      }
+    });
   }, [pathname]);
 
   return (
     <>
       {/* Mobile Overlay */}
       <div
-        className={`mobile-overlay${mobileOpen ? " open" : ""}`}
+        className={`${styles.mobileOverlay}${mobileOpen ? ` ${styles.open}` : ""}`}
         onClick={() => setMobileOpen(false)}
         aria-hidden="true"
       />
 
       {/* Mobile Drawer */}
-      <nav className={`mobile-drawer${mobileOpen ? " open" : ""}`} aria-label="Mobile navigation">
-        <ul className="mobile-nav">
+      <nav className={`${styles.mobileDrawer}${mobileOpen ? ` ${styles.open}` : ""}`} aria-label="Mobile navigation">
+        <ul className={styles.mobileNav}>
           {NAV_ITEMS.map((item) => (
             <li key={item.label}>
               <Link
                 href={item.href}
-                className={pathname === item.href ? "active" : ""}
+                className={pathname === item.href ? styles.active : ""}
                 onClick={() => setMobileOpen(false)}
               >
                 {item.label}
@@ -135,7 +150,7 @@ export default function Header() {
             </li>
           ))}
         </ul>
-        <div className="mobile-cta-wrap">
+        <div className={styles.mobileCtaWrap}>
           <Link
             href="/contact"
             onClick={() => setMobileOpen(false)}
@@ -146,14 +161,14 @@ export default function Header() {
       </nav>
 
       {/* Header */}
-      <header className={`header-root${scrolled ? " scrolled" : ""}`} role="banner">
-        <div className="header-glow-line" aria-hidden="true" />
-        <div className="header-inner">
+      <header className={`${styles.headerRoot}${scrolled ? ` ${styles.scrolled}` : ""}`} role="banner">
+        <div className={styles.headerGlowLine} aria-hidden="true" />
+        <div className={styles.headerInner}>
 
           {/* Logo */}
           <Link
             href="/home"
-            className="header-logo"
+            className={styles.headerLogo}
             aria-label="Miss Legacy - Trang chủ"
             style={{ background: "none", border: "none", cursor: "pointer", padding: 0 }}
           >
@@ -169,15 +184,15 @@ export default function Header() {
           </Link>
 
           {/* Desktop Nav */}
-          <ul className="header-nav" ref={navRef} role="list">
+          <ul className={styles.headerNav} ref={navRef} role="list">
             {/* Sliding indicator */}
-            <div className="nav-indicator" ref={indicatorRef} aria-hidden="true" />
+            <div className={styles.navIndicator} ref={indicatorRef} aria-hidden="true" />
 
             {NAV_ITEMS.map((item) => (
               <li key={item.label}>
                 <Link
                   href={item.href}
-                  className={`nav-btn${pathname === item.href ? " active" : ""}`}
+                  className={`${styles.navBtn}${pathname === item.href ? ` ${styles.active}` : ""}`}
                   style={{ textDecoration: "none" }}
                 >
                   {item.label}
@@ -192,15 +207,15 @@ export default function Header() {
               <ContactButton />
             </Link>
             <button
-              className={`hamburger-btn${mobileOpen ? " open" : ""}`}
+              className={`${styles.hamburgerBtn}${mobileOpen ? ` ${styles.open}` : ""}`}
               onClick={() => setMobileOpen((p) => !p)}
               aria-label={mobileOpen ? "Đóng menu" : "Mở menu"}
               aria-expanded={mobileOpen}
               aria-controls="mobile-drawer"
             >
-              <span className="hamburger-bar" />
-              <span className="hamburger-bar" />
-              <span className="hamburger-bar" />
+              <span className={styles.hamburgerBar} />
+              <span className={styles.hamburgerBar} />
+              <span className={styles.hamburgerBar} />
             </button>
           </div>
 

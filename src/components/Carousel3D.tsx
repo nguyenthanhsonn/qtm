@@ -1,6 +1,6 @@
 "use client";
 
-import "@/scss/carousel-3d.scss";
+import styles from "./Carousel3D.module.scss";
 import { CarouselItem, Carousel3DProps } from "@/types/components";
 import { useEffect, useRef, useState } from "react";
 
@@ -137,7 +137,7 @@ export default function Carousel3D({ items }: Carousel3DProps) {
   return (
     <div
       ref={containerRef}
-      className="c3d-root"
+      className={styles.c3dRoot}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       onMouseDown={handleMouseDown}
@@ -148,14 +148,14 @@ export default function Carousel3D({ items }: Carousel3DProps) {
       onTouchEnd={handleTouchEnd}
     >
       {/* HUD Ambient Grid Lines */}
-      <div className="c3d-hud-bg" aria-hidden="true">
-        <div className="hud-line-glow" />
-        <div className="hud-circle-center" />
+      <div className={styles.c3dHudBg} aria-hidden="true">
+        <div className={styles.hudLineGlow} />
+        <div className={styles.hudCircleCenter} />
       </div>
 
       {/* 3D Cylinder Stage */}
-      <div className="c3d-stage">
-        <div ref={trackRef} className="c3d-cylinder-track">
+      <div className={styles.c3dStage}>
+        <div ref={trackRef} className={styles.c3dCylinderTrack}>
           {fullItems.map((item, index) => {
             const cardAngle = index * angleStep;
             const isFront = index === frontIndex;
@@ -163,27 +163,27 @@ export default function Carousel3D({ items }: Carousel3DProps) {
             return (
               <div
                 key={`${item.id}-${index}`}
-                className={`c3d-card${isFront ? " c3d-card--front" : ""}`}
+                className={`${styles.c3dCard}${isFront ? ` ${styles.c3dCardFront}` : ""}`}
                 style={{
                   transform: `rotateY(${cardAngle}deg) translateZ(${radius}px)`,
                 }}
               >
-                <div className="c3d-card-inner">
+                <div className={styles.c3dCardInner}>
                   {/* Technical HUD Corner Brackets */}
-                  <div className="c3d-card-hud-corner c3d-card-hud-corner--tl" />
-                  <div className="c3d-card-hud-corner c3d-card-hud-corner--tr" />
-                  <div className="c3d-card-hud-corner c3d-card-hud-corner--bl" />
-                  <div className="c3d-card-hud-corner c3d-card-hud-corner--br" />
+                  <div className={`${styles.c3dCardHudCorner} ${styles.c3dCardHudCornerTl}`} />
+                  <div className={`${styles.c3dCardHudCorner} ${styles.c3dCardHudCornerTr}`} />
+                  <div className={`${styles.c3dCardHudCorner} ${styles.c3dCardHudCornerBl}`} />
+                  <div className={`${styles.c3dCardHudCorner} ${styles.c3dCardHudCornerBr}`} />
 
                   <div
-                    className="c3d-card-image"
+                    className={styles.c3dCardImage}
                     style={{ backgroundImage: `url('${item.imageSrc}')` }}
                     role="img"
                     aria-label={item.alt}
                   >
-                    <div className="c3d-card-overlay">
-                      <span className="c3d-card-tag">{item.tag}</span>
-                      <h3 className="c3d-card-title">{item.title}</h3>
+                    <div className={styles.c3dCardOverlay}>
+                      <span className={styles.c3dCardTag}>{item.tag}</span>
+                      <h3 className={styles.c3dCardTitle}>{item.title}</h3>
                     </div>
                   </div>
                 </div>

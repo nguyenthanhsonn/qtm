@@ -1,10 +1,8 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import { motion, useReducedMotion } from "motion/react";
-import Link from "next/link";
-import BackgroundGrid from "@/components/TechBackground/BackgroundGrid";
-import ContactModal from "./ContactModal";
+import styles from "./AboutCommitments.module.scss";
 
 type CommitmentItem = {
   id: string;
@@ -19,7 +17,7 @@ const commitmentItems: CommitmentItem[] = [
     id: "long-term",
     title: "ĐỒNG HÀNH DÀI HẠN",
     desc: "Không chỉ là nhà cung cấp, chúng tôi là đối tác tin cậy trên hành trình phát triển.",
-    iconBgClass: "icon-circle--teal",
+    iconBgClass: styles.iconCircleTeal,
     iconSvg: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0D9488" strokeWidth="2">
         <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
@@ -33,7 +31,7 @@ const commitmentItems: CommitmentItem[] = [
     id: "tailored-solution",
     title: "GIẢI PHÁP PHÙ HỢP VỚI MỤC TIÊU KINH DOANH",
     desc: "Mỗi giải pháp được thiết kế riêng, đáp ứng mục tiêu và đặc thù của từng doanh nghiệp.",
-    iconBgClass: "icon-circle--blue",
+    iconBgClass: styles.iconCircleBlue,
     iconSvg: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0284C7" strokeWidth="2">
         <circle cx="12" cy="12" r="10" />
@@ -46,7 +44,7 @@ const commitmentItems: CommitmentItem[] = [
     id: "transparent-process",
     title: "QUY TRÌNH MINH BẠCH",
     desc: "Minh bạch trong mọi quy trình, rõ ràng trong mọi cam kết, tin cậy trong mọi hành động.",
-    iconBgClass: "icon-circle--purple",
+    iconBgClass: styles.iconCirclePurple,
     iconSvg: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#7C3AED" strokeWidth="2">
         <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2" />
@@ -59,7 +57,7 @@ const commitmentItems: CommitmentItem[] = [
     id: "measurable-roi",
     title: "HIỆU QUẢ CÓ THỂ ĐO LƯỜNG",
     desc: "Đo lường rõ ràng, tối ưu liên tục, đảm bảo hiệu quả thực tế cho khách hàng.",
-    iconBgClass: "icon-circle--blue",
+    iconBgClass: styles.iconCircleBlue,
     iconSvg: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0284C7" strokeWidth="2">
         <line x1="18" y1="20" x2="18" y2="10" />
@@ -72,7 +70,7 @@ const commitmentItems: CommitmentItem[] = [
     id: "new-tech",
     title: "ỨNG DỤNG CÔNG NGHỆ MỚI",
     desc: "Luôn tiên phong ứng dụng AI, dữ liệu và công nghệ mới để mang lại giá trị vượt trội.",
-    iconBgClass: "icon-circle--teal",
+    iconBgClass: styles.iconCircleTeal,
     iconSvg: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0D9488" strokeWidth="2">
         <rect x="4" y="4" width="16" height="16" rx="2" />
@@ -84,7 +82,7 @@ const commitmentItems: CommitmentItem[] = [
     id: "cost-optimization",
     title: "TỐI ƯU CHI PHÍ VÀ NGUỒN LỰC",
     desc: "Tối ưu nguồn lực và chi phí, giúp doanh nghiệp tăng trưởng bền vững và hiệu quả.",
-    iconBgClass: "icon-circle--teal",
+    iconBgClass: styles.iconCircleTeal,
     iconSvg: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0D9488" strokeWidth="2">
         <circle cx="12" cy="12" r="10" />
@@ -99,7 +97,6 @@ const easeOut = [0.22, 1, 0.36, 1] as const;
 
 export default function AboutCommitments() {
   const reduceMotion = useReducedMotion();
-  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const fadeUp = reduceMotion
     ? { hidden: { opacity: 0 }, visible: { opacity: 1 } }
@@ -107,13 +104,11 @@ export default function AboutCommitments() {
 
   return (
     <>
-      <section id="commitments" className="section section--commitments">
-        <BackgroundGrid gridSize={40} opacity={0.06} />
-
-        <div className="section__content commitments__content">
+      <section id="commitments" className={`section ${styles.sectionCommitments}`}>
+        <div className={`section__content ${styles.commitmentsContent}`}>
           {/* Header Title */}
           <motion.h2
-            className="commitments__title"
+            className={styles.commitmentsTitle}
             variants={fadeUp}
             initial="hidden"
             whileInView="visible"
@@ -124,7 +119,7 @@ export default function AboutCommitments() {
           </motion.h2>
 
           <motion.p
-            className="commitments__subtitle"
+            className={styles.commitmentsSubtitle}
             variants={fadeUp}
             initial="hidden"
             whileInView="visible"
@@ -138,18 +133,18 @@ export default function AboutCommitments() {
           </motion.p>
 
           {/* Main 2-Column Split: Left Shield Visual & Right 2x3 Grid */}
-          <div className="commitments-main-split">
+          <div className={styles.commitmentsMainSplit}>
             {/* Left Visual Shield Graphic */}
             <motion.div
-              className="commitments-shield-visual"
+              className={styles.commitmentsShieldVisual}
               variants={fadeUp}
               initial="hidden"
               whileInView="visible"
               viewport={viewport}
               transition={{ duration: 0.7, delay: 0.15, ease: easeOut }}
             >
-              <div className="shield-card-graphic">
-                <div className="shield-qtm-logo-header">
+              <div className={styles.shieldCardGraphic}>
+                <div className={styles.shieldQtmLogoHeader}>
                   <svg width="140" height="42" viewBox="0 0 160 48" fill="none">
                     <circle cx="20" cy="18" r="4" fill="#00D4FF" />
                     <circle cx="34" cy="10" r="4" fill="#38CFC8" />
@@ -164,8 +159,8 @@ export default function AboutCommitments() {
                   </svg>
                 </div>
 
-                <div className="shield-central-icon">
-                  <svg viewBox="0 0 200 200" fill="none" className="shield-svg">
+                <div className={styles.shieldCentralIcon}>
+                  <svg viewBox="0 0 200 200" fill="none" className={styles.shieldSvg}>
                     <circle cx="100" cy="100" r="85" fill="url(#shieldGlow)" opacity="0.2" />
                     <path d="M100 30 L160 60 V110 C160 150 100 180 100 180 C100 180 40 150 40 110 V60 Z" fill="linear-gradient(180deg, #0284C7 0%, #0D9488 100%)" stroke="#38CFC8" strokeWidth="3" />
                     <path d="m80 100 15 15 30-30" stroke="#FFFFFF" strokeWidth="5" strokeLinecap="round" strokeLinejoin="round" />
@@ -178,13 +173,13 @@ export default function AboutCommitments() {
                   </svg>
                 </div>
 
-                <div className="shield-bottom-label">ISO // TRUSTED_MEDIATECH_PARTNER</div>
+                <div className={styles.shieldBottomLabel}>ISO // TRUSTED_MEDIATECH_PARTNER</div>
               </div>
             </motion.div>
 
             {/* Right 2x3 Grid */}
             <motion.div
-              className="commitments-cards-grid"
+              className={styles.commitmentsCardsGrid}
               variants={{
                 hidden: {},
                 visible: {
@@ -201,71 +196,19 @@ export default function AboutCommitments() {
                   variants={fadeUp}
                   transition={{ duration: 0.5, ease: easeOut }}
                 >
-                  <div className="commitment-light-card">
-                    <div className="card-icon-header">
-                      <div className={`icon-circle ${item.iconBgClass}`}>{item.iconSvg}</div>
+                  <div className={styles.commitmentLightCard}>
+                    <div className={styles.cardIconHeader}>
+                      <div className={`${styles.iconCircle} ${item.iconBgClass}`}>{item.iconSvg}</div>
                     </div>
-                    <h3 className="card-item-title">{item.title}</h3>
-                    <p className="card-item-desc">{item.desc}</p>
+                    <h3 className={styles.cardItemTitle}>{item.title}</h3>
+                    <p className={styles.cardItemDesc}>{item.desc}</p>
                   </div>
                 </motion.div>
               ))}
             </motion.div>
           </div>
         </div>
-
-        {/* ── FULL-WIDTH DARK CTA BAND ── */}
-        <div className="commitments__full-cta-band">
-          <div className="band-bg-overlay" aria-hidden="true" />
-          <div className="band-content">
-            <motion.h3
-              className="band-title"
-              variants={fadeUp}
-              initial="hidden"
-              whileInView="visible"
-              viewport={viewport}
-              transition={{ duration: 0.6, delay: 0.05, ease: easeOut }}
-            >
-              Sẵn sàng ứng dụng công nghệ đột phá cho chiến dịch truyền thông của bạn?
-            </motion.h3>
-
-            <motion.p
-              className="band-desc"
-              variants={fadeUp}
-              initial="hidden"
-              whileInView="visible"
-              viewport={viewport}
-              transition={{ duration: 0.6, delay: 0.1, ease: easeOut }}
-            >
-              Khám phá ngay hệ sinh thái giải pháp truyền thông công nghệ chuyên biệt từ QTM hoặc kết nối trực tiếp với đội ngũ chuyên gia tư vấn.
-            </motion.p>
-
-            <motion.div
-              className="band-actions"
-              variants={fadeUp}
-              initial="hidden"
-              whileInView="visible"
-              viewport={viewport}
-              transition={{ duration: 0.6, delay: 0.15, ease: easeOut }}
-            >
-              <Link href="/solution" className="btn btn--primary band-btn-primary">
-                <span>KHÁM PHÁ GIẢI PHÁP</span>
-                <span className="arrow">→</span>
-              </Link>
-
-              <button
-                onClick={() => setIsModalOpen(true)}
-                className="btn btn--outline band-btn-outline"
-              >
-                <span>LIÊN HỆ TƯ VẤN 1:1</span>
-              </button>
-            </motion.div>
-          </div>
-        </div>
       </section>
-
-      {/* Dark-glass Contact Modal */}
-      <ContactModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </>
   );
 }
