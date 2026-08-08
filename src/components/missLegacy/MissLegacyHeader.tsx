@@ -156,7 +156,7 @@ export default function MissLegacyHeader() {
 
           {/* Right: CTA + Hamburger 3-bar */}
           <div style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
-            <Link href="/contact">
+            <Link href="/contact" className={styles.headerCtaWrapper}>
               <ContactButton />
             </Link>
 

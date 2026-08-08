@@ -481,3 +481,16 @@
     }
   }
 }
+
+@media (max-width: 480px) {
+  .homeActions {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+  }
+
+  .homeCta {
+    width: 100%;
+    min-width: unset;
+  }
+}
