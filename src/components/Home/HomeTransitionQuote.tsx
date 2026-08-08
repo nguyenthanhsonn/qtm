@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import styles from "./HomeTransitionQuote.module.scss";
+import styles from "@/scss/home/HomeTransitionQuote.module.scss";
 
 export default function HomeTransitionQuote() {
   return (

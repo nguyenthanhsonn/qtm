@@ -3,15 +3,8 @@
 import React from "react";
 import Image from "next/image";
 import { motion, useReducedMotion } from "motion/react";
-import styles from "./AboutAiCulture.module.scss";
-
-type CulturePillar = {
-  id: string;
-  title: string;
-  desc: string;
-  icon: React.ReactNode;
-  gradientClass: string;
-};
+import styles from "@/scss/about_us/AboutAiCulture.module.scss";
+import type { CulturePillar } from "@/types/about";
 
 const culturePillars: CulturePillar[] = [
   {
@@ -159,9 +152,8 @@ export default function AboutAiCulture() {
             </div>
           </motion.div>
 
-          {/* ── CỘT PHẢI (~76% width): 6 Pillars Grid + Formula Bar ──────────── */}
+          {/* ── CỘT PHẢI (~76% width): 6 Pillars Grid ──────────────────────────── */}
           <div className={styles.rightColBlock}>
-
             {/* 6 Pillars Grid (3 cols x 2 rows, NO borders/cards) */}
             <motion.div
               className={styles.pillarsCleanGrid}
@@ -196,73 +188,72 @@ export default function AboutAiCulture() {
                 </motion.div>
               ))}
             </motion.div>
-
-            {/* DẢI CÔNG THỨC GIÁ TRỊ (Full-width Bottom Value Formula Ribbon) */}
-            <motion.div
-              className={styles.valueFormulaBar}
-              variants={fadeUp}
-              initial="hidden"
-              whileInView="visible"
-              viewport={viewport}
-              transition={{ duration: 0.75, delay: 0.2, ease: easeOut }}
-            >
-              <div className={styles.formulaFlexRow}>
-
-                {/* Block 1: CON NGƯỜI */}
-                <div className={styles.formulaItemBlock}>
-                  <div className={`${styles.formulaIconCircle} ${styles.iconGradBlue}`}>
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" strokeWidth="2">
-                      <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
-                      <circle cx="12" cy="7" r="4" />
-                    </svg>
-                  </div>
-                  <div className={styles.formulaTextGroup}>
-                    <span className={styles.formulaBlockTitle}>CON NGƯỜI</span>
-                    <span className={styles.formulaBlockSub}>Sáng tạo • Tư duy • Trải nghiệm</span>
-                  </div>
-                </div>
-
-                {/* Operator + */}
-                <span className={styles.operatorSymbol}>+</span>
-
-                {/* Block 2: CÔNG NGHỆ */}
-                <div className={styles.formulaItemBlock}>
-                  <div className={`${styles.formulaIconCircle} ${styles.iconGradLightBlue}`}>
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" strokeWidth="2">
-                      <rect x="4" y="4" width="16" height="16" rx="2" />
-                      <circle cx="12" cy="12" r="3" />
-                    </svg>
-                  </div>
-                  <div className={styles.formulaTextGroup}>
-                    <span className={styles.formulaBlockTitle}>CÔNG NGHỆ</span>
-                    <span className={styles.formulaBlockSub}>AI • Dữ liệu • Tự động hóa</span>
-                  </div>
-                </div>
-
-                {/* Operator = */}
-                <span className={`${styles.operatorSymbol} ${styles.operatorEquals}`}>=</span>
-
-                {/* Block 3: GIÁ TRỊ VƯỢT TRỘI */}
-                <div className={`${styles.formulaItemBlock} ${styles.formulaItemResult}`}>
-                  <div className={`${styles.formulaIconCircle} ${styles.iconGradTeal}`}>
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" strokeWidth="2">
-                      <line x1="18" y1="20" x2="18" y2="10" />
-                      <line x1="12" y1="20" x2="12" y2="4" />
-                      <line x1="6" y1="20" x2="6" y2="14" />
-                    </svg>
-                  </div>
-                  <div className={styles.formulaTextGroup}>
-                    <span className={styles.formulaBlockTitle}>GIÁ TRỊ VƯỢT TRỘI</span>
-                    <span className={styles.formulaBlockSub}>Hiệu quả • Tăng trưởng • Bền vững</span>
-                  </div>
-                </div>
-
-              </div>
-            </motion.div>
-
           </div>{/* /rightColBlock */}
 
         </div>{/* /aiCultureSplitLayout */}
+
+        {/* ── 3. FULL-WIDTH CENTERED VALUE FORMULA BAR AT BOTTOM ───────────────── */}
+        <motion.div
+          className={styles.valueFormulaBar}
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewport}
+          transition={{ duration: 0.75, delay: 0.2, ease: easeOut }}
+        >
+          <div className={styles.formulaFlexRow}>
+
+            {/* Block 1: CON NGƯỜI */}
+            <div className={styles.formulaItemBlock}>
+              <div className={`${styles.formulaIconCircle} ${styles.iconGradBlue}`}>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" strokeWidth="2">
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                  <circle cx="12" cy="7" r="4" />
+                </svg>
+              </div>
+              <div className={styles.formulaTextGroup}>
+                <span className={styles.formulaBlockTitle}>CON NGƯỜI</span>
+                <span className={styles.formulaBlockSub}>Sáng tạo • Tư duy • Trải nghiệm</span>
+              </div>
+            </div>
+
+            {/* Operator + */}
+            <span className={styles.operatorSymbol}>+</span>
+
+            {/* Block 2: CÔNG NGHỆ */}
+            <div className={styles.formulaItemBlock}>
+              <div className={`${styles.formulaIconCircle} ${styles.iconGradLightBlue}`}>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" strokeWidth="2">
+                  <rect x="4" y="4" width="16" height="16" rx="2" />
+                  <circle cx="12" cy="12" r="3" />
+                </svg>
+              </div>
+              <div className={styles.formulaTextGroup}>
+                <span className={styles.formulaBlockTitle}>CÔNG NGHỆ</span>
+                <span className={styles.formulaBlockSub}>AI • Dữ liệu • Tự động hóa</span>
+              </div>
+            </div>
+
+            {/* Operator = */}
+            <span className={`${styles.operatorSymbol} ${styles.operatorEquals}`}>=</span>
+
+            {/* Block 3: GIÁ TRỊ VƯỢT TRỘI */}
+            <div className={`${styles.formulaItemBlock} ${styles.formulaItemResult}`}>
+              <div className={`${styles.formulaIconCircle} ${styles.iconGradTeal}`}>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" strokeWidth="2">
+                  <line x1="18" y1="20" x2="18" y2="10" />
+                  <line x1="12" y1="20" x2="12" y2="4" />
+                  <line x1="6" y1="20" x2="6" y2="14" />
+                </svg>
+              </div>
+              <div className={styles.formulaTextGroup}>
+                <span className={styles.formulaBlockTitle}>GIÁ TRỊ VƯỢT TRỘI</span>
+                <span className={styles.formulaBlockSub}>Hiệu quả • Tăng trưởng • Bền vững</span>
+              </div>
+            </div>
+
+          </div>
+        </motion.div>
 
       </div>
     </section>

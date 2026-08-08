@@ -57,3 +57,14 @@ export interface TextTypeProps {
   startOnVisible?: boolean;
   reverseMode?: boolean;
 }
+
+export interface ScrollApertureParticle {
+  x: number;
+  y: number;
+  vx: number;
+  vy: number;
+  z: number;
+  r: number;
+}
+
+export type ScrollAperturePhase = 0 | 1 | 2 | 3 | 4 | 5;

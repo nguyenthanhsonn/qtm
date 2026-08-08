@@ -3,7 +3,8 @@
 import React, { useEffect, useRef, useState, useCallback } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import Image from "next/image";
-import styles from "./ScrollApertureIntro.module.scss";
+import styles from "@/scss/global/ScrollApertureIntro.module.scss";
+import type { ScrollApertureParticle as Particle } from "@/types/components";
 
 const SESSION_KEY = "qtm_intro_v3";
 const PHASES = { BG: 0, SURGE: 1, LOGO: 2, WORD: 3, SLOGAN: 4, EXIT: 5 } as const;
@@ -12,7 +13,6 @@ type Phase = (typeof PHASES)[keyof typeof PHASES];
 const WORDMARK = ["Q", "T", "M"];
 const SLOGAN_TOKENS = ["QUALITY", "•", "TECHNOLOGY", "•", "MINDSET"];
 
-// ── Adaptive particle count based on hardware ─────────────────
 function getParticleCount(): number {
   if (typeof navigator === "undefined") return 60;
   const cores = navigator.hardwareConcurrency ?? 2;
@@ -22,15 +22,16 @@ function getParticleCount(): number {
   return 130;
 }
 
-interface Particle {
-  x: number; y: number;
-  vx: number; vy: number;
-  z: number;
-  r: number;
-}
-
 export default function ScrollApertureIntro() {
-  const [show, setShow] = useState(false);
+  const [show, setShow] = useState<boolean>(() => {
+    if (typeof window === "undefined") return true;
+    try {
+      return !sessionStorage.getItem(SESSION_KEY);
+    } catch {
+      return true;
+    }
+  });
+
   const [phase, setPhase] = useState<Phase>(PHASES.BG);
   const [logoReady, setLogoReady] = useState(false);
   const [sloganIdx, setSloganIdx] = useState(-1);
@@ -44,14 +45,38 @@ export default function ScrollApertureIntro() {
   const phaseRef = useRef<Phase>(PHASES.BG);
 
   useEffect(() => {
-    try {
-      if (sessionStorage.getItem(SESSION_KEY)) {
-        window.dispatchEvent(new CustomEvent("intro-finished"));
-        return;
-      }
-    } catch { }
-    setShow(true);
-  }, []);
+    if (!show) {
+      window.dispatchEvent(new CustomEvent("intro-finished"));
+    }
+  }, [show]);
+
+  // Lock scrolling completely while intro is active
+  useEffect(() => {
+    if (!show) return;
+
+    const htmlEl = document.documentElement;
+    const bodyEl = document.body;
+
+    const origHtmlOverflow = htmlEl.style.overflow;
+    const origBodyOverflow = bodyEl.style.overflow;
+
+    htmlEl.style.overflow = "hidden";
+    bodyEl.style.overflow = "hidden";
+
+    const preventScroll = (e: Event) => {
+      e.preventDefault();
+    };
+
+    window.addEventListener("wheel", preventScroll, { passive: false });
+    window.addEventListener("touchmove", preventScroll, { passive: false });
+
+    return () => {
+      htmlEl.style.overflow = origHtmlOverflow;
+      bodyEl.style.overflow = origBodyOverflow;
+      window.removeEventListener("wheel", preventScroll);
+      window.removeEventListener("touchmove", preventScroll);
+    };
+  }, [show]);
 
   const finish = useCallback(() => {
     if (doneRef.current) return;

@@ -3,7 +3,7 @@
 import React from "react";
 import Image from "next/image";
 import { motion } from "motion/react";
-import styles from "./MissLegacyPartners.module.scss";
+import styles from "@/scss/missLagecy/MissLegacyPartners.module.scss";
 
 const viewport = { once: true, amount: 0.2 } as const;
 const cubicEase = [0.22, 1, 0.36, 1] as const;

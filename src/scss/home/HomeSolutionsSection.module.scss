@@ -4,14 +4,9 @@
   position: relative;
   min-height: auto;
   text-align: center;
-  background-color: #ffffff;
-  background-image:
-    radial-gradient(ellipse 80% 50% at 50% 0%, rgba(32, 149, 173, 0.06), transparent 70%),
-    radial-gradient(ellipse 75% 45% at 50% 100%, rgba(56, 207, 200, 0.04), transparent 70%);
+  background: transparent;
   padding: clamp(4.5rem, 9vh, 7rem) clamp(1rem, 5vw, 4rem);
   overflow: hidden;
-  border-top: 1px solid rgba(32, 149, 173, 0.12);
-  border-bottom: 1px solid rgba(32, 149, 173, 0.12);
 }
 
 .homeSolutionsPolyBg {
@@ -25,15 +20,7 @@
 }
 
 .homeSolutionsBg {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  background-image:
-    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-  background-size: 36px 36px;
-  opacity: 0.95;
-  pointer-events: none;
+  display: none;
 }
 
 .homeSolutionsGlow {
@@ -82,12 +69,12 @@
   font-size: clamp(2rem, 4vw, 3.2rem);
   font-weight: 800;
   line-height: 1.2;
-  color: #123A53;
+  color: #FFFFFF;
   margin: 0;
   letter-spacing: -0.02em;
 
   .titleHighlight {
-    background: linear-gradient(90deg, #17398F 0%, #2095AD 50%, #38CFC8 100%);
+    background: linear-gradient(90deg, #2095AD 0%, #38CFC8 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -97,7 +84,7 @@
 .homeSolutionsDesc {
   font-family: var(--font-body);
   font-size: clamp(1rem, 1.5vw, 1.15rem);
-  color: #475569;
+  color: #94A3B8;
   line-height: 1.65;
   max-width: 920px;
   min-height: 2em;
@@ -129,214 +116,172 @@
 
 .solutionBlockCard {
   position: relative;
-  width: 300px;
-  height: 455px;
+  width: 100%;
+  max-width: 320px;
+  min-height: 440px;
   margin: 0 auto;
-  background: transparent;
-  border: none;
-  box-shadow: none;
-  overflow: visible;
+  background: linear-gradient(160deg, rgba(12, 26, 48, 0.85) 0%, rgba(6, 16, 32, 0.92) 100%);
+  border: 1.5px solid rgba(56, 207, 200, 0.3);
+  border-radius: 22px;
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.45), inset 0 0 20px rgba(56, 207, 200, 0.05);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  padding: 1.8rem 1.6rem 1.5rem;
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   transform-style: preserve-3d;
-  transition: transform 0.35s cubic-bezier(0.25, 1, 0.5, 1);
-
-  .solutionCardBgSvg {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-    pointer-events: none;
-    overflow: visible;
-    filter: drop-shadow(0 8px 24px rgba(0, 0, 0, 0.4));
-
-    .cardGlowPath {
-      opacity: 0.15;
-      transition: opacity 0.3s ease;
-      filter: blur(4px);
-    }
-
-    .cardBgPath {
-      fill: #121a29;
-      transition: fill 0.3s ease;
-    }
-
-    .cardBorderPath {
-      stroke: rgba(120, 170, 255, 0.35);
-      stroke-width: 1.5px;
-      transition: stroke 0.3s ease;
-    }
-  }
+  transition: all 0.35s cubic-bezier(0.25, 1, 0.5, 1);
 
   &:hover {
-    .solutionCardBgSvg {
-      .cardGlowPath {
-        opacity: 0.65;
-      }
+    transform: translateY(-6px) scale(1.02);
+    border-color: rgba(56, 207, 200, 0.65);
+    background: linear-gradient(160deg, rgba(16, 36, 66, 0.9) 0%, rgba(8, 22, 44, 0.95) 100%);
+    box-shadow: 0 22px 55px rgba(0, 0, 0, 0.6), 0 0 25px rgba(56, 207, 200, 0.2), inset 0 0 25px rgba(56, 207, 200, 0.1);
 
-      .cardBorderPath {
-        stroke: rgba(120, 170, 255, 0.85);
-      }
+    .cardCorner {
+      border-color: #38CFC8;
+      box-shadow: 0 0 10px rgba(56, 207, 200, 0.6);
     }
 
     .solutionCardTab {
-      border-color: var(--accent);
-      background: var(--accent);
+      background: linear-gradient(90deg, #2095AD 0%, #38CFC8 100%);
       color: #ffffff;
-      box-shadow: 0 4px 18px rgba(56, 207, 200, 0.4);
+      box-shadow: 0 4px 18px rgba(56, 207, 200, 0.45);
 
       .tabArrow {
         transform: translateX(4px);
       }
     }
 
-    .cardTop {
-      transform: translateZ(28px);
-
-      .cardIcon {
-        transform: scale(1.05);
-        border-color: rgba(120, 170, 255, 0.55);
-      }
-    }
-
-    .cardBody {
-      transform: translateZ(20px);
+    .cardIcon {
+      transform: scale(1.08);
+      border-color: #38CFC8;
+      box-shadow: 0 0 18px rgba(56, 207, 200, 0.4);
     }
   }
 }
+
+.cardCorner {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-color: rgba(56, 207, 200, 0.5);
+  border-style: solid;
+  transition: all 0.35s ease;
+  z-index: 2;
+}
+
+.cornerTl { top: 8px; left: 8px; border-width: 2px 0 0 2px; border-top-left-radius: 4px; }
+.cornerTr { top: 8px; right: 8px; border-width: 2px 2px 0 0; border-top-right-radius: 4px; }
+.cornerBl { bottom: 8px; left: 8px; border-width: 0 0 2px 2px; border-bottom-left-radius: 4px; }
+.cornerBr { bottom: 8px; right: 8px; border-width: 0 2px 2px 0; border-bottom-right-radius: 4px; }
 
 .solutionCardContent {
   position: relative;
   z-index: 3;
   height: 100%;
-  padding: 32px 32px 0;
-  box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  pointer-events: none;
+  justify-content: space-between;
+  flex: 1;
 }
 
 .cardTop {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  transform-style: preserve-3d;
-  transform: translateZ(20px);
-  transition: transform 0.35s ease;
-  margin-bottom: 20px;
-  pointer-events: auto;
+  margin-bottom: 1.25rem;
 
   .cardIcon {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 48px;
-    height: 48px;
+    width: 46px;
+    height: 46px;
     border-radius: 12px;
     background: rgba(56, 207, 200, 0.12);
-    border: 1px solid rgba(56, 207, 200, 0.35);
-    transition: transform 0.3s ease, border-color 0.3s ease, background 0.3s ease;
+    border: 1.5px solid rgba(56, 207, 200, 0.35);
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 
     svg {
-      width: 24px;
-      height: 24px;
-      stroke-width: 1.8;
+      width: 22px;
+      height: 22px;
+      stroke-width: 2;
       color: #38CFC8;
     }
   }
 
   .cardId {
     font-family: var(--font-heading);
-    font-size: 2.2rem;
+    font-size: 2rem;
     font-weight: 800;
-    color: rgba(56, 207, 200, 0.25);
+    color: rgba(56, 207, 200, 0.4);
     line-height: 1;
-    letter-spacing: -0.05em;
-    opacity: 0.7;
+    letter-spacing: -0.04em;
   }
 }
 
 .cardBody {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  text-align: center;
+  align-items: flex-start;
+  text-align: left;
   flex: 1;
-  transform-style: preserve-3d;
-  transform: translateZ(15px);
-  transition: transform 0.35s ease;
-  pointer-events: auto;
 
   .cardSubtitle {
     font-family: var(--font-heading);
-    font-size: 12.5px;
+    font-size: 0.75rem;
     font-weight: 700;
-    letter-spacing: 1.8px;
+    letter-spacing: 0.12em;
     color: #38CFC8;
     text-transform: uppercase;
-    margin-bottom: 16px;
-    text-align: center;
-    width: 100%;
+    margin-bottom: 0.75rem;
   }
 
   .cardTitle {
     font-family: var(--font-heading);
-    font-size: 23px;
-    font-weight: 700;
-    line-height: 1.3;
+    font-size: 1.35rem;
+    font-weight: 800;
+    line-height: 1.35;
     color: #FFFFFF;
-    margin: 0 0 16px 0;
-    min-height: 2.6em;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    width: 100%;
+    margin: 0 0 0.85rem 0;
+    text-align: left;
   }
 
   .cardDesc {
     font-family: var(--font-body);
-    font-size: 16px;
+    font-size: 0.925rem;
     line-height: 1.6;
-    color: #E2E8F0;
+    color: #94A3B8;
     margin: 0;
     font-weight: 400;
-    text-align: center;
-    width: 100%;
+    text-align: left;
   }
 }
 
-.cardDivider {
+.cardFooter {
+  margin-top: 1.75rem;
   width: 100%;
-  height: 1px;
-  background: rgba(56, 207, 200, 0.25);
-  margin-top: 20px;
-  margin-bottom: 50px;
 }
 
 .solutionCardTab {
-  position: absolute;
-  bottom: 6px;
-  right: 8px;
-  z-index: 3;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 0.45rem;
-  width: 125px;
+  gap: 0.5rem;
+  width: 100%;
   height: 42px;
-  border-radius: 16px;
-  background: #0c192b;
-  border: 1.5px solid rgba(56, 207, 200, 0.4);
+  border-radius: 12px;
+  background: rgba(32, 149, 173, 0.14);
+  border: 1px solid rgba(56, 207, 200, 0.35);
   text-decoration: none;
   font-family: var(--font-body);
   font-size: 0.875rem;
   font-weight: 700;
   color: #38CFC8;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-  transition: background 0.3s ease, border-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+  transition: all 0.3s ease;
 
   .tabText {
     white-space: nowrap;
@@ -344,7 +289,6 @@
 
   .tabArrow {
     font-size: 1rem;
-    line-height: 1;
-    transition: transform 0.25s ease;
+    transition: transform 0.3s ease;
   }
 }

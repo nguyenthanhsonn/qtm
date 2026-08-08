@@ -2,7 +2,7 @@
 
 import React from "react";
 import { motion } from "motion/react";
-import styles from "./MissLegacyMission.module.scss";
+import styles from "@/scss/missLagecy/MissLegacyMission.module.scss";
 
 const CARDS = [
   {
@@ -162,28 +162,22 @@ export default function MissLegacyMission() {
       <div className={styles.missionContentWrapper}>
         {/* ── 1. Main 2-Column Grid ────────────────────────────────────────── */}
         <div className={styles.mainSplitGrid}>
-          {/* Left Text & Cards Column */}
-          <div className={styles.leftColContent}>
+          {/* Left Text & Cards Column - Slide from Left */}
+          <motion.div
+            className={styles.leftColContent}
+            initial={{ opacity: 0, x: -45 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={viewport}
+            transition={{ duration: 0.8, delay: 0.1, ease: cubicEase }}
+          >
             {/* Eyebrow Tag */}
-            <motion.div
-              className={styles.eyebrowRow}
-              initial={{ opacity: 0, y: -15 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={viewport}
-              transition={{ duration: 0.6, ease: cubicEase }}
-            >
+            <div className={styles.eyebrowRow}>
               <span className={styles.eyebrowDash}>—</span>
               <span className={styles.eyebrowText}>SỨ MỆNH & NIỀM TIN</span>
-            </motion.div>
+            </div>
 
             {/* Title Block */}
-            <motion.div
-              className={styles.titleWrap}
-              initial={{ opacity: 0, y: 25 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={viewport}
-              transition={{ duration: 0.75, delay: 0.1, ease: cubicEase }}
-            >
+            <div className={styles.titleWrap}>
               <h2 className={styles.sectionTitle}>
                 <span>Sứ mệnh</span>
                 <span className={styles.titleLine2}>
@@ -210,16 +204,10 @@ export default function MissLegacyMission() {
                   </svg>
                 </span>
               </h2>
-            </motion.div>
+            </div>
 
-            {/* Paragraph Paragraph */}
-            <motion.div
-              className={styles.missionTextGroup}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={viewport}
-              transition={{ duration: 0.75, delay: 0.2, ease: cubicEase }}
-            >
+            {/* Paragraph Block */}
+            <div className={styles.missionTextGroup}>
               <p className={styles.missionParagraph}>
                 Chúng tôi tin rằng di sản sẽ tiếp tục sống mãi khi được kể lại bằng ngôn ngữ của thời đại.
               </p>
@@ -229,18 +217,18 @@ export default function MissLegacyMission() {
               <p className={styles.missionParagraphBold}>
                 Đó là cách chúng tôi kiến tạo những giá trị bền vững.
               </p>
-            </motion.div>
+            </div>
 
-            {/* 3 Bottom Cards */}
+            {/* 3 Bottom Cards - Scale & Zoom In */}
             <div className={styles.cardsRow3}>
               {CARDS.map((card, idx) => (
                 <motion.div
                   key={card.title}
                   className={styles.cardItem3}
-                  initial={{ opacity: 0, y: 25 }}
-                  whileInView={{ opacity: 1, y: 0 }}
+                  initial={{ opacity: 0, scale: 0.88, y: 25 }}
+                  whileInView={{ opacity: 1, scale: 1, y: 0 }}
                   viewport={viewport}
-                  transition={{ duration: 0.6, delay: 0.3 + idx * 0.1, ease: cubicEase }}
+                  transition={{ duration: 0.6, delay: 0.2 + idx * 0.1, ease: cubicEase }}
                   whileHover={{ y: -6, transition: { duration: 0.25 } }}
                 >
                   <div className={styles.cardHeaderRow}>
@@ -254,15 +242,15 @@ export default function MissLegacyMission() {
                 </motion.div>
               ))}
             </div>
-          </div>
+          </motion.div>
 
-          {/* Right Column: Circular Interactive Diagram (Sơ đồ hoa sen 5 phần) */}
+          {/* Right Column: Circular Interactive Diagram - Slide from Right */}
           <motion.div
             className={styles.rightDiagramCol}
-            initial={{ opacity: 0, scale: 0.92 }}
-            whileInView={{ opacity: 1, scale: 1 }}
+            initial={{ opacity: 0, x: 45, scale: 0.92 }}
+            whileInView={{ opacity: 1, x: 0, scale: 1 }}
             viewport={viewport}
-            transition={{ duration: 0.85, delay: 0.25, ease: cubicEase }}
+            transition={{ duration: 0.85, delay: 0.2, ease: cubicEase }}
           >
             <div className={styles.diagramStage}>
               {/* Rotating Orbital SVG Rings */}

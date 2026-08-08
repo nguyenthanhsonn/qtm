@@ -1,23 +1,6 @@
 'use client'
 import React, { useRef, useEffect, useCallback } from 'react';
-
-interface ClickSparkProps {
-  sparkColor?: string;
-  sparkSize?: number;
-  sparkRadius?: number;
-  sparkCount?: number;
-  duration?: number;
-  easing?: 'linear' | 'ease-in' | 'ease-out' | 'ease-in-out';
-  extraScale?: number;
-  children?: React.ReactNode;
-}
-
-interface Spark {
-  x: number;
-  y: number;
-  angle: number;
-  startTime: number;
-}
+import type { ClickSparkProps, Spark } from "@/types/uiux";
 
 const ClickSpark: React.FC<ClickSparkProps> = ({
   sparkColor = '#fff',

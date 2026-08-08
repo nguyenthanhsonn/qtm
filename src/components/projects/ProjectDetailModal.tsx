@@ -3,20 +3,9 @@
 import React from "react";
 import { motion, AnimatePresence } from "motion/react";
 import Image from "next/image";
-import styles from "./ProjectDetailModal.module.scss";
-
-export interface ProjectData {
-  id: string;
-  title: string;
-  category: string;
-  client: string;
-  summary: string;
-  image: string;
-  metrics: { val: string; lbl: string }[];
-  challenge: string;
-  solution: string;
-  impact: string;
-}
+import styles from "@/scss/project/ProjectDetailModal.module.scss";
+import type { ProjectData } from "@/types/project";
+export type { ProjectData };
 
 export default function ProjectDetailModal({
   project,

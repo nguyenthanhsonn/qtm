@@ -1,6 +1,6 @@
 "use client";
 
-import styles from "./Carousel3D.module.scss";
+import styles from "@/scss/global/Carousel3D.module.scss";
 import { CarouselItem, Carousel3DProps } from "@/types/components";
 import { useEffect, useRef, useState } from "react";
 

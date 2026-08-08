@@ -3,7 +3,7 @@
 import React from "react";
 import { motion } from "motion/react";
 import CountUp from "@/components/CountUp";
-import styles from "./MissLegacyImpact.module.scss";
+import styles from "@/scss/missLagecy/MissLegacyImpact.module.scss";
 
 const STATS = [
   {
@@ -123,11 +123,11 @@ export default function MissLegacyImpact() {
       <div className={styles.impactContentWrapper}>
         {/* ── 1. Top Split Row (Title Left + Floating 4 Stat Metrics Right) ──────── */}
         <div className={styles.topSplitGrid}>
-          {/* Left Title & Description Block */}
+          {/* Left Title & Description Block - Slide from Left */}
           <motion.div
             className={styles.leftTitleBlock}
-            initial={{ opacity: 0, y: 25 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, x: -45 }}
+            whileInView={{ opacity: 1, x: 0 }}
             viewport={viewport}
             transition={{ duration: 0.75, delay: 0.1, ease: cubicEase }}
           >
@@ -165,13 +165,13 @@ export default function MissLegacyImpact() {
             </p>
           </motion.div>
 
-          {/* Right Floating 4 Stat KPI Metrics Over Golden Arch Ring */}
+          {/* Right Floating 4 Stat KPI Metrics Over Golden Arch Ring - Slide from Right */}
           <motion.div
             className={styles.rightStatsWrapper}
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
+            initial={{ opacity: 0, x: 45, scale: 0.94 }}
+            whileInView={{ opacity: 1, x: 0, scale: 1 }}
             viewport={viewport}
-            transition={{ duration: 0.85, delay: 0.25, ease: cubicEase }}
+            transition={{ duration: 0.85, delay: 0.2, ease: cubicEase }}
           >
             {/* Glowing Golden Arch Ring SVG */}
             <svg viewBox="0 0 500 240" className={styles.goldenArchRingSvg}>

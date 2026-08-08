@@ -4,7 +4,7 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, useReducedMotion } from "motion/react";
-import styles from "./SolutionHero.module.scss";
+import styles from "@/scss/solution/SolutionHero.module.scss";
 import Card3DTilt from "@/components/Card3DTilt";
 import CountUp from "@/components/CountUp";
 

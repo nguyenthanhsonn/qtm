@@ -2,7 +2,7 @@
 
 import React from "react";
 import { motion } from "motion/react";
-import styles from "./ProjectsBlogHero.module.scss";
+import styles from "@/scss/project/ProjectsBlogHero.module.scss";
 
 export const CATEGORIES = [
   "Tất cả",

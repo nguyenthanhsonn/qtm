@@ -3,7 +3,7 @@
 import { TextTypeProps } from '@/types/components';
 import { ElementType, useEffect, useRef, useState, createElement, useMemo, useCallback } from 'react';
 import { gsap } from 'gsap';
-import styles from './TextType.module.scss';
+import styles from '@/scss/global/TextType.module.scss';
 
 const TextType = ({
   text,

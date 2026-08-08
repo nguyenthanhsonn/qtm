@@ -1,6 +1,6 @@
 "use client";
 
-import styles from "./Footer.module.scss";
+import styles from "@/scss/global/Footer.module.scss";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";

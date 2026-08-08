@@ -3,22 +3,12 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import styles from "./SolutionFeaturedProjects.module.scss";
+import styles from "@/scss/solution/SolutionFeaturedProjects.module.scss";
 import { motion, useReducedMotion } from "motion/react";
 import ParticleField from "@/components/TechBackground/ParticleField";
+import type { SolutionProjectItem } from "@/types/solution";
 
-type ProjectItem = {
-  id: string;
-  num: string;
-  category: string;
-  title: string;
-  client: string;
-  desc: string;
-  imageSrc: string;
-  highlights: string[];
-};
-
-const projectsData: ProjectItem[] = [
+const projectsData: SolutionProjectItem[] = [
   {
     id: "techcombank-summit",
     num: "01",

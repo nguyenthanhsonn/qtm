@@ -6,16 +6,14 @@ import { motion, useReducedMotion } from "motion/react";
 import Card3DTilt from "@/components/Card3DTilt";
 import Link from "next/link";
 import ContactModal from "@/components/about/ContactModal";
-import styles from "./AboutHero.module.scss";
+import styles from "@/scss/about_us/AboutHero.module.scss";
 
 /* ─── Viewport / easing constants ─────────────────────────────────────────── */
 const viewport = { once: true, amount: 0.15 } as const;
 const easeOut  = [0.22, 1, 0.36, 1] as const;
 
 /* ─── Network / Dot-connect canvas ────────────────────────────────────────── */
-interface Dot {
-  x: number; y: number; vx: number; vy: number; r: number; alpha: number;
-}
+import type { AboutHeroDot as Dot } from "@/types/about";
 
 function NetworkCanvas({ className }: { className?: string }) {
   const canvasRef = useRef<HTMLCanvasElement>(null);

@@ -3,13 +3,8 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import CursorGrid from "@/uiux/CursorGrid";
-import styles from "./ContactModal.module.scss";
-
-interface ContactModalProps {
-  isOpen: boolean;
-  onClose: () => void;
-  contextTitle?: string;
-}
+import styles from "@/scss/about_us/ContactModal.module.scss";
+import type { ContactModalProps } from "@/types/about";
 
 const SERVICE_OPTIONS = [
   "Hội nghị - Hội thảo",

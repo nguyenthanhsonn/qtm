@@ -2,9 +2,8 @@
 
 import { PartnerItem } from "@/types/home";
 import React from "react";
-import styles from "./HomePartnersSection.module.scss";
+import styles from "@/scss/home/HomePartnersSection.module.scss";
 import { motion, useReducedMotion } from "motion/react";
-import CursorGrid from "@/uiux/CursorGrid";
 
 // Danh sách KHÁCH HÀNG (Clients)
 const clientsList: PartnerItem[] = [
@@ -288,21 +287,6 @@ export default function HomePartnersSection() {
 
   return (
     <section id="strategic-partners" className={`section ${styles.sectionHomePartners}`}>
-      {/* Interactive Background Grid */}
-      <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
-        <CursorGrid
-          color="#38CFC8"
-          cellSize={65}
-          gridOpacity={0.06}
-          maxOpacity={0.45}
-          fillOpacity={0.14}
-          radius={160}
-          clickPulse={true}
-        />
-      </div>
-      <div className={styles.homePartnersBg} aria-hidden="true" />
-      <div className={styles.homePartnersGlow} aria-hidden="true" />
-
       {/* Header */}
       <div className={`section__content ${styles.homePartnersContent}`}>
         <motion.div
