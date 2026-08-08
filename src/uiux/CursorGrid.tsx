@@ -1,47 +1,8 @@
 "use client";
 
 import { useRef, useEffect } from 'react';
-
-type Falloff = 'linear' | 'smooth' | 'sharp';
-
-export interface CursorGridProps {
-  cellSize?: number;
-  color?: string;
-  radius?: number;
-  falloff?: Falloff;
-  holdTime?: number;
-  fadeDuration?: number;
-  lineWidth?: number;
-  maxOpacity?: number;
-  fillOpacity?: number;
-  gridOpacity?: number;
-  cellRadius?: number;
-  clickPulse?: boolean;
-  pulseSpeed?: number;
-  className?: string;
-}
-
-interface GridConfig {
-  cellSize: number;
-  color: string;
-  radius: number;
-  falloff: Falloff;
-  holdTime: number;
-  fadeDuration: number;
-  lineWidth: number;
-  maxOpacity: number;
-  fillOpacity: number;
-  gridOpacity: number;
-  cellRadius: number;
-  clickPulse: boolean;
-  pulseSpeed: number;
-}
-
-interface Pulse {
-  x: number;
-  y: number;
-  t0: number;
-}
+import type { Falloff, CursorGridProps, GridConfig, Pulse } from "@/types/uiux";
+export type { Falloff, CursorGridProps };
 
 const FALLOFF_CURVES: Record<Falloff, (t: number) => number> = {
   linear: t => t,

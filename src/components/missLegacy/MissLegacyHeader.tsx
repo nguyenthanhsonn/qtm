@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import ContactButton from "@/uiux/btn_contact";
-import styles from "./MissLegacyHeader.module.scss";
+import styles from "@/scss/missLagecy/MissLegacyHeader.module.scss";
 
 const NAV_ITEMS: { label: string; href: string }[] = [
   { label: "Trang chủ", href: "/home" },

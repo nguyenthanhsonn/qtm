@@ -3,21 +3,10 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import styles from "./SolutionEcosystem.module.scss";
+import styles from "@/scss/solution/SolutionEcosystem.module.scss";
 import { motion, useReducedMotion } from "motion/react";
 import ParticleField from "@/components/TechBackground/ParticleField";
-
-type EcoBlock = {
-  id: string;
-  code: string;
-  title: string;
-  desc: string;
-  benefits: string[];
-  types?: string[];
-  ctaLabel: string;
-  imageSrc: string;
-  align: "left" | "right";
-};
+import type { EcoBlock } from "@/types/solution";
 
 const ecoBlocks: EcoBlock[] = [
   {

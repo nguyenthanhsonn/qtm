@@ -4,7 +4,7 @@ import React from "react";
 import Image from "next/image";
 import { motion, useReducedMotion } from "motion/react";
 import Card3DTilt from "@/components/Card3DTilt";
-import styles from "./AboutVisionMission.module.scss";
+import styles from "@/scss/about_us/AboutVisionMission.module.scss";
 
 const viewport = { once: true, amount: 0.15 } as const;
 const easeOut = [0.22, 1, 0.36, 1] as const;

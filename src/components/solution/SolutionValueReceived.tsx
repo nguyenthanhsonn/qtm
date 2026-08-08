@@ -1,20 +1,12 @@
 "use client";
 
 import React from "react";
-import styles from "./SolutionValueReceived.module.scss";
+import styles from "@/scss/solution/SolutionValueReceived.module.scss";
 import { motion, useReducedMotion } from "motion/react";
 import ParticleField from "@/components/TechBackground/ParticleField";
 import CountUp from "@/components/CountUp";
 import Card3DTilt from "@/components/Card3DTilt";
-
-type ValueCardItem = {
-  id: string;
-  num: string;
-  title: string;
-  desc: string;
-  gradientClass: string;
-  iconSvg: React.ReactNode;
-};
+import type { ValueCardItem } from "@/types/solution";
 
 const valueCards: ValueCardItem[] = [
   {

@@ -1,16 +1,7 @@
 "use client";
 
 import React, { useEffect, useRef } from "react";
-
-interface Particle {
-  x: number;
-  y: number;
-  vx: number;
-  vy: number;
-  radius: number;
-  color: string;
-  alpha: number;
-}
+import type { TechParticle as Particle } from "@/types/tech-background";
 
 /**
  * ParticleField Component

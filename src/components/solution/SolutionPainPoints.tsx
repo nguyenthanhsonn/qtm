@@ -3,19 +3,9 @@
 import React from "react";
 import Image from "next/image";
 import { motion, useReducedMotion } from "motion/react";
-import styles from "./SolutionPainPoints.module.scss";
+import styles from "@/scss/solution/SolutionPainPoints.module.scss";
 import Card3DTilt from "@/components/Card3DTilt";
-
-type PainCardItem = {
-  id: string;
-  num: string;
-  title: string;
-  desc: string;
-  imageSrc: string;
-  isFeatured?: boolean;
-  gradientClass: string;
-  iconSvg: React.ReactNode;
-};
+import type { PainCardItem } from "@/types/solution";
 
 const painCards: PainCardItem[] = [
   {

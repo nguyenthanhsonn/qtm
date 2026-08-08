@@ -3,7 +3,7 @@
 import React from "react";
 import { motion } from "motion/react";
 import CountUp from "@/components/CountUp";
-import styles from "./MissLegacyAwards.module.scss";
+import styles from "@/scss/missLagecy/MissLegacyAwards.module.scss";
 
 const BADGES = [
   {

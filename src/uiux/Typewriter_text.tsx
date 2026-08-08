@@ -2,20 +2,8 @@
 
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-
-export interface TypewriterTextProps {
-  text?: string;
-  highlightText?: string;
-  speed?: number;
-  deleteSpeed?: number;
-  pauseDuration?: number;
-  loop?: boolean;
-  className?: string;
-  textClassName?: string;
-  highlightClassName?: string;
-  cursorClassName?: string;
-  showCursor?: boolean;
-}
+import type { TypewriterTextProps } from "@/types/uiux";
+export type { TypewriterTextProps };
 
 export const TypewriterText: React.FC<TypewriterTextProps> = ({
   text = "Hãy cùng bắt đầu",

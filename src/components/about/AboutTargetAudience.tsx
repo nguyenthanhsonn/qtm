@@ -2,16 +2,8 @@
 
 import React from "react";
 import { motion, useReducedMotion } from "motion/react";
-import styles from "./AboutTargetAudience.module.scss";
-
-type TargetColumn = {
-  id: string;
-  title: string;
-  badgeClass: string;
-  desc: string;
-  logos?: { name: string; iconSvg: React.ReactNode }[];
-  smeFeatures?: string[];
-};
+import styles from "@/scss/about_us/AboutTargetAudience.module.scss";
+import type { TargetColumn } from "@/types/about";
 
 const targetColumns: TargetColumn[] = [
   {

@@ -3,7 +3,7 @@
 import React from "react";
 import Image from "next/image";
 import { motion } from "motion/react";
-import styles from "./MissLegacyHero.module.scss";
+import styles from "@/scss/missLagecy/MissLegacyHero.module.scss";
 
 const PILLARS = [
   { name: "VĂN HÓA", desc: "Di sản & Bản sắc" },
@@ -31,7 +31,7 @@ const FEATURES = [
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#D4AF37" strokeWidth="2">
         <circle cx="12" cy="12" r="10" />
         <line x1="2" y1="12" x2="22" y2="12" />
-        <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+        <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10z" />
       </svg>
     ),
   },
@@ -59,7 +59,6 @@ const FEATURES = [
   },
 ];
 
-const viewport = { once: true, amount: 0.15 } as const;
 const cubicEase = [0.22, 1, 0.36, 1] as const;
 
 export default function MissLegacyHero({
@@ -76,11 +75,12 @@ export default function MissLegacyHero({
         {/* Top Eyebrow Tag Row */}
         <motion.div
           className={styles.topEyebrowRow}
-          initial={{ opacity: 0, y: -15 }}
-          animate={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0, y: -20, scale: 0.92 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
           transition={{ duration: 0.6, ease: cubicEase }}
         >
           <div className={styles.eyebrowNumBox}>
+            <span className={styles.eyebrowNum}>01</span>
             <div className={styles.eyebrowNumBar} />
           </div>
           <span className={styles.eyebrowText}>DỰ ÁN TIÊU BIỂU CỦA QTM</span>
@@ -88,20 +88,18 @@ export default function MissLegacyHero({
 
         {/* Main 2-Column Grid (Left Text & Right Queens Visual) */}
         <div className={styles.mainGridSplit}>
-          {/* Left Column Content */}
-          <div className={styles.leftColContent}>
+          {/* Left Column Content - Slide from Left */}
+          <motion.div
+            className={styles.leftColContent}
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.1, ease: cubicEase }}
+          >
             {/* Title Line 1 (MISS + Lotus) & Line 2 (LEGACY) */}
-            <motion.div
-              className={styles.titleWrap}
-              initial={{ opacity: 0, y: 25 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.75, delay: 0.1, ease: cubicEase }}
-            >
+            <div className={styles.titleWrap}>
               <div className={styles.titleLine1}>
                 <span className={styles.missText}>MISS</span>
-                {/* Emerald & Gold Lotus Symbol SVG */}
                 <svg className={styles.lotusIcon} viewBox="0 0 100 80" fill="none">
-                  <circle cx="50" cy="40" r="35" fill="rgba(6, 35, 22, 0.6)" filter="blur(6px)" />
                   <path
                     d="M50 5 C55 25 70 35 90 40 C75 55 55 60 50 75 C45 60 25 55 10 40 C30 35 45 25 50 5 Z"
                     fill="url(#emeraldGoldLotusGrad)"
@@ -110,43 +108,28 @@ export default function MissLegacyHero({
                   />
                   <path
                     d="M50 20 C53 35 65 42 78 45 C67 55 53 58 50 68 C47 58 33 55 22 45 C35 42 47 35 50 20 Z"
-                    fill="url(#innerEmeraldGrad)"
+                    fill="#FFF5D0"
                     opacity="0.85"
                   />
                   <defs>
                     <linearGradient id="emeraldGoldLotusGrad" x1="0%" y1="0%" x2="100%" y2="100%">
                       <stop offset="0%" stopColor="#FFF5D0" />
                       <stop offset="45%" stopColor="#D4AF37" />
-                      <stop offset="80%" stopColor="#0D5C3A" />
-                      <stop offset="100%" stopColor="#042316" />
-                    </linearGradient>
-                    <linearGradient id="innerEmeraldGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-                      <stop offset="0%" stopColor="#38CFC8" />
-                      <stop offset="100%" stopColor="#063222" />
+                      <stop offset="100%" stopColor="#AA7C11" />
                     </linearGradient>
                   </defs>
                 </svg>
               </div>
               <span className={styles.legacyText}>LEGACY</span>
-            </motion.div>
+            </div>
 
             {/* Subtitle */}
-            <motion.h2
-              className={styles.heroSubtitle}
-              initial={{ opacity: 0, y: 15 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.75, delay: 0.2, ease: cubicEase }}
-            >
+            <h2 className={styles.heroSubtitle}>
               GÌN GIỮ HỒN VIỆT &nbsp;|&nbsp; TỎA SÁNG TOÀN CẦU
-            </motion.h2>
+            </h2>
 
             {/* Quote Block */}
-            <motion.div
-              className={styles.quoteBlock}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.75, delay: 0.3, ease: cubicEase }}
-            >
+            <div className={styles.quoteBlock}>
               <span className={styles.quoteMark}>“</span>
               <p className={styles.quoteText}>
                 Miss Legacy là hành trình tìm kiếm và đào tạo những người phụ nữ trẻ
@@ -155,15 +138,10 @@ export default function MissLegacyHero({
                 trong kỷ nguyên số.
               </p>
               <span className={styles.quoteMark}>”</span>
-            </motion.div>
+            </div>
 
             {/* 5 Horizontal Pillars Row with Vertical Dividers */}
-            <motion.div
-              className={styles.pillarsRow}
-              initial={{ opacity: 0, y: 15 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.75, delay: 0.4, ease: cubicEase }}
-            >
+            <div className={styles.pillarsRow}>
               {PILLARS.map((p, idx) => (
                 <React.Fragment key={p.name}>
                   <div className={styles.pillarItem}>
@@ -173,22 +151,22 @@ export default function MissLegacyHero({
                   {idx < PILLARS.length - 1 && <div className={styles.pillarDivider} />}
                 </React.Fragment>
               ))}
-            </motion.div>
-          </div>
+            </div>
+          </motion.div>
 
-          {/* Right Column Visual (3 Miss Legacy Queens Photo) */}
+          {/* Right Column: Hero Queens Visual Card - Slide from Right */}
           <motion.div
             className={styles.rightQueensCol}
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.9, delay: 0.25, ease: cubicEase }}
+            initial={{ opacity: 0, x: 50, scale: 0.95 }}
+            animate={{ opacity: 1, x: 0, scale: 1 }}
+            transition={{ duration: 0.85, delay: 0.2, ease: cubicEase }}
           >
             <div className={styles.queensFrame}>
               <Image
-                src="/miss-legacy-queens-emerald-bg.png"
-                alt="Miss Legacy Queens"
-                width={700}
-                height={700}
+                src="/miss-legacy-queens-seamless.png"
+                alt="Miss Legacy Queens - Đại sứ Văn hóa Việt Nam"
+                width={650}
+                height={520}
                 className={styles.queensImg}
                 priority
               />
@@ -197,15 +175,14 @@ export default function MissLegacyHero({
           </motion.div>
         </div>
 
-        {/* Bottom Glassmorphism Bar Ribbon */}
+        {/* Bottom Glassmorphism Ribbon Bar */}
         <motion.div
           className={styles.bottomRibbonBar}
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={viewport}
-          transition={{ duration: 0.8, delay: 0.4, ease: cubicEase }}
+          initial={{ opacity: 0, y: 30, scale: 0.96 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          transition={{ duration: 0.8, delay: 0.35, ease: cubicEase }}
         >
-          {/* 4 Feature Columns */}
+          {/* 4 Feature Columns Grid */}
           <div className={styles.featuresGrid}>
             {FEATURES.map((feat) => (
               <div key={feat.title} className={styles.featureColItem}>
@@ -224,7 +201,7 @@ export default function MissLegacyHero({
             <button
               type="button"
               className={styles.btnGoldCta}
-              onClick={() => onOpenModal("Tư vấn giải pháp dự án Miss Legacy")}
+              onClick={() => onOpenModal("DỰ ÁN MISS LEGACY - KHÁM PHÁ WEBSITE")}
             >
               <span>Khám phá website Miss Legacy</span>
               <span className={styles.btnArrow}>→</span>

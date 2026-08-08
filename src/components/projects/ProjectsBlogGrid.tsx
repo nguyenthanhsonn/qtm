@@ -1,20 +1,29 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { motion } from "motion/react";
 import Image from "next/image";
 import Link from "next/link";
-import styles from "./ProjectsBlogGrid.module.scss";
+import styles from "@/scss/project/ProjectsBlogGrid.module.scss";
 import { PROJECTS_DATA, ProjectItem } from "@/data/projectsData";
 
 const viewport = { once: true, amount: 0.15 } as const;
 const cubicEase = [0.22, 1, 0.36, 1] as const;
+const ITEMS_PER_PAGE = 6;
 
 export default function ProjectsBlogGrid({
   selectedCategory,
 }: {
   selectedCategory: string;
 }) {
+  const [currentPage, setCurrentPage] = useState<number>(1);
+  const gridSectionRef = useRef<HTMLDivElement>(null);
+
+  // Reset to page 1 when category changes
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [selectedCategory]);
+
   const filteredProjects =
     selectedCategory === "Tất cả"
       ? PROJECTS_DATA
@@ -23,11 +32,25 @@ export default function ProjectsBlogGrid({
   const spotlightProject = PROJECTS_DATA[0];
   const gridProjects = filteredProjects.filter((p) => p.id !== spotlightProject.id);
 
+  const totalPages = Math.ceil(gridProjects.length / ITEMS_PER_PAGE) || 1;
+  const paginatedProjects = gridProjects.slice(
+    (currentPage - 1) * ITEMS_PER_PAGE,
+    currentPage * ITEMS_PER_PAGE
+  );
+
+  const handlePageChange = (newPage: number) => {
+    if (newPage < 1 || newPage > totalPages) return;
+    setCurrentPage(newPage);
+    if (gridSectionRef.current) {
+      gridSectionRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  };
+
   return (
-    <section className={styles.sectionGrid}>
+    <section className={styles.sectionGrid} ref={gridSectionRef}>
       <div className={styles.gridContainer}>
         {/* Spotlight Featured Hero Project (Shown on All or Culture category) */}
-        {(selectedCategory === "Tất cả" || selectedCategory === "Chiến dịch Truyền thông") && (
+        {(selectedCategory === "Tất cả" || selectedCategory === "Chiến dịch Truyền thông") && currentPage === 1 && (
           <Link href={`/projects/${spotlightProject.id}`} style={{ textDecoration: "none" }}>
             <motion.div
               className={styles.spotlightCard}
@@ -68,7 +91,7 @@ export default function ProjectsBlogGrid({
 
         {/* 3-Column Projects Showcase Grid */}
         <div className={styles.cardsGrid3}>
-          {gridProjects.map((p, idx) => (
+          {paginatedProjects.map((p, idx) => (
             <Link key={p.id} href={`/projects/${p.id}`} style={{ textDecoration: "none", color: "inherit" }}>
               <motion.div
                 className={styles.blogCard}
@@ -101,6 +124,42 @@ export default function ProjectsBlogGrid({
             </Link>
           ))}
         </div>
+
+        {/* Cyber Sci-Fi Pagination Controls */}
+        {totalPages > 1 && (
+          <div className={styles.paginationWrapper}>
+            <button
+              type="button"
+              className={`${styles.pageNavBtn} ${currentPage === 1 ? styles.disabledNav : ""}`}
+              onClick={() => handlePageChange(currentPage - 1)}
+              disabled={currentPage === 1}
+            >
+              ← Trước
+            </button>
+
+            <div className={styles.pageNumbersRow}>
+              {Array.from({ length: totalPages }, (_, i) => i + 1).map((pageNum) => (
+                <button
+                  key={pageNum}
+                  type="button"
+                  className={`${styles.pageBtn} ${pageNum === currentPage ? styles.pageBtnActive : ""}`}
+                  onClick={() => handlePageChange(pageNum)}
+                >
+                  {pageNum}
+                </button>
+              ))}
+            </div>
+
+            <button
+              type="button"
+              className={`${styles.pageNavBtn} ${currentPage === totalPages ? styles.disabledNav : ""}`}
+              onClick={() => handlePageChange(currentPage + 1)}
+              disabled={currentPage === totalPages}
+            >
+              Sau →
+            </button>
+          </div>
+        )}
       </div>
     </section>
   );

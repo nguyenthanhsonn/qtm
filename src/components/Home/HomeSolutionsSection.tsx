@@ -2,13 +2,11 @@
 
 import { SolutionItem } from "@/types/home";
 import React from "react";
-import styles from "./HomeSolutionsSection.module.scss";
+import styles from "@/scss/home/HomeSolutionsSection.module.scss";
 import Link from "next/link";
 import { motion, useReducedMotion } from "motion/react";
 import Card3DTilt from "@/components/Card3DTilt";
 
-import CtaGridBackground from "@/components/TechBackground/CtaGridBackground";
-import ParticleField from "@/components/TechBackground/ParticleField";
 import TypewriterText from "@/uiux/Typewriter_text";
 
 const solutionsData: SolutionItem[] = [
@@ -89,18 +87,16 @@ const easeOut = [0.22, 1, 0.36, 1] as const;
 export default function HomeSolutionsSection() {
   const reduceMotion = useReducedMotion();
 
-  const fadeUp = reduceMotion
+  const slideLeft = reduceMotion
     ? { hidden: { opacity: 0 }, visible: { opacity: 1 } }
-    : { hidden: { opacity: 0, y: 32 }, visible: { opacity: 1, y: 0 } };
+    : { hidden: { opacity: 0, x: -40 }, visible: { opacity: 1, x: 0 } };
+
+  const cardVariant = reduceMotion
+    ? { hidden: { opacity: 0 }, visible: { opacity: 1 } }
+    : { hidden: { opacity: 0, y: 35, scale: 0.9 }, visible: { opacity: 1, y: 0, scale: 1 } };
 
   return (
     <section id="solutions-block" className={`section ${styles.sectionHomeSolutions}`}>
-      {/* Exact white grid background from GIÁ TRỊ CỐT LÕI */}
-      <CtaGridBackground />
-
-      {/* Interactive Data Particles */}
-      <ParticleField />
-
       <div className={`section__content ${styles.homeSolutionsContent}`}>
         {/* Title */}
         <h2
@@ -112,7 +108,7 @@ export default function HomeSolutionsSection() {
 
         <motion.p
           className={styles.homeSolutionsDesc}
-          variants={fadeUp}
+          variants={slideLeft}
           initial="hidden"
           whileInView="visible"
           viewport={viewport}
@@ -146,8 +142,8 @@ export default function HomeSolutionsSection() {
           {solutionsData.map((item) => (
             <motion.div
               key={item.id}
-              variants={fadeUp}
-              transition={{ duration: 0.6, ease: easeOut }}
+              variants={cardVariant}
+              transition={{ duration: 0.65, ease: easeOut }}
               className="h-full"
             >
               <Card3DTilt
@@ -155,34 +151,14 @@ export default function HomeSolutionsSection() {
                 maxTilt={8}
                 scale={1.02}
                 glareColor={item.accentColor}
-                glareOpacity={0.15}
+                glareOpacity={0.2}
                 style={{ "--accent": item.accentColor } as React.CSSProperties}
               >
-                {/* SVG Blueprint shape for main card */}
-                <svg className={styles.solutionCardBgSvg} viewBox="0 0 290 455" preserveAspectRatio="none" fill="none" aria-hidden="true">
-                  {/* Subtle Tech Glow Path */}
-                  <path
-                    d="M 32 0 H 258 A 32 32 0 0 1 290 32 V 399 H 165 A 16 16 0 0 1 149 415 V 455 H 32 A 32 32 0 0 1 0 423 V 32 A 32 32 0 0 1 32 0 Z"
-                    stroke={item.accentColor}
-                    strokeWidth="3.5"
-                    className={styles.cardGlowPath}
-                    vectorEffect="non-scaling-stroke"
-                  />
-                  {/* Solid Dark Tech Card Background */}
-                  <path
-                    d="M 32 0 H 258 A 32 32 0 0 1 290 32 V 399 H 165 A 16 16 0 0 1 149 415 V 455 H 32 A 32 32 0 0 1 0 423 V 32 A 32 32 0 0 1 32 0 Z"
-                    fill="#0c192b"
-                    className={styles.cardBgPath}
-                  />
-                  {/* Teal Border */}
-                  <path
-                    d="M 32 0 H 258 A 32 32 0 0 1 290 32 V 399 H 165 A 16 16 0 0 1 149 415 V 455 H 32 A 32 32 0 0 1 0 423 V 32 A 32 32 0 0 1 32 0 Z"
-                    stroke="rgba(56, 207, 200, 0.4)"
-                    strokeWidth="1.5"
-                    className={styles.cardBorderPath}
-                    vectorEffect="non-scaling-stroke"
-                  />
-                </svg>
+                {/* Tech Corner Accent Marks */}
+                <div className={`${styles.cardCorner} ${styles.cornerTl}`} aria-hidden="true" />
+                <div className={`${styles.cardCorner} ${styles.cornerTr}`} aria-hidden="true" />
+                <div className={`${styles.cardCorner} ${styles.cornerBl}`} aria-hidden="true" />
+                <div className={`${styles.cardCorner} ${styles.cornerBr}`} aria-hidden="true" />
 
                 {/* Main Card Content */}
                 <div className={styles.solutionCardContent}>
@@ -201,15 +177,14 @@ export default function HomeSolutionsSection() {
                     <p className={styles.cardDesc}>{item.desc}</p>
                   </div>
 
-                  {/* Divider */}
-                  <div className={styles.cardDivider} />
+                  {/* Card Footer Button */}
+                  <div className={styles.cardFooter}>
+                    <Link href={item.link} className={styles.solutionCardTab}>
+                      <span className={styles.tabText}>Xem chi tiết</span>
+                      <span className={styles.tabArrow}>→</span>
+                    </Link>
+                  </div>
                 </div>
-
-                {/* Overlapping Tab Badge at bottom-right */}
-                <Link href={item.link} className={styles.solutionCardTab}>
-                  <span className={styles.tabText}>Xem chi tiết</span>
-                  <span className={styles.tabArrow}>→</span>
-                </Link>
               </Card3DTilt>
             </motion.div>
           ))}

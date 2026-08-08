@@ -2,18 +2,7 @@
 
 import React from 'react';
 import styled from 'styled-components';
-
-interface InputProps {
-  id: string;
-  label: string;
-  type?: string;
-  placeholder?: string;
-  value?: string;
-  onChange?: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
-  required?: boolean;
-  as?: "input" | "textarea";
-  rows?: number;
-}
+import type { InputProps } from "@/types/uiux";
 
 const Input: React.FC<InputProps> = ({
   id,

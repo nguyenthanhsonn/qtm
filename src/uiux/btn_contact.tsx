@@ -2,11 +2,7 @@
 
 import React from "react";
 import styled from "styled-components";
-
-interface ContactButtonProps {
-  text?: string;
-  onClick?: () => void;
-}
+import type { ContactButtonProps } from "@/types/uiux";
 
 const ContactButton: React.FC<ContactButtonProps> = ({
   text = "LIÊN HỆ",

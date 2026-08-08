@@ -15,3 +15,14 @@ export interface TechBackgroundProps {
   /** Custom base background style override */
   style?: React.CSSProperties;
 }
+
+export interface TechParticle {
+  x: number;
+  y: number;
+  vx: number;
+  vy: number;
+  radius: number;
+  color: string;
+  alpha: number;
+}
+export type Particle = TechParticle;
