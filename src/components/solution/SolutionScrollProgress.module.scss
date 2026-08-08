@@ -1,0 +1,131 @@
+@use '@/scss/global/variables' as *;
+
+.solutionProgressRoot {
+  position: fixed;
+  right: clamp(1rem, 2.5vw, 2.5rem);
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 90;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 1.25rem;
+  pointer-events: auto;
+
+  @media (max-width: 992px) {
+    display: none;
+  }
+}
+
+.trackLine {
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  bottom: 15px;
+  width: 2px;
+  background: linear-gradient(180deg, rgba(56, 207, 200, 0.15) 0%, rgba(56, 207, 200, 0.4) 50%, rgba(56, 207, 200, 0.15) 100%);
+  z-index: 0;
+}
+
+.stepNode {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 4px 0;
+  outline: none;
+
+  .stepLabel {
+    font-family: var(--font-geist-mono), monospace;
+    font-size: 0.725rem;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.45);
+    letter-spacing: 0.08em;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateX(10px);
+    transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+    white-space: nowrap;
+    background: rgba(5, 12, 26, 0.9);
+    padding: 6px 14px;
+    border-radius: 8px;
+    border: 1px solid rgba(56, 207, 200, 0.25);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+  }
+
+  .dotBox {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: rgba(5, 12, 26, 0.9);
+    border: 1.5px solid rgba(56, 207, 200, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #38CFC8;
+    font-family: var(--font-geist-mono), monospace;
+    font-size: 0.7rem;
+    font-weight: 800;
+    transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+
+    .pulseBeacon {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #00D4FF;
+      display: none;
+      box-shadow: 0 0 10px #00D4FF;
+    }
+  }
+
+  &:hover {
+    .stepLabel {
+      opacity: 1;
+      transform: translateX(0);
+      color: #38CFC8;
+      border-color: #38CFC8;
+    }
+
+    .dotBox {
+      border-color: #00D4FF;
+      box-shadow: 0 0 15px rgba(56, 207, 200, 0.5);
+      transform: scale(1.15);
+    }
+  }
+
+  &.active {
+    .dotBox {
+      background: linear-gradient(135deg, #00D4FF 0%, #38CFC8 100%);
+      border-color: #FFFFFF;
+      color: #050C1A;
+      box-shadow: 0 0 20px rgba(56, 207, 200, 0.75);
+      transform: scale(1.2);
+
+      .num {
+        display: none;
+      }
+
+      .pulseBeacon {
+        display: block;
+        background: #050C1A;
+        box-shadow: 0 0 6px rgba(0, 0, 0, 0.5);
+      }
+    }
+  }
+
+  /* Temporary Tooltip display for 2.2s on block change */
+  &.visibleTooltip {
+    .stepLabel {
+      opacity: 1;
+      transform: translateX(0);
+      color: #FFFFFF;
+      border-color: #00D4FF;
+      box-shadow: 0 0 14px rgba(56, 207, 200, 0.4);
+    }
+  }
+}

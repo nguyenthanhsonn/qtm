@@ -2,6 +2,7 @@ import Link from "next/link";
 import styles from "@/components/Home/HomeHero.module.scss";
 import { HomeIconProps } from "@/types/home";
 import CountUp from "@/components/CountUp";
+import AboutBackground from "@/components/about/AboutBackground";
 import HomeCtaSection from "@/components/Home/HomeCtaSection";
 import HomeEcosystemSection from "@/components/Home/HomeEcosystemSection";
 import HomeSolutionsSection from "@/components/Home/HomeSolutionsSection";
@@ -160,13 +161,18 @@ function HomeHero() {
 
 export default function HomePage() {
   return (
-    <>
-      <HomeHero />
-      <HomeCtaSection />
-      <HomeEcosystemSection />
-      <HomeSolutionsSection />
-      <HomePartnersSection />
-      <FooterCtaSection />
-    </>
+    <div style={{ position: "relative", width: "100%", minHeight: "100vh" }}>
+      {/* Global Tech Network Connection Canvas Background */}
+      <AboutBackground />
+
+      <main style={{ position: "relative", zIndex: 2, width: "100%", overflow: "visible" }}>
+        <HomeHero />
+        <HomeCtaSection />
+        <HomeEcosystemSection />
+        <HomeSolutionsSection />
+        <HomePartnersSection />
+        <FooterCtaSection />
+      </main>
+    </div>
   );
 }

@@ -95,7 +95,7 @@ const painCards: PainCardItem[] = [
   },
 ];
 
-const viewport = { once: true, amount: 0.15 } as const;
+const viewport = { once: false, amount: 0.12 } as const;
 const easeOut = [0.22, 1, 0.36, 1] as const;
 
 export default function SolutionPainPoints() {
@@ -106,7 +106,7 @@ export default function SolutionPainPoints() {
     : { hidden: { opacity: 0, y: 32 }, visible: { opacity: 1, y: 0 } };
 
   return (
-    <section id="pain-points" className={`section ${styles.sectionSolPain}`}>
+    <section id="painpoints" className={`section ${styles.sectionSolPain}`}>
       <div className={`section__content ${styles.solPainContent}`}>
         
         {/* ── 1. Top Section Header (Centered) ───────────────────────────────── */}

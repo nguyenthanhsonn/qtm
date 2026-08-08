@@ -5,6 +5,7 @@ import Carousel3D from "@/components/Carousel3D";
 import { CarouselItem } from "@/types/components";
 import { motion, useReducedMotion } from "motion/react";
 import CursorGrid from "@/uiux/CursorGrid";
+import EcosystemHoloStage from "./EcosystemHoloStage";
 
 const viewport = { once: true, amount: 0.2 } as const;
 const easeOut = [0.22, 1, 0.36, 1] as const;
@@ -63,6 +64,9 @@ export default function HomeEcosystemSection() {
 
   return (
     <section id="ecosystem" className={`section ${styles.sectionHomeEcosystem}`}>
+      {/* Dynamic Cyber Holographic Stage Canvas Background */}
+      <EcosystemHoloStage />
+
       <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
         <CursorGrid
           color="#38CFC8"

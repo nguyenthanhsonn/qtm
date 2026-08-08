@@ -1,0 +1,100 @@
+@use '@/scss/global/variables' as *;
+
+.holoStageRoot {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.ambientGlowLayer {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 65% 45% at 50% 60%, rgba(0, 212, 255, 0.16) 0%, transparent 70%),
+    radial-gradient(ellipse 45% 35% at 50% 75%, rgba(99, 102, 241, 0.18) 0%, transparent 60%),
+    radial-gradient(circle at 15% 50%, rgba(56, 207, 200, 0.08) 0%, transparent 45%),
+    radial-gradient(circle at 85% 50%, rgba(234, 0, 41, 0.06) 0%, transparent 45%);
+  z-index: 1;
+}
+
+.holoCanvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+}
+
+/* Cyber HUD Overlays */
+.hudTopLeft {
+  position: absolute;
+  top: 1.5rem;
+  left: 2rem;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 0.72rem;
+  color: rgba(56, 207, 200, 0.6);
+  letter-spacing: 0.08em;
+
+  @media (max-width: 768px) {
+    display: none;
+  }
+}
+
+.hudTopRight {
+  position: absolute;
+  top: 1.5rem;
+  right: 2rem;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 0.72rem;
+  color: rgba(0, 212, 255, 0.6);
+  letter-spacing: 0.08em;
+
+  @media (max-width: 768px) {
+    display: none;
+  }
+}
+
+.pulseDot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #38CFC8;
+  box-shadow: 0 0 8px #38CFC8;
+  margin-right: 6px;
+  animation: pulseDotAnim 2s infinite ease-in-out;
+}
+
+@keyframes pulseDotAnim {
+  0%, 100% { opacity: 0.4; transform: scale(0.9); }
+  50% { opacity: 1; transform: scale(1.3); }
+}
+
+/* Floor Perspective Grid Accent */
+.floorPerspectiveGrid {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 45%;
+  background-image:
+    linear-gradient(rgba(56, 207, 200, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(56, 207, 200, 0.06) 1px, transparent 1px);
+  background-size: 44px 44px;
+  transform: perspective(600px) rotateX(65deg);
+  transform-origin: bottom center;
+  mask-image: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, transparent 100%);
+  z-index: 1;
+}

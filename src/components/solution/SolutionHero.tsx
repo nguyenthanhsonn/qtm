@@ -8,7 +8,7 @@ import styles from "./SolutionHero.module.scss";
 import Card3DTilt from "@/components/Card3DTilt";
 import CountUp from "@/components/CountUp";
 
-const viewport = { once: true, amount: 0.15 } as const;
+const viewport = { once: false, amount: 0.12 } as const;
 const easeOut = [0.22, 1, 0.36, 1] as const;
 
 export default function SolutionHero() {
@@ -20,7 +20,7 @@ export default function SolutionHero() {
 
   return (
     <>
-      <section id="solution-hero" className={`section ${styles.sectionSolHero}`}>
+      <section id="hero" className={`section ${styles.sectionSolHero}`}>
         {/* Background Gradients & Light Streaks */}
         <div className={styles.solHeroBg} aria-hidden="true" />
         <div className={styles.solHeroGlow} aria-hidden="true" />
