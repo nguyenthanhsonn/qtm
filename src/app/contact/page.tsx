@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import styles from "@/components/about/ContactModal.module.scss";
+import styles from "@/scss/about_us/ContactModal.module.scss";
 import Card3DTilt from "@/components/Card3DTilt";
 import CursorGrid from "@/uiux/CursorGrid";
 

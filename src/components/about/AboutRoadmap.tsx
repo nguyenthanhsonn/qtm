@@ -9,14 +9,8 @@ import {
   useReducedMotion,
 } from "motion/react";
 import Card3DTilt from "@/components/Card3DTilt";
-import styles from "./AboutRoadmap.module.scss";
-
-type RoadmapNode = {
-  year: string;
-  title: string;
-  desc: string;
-  iconSvg: React.ReactNode;
-};
+import styles from "@/scss/about_us/AboutRoadmap.module.scss";
+import type { RoadmapNode } from "@/types/about";
 
 const roadmapNodes: RoadmapNode[] = [
   {

@@ -8,7 +8,7 @@ import { motion } from "motion/react";
 import AboutBackground from "@/components/about/AboutBackground";
 import ContactModal from "@/components/about/ContactModal";
 import { getProjectById, PROJECTS_DATA } from "@/data/projectsData";
-import styles from "./projectDetail.module.scss";
+import styles from "@/scss/project/projectDetail.module.scss";
 
 export default function ProjectDetailPage() {
   const params = useParams();

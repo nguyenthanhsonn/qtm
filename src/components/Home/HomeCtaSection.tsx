@@ -1,11 +1,9 @@
 "use client";
 
-import styles from "./HomeCtaSection.module.scss";
+import styles from "@/scss/home/HomeCtaSection.module.scss";
 import { CoreValue } from "@/types/home";
 import { motion, useReducedMotion } from "motion/react";
-import ParticleField from "@/components/TechBackground/ParticleField";
 import Card3DTilt from "@/components/Card3DTilt";
-import { CtaGridBackground } from "@/components/TechBackground";
 
 const coreValues: CoreValue[] = [
   {
@@ -76,12 +74,6 @@ export default function HomeCtaSection() {
 
   return (
     <section id="values" className={`section ${styles.sectionHomeCta}`}>
-      {/* Redesigned Premium Background Grid */}
-      <CtaGridBackground />
-
-      {/* Interactive Data Particles */}
-      <ParticleField />
-
       <div className={`section__content ${styles.homeCtaContent}`}>
 
         {/* Title & Desc */}

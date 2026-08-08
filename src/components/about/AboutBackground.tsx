@@ -1,17 +1,8 @@
 "use client";
 
 import React, { useEffect, useRef } from "react";
-import styles from "./AboutBackground.module.scss";
-
-interface Particle {
-  x: number;
-  y: number;
-  vx: number;
-  vy: number;
-  radius: number;
-  color: string;
-  alpha: number;
-}
+import styles from "@/scss/about_us/AboutBackground.module.scss";
+import type { AboutParticle as Particle } from "@/types/about";
 
 export default function AboutBackground() {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);

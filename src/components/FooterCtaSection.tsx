@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useRef, useEffect } from "react";
-import styles from "./FooterCtaSection.module.scss";
+import styles from "@/scss/global/FooterCtaSection.module.scss";
 import { motion, AnimatePresence, useReducedMotion } from "motion/react";
 import { useRouter } from "next/navigation";
 

@@ -2,7 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
-import styles from "./SolutionFooterContact.module.scss";
+import styles from "@/scss/solution/SolutionFooterContact.module.scss";
 import { motion, useReducedMotion } from "motion/react";
 import ParticleField from "@/components/TechBackground/ParticleField";
 

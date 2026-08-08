@@ -2,14 +2,7 @@
 
 import React from 'react';
 import styled from 'styled-components';
-
-interface ButtonProps {
-  text?: string;
-  onClick?: () => void;
-  type?: "submit" | "button" | "reset";
-  className?: string;
-  children?: React.ReactNode;
-}
+import type { SubmitButtonProps as ButtonProps } from "@/types/uiux";
 
 const Button: React.FC<ButtonProps> = ({
   text = "Submit",

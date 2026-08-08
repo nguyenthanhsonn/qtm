@@ -3,7 +3,7 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import styles from "./MissLegacyFooter.module.scss";
+import styles from "@/scss/missLagecy/MissLegacyFooter.module.scss";
 
 export default function MissLegacyFooter() {
   return (

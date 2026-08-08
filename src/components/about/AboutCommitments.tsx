@@ -4,15 +4,8 @@ import React from "react";
 import Image from "next/image";
 import { motion, useReducedMotion } from "motion/react";
 import Card3DTilt from "@/components/Card3DTilt";
-import styles from "./AboutCommitments.module.scss";
-
-type CommitmentItem = {
-  id: string;
-  gradientClass: string;
-  iconSvg: React.ReactNode;
-  title: string;
-  desc: string;
-};
+import styles from "@/scss/about_us/AboutCommitments.module.scss";
+import type { CommitmentItem } from "@/types/about";
 
 const commitmentItems: CommitmentItem[] = [
   {

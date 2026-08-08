@@ -1,6 +1,6 @@
 "use client";
 
-import styles from "./Header.module.scss";
+import styles from "@/scss/global/Header.module.scss";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";

@@ -2,12 +2,7 @@
 
 import React from "react";
 import ContactModal from "@/components/about/ContactModal";
-
-interface SolutionContactModalProps {
-  isOpen: boolean;
-  onClose: () => void;
-  contextTitle?: string;
-}
+import type { SolutionContactModalProps } from "@/types/solution";
 
 export default function SolutionContactModal({
   isOpen,

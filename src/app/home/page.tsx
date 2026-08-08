@@ -1,7 +1,8 @@
 import Link from "next/link";
-import styles from "@/components/Home/HomeHero.module.scss";
+import styles from "@/scss/home/HomeHero.module.scss";
 import { HomeIconProps } from "@/types/home";
 import CountUp from "@/components/CountUp";
+import AboutBackground from "@/components/about/AboutBackground";
 import HomeCtaSection from "@/components/Home/HomeCtaSection";
 import HomeEcosystemSection from "@/components/Home/HomeEcosystemSection";
 import HomeSolutionsSection from "@/components/Home/HomeSolutionsSection";
@@ -161,12 +162,18 @@ function HomeHero() {
 export default function HomePage() {
   return (
     <>
+      {/* BLOCK 1 - HERO (Original Video Background) */}
       <HomeHero />
-      <HomeCtaSection />
-      <HomeEcosystemSection />
-      <HomeSolutionsSection />
-      <HomePartnersSection />
-      <FooterCtaSection />
+
+      {/* BLOCKS 2 TO 5 - UNIFIED WITH ABOUT US PAGE BACKGROUND */}
+      <div className="relative overflow-hidden w-full">
+        <AboutBackground />
+        <HomeCtaSection />
+        <HomeEcosystemSection />
+        <HomeSolutionsSection />
+        <HomePartnersSection />
+        <FooterCtaSection />
+      </div>
     </>
   );
 }

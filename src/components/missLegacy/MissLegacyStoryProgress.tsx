@@ -1,14 +1,14 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import styles from "./MissLegacyStoryProgress.module.scss";
+import styles from "@/scss/missLagecy/MissLegacyStoryProgress.module.scss";
 
 const CHAPTERS = [
-  { id: "hero", num: "01", label: "CHƯƠNG I: KHỞI ĐẦU" },
-  { id: "mission", num: "02", label: "CHƯƠNG II: SỨ MỆNH" },
-  { id: "impact", num: "03", label: "CHƯƠNG III: GIÁ TRỊ" },
-  { id: "awards", num: "04", label: "CHƯƠNG IV: AWARDS" },
-  { id: "partners", num: "05", label: "CHƯƠNG V: ĐỒNG HÀNH" },
+  { id: "hero", num: "01", label: "01. KHỞI ĐẦU" },
+  { id: "mission", num: "02", label: "02. SỨ MỆNH" },
+  { id: "impact", num: "03", label: "03. TÁC ĐỘNG" },
+  { id: "awards", num: "04", label: "04. GIẢI THƯỞNG" },
+  { id: "partners", num: "05", label: "05. ĐỒNG HÀNH" },
 ];
 
 export default function MissLegacyStoryProgress() {
@@ -46,27 +46,48 @@ export default function MissLegacyStoryProgress() {
 
   return (
     <aside className={styles.storyProgressRoot} aria-label="Hành trình Miss Legacy Story Progress">
-      <div className={styles.storyLine} />
-      {CHAPTERS.map((ch) => {
-        const isActive = activeId === ch.id;
-        return (
-          <button
-            key={ch.id}
-            type="button"
-            className={`${styles.chapterNode} ${isActive ? styles.active : ""}`}
-            onClick={() => scrollToSection(ch.id)}
-            title={ch.label}
-          >
-            <span className={styles.chapterLabel}>{ch.label}</span>
-            <div className={styles.dotBox}>
-              <span className={styles.num}>{ch.num}</span>
-              <svg className={styles.lotusDot} viewBox="0 0 24 24">
-                <path d="M12 2C9 7 4 9 4 14a8 8 0 0 0 16 0c0-5-5-7-8-12z" />
-              </svg>
-            </div>
-          </button>
-        );
-      })}
+      {/* Top Number */}
+      <span className={styles.topNum}>01</span>
+
+      <div className={styles.trackerTrack}>
+        {/* Connecting Vertical Line */}
+        <div className={styles.storyLine} />
+
+        {/* Nodes and Dots */}
+        {CHAPTERS.map((ch, idx) => {
+          const isActive = activeId === ch.id;
+          return (
+            <React.Fragment key={ch.id}>
+              {/* Node Button */}
+              <button
+                type="button"
+                className={`${styles.chapterNode} ${isActive ? styles.active : ""}`}
+                onClick={() => scrollToSection(ch.id)}
+                aria-label={ch.label}
+              >
+                <span className={styles.chapterLabel}>{ch.label}</span>
+                <div className={styles.dotBox}>
+                  {isActive ? (
+                    <div className={styles.activeRing}>
+                      <span className={styles.activeCenterDot} />
+                    </div>
+                  ) : (
+                    <span className={styles.inactiveDot} />
+                  )}
+                </div>
+              </button>
+
+              {/* Intermediate connector dot between nodes */}
+              {idx < CHAPTERS.length - 1 && (
+                <div className={styles.interDot} aria-hidden="true" />
+              )}
+            </React.Fragment>
+          );
+        })}
+      </div>
+
+      {/* Bottom Number */}
+      <span className={styles.bottomNum}>05</span>
     </aside>
   );
 }

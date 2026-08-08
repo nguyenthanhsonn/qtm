@@ -126,7 +126,7 @@ export default function CtaGridBackground() {
   }, []);
 
   return (
-    <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden bg-white" aria-hidden="true">
+    <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden bg-transparent" aria-hidden="true">
       <style>{cssKeyframes}</style>
 
       {/* Lớp overlay Grid Pattern MỊN MÀNG & SUBTLE (Teal Blue #2095AD opacity ~12%) */}

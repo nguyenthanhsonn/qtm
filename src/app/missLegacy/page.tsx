@@ -6,6 +6,7 @@ import MissLegacyMission from "@/components/missLegacy/MissLegacyMission";
 import MissLegacyImpact from "@/components/missLegacy/MissLegacyImpact";
 import MissLegacyAwards from "@/components/missLegacy/MissLegacyAwards";
 import MissLegacyPartners from "@/components/missLegacy/MissLegacyPartners";
+import MissLegacyStoryProgress from "@/components/missLegacy/MissLegacyStoryProgress";
 import ContactModal from "@/components/about/ContactModal";
 
 export default function MissLegacyPage() {
@@ -34,6 +35,9 @@ export default function MissLegacyPage() {
 
   return (
     <main style={{ width: "100%", overflow: "visible", backgroundColor: "#0A3A26", position: "relative" }}>
+      {/* Side Vertical Scroll Tracker */}
+      <MissLegacyStoryProgress />
+
       {/* CHAPTER 1: HERO & OVERVIEW */}
       <MissLegacyHero onOpenModal={handleOpenModal} />
 

@@ -1,10 +1,9 @@
 "use client";
 
-import styles from "./HomeEcosystemSection.module.scss";
+import styles from "@/scss/home/HomeEcosystemSection.module.scss";
 import Carousel3D from "@/components/Carousel3D";
 import { CarouselItem } from "@/types/components";
 import { motion, useReducedMotion } from "motion/react";
-import CursorGrid from "@/uiux/CursorGrid";
 
 const viewport = { once: true, amount: 0.2 } as const;
 const easeOut = [0.22, 1, 0.36, 1] as const;
@@ -63,19 +62,6 @@ export default function HomeEcosystemSection() {
 
   return (
     <section id="ecosystem" className={`section ${styles.sectionHomeEcosystem}`}>
-      <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
-        <CursorGrid
-          color="#38CFC8"
-          cellSize={65}
-          gridOpacity={0.06}
-          maxOpacity={0.45}
-          fillOpacity={0.14}
-          radius={160}
-          clickPulse={true}
-        />
-      </div>
-      <div className={styles.homeEcosystemBg} aria-hidden="true" />
-
       <div className={`section__content ${styles.homeEcosystemContent}`}>
         <motion.header
           className={styles.homeEcosystemHeader}

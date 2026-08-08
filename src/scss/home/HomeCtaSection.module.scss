@@ -4,24 +4,14 @@
   position: relative;
   min-height: auto;
   text-align: center;
-  background-color: #ffffff;
-  background-image: none;
+  background: transparent;
   padding: clamp(9.5rem, 16vh, 12.5rem) clamp(1rem, 5vw, 4rem) clamp(4rem, 8vh, 6.5rem);
   overflow: hidden;
   z-index: 1;
-  border-bottom: 1px solid rgba(32, 149, 173, 0.15);
 }
 
 .homeCtaBg {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  background-image:
-    linear-gradient(to right, rgba(32, 149, 173, 0.05) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(32, 149, 173, 0.05) 1px, transparent 1px);
-  background-size: 36px 36px;
-  opacity: 0.5;
-  pointer-events: none;
+  display: none;
 }
 
 .homeCtaContent {
@@ -39,7 +29,7 @@
   font-family: var(--font-heading);
   font-size: clamp(1.75rem, 3.2vw, 2.6rem);
   font-weight: 900;
-  color: #0c192b;
+  color: #FFFFFF;
   letter-spacing: -0.01em;
   margin: 0;
   line-height: 1.2;
@@ -56,13 +46,13 @@
     background: rgba(56, 207, 200, 0.16);
     border: 1.5px solid rgba(56, 207, 200, 0.45);
     box-shadow: inset 0 0 10px rgba(56, 207, 200, 0.15), 0 0 12px rgba(56, 207, 200, 0.1);
-    color: #0c192b;
+    color: #38CFC8;
     border-radius: 4px;
     line-height: 1.1;
   }
 
   .textNavy {
-    color: #17398f;
+    color: #FFFFFF;
   }
 
   .titleHighlight {
@@ -79,7 +69,7 @@
   font-size: clamp(0.875rem, 1.05vw, 1rem);
   font-weight: 400;
   line-height: 1.6;
-  color: #475569;
+  color: #94A3B8;
   max-width: 650px;
   margin: 0 auto 1rem;
   text-align: center;
@@ -102,10 +92,10 @@
   position: relative;
   width: 100%;
   min-height: 440px;
-  background: linear-gradient(165deg, rgba(12, 28, 52, 0.96) 0%, rgba(6, 17, 34, 0.96) 100%);
-  border: 1.5px solid rgba(56, 207, 200, 0.35);
+  background: linear-gradient(165deg, rgba(15, 36, 68, 0.92) 0%, rgba(8, 22, 44, 0.94) 100%);
+  border: 1.5px solid rgba(56, 207, 200, 0.45);
   border-radius: 18px;
-  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.35);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4), 0 0 20px rgba(56, 207, 200, 0.15);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   padding: clamp(1.8rem, 2.5vw, 2.5rem);
@@ -268,13 +258,13 @@
   width: 100%;
   max-width: 860px;
   margin: 3.5rem auto 0;
-  background: linear-gradient(145deg, #ffffff 0%, #f0f9ff 100%);
+  background: linear-gradient(145deg, rgba(14, 34, 62, 0.92) 0%, rgba(8, 20, 40, 0.95) 100%);
   border-radius: 24px;
-  border: 1.5px solid rgba(56, 207, 200, 0.45);
+  border: 1.5px solid rgba(56, 207, 200, 0.5);
   box-shadow:
-    0 16px 48px rgba(32, 149, 173, 0.16),
-    0 0 30px rgba(56, 207, 200, 0.12),
-    inset 0 0 20px rgba(56, 207, 200, 0.05);
+    0 16px 48px rgba(0, 0, 0, 0.45),
+    0 0 30px rgba(56, 207, 200, 0.2),
+    inset 0 0 20px rgba(56, 207, 200, 0.1);
   backdrop-filter: blur(16px);
   padding: clamp(3.2rem, 6.5vh, 4.8rem) clamp(1.75rem, 5vw, 3.8rem);
   box-sizing: border-box;
@@ -283,6 +273,16 @@
   align-items: center;
   text-align: center;
   overflow: hidden;
+  transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+
+  &:hover {
+    transform: translateY(-4px);
+    border-color: rgba(56, 207, 200, 0.75);
+    box-shadow:
+      0 22px 60px rgba(0, 0, 0, 0.55),
+      0 0 40px rgba(56, 207, 200, 0.3),
+      inset 0 0 25px rgba(56, 207, 200, 0.15);
+  }
 
   .cornerMark {
     position: absolute;
@@ -291,57 +291,56 @@
     border-color: #38CFC8;
     border-style: solid;
     z-index: 3;
-    filter: drop-shadow(0 0 6px rgba(56, 207, 200, 0.8));
+    transition: all 0.35s ease;
   }
 
   .topLeft {
     top: 10px;
     left: 10px;
-    border-width: 2.5px 0 0 2.5px;
+    border-width: 2px 0 0 2px;
   }
 
   .topRight {
     top: 10px;
     right: 10px;
-    border-width: 2.5px 2.5px 0 0;
+    border-width: 2px 2px 0 0;
   }
 
   .bottomLeft {
     bottom: 10px;
     left: 10px;
-    border-width: 0 0 2.5px 2.5px;
+    border-width: 0 0 2px 2px;
   }
 
   .bottomRight {
     bottom: 10px;
     right: 10px;
-    border-width: 0 2.5px 2.5px 0;
+    border-width: 0 2px 2px 0;
   }
 
   .quoteBrandHeader {
     display: inline-flex;
     align-items: center;
-    gap: 0.65rem;
-    padding: 0.4rem 1.25rem;
-    border-radius: 20px;
-    background: linear-gradient(90deg, rgba(32, 149, 173, 0.12) 0%, rgba(56, 207, 200, 0.06) 100%);
-    border: 1px solid rgba(32, 149, 173, 0.35);
-    box-shadow: 0 0 14px rgba(56, 207, 200, 0.18);
+    gap: 0.6rem;
+    padding: 0.4rem 1.1rem;
+    border-radius: 30px;
+    background: rgba(56, 207, 200, 0.12);
+    border: 1px solid rgba(56, 207, 200, 0.35);
+    box-shadow: inset 0 0 12px rgba(56, 207, 200, 0.15);
     margin-bottom: 1rem;
 
     .quoteBrandIcon {
       display: flex;
       align-items: center;
       justify-content: center;
-      color: #2095AD;
     }
 
     .quoteBrandTag {
       font-family: var(--font-heading);
-      font-size: 0.775rem;
+      font-size: 0.8rem;
       font-weight: 800;
-      letter-spacing: 0.18em;
-      color: #2095AD;
+      letter-spacing: 0.12em;
+      color: #38CFC8;
       text-transform: uppercase;
     }
   }
@@ -392,11 +391,11 @@
       font-weight: 700;
       font-style: italic;
       line-height: 1.55;
-      color: #0c192b;
+      color: #FFFFFF;
       margin: 0;
 
       .quoteAccent {
-        background: linear-gradient(90deg, #17398F 0%, #2095AD 50%, #38CFC8 100%);
+        background: linear-gradient(90deg, #2095AD 0%, #38CFC8 100%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;

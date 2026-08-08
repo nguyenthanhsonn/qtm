@@ -1,18 +1,5 @@
-export interface ProjectItem {
-  id: string;
-  title: string;
-  category: string;
-  client: string;
-  summary: string;
-  image: string;
-  startDate?: string;
-  targetAudience?: string;
-  speakers?: string[];
-  metrics: { val: string; lbl: string }[];
-  challenge: string;
-  solution: string;
-  impact: string;
-}
+import type { ProjectItem } from "@/types/project";
+export type { ProjectItem };
 
 export const PROJECTS_DATA: ProjectItem[] = [
   {
@@ -22,7 +9,7 @@ export const PROJECTS_DATA: ProjectItem[] = [
     client: "Cộng đồng Sinh viên Đông Bắc Bộ & QTM Media",
     summary:
       "Chuỗi talkshow quy mô lớn dành cho hơn 15.000 sinh viên các trường đại học khu vực Đông Bắc Bộ, khởi động từ tháng 5/2017 nhằm kết nối, khơi dậy tinh thần dấn thân và định hướng con đường lập nghiệp cho thế hệ trẻ.",
-    image: "/talkshow-khat-vong-khoi-nghiep.png",
+    image: "/projects/talkshow.png",
     startDate: "Tháng 05/2017",
     targetAudience: "Hơn 15.000 sinh viên tại các trường Đại học thuộc khu vực Đông Bắc Bộ (Đại học Hàng hải, Hải Phòng,...)",
     speakers: ["TS. Lê Thẩm Dương", "Ông Trần Lương Sơn", "Ông Nguyễn Hữu Thái Hoà", "Ông Nguyễn Cảnh Bình"],
@@ -45,7 +32,7 @@ export const PROJECTS_DATA: ProjectItem[] = [
     client: "QTM Foundation & Đơn vị Văn hóa",
     summary:
       "Hành trình tìm kiếm, tôn vinh và ứng dụng công nghệ AI lan tỏa giá trị di sản văn hóa Việt Nam đến thế hệ trẻ và cộng đồng quốc tế.",
-    image: "/miss-legacy-hero-bg.png",
+    image: "/projects/miss-legacy.png",
     startDate: "Năm 2026",
     targetAudience: "Cộng đồng yêu văn hóa Việt & bạn bè quốc tế",
     speakers: ["Đại sứ Miss Legacy", "Hội đồng Cố vấn Văn hóa QTM"],
@@ -68,7 +55,7 @@ export const PROJECTS_DATA: ProjectItem[] = [
     client: "RetailCorp Vietnam",
     summary:
       "Xây dựng hệ thống tự động hóa chiến dịch Marketing bằng AI Agent, tối ưu hóa điểm chạm khách hàng toàn kênh theo thời gian thực.",
-    image: "/miss-legacy-impact-bg.png",
+    image: "/projects/ai-retail.png",
     startDate: "Năm 2025",
     targetAudience: "Tập đoàn bán lẻ & chuỗi cửa hàng toàn quốc",
     speakers: ["Chuyên gia AI QTM", "Đội ngũ Kỹ sư Dữ liệu"],
@@ -91,7 +78,7 @@ export const PROJECTS_DATA: ProjectItem[] = [
     client: "Sở Công Thương & OCOP Vietnam",
     summary:
       "Chiến lược tái định vị thương hiệu nông sản đặc sản vùng miền, ứng dụng bộ nhận diện số chuẩn quốc tế vươn tầm thế giới.",
-    image: "/miss-legacy-partners-bg.jpg",
+    image: "/projects/ocop-branding.png",
     startDate: "Năm 2024",
     targetAudience: "Hơn 500 doanh nghiệp & Hợp tác xã OCOP",
     speakers: ["Chuyên gia Thương hiệu QTM", "Đại diện Bộ Công Thương"],
@@ -114,7 +101,7 @@ export const PROJECTS_DATA: ProjectItem[] = [
     client: "TechBank Digital",
     summary:
       "Kích hoạt chiến dịch truyền thông phủ sóng giới trẻ Gen Z với thông điệp 'Ngân Hàng Số Không Giới Hạn'.",
-    image: "/miss-legacy-awards-bg.jpg",
+    image: "/projects/techbank.png",
     startDate: "Năm 2025",
     targetAudience: "Thế hệ Gen Z & Người dùng số trẻ tuổi",
     speakers: ["Đội ngũ Sáng tạo QTM", "Creators & KOLs"],
@@ -152,6 +139,236 @@ export const PROJECTS_DATA: ProjectItem[] = [
       "Cung cấp chương trình đào tạo trực tuyến miễn phí, xây dựng mạng lưới cố vấn chuyên gia 1-1 và kết nối trực tiếp với các quỹ đầu tư thiên thần.",
     impact:
       "Giúp hơn 300 dự án khởi nghiệp do nữ làm chủ hoàn thiện mô hình kinh doanh và nhận vốn đầu tư mở rộng quy mô toàn quốc.",
+  },
+  {
+    id: "global-media-summit-2025",
+    title: "Thượng Đỉnh Truyền Thông & Công Nghệ Toàn Cầu 2025",
+    category: "Sự kiện & Hội nghị",
+    client: "Hiệp hội Truyền thông Châu Á & QTM MediaTech",
+    summary:
+      "Quy tụ hơn 2.500 nhà lãnh đạo truyền thông, các chuyên gia AI toàn cầu bàn về tương lai của công nghệ số và báo chí đa phương tiện.",
+    image: "/home/ecosystem/panel-events.jpg",
+    startDate: "Tháng 10/2025",
+    targetAudience: "Lãnh đạo tập đoàn truyền thông, chuyên gia AI & báo chí toàn quốc",
+    speakers: ["Chuyên gia AI Quốc tế", "Ban cố vấn QTM MediaTech"],
+    metrics: [
+      { val: "2.500+", lbl: "Đại biểu quốc tế" },
+      { val: "35+", lbl: "Quốc gia tham dự" },
+      { val: "100+", lbl: "Cơ quan báo chí" },
+    ],
+    challenge:
+      "Đòi hỏi hạ tầng sự kiện hybrid kết hợp AR/VR thời gian thực, truyền hình trực tiếp cho khán giả toàn cầu với độ trễ siêu thấp.",
+    solution:
+      "QTM phát triển sân khấu sự kiện thông minh tích hợp màn hình LED vô cực 8K, hệ thống phiên dịch đa ngôn ngữ bằng AI và cổng tương tác 3D.",
+    impact:
+      "Tạo nên sự kiện kinh điển dẫn dắt xu hướng truyền thông số tại Đông Nam Á, thu hút hàng triệu lượt xem trực tuyến.",
+  },
+  {
+    id: "ooh-smart-city-led",
+    title: "Mạng Lưới Truyền Thông Đô Thị & LED 3D Tương Tác OOH",
+    category: "Truyền thông Đô thị & OOH",
+    client: "Tập đoàn Đô thị Thông minh SmartCity",
+    summary:
+      "Triển khai mạng lưới màn hình LED 3D Naked-Eye tại các đại lộ trung tâm thành phố, kết nối dữ liệu thời gian thực và trải nghiệm AR.",
+    image: "/home/ecosystem/panel-city.jpg",
+    startDate: "Tháng 12/2025",
+    targetAudience: "Cư dân đô thị & du khách tại các trung tâm kinh tế lớn",
+    speakers: ["Đội ngũ Kỹ thuật OOH QTM", "Chuyên gia Thiết kế 3D Visual"],
+    metrics: [
+      { val: "20.000.000+", lbl: "Lượt tiếp cận/tháng" },
+      { val: "15+", lbl: "Màn hình 3D Naked-Eye" },
+      { val: "+300%", lbl: "Tăng nhận diện" },
+    ],
+    challenge:
+      "Hình thức OOH truyền thống bị giảm hiệu quả do thiếu tính tương tác và khả năng đo lường chỉ số ROI cho nhãn hàng.",
+    solution:
+      "QTM ứng dụng công nghệ LED 3D Naked-Eye kết hợp hệ thống camera AI cảm biến lưu lượng giao thông để điều chỉnh nội dung quảng cáo động theo thời gian thực.",
+    impact:
+      "Tái định nghĩa trải nghiệm truyền thông ngoài trời tại Việt Nam, biến các billboard thành biểu tượng kiến trúc công nghệ rực rỡ thu hút du khách.",
+  },
+  {
+    id: "ai-customer-experience-center",
+    title: "Trung Tâm Trải Nghiệm Khách Hàng Thông Minh AI Experience",
+    category: "Chuyển đổi số & AI",
+    client: "Tập đoàn Công nghệ NextGen",
+    summary:
+      "Thiết kế và thi công không gian trải nghiệm công nghệ đa giác quan tương tác AI cho trung tâm điều hành thương hiệu.",
+    image: "/home/ecosystem/panel-office.jpg",
+    startDate: "Tháng 08/2025",
+    targetAudience: "Khách hàng VIP, đối tác chiến lược & các nhà đầu tư lớn",
+    speakers: ["Kiến trúc sư Trải nghiệm QTM", "Đội ngũ Kỹ sư AI"],
+    metrics: [
+      { val: "100%", lbl: "Tương tác số hóa" },
+      { val: "5.000+", lbl: "Lượt đoàn tham quan" },
+      { val: "99%", lbl: "Đánh giá ấn tượng" },
+    ],
+    challenge:
+      "Không gian trưng bày truyền thống thiếu tính công nghệ tương tác, chưa truyền tải hết quy mô và năng lực số hóa của doanh nghiệp.",
+    solution:
+      "QTM xây dựng không gian immersive tích hợp bản đồ hologram 3D, phòng trải nghiệm AI nhận diện giọng nói và cảm biến cử chỉ thông minh.",
+    impact:
+      "Nâng tầm hình ảnh thương hiệu quốc tế cho doanh nghiệp, chốt hàng trăm hợp đồng hợp tác chiến lược ngay tại trung tâm trải nghiệm.",
+  },
+  {
+    id: "heritage-art-festival-2025",
+    title: "Festival Âm Nhạc & Văn Hóa Di Sản Số 2025",
+    category: "Văn hóa & Di sản",
+    client: "Sở Văn hóa Thể thao & Miss Legacy",
+    summary:
+      "Đại nhạc hội kết hợp ánh sáng Laser Mapping 3D tái hiện di sản truyền thống Việt Nam trên sân khấu quy mô 30.000 khán giả.",
+    image: "/home/ecosystem/panel-concert.jpg",
+    startDate: "Tháng 11/2025",
+    targetAudience: "Hơn 30.000 khán giả xem trực tiếp & hàng triệu người xem livestream",
+    speakers: ["Đạo diễn Sân khấu QTM", "Nghệ sĩ Văn hóa Di sản"],
+    metrics: [
+      { val: "30.000+", lbl: "Khán giả trực tiếp" },
+      { val: "10.000.000+", lbl: "Lượt tương tác MXH" },
+      { val: "Top 1", lbl: "Sự kiện văn hóa năm" },
+    ],
+    challenge:
+      "Kết hợp giữa nét trầm mặc của di sản văn hóa cổ truyền với nhịp sống âm nhạc hiện đại mà không làm mất đi tính nguyên bản của lịch sử.",
+    solution:
+      "QTM xây dựng kịch bản 3 chương âm nhạc công nghệ, ứng dụng kỹ thuật trình chiếu ánh sáng Hologram 3D trên nền âm hưởng dân gian đương đại.",
+    impact:
+      "Sự kiện ghi dấu ấn rực rỡ trong lòng công chúng, thu hút báo chí quốc tế đưa tin và tạo làn sóng tự hào di sản trẻ trung.",
+  },
+  {
+    id: "eco-green-brand-repositioning",
+    title: "Chiến Lược Tái Định Vị Thương Hiệu Xanh EcoGreen",
+    category: "Thương hiệu & OCOP",
+    client: "EcoGreen Corporation",
+    summary:
+      "Tái kiến tạo toàn bộ nhận diện thương hiệu bền vững, xây dựng thông điệp ESG phát triển vì môi trường cho tập đoàn sản xuất sạch.",
+    image: "/home/ecosystem/panel-growth.jpg",
+    startDate: "Tháng 03/2025",
+    targetAudience: "Người tiêu dùng xanh & cộng đồng nhà đầu tư ESG",
+    speakers: ["Chuyên gia Chiến lược QTM", "Đại sứ Phát triển Bền vững"],
+    metrics: [
+      { val: "+160%", lbl: "Chỉ số yêu thích thương hiệu" },
+      { val: "100%", lbl: "Bao bì tái chế" },
+      { val: "ESG A+", lbl: "Xếp hạng bền vững" },
+    ],
+    challenge:
+      "Thương hiệu lâu đời bị thị trường đánh giá là già cỗi, chưa bắt kịp xu hướng phát triển bền vững và tiêu dùng xanh toàn cầu.",
+    solution:
+      "QTM xây dựng bộ tái nhận diện thương hiệu tinh gọn, chạy chiến dịch 'Gieo Mầm Xanh - Kiến Tạo Bền Vững' phủ sóng toàn quốc.",
+    impact:
+      "Giúp doanh nghiệp tái khẳng định vị thế dẫn đầu trong sản xuất xanh, đạt chứng nhận ESG quốc tế và gia tăng 160% thiện cảm thương hiệu.",
+  },
+  {
+    id: "smart-mobility-ooh-network",
+    title: "Mạng Lưới Quảng Cáo Đô Thị Đa Điểm Chạm Smart Mobility",
+    category: "Truyền thông Đô thị & OOH",
+    client: "Mobility Tech Vietnam",
+    summary:
+      "Hệ thống màn hình thông minh tích hợp trên các phương tiện giao thông công cộng, đo lường hành vi tiếp cận bằng AI Vision.",
+    image: "/home/ecosystem/panel-data.jpg",
+    startDate: "Tháng 07/2025",
+    targetAudience: "Hàng triệu hành khách di chuyển đô thị mỗi ngày",
+    speakers: ["Chuyên gia Dữ liệu OOH QTM", "Kỹ sư IoT System"],
+    metrics: [
+      { val: "5.000+", lbl: "Màn hình kết nối" },
+      { val: "15.000.000+", lbl: "Lượt tiếp cận/ngày" },
+      { val: "Realtime", lbl: "Đo lường dữ liệu" },
+    ],
+    challenge:
+      "Quảng cáo trên phương tiện di chuyển thiếu tính đo lường dữ liệu chính xác và khó tùy biến nội dung theo từng quận huyện.",
+    solution:
+      "QTM phát triển hộp thiết bị thông minh GPS/AI Vision định vị xe, tự động phát clip quảng cáo phù hợp với vị trí địa lý của phương tiện.",
+    impact:
+      "Tối ưu hóa ngân sách quảng cáo cho nhãn hàng lên gấp 2 lần, cung cấp báo cáo đo lường thị giác minh bạch từng giây.",
+  },
+  {
+    id: "vietnam-tech-forum-2025",
+    title: "Diễn Đàn Chuyển Đổi Số & Đổi Mới Sáng Tạo Việt Nam",
+    category: "Sự kiện & Hội nghị",
+    client: "Bộ Thông tin Truyền thông & QTM",
+    summary:
+      "Hội nghị quy mô cấp quốc gia kết nối hàng ngàn doanh nghiệp công nghệ, startup và các nhà đầu tư mạo hiểm quốc tế.",
+    image: "/talkshow-khat-vong-khoi-nghiep.png",
+    startDate: "Tháng 09/2025",
+    targetAudience: "Cộng đồng công nghệ, Doanh nghiệp DX & Nhà đầu tư",
+    speakers: ["Lãnh đạo Bộ ngành", "Lãnh đạo QTM MediaTech", "Chuyên gia Tech Global"],
+    metrics: [
+      { val: "3.000+", lbl: "Doanh nghiệp tham gia" },
+      { val: "50M$", lbl: "Cam kết đầu tư" },
+      { val: "50+", lbl: "Gian hàng công nghệ 3D" },
+    ],
+    challenge:
+      "Cần thiết lập triển lãm công nghệ số trực tuyến kết hợp trực tiếp với tiêu chuẩn bảo mật dữ liệu cấp chính phủ.",
+    solution:
+      "QTM vận hành toàn bộ hạ tầng công nghệ đăng ký check-in khuôn mặt AI, triển lãm ảo 3D Metaverse và ứng dụng Networking tự động.",
+    impact:
+      "Thúc đẩy hàng chục thương vụ hợp tác chuyển đổi số giá trị lớn, củng cố vị thế nền kinh tế số Việt Nam.",
+  },
+  {
+    id: "healthcare-ai-communication",
+    title: "Chiến Dịch Truyền Thông Sức Khỏe Cộng Đồng AI Healthcare",
+    category: "Chuyển đổi số & AI",
+    client: "Healthcare Alliance & QTM",
+    summary:
+      "Ứng dụng trợ lý AI tư vấn sức khỏe chủ động và chiến dịch nâng cao nhận thức chăm sóc y tế cho người dân vùng xa.",
+    image: "/miss-legacy-hero-bg.png",
+    startDate: "Tháng 04/2025",
+    targetAudience: "Người dân toàn quốc & các y bác sĩ cơ sở",
+    speakers: ["Chuyên gia Y tế", "Đội ngũ AI R&D QTM"],
+    metrics: [
+      { val: "2.000.000+", lbl: "Lượt tư vấn AI" },
+      { val: "63", lbl: "Tỉnh thành phủ sóng" },
+      { val: "95%", lbl: "Độ chính xác tư vấn" },
+    ],
+    challenge:
+      "Người dân vùng xa thiếu cơ hội tiếp cận thông tin y tế chính thống, quy trình đặt lịch khám chữa bệnh còn rườm rà.",
+    solution:
+      "QTM xây dựng Chatbot AI y tế thông minh trên Zalo/Facebook, kết hợp các video hoạt hình sinh động hướng dẫn phòng bệnh.",
+    impact:
+      "Hỗ trợ hơn 2 triệu lượt hỏi đáp sức khỏe tự động, giảm tải áp lực cho các bệnh viện tuyến trên.",
+  },
+  {
+    id: "digital-ooh-airport-takeover",
+    title: "Chiến Dịch Phủ Sóng OOH Kỹ Thuật Số Sân Bay Quốc Tế",
+    category: "Truyền thông Đô thị & OOH",
+    client: "Luxury Brands Association",
+    summary:
+      "Chiến dịch bao phủ toàn bộ hạ tầng LED màn hình cong tại ga quốc tế, chào đón hàng triệu du khách đến Việt Nam.",
+    image: "/home/ecosystem/panel-city.jpg",
+    startDate: "Tháng 01/2026",
+    targetAudience: "Du khách quốc tế & thương gia cao cấp tại sân bay",
+    speakers: ["Đội ngũ Sáng tạo OOH QTM"],
+    metrics: [
+      { val: "8.000.000+", lbl: "Du khách tiếp cận" },
+      { val: "100%", lbl: "Màn hình cong 4K" },
+      { val: "Top Impact", lbl: "Đánh giá xuất sắc" },
+    ],
+    challenge:
+      "Sân bay là môi trường đòi hỏi tiêu chuẩn khắt khe về mặt thị giác, chất lượng hình ảnh hiển thị và khả năng hoạt động 24/7.",
+    solution:
+      "QTM thiết kế bộ hình ảnh Visual 3D siêu thực cá nhân hóa theo từng quốc gia của chuyến bay hạ cánh.",
+    impact:
+      "Tạo ấn tượng thị giác choáng ngợp đầu tiên cho du khách quốc tế ngay khi bước chân xuống Việt Nam.",
+  },
+  {
+    id: "national-culture-summit",
+    title: "Hội Nghị Quốc Gia Báo Chí & Truyền Thông Số Di Sản",
+    category: "Sự kiện & Hội nghị",
+    client: "Hội Nhà Báo Việt Nam & QTM",
+    summary:
+      "Chuỗi hội thảo cấp cao bàn về chiến lược chuyển đổi số báo chí và bảo tồn di sản văn hóa trên không gian mạng.",
+    image: "/miss-legacy-impact-bg.png",
+    startDate: "Tháng 06/2025",
+    targetAudience: "Lãnh đạo các cơ quan báo chí & truyền thông toàn quốc",
+    speakers: ["Lãnh đạo Hội Nhà Báo", "Chuyên gia Truyền thông QTM"],
+    metrics: [
+      { val: "500+", lbl: "Tổng biên tập & Nhà báo" },
+      { val: "100%", lbl: "Số hóa tài liệu" },
+      { val: "10+", lbl: "Chủ đề bứt phá" },
+    ],
+    challenge:
+      "Báo chí truyền thống đang đối mặt với sự cạnh tranh khốc liệt từ các nền tảng mạng xã hội xuyên biên giới.",
+    solution:
+      "QTM chia sẻ mô hình Toà soạn số tích hợp AI Agent và mô hình kinh doanh nội dung số đa nền tảng.",
+    impact:
+      "Mở ra định hướng chiến lược mới giúp các cơ quan báo chí bứt phá doanh thu và giữ vững dòng tin tức chính thống.",
   },
 ];
 
