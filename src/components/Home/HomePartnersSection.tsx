@@ -5,18 +5,18 @@ import React from "react";
 import styles from "@/scss/home/HomePartnersSection.module.scss";
 import { motion, useReducedMotion } from "motion/react";
 
-// Danh sách KHÁCH HÀNG (Clients)
+// Danh sách KHÁCH HÀNG (Clients) - Perfectly Centered SVG Artwork
 const clientsList: PartnerItem[] = [
   {
     id: "pvgas",
     name: "PV GAS - PetroVietnam",
     category: "Energy & Gas",
     svgIcon: (
-      <svg width="145" height="38" viewBox="0 0 180 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M22 6C22 6 12 18 12 26C12 31.5 16.5 36 22 36C27.5 36 32 31.5 32 26C32 18 22 6 22 6Z" fill="#E51937" />
-        <path d="M22 14C22 14 17 21 17 25C17 27.8 19.2 30 22 30C24.8 30 27 27.8 27 25C27 21 22 14 22 14Z" fill="#FFC72C" />
-        <text x="38" y="24" fill="#005C97" fontFamily="var(--font-heading)" fontSize="13" fontWeight="900" letterSpacing="0.05em">PETROVIETNAM</text>
-        <text x="38" y="38" fill="#E51937" fontFamily="var(--font-heading)" fontSize="16" fontWeight="900" letterSpacing="0.08em">PV GAS</text>
+      <svg width="145" height="38" viewBox="0 0 145 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M16 6C16 6 6 18 6 26C6 31.5 10.5 36 16 36C21.5 36 26 31.5 26 26C26 18 16 6 16 6Z" fill="#FF3B30" />
+        <path d="M16 14C16 14 11 21 11 25C11 27.8 13.2 30 16 30C18.8 30 21 27.8 21 25C21 21 16 14 16 14Z" fill="#FFD700" />
+        <text x="32" y="24" fill="#38CFC8" fontFamily="var(--font-heading)" fontSize="13" fontWeight="900" letterSpacing="0.05em">PETROVIETNAM</text>
+        <text x="32" y="38" fill="#FF3B30" fontFamily="var(--font-heading)" fontSize="16" fontWeight="900" letterSpacing="0.08em">PV GAS</text>
       </svg>
     ),
   },
@@ -25,8 +25,8 @@ const clientsList: PartnerItem[] = [
     name: "MobiFone",
     category: "Telecom Leader",
     svgIcon: (
-      <svg width="130" height="38" viewBox="0 0 160 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <text x="5" y="34" fill="#005C97" fontFamily="var(--font-heading)" fontSize="28" fontWeight="800" letterSpacing="0.02em">mobi<tspan fill="#E51937">fone</tspan></text>
+      <svg width="130" height="38" viewBox="0 0 130 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <text x="50%" y="34" textAnchor="middle" fill="#00D4FF" fontFamily="var(--font-heading)" fontSize="28" fontWeight="900" letterSpacing="0.02em">mobi<tspan fill="#FF3B30">fone</tspan></text>
       </svg>
     ),
   },
@@ -35,9 +35,9 @@ const clientsList: PartnerItem[] = [
     name: "Vietcombank",
     category: "Banking & Finance",
     svgIcon: (
-      <svg width="145" height="38" viewBox="0 0 185 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M12 24L24 8L36 24L24 40Z" fill="#005A36" />
-        <text x="44" y="33" fill="#005A36" fontFamily="var(--font-heading)" fontSize="23" fontWeight="800">Vietcombank</text>
+      <svg width="155" height="38" viewBox="0 0 155 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M6 24L18 8L30 24L18 40Z" fill="#34D399" />
+        <text x="36" y="33" fill="#34D399" fontFamily="var(--font-heading)" fontSize="23" fontWeight="800">Vietcombank</text>
       </svg>
     ),
   },
@@ -46,10 +46,10 @@ const clientsList: PartnerItem[] = [
     name: "VietinBank",
     category: "Banking & Finance",
     svgIcon: (
-      <svg width="135" height="38" viewBox="0 0 175 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="20" cy="24" r="14" fill="#00529B" />
-        <path d="M12 24H28M20 16V32" stroke="#EE1D23" strokeWidth="4.5" strokeLinecap="round" />
-        <text x="42" y="32" fill="#00529B" fontFamily="var(--font-heading)" fontSize="21" fontWeight="800">VietinBank</text>
+      <svg width="142" height="38" viewBox="0 0 142 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="18" cy="24" r="12" fill="#00D4FF" />
+        <path d="M10 24H26M18 16V32" stroke="#FF3B30" strokeWidth="4" strokeLinecap="round" />
+        <text x="36" y="32" fill="#00D4FF" fontFamily="var(--font-heading)" fontSize="21" fontWeight="800">VietinBank</text>
       </svg>
     ),
   },
@@ -58,10 +58,10 @@ const clientsList: PartnerItem[] = [
     name: "BIDV",
     category: "Banking & Finance",
     svgIcon: (
-      <svg width="115" height="38" viewBox="0 0 150 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect x="6" y="10" width="28" height="28" rx="6" fill="#005A36" />
-        <path d="M14 18L26 30M26 18L14 30" stroke="#FFC72C" strokeWidth="3.5" strokeLinecap="round" />
-        <text x="44" y="34" fill="#005A36" fontFamily="var(--font-heading)" fontSize="26" fontWeight="900" letterSpacing="0.05em">BIDV</text>
+      <svg width="110" height="38" viewBox="0 0 110 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="6" y="10" width="28" height="28" rx="6" fill="#34D399" />
+        <path d="M14 18L26 30M26 18L14 30" stroke="#FFD700" strokeWidth="3.5" strokeLinecap="round" />
+        <text x="40" y="34" fill="#34D399" fontFamily="var(--font-heading)" fontSize="26" fontWeight="900" letterSpacing="0.05em">BIDV</text>
       </svg>
     ),
   },
@@ -70,10 +70,10 @@ const clientsList: PartnerItem[] = [
     name: "Agribank",
     category: "Banking & Finance",
     svgIcon: (
-      <svg width="130" height="38" viewBox="0 0 165 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect x="6" y="8" width="30" height="32" rx="4" fill="#A8232A" />
-        <path d="M12 32V16L21 28L30 16V32" stroke="#FFC72C" strokeWidth="3" strokeLinejoin="round" />
-        <text x="44" y="32" fill="#A8232A" fontFamily="var(--font-heading)" fontSize="20" fontWeight="800">AGRIBANK</text>
+      <svg width="150" height="38" viewBox="0 0 150 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="6" y="8" width="30" height="32" rx="4" fill="#FF3B30" />
+        <path d="M12 32V16L21 28L30 16V32" stroke="#FFD700" strokeWidth="3" strokeLinejoin="round" />
+        <text x="42" y="32" fill="#FF3B30" fontFamily="var(--font-heading)" fontSize="20" fontWeight="900">AGRIBANK</text>
       </svg>
     ),
   },
@@ -82,8 +82,8 @@ const clientsList: PartnerItem[] = [
     name: "Viettel Group",
     category: "Telecommunications",
     svgIcon: (
-      <svg width="125" height="38" viewBox="0 0 160 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <text x="5" y="34" fill="#EE0000" fontFamily="var(--font-heading)" fontSize="28" fontWeight="900" letterSpacing="0.04em">viettel</text>
+      <svg width="115" height="38" viewBox="0 0 115 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <text x="50%" y="34" textAnchor="middle" fill="#FF3B30" fontFamily="var(--font-heading)" fontSize="28" fontWeight="900" letterSpacing="0.04em">viettel</text>
       </svg>
     ),
   },
@@ -92,10 +92,10 @@ const clientsList: PartnerItem[] = [
     name: "VNPT Group",
     category: "Telecommunications",
     svgIcon: (
-      <svg width="115" height="38" viewBox="0 0 150 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="22" cy="24" r="15" fill="#0066B3" />
-        <path d="M14 24C14 18.5 17.5 15 22 15C26.5 15 30 18.5 30 24" stroke="#FFFFFF" strokeWidth="3" />
-        <text x="44" y="34" fill="#0066B3" fontFamily="var(--font-heading)" fontSize="25" fontWeight="900" letterSpacing="0.04em">VNPT</text>
+      <svg width="114" height="38" viewBox="0 0 114 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="18" cy="24" r="14" fill="#00D4FF" />
+        <path d="M10 24C10 18.5 13.5 15 18 15C22.5 15 26 18.5 26 24" stroke="#FFFFFF" strokeWidth="3" />
+        <text x="38" y="34" fill="#00D4FF" fontFamily="var(--font-heading)" fontSize="25" fontWeight="900" letterSpacing="0.04em">VNPT</text>
       </svg>
     ),
   },
@@ -104,10 +104,10 @@ const clientsList: PartnerItem[] = [
     name: "Petrovietnam (PVN)",
     category: "Energy & Oil",
     svgIcon: (
-      <svg width="145" height="38" viewBox="0 0 185 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M12 36L20 8L28 36Z" fill="#EE1C25" />
-        <path d="M20 16L28 36H12Z" fill="#0054A6" />
-        <text x="36" y="32" fill="#0054A6" fontFamily="var(--font-heading)" fontSize="18" fontWeight="900">PETROVIETNAM</text>
+      <svg width="175" height="38" viewBox="0 0 175 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M6 36L14 8L22 36Z" fill="#FF3B30" />
+        <path d="M14 16L22 36H6Z" fill="#00D4FF" />
+        <text x="30" y="32" fill="#00D4FF" fontFamily="var(--font-heading)" fontSize="18" fontWeight="900">PETROVIETNAM</text>
       </svg>
     ),
   },
@@ -116,10 +116,10 @@ const clientsList: PartnerItem[] = [
     name: "EVN - Tập đoàn Điện lực",
     category: "Energy & Utility",
     svgIcon: (
-      <svg width="115" height="38" viewBox="0 0 150 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="20" cy="24" r="14" fill="#002C6C" />
-        <path d="M22 14L15 26H22L18 34L27 22H20L22 14Z" fill="#ED1C24" />
-        <text x="42" y="34" fill="#002C6C" fontFamily="var(--font-heading)" fontSize="26" fontWeight="900" letterSpacing="0.06em">EVN</text>
+      <svg width="104" height="38" viewBox="0 0 104 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="18" cy="24" r="14" fill="#00D4FF" />
+        <path d="M20 14L13 26H20L16 34L25 22H18L20 14Z" fill="#FF3B30" />
+        <text x="38" y="34" fill="#00D4FF" fontFamily="var(--font-heading)" fontSize="26" fontWeight="900" letterSpacing="0.06em">EVN</text>
       </svg>
     ),
   },
@@ -128,10 +128,10 @@ const clientsList: PartnerItem[] = [
     name: "Vinhomes",
     category: "Real Estate & Urban",
     svgIcon: (
-      <svg width="135" height="38" viewBox="0 0 170 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M10 32L20 12L30 32H23L20 23L17 32H10Z" fill="#1A365D" />
-        <path d="M20 12L25 22H15L20 12Z" fill="#C59B27" />
-        <text x="36" y="32" fill="#1A365D" fontFamily="var(--font-heading)" fontSize="21" fontWeight="800">VINHOMES</text>
+      <svg width="146" height="38" viewBox="0 0 146 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M6 32L16 12L26 32H19L16 23L13 32H6Z" fill="#38CFC8" />
+        <path d="M16 12L21 22H11L16 12Z" fill="#FFD700" />
+        <text x="32" y="32" fill="#38CFC8" fontFamily="var(--font-heading)" fontSize="21" fontWeight="900">VINHOMES</text>
       </svg>
     ),
   },
@@ -140,9 +140,9 @@ const clientsList: PartnerItem[] = [
     name: "Sun Group",
     category: "Tourism & Real Estate",
     svgIcon: (
-      <svg width="135" height="38" viewBox="0 0 170 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="20" cy="24" r="12" fill="#E30613" />
-        <text x="40" y="32" fill="#E30613" fontFamily="var(--font-heading)" fontSize="22" fontWeight="900" letterSpacing="0.04em">SUN GROUP</text>
+      <svg width="164" height="38" viewBox="0 0 164 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="16" cy="24" r="12" fill="#FF3B30" />
+        <text x="34" y="32" fill="#FF3B30" fontFamily="var(--font-heading)" fontSize="22" fontWeight="900" letterSpacing="0.04em">SUN GROUP</text>
       </svg>
     ),
   },
@@ -151,25 +151,25 @@ const clientsList: PartnerItem[] = [
     name: "Đạm Cà Mau",
     category: "PVCFC Group",
     svgIcon: (
-      <svg width="140" height="38" viewBox="0 0 175 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="20" cy="24" r="14" fill="#009639" />
-        <path d="M15 24L20 16L25 24L20 32Z" fill="#FFC72C" />
-        <text x="42" y="26" fill="#009639" fontFamily="var(--font-heading)" fontSize="17" fontWeight="800">ĐẠM CÀ MAU</text>
-        <text x="42" y="39" fill="#E30613" fontFamily="var(--font-geist-mono)" fontSize="10" fontWeight="700">PVCFC</text>
+      <svg width="150" height="38" viewBox="0 0 150 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="18" cy="24" r="14" fill="#34D399" />
+        <path d="M13 24L18 16L23 24L18 32Z" fill="#FFD700" />
+        <text x="38" y="26" fill="#34D399" fontFamily="var(--font-heading)" fontSize="17" fontWeight="900">ĐẠM CÀ MAU</text>
+        <text x="38" y="39" fill="#FF3B30" fontFamily="var(--font-geist-mono)" fontSize="10" fontWeight="700">PVCFC</text>
       </svg>
     ),
   },
 ];
 
-// Danh sách ĐỐI TÁC TRUYỀN THÔNG (Media & Strategic Partners)
+// Danh sách ĐỐI TÁC TRUYỀN THÔNG (Media & Strategic Partners) - Centered Artwork
 const mediaPartnersList: PartnerItem[] = [
   {
     id: "vov",
     name: "VOV - Đài Tiếng nói VN",
     category: "National Radio",
     svgIcon: (
-      <svg width="120" height="38" viewBox="0 0 150 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <text x="10" y="36" fill="#00529C" fontFamily="var(--font-heading)" fontSize="34" fontWeight="900" letterSpacing="0.04em">V<tspan fill="#ED1C24">O</tspan><tspan fill="#00529C">V</tspan></text>
+      <svg width="90" height="38" viewBox="0 0 90 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <text x="50%" y="36" textAnchor="middle" fill="#00D4FF" fontFamily="var(--font-heading)" fontSize="34" fontWeight="900" letterSpacing="0.04em">V<tspan fill="#FF3B30">O</tspan><tspan fill="#00D4FF">V</tspan></text>
       </svg>
     ),
   },
@@ -178,8 +178,8 @@ const mediaPartnersList: PartnerItem[] = [
     name: "VTC - Truyền hình KTS",
     category: "Digital Television",
     svgIcon: (
-      <svg width="120" height="38" viewBox="0 0 150 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <text x="10" y="36" fill="#ED1C24" fontFamily="var(--font-heading)" fontSize="34" fontWeight="900" letterSpacing="0.04em">V<tspan fill="#00529C">T</tspan><tspan fill="#ED1C24">C</tspan></text>
+      <svg width="90" height="38" viewBox="0 0 90 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <text x="50%" y="36" textAnchor="middle" fill="#FF3B30" fontFamily="var(--font-heading)" fontSize="34" fontWeight="900" letterSpacing="0.04em">V<tspan fill="#00D4FF">T</tspan><tspan fill="#FF3B30">C</tspan></text>
       </svg>
     ),
   },
@@ -188,8 +188,8 @@ const mediaPartnersList: PartnerItem[] = [
     name: "Báo Nhân Dân",
     category: "National Press",
     svgIcon: (
-      <svg width="140" height="38" viewBox="0 0 180 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <text x="5" y="32" fill="#DA251D" fontFamily="var(--font-heading)" fontSize="21" fontWeight="900" letterSpacing="0.02em">NHÂN DÂN</text>
+      <svg width="130" height="38" viewBox="0 0 130 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <text x="50%" y="32" textAnchor="middle" fill="#FF3B30" fontFamily="var(--font-heading)" fontSize="21" fontWeight="900" letterSpacing="0.02em">NHÂN DÂN</text>
       </svg>
     ),
   },
@@ -198,8 +198,8 @@ const mediaPartnersList: PartnerItem[] = [
     name: "VnExpress",
     category: "Digital News",
     svgIcon: (
-      <svg width="140" height="38" viewBox="0 0 180 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <text x="5" y="32" fill="#9F224E" fontFamily="var(--font-heading)" fontSize="23" fontWeight="900">VnExpress</text>
+      <svg width="125" height="38" viewBox="0 0 125 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <text x="50%" y="32" textAnchor="middle" fill="#F43F5E" fontFamily="var(--font-heading)" fontSize="23" fontWeight="900">VnExpress</text>
       </svg>
     ),
   },
@@ -208,8 +208,8 @@ const mediaPartnersList: PartnerItem[] = [
     name: "Báo Tuổi Trẻ",
     category: "National Press",
     svgIcon: (
-      <svg width="130" height="38" viewBox="0 0 165 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <text x="5" y="33" fill="#D2232A" fontFamily="var(--font-heading)" fontSize="25" fontWeight="900">Tuổi Trẻ</text>
+      <svg width="110" height="38" viewBox="0 0 110 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <text x="50%" y="33" textAnchor="middle" fill="#FF3B30" fontFamily="var(--font-heading)" fontSize="25" fontWeight="900">Tuổi Trẻ</text>
       </svg>
     ),
   },
@@ -218,8 +218,8 @@ const mediaPartnersList: PartnerItem[] = [
     name: "Báo Thanh Niên",
     category: "National Press",
     svgIcon: (
-      <svg width="140" height="38" viewBox="0 0 180 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <text x="5" y="32" fill="#0054A6" fontFamily="var(--font-heading)" fontSize="22" fontWeight="900">THANH NIÊN</text>
+      <svg width="140" height="38" viewBox="0 0 140 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <text x="50%" y="32" textAnchor="middle" fill="#00D4FF" fontFamily="var(--font-heading)" fontSize="22" fontWeight="900">THANH NIÊN</text>
       </svg>
     ),
   },
@@ -228,8 +228,8 @@ const mediaPartnersList: PartnerItem[] = [
     name: "Báo Lao Động",
     category: "National Press",
     svgIcon: (
-      <svg width="135" height="38" viewBox="0 0 170 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <text x="5" y="33" fill="#C8102E" fontFamily="var(--font-heading)" fontSize="24" fontWeight="900">LAO ĐỘNG</text>
+      <svg width="130" height="38" viewBox="0 0 130 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <text x="50%" y="33" textAnchor="middle" fill="#FF3B30" fontFamily="var(--font-heading)" fontSize="24" fontWeight="900">LAO ĐỘNG</text>
       </svg>
     ),
   },
@@ -238,8 +238,8 @@ const mediaPartnersList: PartnerItem[] = [
     name: "Báo Dân Trí",
     category: "Digital News",
     svgIcon: (
-      <svg width="125" height="38" viewBox="0 0 160 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <text x="5" y="34" fill="#008844" fontFamily="var(--font-heading)" fontSize="26" fontWeight="900">Dân trí</text>
+      <svg width="105" height="38" viewBox="0 0 105 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <text x="50%" y="34" textAnchor="middle" fill="#34D399" fontFamily="var(--font-heading)" fontSize="26" fontWeight="900">Dân trí</text>
       </svg>
     ),
   },
@@ -248,8 +248,8 @@ const mediaPartnersList: PartnerItem[] = [
     name: "VietNamNet",
     category: "Digital News",
     svgIcon: (
-      <svg width="140" height="38" viewBox="0 0 180 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <text x="5" y="32" fill="#004A99" fontFamily="var(--font-heading)" fontSize="22" fontWeight="900">VietNamNet</text>
+      <svg width="140" height="38" viewBox="0 0 140 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <text x="50%" y="32" textAnchor="middle" fill="#00D4FF" fontFamily="var(--font-heading)" fontSize="22" fontWeight="900">VietNamNet</text>
       </svg>
     ),
   },
@@ -258,8 +258,8 @@ const mediaPartnersList: PartnerItem[] = [
     name: "Báo Quân Đội Nhân Dân",
     category: "National Press",
     svgIcon: (
-      <svg width="150" height="38" viewBox="0 0 190 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <text x="5" y="31" fill="#006837" fontFamily="var(--font-heading)" fontSize="18" fontWeight="900">QUÂN ĐỘI NHÂN DÂN</text>
+      <svg width="175" height="38" viewBox="0 0 175 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <text x="50%" y="31" textAnchor="middle" fill="#34D399" fontFamily="var(--font-heading)" fontSize="18" fontWeight="900">QUÂN ĐỘI NHÂN DÂN</text>
       </svg>
     ),
   },
@@ -268,8 +268,8 @@ const mediaPartnersList: PartnerItem[] = [
     name: "VTC News",
     category: "Digital Press",
     svgIcon: (
-      <svg width="130" height="38" viewBox="0 0 165 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <text x="5" y="33" fill="#ED1C24" fontFamily="var(--font-heading)" fontSize="24" fontWeight="900">VTC NEWS</text>
+      <svg width="130" height="38" viewBox="0 0 130 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <text x="50%" y="33" textAnchor="middle" fill="#FF3B30" fontFamily="var(--font-heading)" fontSize="24" fontWeight="900">VTC NEWS</text>
       </svg>
     ),
   },

@@ -57,7 +57,7 @@
 
 .legacyTitle {
   font-family: $font-heading;
-  font-size: 1.05rem;
+  font-size: 1.15rem;
   font-weight: 900;
   color: #FFF5D0;
   letter-spacing: 0.12em;
@@ -66,7 +66,7 @@
 
 .legacySubtitle {
   font-family: var(--font-geist-mono), monospace;
-  font-size: 0.65rem;
+  font-size: 0.75rem;
   color: #D4AF37;
   letter-spacing: 0.15em;
 }
@@ -87,7 +87,7 @@
 
 .quoteText {
   font-family: $font-heading;
-  font-size: 0.85rem;
+  font-size: 0.95rem;
   font-weight: 700;
   color: #F5E0A3;
   font-style: italic;
@@ -114,7 +114,7 @@
 
 .colTitle {
   font-family: $font-heading;
-  font-size: 0.82rem;
+  font-size: 0.92rem;
   font-weight: 900;
   color: #FFF5D0;
   letter-spacing: 0.12em;
@@ -133,7 +133,7 @@
 
   li, a {
     font-family: $font-body;
-    font-size: 0.84rem;
+    font-size: 0.92rem;
     color: #CBD5E1;
     text-decoration: none;
     transition: color 0.25s ease;
@@ -156,7 +156,7 @@
 
   p {
     font-family: $font-body;
-    font-size: 0.84rem;
+    font-size: 0.92rem;
     color: #CBD5E1;
     margin: 0;
     line-height: 1.45;
@@ -183,7 +183,7 @@
 
 .copyrightText {
   font-family: var(--font-geist-mono), monospace;
-  font-size: 0.72rem;
+  font-size: 0.8rem;
   color: #94A3B8;
   margin: 0;
 }
@@ -195,7 +195,7 @@
 
   span {
     font-family: var(--font-geist-mono), monospace;
-    font-size: 0.65rem;
+    font-size: 0.72rem;
     color: #D4AF37;
     letter-spacing: 0.12em;
   }

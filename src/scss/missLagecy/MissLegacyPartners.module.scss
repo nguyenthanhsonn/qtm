@@ -91,7 +91,7 @@
 
 .eyebrowText {
   font-family: var(--font-geist-mono), monospace;
-  font-size: 0.85rem;
+  font-size: 0.95rem;
   font-weight: 800;
   letter-spacing: 0.18em;
   color: #CBD5E1;
@@ -144,7 +144,7 @@
 
 .sponsorSubtitle {
   font-family: $font-heading;
-  font-size: 1rem;
+  font-size: 1.12rem;
   font-weight: 900;
   color: #F5E0A3;
   letter-spacing: 0.12em;
@@ -154,7 +154,7 @@
 /* Increased Description Text Size */
 .subtitleDesc {
   font-family: $font-body;
-  font-size: clamp(1.05rem, 1.35vw, 1.2rem);
+  font-size: clamp(1.12rem, 1.45vw, 1.28rem);
   line-height: 1.7;
   color: #E2E8F0;
   font-weight: 500;
@@ -268,7 +268,7 @@
 
 .thankYouText {
   font-family: $font-heading;
-  font-size: clamp(1.05rem, 1.45vw, 1.25rem);
+  font-size: clamp(1.18rem, 1.6vw, 1.38rem);
   font-weight: 800;
   color: #F5E0A3;
   line-height: 1.5;
