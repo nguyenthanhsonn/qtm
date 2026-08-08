@@ -163,7 +163,7 @@ export default function MissLegacyHero({
           >
             <div className={styles.queensFrame}>
               <Image
-                src="/miss-legacy-queens-seamless.png"
+                src="/miss-legacy-queens-emerald.png"
                 alt="Miss Legacy Queens - Đại sứ Văn hóa Việt Nam"
                 width={650}
                 height={520}

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Poppins, Montserrat, Nunito_Sans } from "next/font/google";
+import { Geist, Geist_Mono, Poppins, Montserrat, Nunito_Sans, Chakra_Petch } from "next/font/google";
 import "../scss/globals.css";
 import "@/scss/sections.scss";
 import LayoutWrapper from "@/components/LayoutWrapper";
@@ -10,23 +10,34 @@ import "aos/dist/aos.css";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
+  display: "swap",
 });
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
+  display: "swap",
 });
 
 const poppins = Poppins({
   variable: "--font-poppins",
-  subsets: ["latin"],
-  weight: ["600", "700", "800"],
+  subsets: ["latin", "latin-ext"],
+  weight: ["500", "600", "700", "800", "900"],
+  display: "swap",
+});
+
+// Primary Tech-Geometric Heading Fallback for SVN-Aguda
+const chakraPetch = Chakra_Petch({
+  variable: "--font-chakra-petch",
+  subsets: ["latin", "latin-ext", "vietnamese"],
+  weight: ["400", "500", "600", "700"],
+  display: "swap",
 });
 
 // Fallback for SVN-Aguda (commercial font) — geometric, thick, rounded
 const montserrat = Montserrat({
   variable: "--font-montserrat",
-  subsets: ["latin"],
+  subsets: ["latin", "latin-ext", "vietnamese"],
   weight: ["400", "500", "600", "700", "800", "900"],
   display: "swap",
 });
@@ -34,8 +45,8 @@ const montserrat = Montserrat({
 // Fallback for Proxima Nova (commercial font) — neutral, humanist, readable
 const nunitoSans = Nunito_Sans({
   variable: "--font-nunito-sans",
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700", "800"],
+  subsets: ["latin", "latin-ext", "vietnamese"],
+  weight: ["300", "400", "500", "600", "700", "800", "900"],
   display: "swap",
 });
 
@@ -50,7 +61,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} ${poppins.variable} ${montserrat.variable} ${nunitoSans.variable} h-full antialiased`}
+      className={`${geistSans.variable} ${geistMono.variable} ${poppins.variable} ${chakraPetch.variable} ${montserrat.variable} ${nunitoSans.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
         <ClickSpark
