@@ -73,7 +73,7 @@
 
 .eyebrowText {
   font-family: var(--font-geist-mono), monospace;
-  font-size: 0.92rem;
+  font-size: 1rem;
   font-weight: 800;
   letter-spacing: 0.15em;
   color: #CBD5E1;
@@ -146,7 +146,7 @@
 
 .heroSubtitle {
   font-family: $font-heading;
-  font-size: clamp(0.95rem, 1.5vw, 1.22rem);
+  font-size: clamp(1.02rem, 1.6vw, 1.3rem);
   font-weight: 800;
   color: #F5E0A3;
   letter-spacing: 0.22em;
@@ -171,7 +171,7 @@
 
   .quoteText {
     font-family: $font-body;
-    font-size: clamp(1.05rem, 1.35vw, 1.18rem);
+    font-size: clamp(1.15rem, 1.45vw, 1.28rem);
     color: #F1F5F9;
     line-height: 1.7;
     font-style: italic;
@@ -196,7 +196,7 @@
 
   .pillarName {
     font-family: $font-heading;
-    font-size: 0.95rem;
+    font-size: 1.05rem;
     font-weight: 900;
     color: #F5E0A3;
     letter-spacing: 0.06em;
@@ -204,7 +204,7 @@
 
   .pillarDesc {
     font-family: $font-body;
-    font-size: 0.82rem;
+    font-size: 0.92rem;
     color: #CBD5E1;
   }
 }
@@ -332,7 +332,7 @@
 
 .colTitle {
   font-family: $font-heading;
-  font-size: 0.85rem;
+  font-size: 0.98rem;
   font-weight: 900;
   color: #FFFFFF;
   letter-spacing: 0.02em;
@@ -342,7 +342,7 @@
 
 .colDesc {
   font-family: $font-body;
-  font-size: 0.78rem;
+  font-size: 0.88rem;
   color: #CBD5E1;
   line-height: 1.45;
   margin: 0;
@@ -364,7 +364,7 @@
 
 .ctaLabelTag {
   font-family: var(--font-geist-mono), monospace;
-  font-size: 0.72rem;
+  font-size: 0.82rem;
   font-weight: 800;
   letter-spacing: 0.12em;
   color: #D4AF37;
@@ -378,7 +378,7 @@
   background: linear-gradient(135deg, #D4AF37 0%, #AA7C11 100%);
   color: #04140D;
   font-family: $font-heading;
-  font-size: 0.88rem;
+  font-size: 0.98rem;
   font-weight: 900;
   padding: 0.8rem 1.6rem;
   border-radius: 999px;
