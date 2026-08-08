@@ -81,7 +81,7 @@ export default function HomeCtaSection() {
           className={styles.homeCtaTitle}
           data-aos="zoom-in"
         >
-          GIÁ <span className={styles.techBoxHighlight}>TRỊ</span> <span className={styles.textNavy}>CỐT</span> <span className={styles.titleHighlight}>LÕI</span>
+          GIÁ <span className={styles.titleHighlight}>TRỊ CỐT LÕI</span>
         </h2>
 
         <motion.p

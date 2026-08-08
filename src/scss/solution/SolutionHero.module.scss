@@ -11,6 +11,14 @@
   display: flex;
   align-items: center;
   box-sizing: border-box;
+
+  @media (max-width: 900px) {
+    height: auto !important;
+    min-height: auto !important;
+    padding-top: clamp(6.5rem, 12vh, 8.5rem) !important;
+    padding-bottom: 4rem !important;
+    align-items: flex-start !important;
+  }
 }
 
 .solHeroBg {
