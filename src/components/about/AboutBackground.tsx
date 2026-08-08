@@ -3,13 +3,32 @@
 import React, { useEffect, useRef } from "react";
 import styles from "./AboutBackground.module.scss";
 
-interface Particle {
+interface NetworkNode {
   x: number;
   y: number;
   vx: number;
   vy: number;
   radius: number;
+  baseRadius: number;
   color: string;
+  alpha: number;
+  pulsePhase: number;
+  pulseSpeed: number;
+}
+
+interface DataPacket {
+  fromNode: number;
+  toNode: number;
+  progress: number;
+  speed: number;
+  color: string;
+}
+
+interface ClickRipple {
+  x: number;
+  y: number;
+  radius: number;
+  maxRadius: number;
   alpha: number;
 }
 
@@ -24,47 +43,111 @@ export default function AboutBackground() {
     if (!ctx) return;
 
     let animId: number;
-    let particles: Particle[] = [];
     let lastTime = performance.now();
     let isPaused = false;
+    let time = 0;
+
+    let mouseActive = false;
+    let mouseX = window.innerWidth / 2;
+    let mouseY = window.innerHeight / 2;
+    let targetMouseX = mouseX;
+    let targetMouseY = mouseY;
+    let cursorRadarAngle = 0;
 
     const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-    const getParticleCount = () => {
-      if (typeof window === "undefined") return 60;
-      const w = window.innerWidth;
-      const cores = typeof navigator !== "undefined" ? (navigator.hardwareConcurrency ?? 4) : 4;
-      if (w < 768 || cores <= 2) return 32; // Mobile / Low-end device (~45% density)
-      if (cores <= 4) return 50;
-      return 75;
+    // Tech network node colors: Electric Cyan, Cyber Turquoise, Indigo Blue, Pure White
+    const colors = ["#00D4FF", "#38CFC8", "#6366F1", "#3B82F6", "#FFFFFF"];
+
+    let nodes: NetworkNode[] = [];
+    let packets: DataPacket[] = [];
+    let ripples: ClickRipple[] = [];
+
+    const getNodeCount = (w: number) => {
+      if (w < 640) return 45;
+      if (w < 1024) return 80;
+      return 120;
     };
 
-    const colors = ["#38CFC8", "#2095AD", "#00D4FF", "#6366F1", "#3B82F6"];
+    const initNetwork = (w: number, h: number) => {
+      const count = getNodeCount(w);
+      nodes = [];
+      packets = [];
 
-    const initParticles = (w: number, h: number) => {
-      const count = getParticleCount();
-      particles = [];
       for (let i = 0; i < count; i++) {
-        particles.push({
+        const rad = Math.random() * 2.2 + 2.0;
+        nodes.push({
           x: Math.random() * w,
           y: Math.random() * h,
           vx: (Math.random() - 0.5) * (prefersReducedMotion ? 0 : 0.45),
           vy: (Math.random() - 0.5) * (prefersReducedMotion ? 0 : 0.45),
-          radius: Math.random() * 2.2 + 1.8,
+          radius: rad,
+          baseRadius: rad,
           color: colors[Math.floor(Math.random() * colors.length)],
-          alpha: Math.random() * 0.35 + 0.45,
+          alpha: Math.random() * 0.45 + 0.5,
+          pulsePhase: Math.random() * Math.PI * 2,
+          pulseSpeed: Math.random() * 0.003 + 0.002,
         });
       }
     };
 
     const resizeCanvas = () => {
-      const width = (canvas.width = window.innerWidth);
-      const height = (canvas.height = window.innerHeight);
-      initParticles(width, height);
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      const w = window.innerWidth;
+      const h = window.innerHeight;
+
+      canvas.width = w * dpr;
+      canvas.height = h * dpr;
+      canvas.style.width = `${w}px`;
+      canvas.style.height = `${h}px`;
+
+      ctx.scale(dpr, dpr);
+      initNetwork(w, h);
     };
 
     resizeCanvas();
     window.addEventListener("resize", resizeCanvas);
+
+    // Mouse Tracking for Immediate Interactive Constellation Links
+    const handleMouseMove = (e: MouseEvent) => {
+      if (!mouseActive) {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+        mouseActive = true;
+      }
+      targetMouseX = e.clientX;
+      targetMouseY = e.clientY;
+    };
+
+    const handleMouseLeave = () => {
+      mouseActive = false;
+    };
+
+    const handleMouseDown = (e: MouseEvent) => {
+      ripples.push({
+        x: e.clientX,
+        y: e.clientY,
+        radius: 5,
+        maxRadius: 180,
+        alpha: 0.85,
+      });
+
+      // Push nearby nodes on click
+      for (const n of nodes) {
+        const dx = n.x - e.clientX;
+        const dy = n.y - e.clientY;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < 180 && dist > 0) {
+          const force = (1 - dist / 180) * 12;
+          n.x += (dx / dist) * force;
+          n.y += (dy / dist) * force;
+        }
+      }
+    };
+
+    window.addEventListener("mousemove", handleMouseMove, { passive: true });
+    document.addEventListener("mouseleave", handleMouseLeave);
+    window.addEventListener("mousedown", handleMouseDown);
 
     const onVisibilityChange = () => {
       isPaused = document.hidden;
@@ -74,8 +157,7 @@ export default function AboutBackground() {
     };
     document.addEventListener("visibilitychange", onVisibilityChange);
 
-    let scanlineY = 0;
-
+    // Main 60fps Render Loop: Interactive Tech Network Connection (Plexus Mesh)
     const render = (now: number) => {
       if (isPaused) {
         animId = requestAnimationFrame(render);
@@ -84,70 +166,230 @@ export default function AboutBackground() {
 
       const dt = Math.min((now - lastTime) / 1000, 0.1);
       lastTime = now;
+      time += (prefersReducedMotion ? 0 : dt) * 1000;
+      cursorRadarAngle += dt * 1.8;
 
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      // Responsive Mouse Interpolation
+      if (mouseActive) {
+        mouseX += (targetMouseX - mouseX) * 0.18;
+        mouseY += (targetMouseY - mouseY) * 0.18;
+      }
 
-      const w = canvas.width;
-      const h = canvas.height;
+      const w = window.innerWidth;
+      const h = window.innerHeight;
 
-      // Update & Draw Particles
-      for (let i = 0; i < particles.length; i++) {
-        const p = particles[i];
-        p.x += p.vx * dt * 60;
-        p.y += p.vy * dt * 60;
+      ctx.clearRect(0, 0, w, h);
 
-        if (p.x < 0) p.x = w;
-        if (p.x > w) p.x = 0;
-        if (p.y < 0) p.y = h;
-        if (p.y > h) p.y = 0;
+      const maxDist = w < 768 ? 100 : 140;
+      const maxDistSq = maxDist * maxDist;
+      const mouseMaxDist = 220;
+      const mouseMaxDistSq = mouseMaxDist * mouseMaxDist;
+
+      // 1. Update Node Positions & Draw Glowing Nodes
+      for (let i = 0; i < nodes.length; i++) {
+        const n = nodes[i];
+
+        if (!prefersReducedMotion) {
+          n.x += n.vx * dt * 60;
+          n.y += n.vy * dt * 60;
+
+          // Screen edge wrap
+          if (n.x < -15) n.x = w + 15;
+          if (n.x > w + 15) n.x = -15;
+          if (n.y < -15) n.y = h + 15;
+          if (n.y > h + 15) n.y = -15;
+
+          // Mouse Gravitational Field
+          if (mouseActive) {
+            const mdx = n.x - mouseX;
+            const mdy = n.y - mouseY;
+            const mdistSq = mdx * mdx + mdy * mdy;
+            if (mdistSq < mouseMaxDistSq && mdistSq > 100) {
+              const mdist = Math.sqrt(mdistSq);
+              const force = (1 - mdist / mouseMaxDist) * 0.65;
+              n.x += (mdx / mdist) * force * 1.4;
+              n.y += (mdy / mdist) * force * 1.4;
+            }
+          }
+        }
+
+        // Pulsing radius & halo
+        const pulse = Math.sin(time * n.pulseSpeed + n.pulsePhase);
+        n.radius = n.baseRadius + pulse * 0.6;
 
         ctx.save();
-        ctx.globalAlpha = p.alpha;
-        ctx.fillStyle = p.color;
-        ctx.shadowColor = p.color;
-        ctx.shadowBlur = 8;
+        ctx.globalAlpha = n.alpha;
+        ctx.fillStyle = n.color;
+        ctx.shadowColor = n.color;
+        ctx.shadowBlur = 10;
         ctx.beginPath();
-        ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+        ctx.arc(n.x, n.y, n.radius, 0, Math.PI * 2);
         ctx.fill();
+
+        // Pulsing Halo for key nodes
+        if (n.baseRadius > 2.8) {
+          ctx.beginPath();
+          ctx.arc(n.x, n.y, n.radius * 2.2, 0, Math.PI * 2);
+          ctx.fillStyle = "rgba(56, 207, 200, 0.12)";
+          ctx.fill();
+        }
         ctx.restore();
       }
 
-      // Constellation Lines
-      const maxDist = w < 768 ? 100 : 130;
-      for (let i = 0; i < particles.length; i++) {
-        for (let j = i + 1; j < particles.length; j++) {
-          const dx = particles[i].x - particles[j].x;
-          const dy = particles[i].y - particles[j].y;
-          const dist = Math.sqrt(dx * dx + dy * dy);
+      // 2. Draw Network Connection Links Between Nodes
+      for (let i = 0; i < nodes.length; i++) {
+        for (let j = i + 1; j < nodes.length; j++) {
+          const dx = nodes[i].x - nodes[j].x;
+          const dy = nodes[i].y - nodes[j].y;
+          const distSq = dx * dx + dy * dy;
 
-          if (dist < maxDist) {
-            const lineAlpha = (1 - dist / maxDist) * 0.18;
+          if (distSq < maxDistSq) {
+            const dist = Math.sqrt(distSq);
+            const lineAlpha = (1 - dist / maxDist) * 0.42;
+
             ctx.save();
             ctx.globalAlpha = lineAlpha;
-            ctx.strokeStyle = "#38CFC8";
-            ctx.lineWidth = 1;
+            const lineGrad = ctx.createLinearGradient(nodes[i].x, nodes[i].y, nodes[j].x, nodes[j].y);
+            lineGrad.addColorStop(0, nodes[i].color);
+            lineGrad.addColorStop(1, nodes[j].color);
+
+            ctx.strokeStyle = lineGrad;
+            ctx.lineWidth = 1.1;
             ctx.beginPath();
-            ctx.moveTo(particles[i].x, particles[i].y);
-            ctx.lineTo(particles[j].x, particles[j].y);
+            ctx.moveTo(nodes[i].x, nodes[i].y);
+            ctx.lineTo(nodes[j].x, nodes[j].y);
+            ctx.stroke();
+            ctx.restore();
+
+            // Spawn Data Packets along active links
+            if (!prefersReducedMotion && Math.random() < 0.00045 && packets.length < 24) {
+              packets.push({
+                fromNode: i,
+                toNode: j,
+                progress: 0,
+                speed: Math.random() * 0.014 + 0.008,
+                color: Math.random() > 0.4 ? "#00D4FF" : "#38CFC8",
+              });
+            }
+          }
+        }
+
+        // 3. Connect Nodes directly to Mouse Cursor Hub with Vivid Laser Beams
+        if (mouseActive) {
+          const mdx = nodes[i].x - mouseX;
+          const mdy = nodes[i].y - mouseY;
+          const mdistSq = mdx * mdx + mdy * mdy;
+
+          if (mdistSq < mouseMaxDistSq) {
+            const mdist = Math.sqrt(mdistSq);
+            const mAlpha = (1 - mdist / mouseMaxDist) * 0.75;
+
+            ctx.save();
+            ctx.globalAlpha = mAlpha;
+            const mouseBeamGrad = ctx.createLinearGradient(mouseX, mouseY, nodes[i].x, nodes[i].y);
+            mouseBeamGrad.addColorStop(0, "#00D4FF");
+            mouseBeamGrad.addColorStop(1, nodes[i].color);
+
+            ctx.strokeStyle = mouseBeamGrad;
+            ctx.shadowColor = "#38CFC8";
+            ctx.shadowBlur = 10;
+            ctx.lineWidth = 1.4;
+            ctx.beginPath();
+            ctx.moveTo(nodes[i].x, nodes[i].y);
+            ctx.lineTo(mouseX, mouseY);
             ctx.stroke();
             ctx.restore();
           }
         }
       }
 
-      // Subtle Scanline Sweep Effect
-      if (!prefersReducedMotion) {
-        scanlineY += 0.8;
-        if (scanlineY > h) scanlineY = 0;
+      // 4. Update & Draw Traveling Data Packets
+      for (let pIdx = packets.length - 1; pIdx >= 0; pIdx--) {
+        const p = packets[pIdx];
+        p.progress += p.speed;
+
+        if (p.progress >= 1) {
+          packets.splice(pIdx, 1);
+          continue;
+        }
+
+        const nodeA = nodes[p.fromNode];
+        const nodeB = nodes[p.toNode];
+        if (!nodeA || !nodeB) {
+          packets.splice(pIdx, 1);
+          continue;
+        }
+
+        const px = nodeA.x + (nodeB.x - nodeA.x) * p.progress;
+        const py = nodeA.y + (nodeB.y - nodeA.y) * p.progress;
 
         ctx.save();
-        ctx.globalAlpha = 0.04;
-        const grad = ctx.createLinearGradient(0, scanlineY - 40, 0, scanlineY + 40);
-        grad.addColorStop(0, "transparent");
-        grad.addColorStop(0.5, "#38CFC8");
-        grad.addColorStop(1, "transparent");
-        ctx.fillStyle = grad;
-        ctx.fillRect(0, scanlineY - 40, w, 80);
+        ctx.globalAlpha = 0.95;
+        ctx.fillStyle = "#FFFFFF";
+        ctx.shadowColor = p.color;
+        ctx.shadowBlur = 12;
+        ctx.beginPath();
+        ctx.arc(px, py, 2.8, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.restore();
+      }
+
+      // 5. Draw Expanding Click Shockwave Ripples
+      for (let rIdx = ripples.length - 1; rIdx >= 0; rIdx--) {
+        const r = ripples[rIdx];
+        r.radius += dt * 240;
+        r.alpha = Math.max(0, 0.85 * (1 - r.radius / r.maxRadius));
+
+        if (r.radius >= r.maxRadius || r.alpha <= 0.01) {
+          ripples.splice(rIdx, 1);
+          continue;
+        }
+
+        ctx.save();
+        ctx.globalAlpha = r.alpha;
+        ctx.beginPath();
+        ctx.arc(r.x, r.y, r.radius, 0, Math.PI * 2);
+        ctx.strokeStyle = "#00D4FF";
+        ctx.shadowColor = "#38CFC8";
+        ctx.shadowBlur = 15;
+        ctx.lineWidth = 2;
+        ctx.stroke();
+        ctx.restore();
+      }
+
+      // 6. Draw High-Tech Master Hub on Mouse Position
+      if (mouseActive) {
+        ctx.save();
+        // Inner Core Glow
+        ctx.globalAlpha = 0.9;
+        ctx.fillStyle = "#FFFFFF";
+        ctx.shadowColor = "#00D4FF";
+        ctx.shadowBlur = 18;
+        ctx.beginPath();
+        ctx.arc(mouseX, mouseY, 4.5, 0, Math.PI * 2);
+        ctx.fill();
+
+        // Outer Rotating Radar Ring
+        ctx.beginPath();
+        ctx.arc(mouseX, mouseY, 15, 0, Math.PI * 2);
+        ctx.strokeStyle = "rgba(56, 207, 200, 0.65)";
+        ctx.lineWidth = 1.2;
+        ctx.stroke();
+
+        // 4 Radar Crosshair Ticks
+        for (let t = 0; t < 4; t++) {
+          const angle = cursorRadarAngle + (t * Math.PI) / 2;
+          const x1 = mouseX + Math.cos(angle) * 12;
+          const y1 = mouseY + Math.sin(angle) * 12;
+          const x2 = mouseX + Math.cos(angle) * 18;
+          const y2 = mouseY + Math.sin(angle) * 18;
+          ctx.beginPath();
+          ctx.moveTo(x1, y1);
+          ctx.lineTo(x2, y2);
+          ctx.strokeStyle = "#00D4FF";
+          ctx.lineWidth = 1.5;
+          ctx.stroke();
+        }
         ctx.restore();
       }
 
@@ -159,6 +401,9 @@ export default function AboutBackground() {
     return () => {
       cancelAnimationFrame(animId);
       window.removeEventListener("resize", resizeCanvas);
+      window.removeEventListener("mousemove", handleMouseMove);
+      document.removeEventListener("mouseleave", handleMouseLeave);
+      window.removeEventListener("mousedown", handleMouseDown);
       document.removeEventListener("visibilitychange", onVisibilityChange);
     };
   }, []);

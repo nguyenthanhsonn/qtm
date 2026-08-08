@@ -77,7 +77,7 @@ const projectsData: ProjectItem[] = [
   },
 ];
 
-const viewport = { once: true, amount: 0.15 } as const;
+const viewport = { once: false, amount: 0.12 } as const;
 const easeOut = [0.22, 1, 0.36, 1] as const;
 
 export default function SolutionFeaturedProjects() {

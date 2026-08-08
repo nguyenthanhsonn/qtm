@@ -317,11 +317,80 @@
   line-height: 1.25;
 }
 
-/* 4 Satellite Circular Glass Nodes */
-.satelliteNode {
+/* 4 Satellite Circular Glass Nodes in Circular Orbit */
+.orbitingTrack {
   position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  animation: orbitTrackSpin 36s linear infinite;
+  transform-origin: center center;
+  pointer-events: none;
+
+  &:hover {
+    animation-play-state: paused;
+  }
+}
+
+@keyframes orbitTrackSpin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.satelliteSlot {
+  position: absolute;
+  top: 50%;
+  left: 50%;
   width: 145px;
   height: 145px;
+  margin-top: -72.5px;
+  margin-left: -72.5px;
+  pointer-events: auto;
+
+  @media (max-width: 600px) {
+    width: 110px;
+    height: 110px;
+    margin-top: -55px;
+    margin-left: -55px;
+  }
+}
+
+/* 4 Orbit Positions (Radius = 180px, 122px on mobile) */
+.posTopLeft {
+  transform: rotate(-135deg) translate(180px) rotate(135deg);
+  @media (max-width: 600px) {
+    transform: rotate(-135deg) translate(122px) rotate(135deg);
+  }
+}
+
+.posTopRight {
+  transform: rotate(-45deg) translate(180px) rotate(45deg);
+  @media (max-width: 600px) {
+    transform: rotate(-45deg) translate(122px) rotate(45deg);
+  }
+}
+
+.posBottomRight {
+  transform: rotate(45deg) translate(180px) rotate(-45deg);
+  @media (max-width: 600px) {
+    transform: rotate(45deg) translate(122px) rotate(-45deg);
+  }
+}
+
+.posBottomLeft {
+  transform: rotate(135deg) translate(180px) rotate(-135deg);
+  @media (max-width: 600px) {
+    transform: rotate(135deg) translate(122px) rotate(-135deg);
+  }
+}
+
+.satelliteNode {
+  width: 100%;
+  height: 100%;
   border-radius: 50%;
   background: rgba(10, 50, 34, 0.88);
   border: 1.5px solid rgba(212, 175, 55, 0.4);
@@ -333,20 +402,44 @@
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 0.8rem;
   cursor: pointer;
   z-index: 4;
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
 
   &:hover {
-    border-color: rgba(212, 175, 55, 0.8);
-    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.75), 0 0 25px rgba(212, 175, 55, 0.35);
+    border-color: rgba(212, 175, 55, 0.9);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.8), 0 0 30px rgba(212, 175, 55, 0.45);
+  }
+}
+
+.counterRotateInner {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0.8rem;
+  box-sizing: border-box;
+  animation: counterSpin 36s linear infinite;
+  transform-origin: center center;
+
+  .orbitingTrack:hover & {
+    animation-play-state: paused;
   }
 
   @media (max-width: 600px) {
-    width: 110px;
-    height: 110px;
     padding: 0.5rem;
+  }
+}
+
+@keyframes counterSpin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(-360deg);
   }
 }
 
@@ -390,27 +483,6 @@
   @media (max-width: 600px) {
     font-size: 0.6rem;
   }
-}
-
-/* Satellite Node Positioning */
-.posTopLeft {
-  top: 5%;
-  left: 5%;
-}
-
-.posTopRight {
-  top: 5%;
-  right: 5%;
-}
-
-.posBottomRight {
-  bottom: 5%;
-  right: 5%;
-}
-
-.posBottomLeft {
-  bottom: 5%;
-  left: 5%;
 }
 
 

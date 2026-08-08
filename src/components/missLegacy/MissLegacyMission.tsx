@@ -320,19 +320,24 @@ export default function MissLegacyMission() {
                 <p className={styles.centerDesc}>Gìn giữ bản sắc dân tộc</p>
               </motion.div>
 
-              {/* 4 Satellite Circular Glass Nodes */}
-              {SATELLITE_NODES.map((node) => (
-                <motion.div
-                  key={node.id}
-                  className={`${styles.satelliteNode} ${node.posClass}`}
-                  whileHover={{ scale: 1.08, y: -4 }}
-                  transition={{ duration: 0.25 }}
-                >
-                  <div className={styles.satelliteIconBox}>{node.icon}</div>
-                  <h4 className={styles.satelliteTitle}>{node.title}</h4>
-                  <p className={styles.satelliteDesc}>{node.desc}</p>
-                </motion.div>
-              ))}
+              {/* 4 Satellite Circular Glass Nodes in Smooth 360° Orbit */}
+              <div className={styles.orbitingTrack}>
+                {SATELLITE_NODES.map((node) => (
+                  <div key={node.id} className={`${styles.satelliteSlot} ${node.posClass}`}>
+                    <motion.div
+                      className={styles.satelliteNode}
+                      whileHover={{ scale: 1.12 }}
+                      transition={{ duration: 0.25 }}
+                    >
+                      <div className={styles.counterRotateInner}>
+                        <div className={styles.satelliteIconBox}>{node.icon}</div>
+                        <h4 className={styles.satelliteTitle}>{node.title}</h4>
+                        <p className={styles.satelliteDesc}>{node.desc}</p>
+                      </div>
+                    </motion.div>
+                  </div>
+                ))}
+              </div>
             </div>
           </motion.div>
         </div>
