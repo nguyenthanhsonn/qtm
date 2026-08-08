@@ -161,6 +161,18 @@
   gap: 1.1rem;
   flex-wrap: wrap;
   margin-top: 0.25rem;
+
+  @media (max-width: 480px) {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+
+    .btnPrimary,
+    .btnOutline {
+      width: 100%;
+      justify-content: center;
+    }
+  }
 }
 
 .btnPrimary {

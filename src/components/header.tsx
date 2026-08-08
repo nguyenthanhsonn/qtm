@@ -203,7 +203,7 @@ export default function Header() {
 
           {/* Right: CTA + Hamburger */}
           <div style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
-            <Link href="/contact">
+            <Link href="/contact" className={styles.headerCtaWrapper}>
               <ContactButton />
             </Link>
             <button

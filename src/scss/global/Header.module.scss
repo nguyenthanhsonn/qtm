@@ -377,12 +377,13 @@ $bg-dropdown: rgba(10, 15, 30, 0.95);
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 900px) {
   .headerNav,
-  .ctaBtn {
-    display: none;
+  .ctaBtn,
+  .headerCtaWrapper {
+    display: none !important;
   }
 
-  .hamburgerBtn  { display: flex; }
+  .hamburgerBtn { display: flex; }
   .mobileOverlay { display: block; }
 }

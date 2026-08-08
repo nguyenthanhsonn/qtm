@@ -94,6 +94,11 @@
   margin: 0;
   font-weight: 400;
   white-space: nowrap;
+
+  @media (max-width: 768px) {
+    white-space: normal;
+    text-align: center;
+  }
 }
 
 .homeSolutionsGrid {

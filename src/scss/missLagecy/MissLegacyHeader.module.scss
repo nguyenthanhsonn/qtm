@@ -279,8 +279,9 @@ $bg-drawer: rgba(6, 38, 25, 0.98);
 }
 
 @media (max-width: 900px) {
-  .headerNav {
-    display: none;
+  .headerNav,
+  .headerCtaWrapper {
+    display: none !important;
   }
 
   .hamburgerBtn {
