@@ -169,9 +169,9 @@
 .mainHeroTitle {
   position: relative;
   z-index: 1;
-  font-family: $font-heading;
+  font-family: var(--font-chakra-petch), $font-heading;
   font-size: clamp(2.2rem, 3.8vw, 3.3rem);
-  font-weight: 900;
+  font-weight: 700;
   line-height: 1.18;
   letter-spacing: -0.02em;
   color: #FFFFFF;
@@ -180,7 +180,15 @@
   flex-direction: column;
 }
 
+.titleLinePlain {
+  font-family: var(--font-chakra-petch), $font-heading;
+  font-weight: 700;
+  color: #FFFFFF;
+}
+
 .titleLineHighlight {
+  font-family: var(--font-chakra-petch), $font-heading;
+  font-weight: 700;
   background: linear-gradient(90deg, #3B82F6 0%, #4FD1E8 60%, #38CFC8 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
