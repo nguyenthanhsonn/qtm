@@ -147,10 +147,26 @@ export default function Carousel3D({ items }: Carousel3DProps) {
       onTouchMove={handleTouchMove}
       onTouchEnd={handleTouchEnd}
     >
-      {/* HUD Ambient Grid Lines */}
+      {/* 3D Holographic Digital Earth Globe in Center */}
       <div className={styles.c3dHudBg} aria-hidden="true">
         <div className={styles.hudLineGlow} />
-        <div className={styles.hudCircleCenter} />
+        <div className={styles.holoGlobeWrap}>
+          <div className={styles.globeAtmosphere} />
+          <div className={styles.orbitRingOuter} />
+          <div className={styles.orbitRingInner} />
+          <div className={styles.globeSphere}>
+            <div className={styles.latLine1} />
+            <div className={styles.latLine2} />
+            <div className={styles.latLine3} />
+            <div className={styles.longRing1} />
+            <div className={styles.longRing2} />
+            <div className={styles.longRing3} />
+            <div className={styles.globeCore} />
+            <div className={`${styles.globeNode} ${styles.node1}`} />
+            <div className={`${styles.globeNode} ${styles.node2}`} />
+            <div className={`${styles.globeNode} ${styles.node3}`} />
+          </div>
+        </div>
       </div>
 
       {/* 3D Cylinder Stage */}

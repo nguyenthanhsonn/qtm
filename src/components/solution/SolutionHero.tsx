@@ -52,8 +52,8 @@ export default function SolutionHero() {
 
               {/* Main Heading (3 Lines) */}
               <h1 className={styles.mainHeroTitle}>
-                <span>GIẢI PHÁP TRUYỀN THÔNG</span>
-                <span className={styles.titleLineHighlight}>CHO BÀI TOÁN KINH DOANH</span>
+                <span className={styles.titleLinePlain}>GIẢI PHÁP TRUYỀN THÔNG CHO</span>
+                <span className={styles.titleLineHighlight}>BÀI TOÁN KINH DOANH</span>
               </h1>
 
               {/* Description */}
