@@ -21,7 +21,8 @@ export type PartnerItem = {
   id: string;
   name: string;
   category: string;
-  svgIcon: React.ReactNode;
+  svgIcon?: React.ReactNode;
+  logoSrc?: string;
 };
 
 export type HomeIconProps = {
