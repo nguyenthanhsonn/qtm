@@ -3,6 +3,7 @@
 import React from "react";
 import Image from "next/image";
 import { motion } from "motion/react";
+import RoyalCrownIcon from "./RoyalCrownIcon";
 import styles from "@/scss/missLagecy/MissLegacyHero.module.scss";
 
 const PILLARS = [
@@ -99,26 +100,7 @@ export default function MissLegacyHero({
             <div className={styles.titleWrap}>
               <div className={styles.titleLine1}>
                 <span className={styles.missText}>MISS</span>
-                <svg className={styles.lotusIcon} viewBox="0 0 100 80" fill="none">
-                  <path
-                    d="M50 5 C55 25 70 35 90 40 C75 55 55 60 50 75 C45 60 25 55 10 40 C30 35 45 25 50 5 Z"
-                    fill="url(#emeraldGoldLotusGrad)"
-                    stroke="#D4AF37"
-                    strokeWidth="1.5"
-                  />
-                  <path
-                    d="M50 20 C53 35 65 42 78 45 C67 55 53 58 50 68 C47 58 33 55 22 45 C35 42 47 35 50 20 Z"
-                    fill="#FFF5D0"
-                    opacity="0.85"
-                  />
-                  <defs>
-                    <linearGradient id="emeraldGoldLotusGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                      <stop offset="0%" stopColor="#FFF5D0" />
-                      <stop offset="45%" stopColor="#D4AF37" />
-                      <stop offset="100%" stopColor="#AA7C11" />
-                    </linearGradient>
-                  </defs>
-                </svg>
+                <RoyalCrownIcon className={styles.lotusIcon} gradId="heroCrownGrad" glowId="heroCrownGlow" />
               </div>
               <span className={styles.legacyText}>LEGACY</span>
             </div>

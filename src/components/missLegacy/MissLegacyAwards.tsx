@@ -3,6 +3,7 @@
 import React from "react";
 import { motion } from "motion/react";
 import CountUp from "@/components/CountUp";
+import RoyalCrownIcon from "./RoyalCrownIcon";
 import styles from "@/scss/missLagecy/MissLegacyAwards.module.scss";
 
 const BADGES = [
@@ -122,20 +123,7 @@ export default function MissLegacyAwards() {
               <h2 className={styles.sectionTitle}>
                 <span className={styles.titleLine1}>
                   Legacy
-                  <svg className={styles.titleLotusIcon} viewBox="0 0 100 80" fill="none">
-                    <path
-                      d="M50 5 C55 25 70 35 90 40 C75 55 55 60 50 75 C45 60 25 55 10 40 C30 35 45 25 50 5 Z"
-                      fill="url(#awardsTitleLotusGrad)"
-                      stroke="#D4AF37"
-                      strokeWidth="1.5"
-                    />
-                    <defs>
-                      <linearGradient id="awardsTitleLotusGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" stopColor="#FFF5D0" />
-                        <stop offset="100%" stopColor="#D4AF37" />
-                      </linearGradient>
-                    </defs>
-                  </svg>
+                  <RoyalCrownIcon className={styles.titleLotusIcon} gradId="awardsCrownGrad" glowId="awardsCrownGlow" />
                 </span>
                 <span className={styles.titleHighlightGold}>Women Awards</span>
               </h2>
@@ -218,20 +206,7 @@ export default function MissLegacyAwards() {
 
           <div className={styles.sloganLotusFooter}>
             <div className={styles.sloganLineLeft} />
-            <svg className={styles.sloganLotusIcon} viewBox="0 0 100 80" fill="none">
-              <path
-                d="M50 5 C55 25 70 35 90 40 C75 55 55 60 50 75 C45 60 25 55 10 40 C30 35 45 25 50 5 Z"
-                fill="url(#sloganLotusGrad2)"
-                stroke="#D4AF37"
-                strokeWidth="1.5"
-              />
-              <defs>
-                <linearGradient id="sloganLotusGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stopColor="#FFF5D0" />
-                  <stop offset="100%" stopColor="#D4AF37" />
-                </linearGradient>
-              </defs>
-            </svg>
+            <RoyalCrownIcon className={styles.sloganLotusIcon} gradId="awardsSloganCrownGrad" glowId="awardsSloganCrownGlow" />
             <div className={styles.sloganLineRight} />
           </div>
         </motion.div>
