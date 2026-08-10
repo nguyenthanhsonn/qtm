@@ -74,8 +74,14 @@ export default function ProjectDetailPage() {
           <h1 className={styles.mainTitle}>{project.title}</h1>
           <p className={styles.metaSubText}>
             Đơn vị chủ trì & Đối tác: <strong>{project.client}</strong>
-            {project.startDate && ` | Khởi động: ${project.startDate}`}
+            {project.startDate && ` | Thời gian: ${project.startDate}`}
           </p>
+
+          {project.sapo && (
+            <div className={styles.sapoBox}>
+              <p className={styles.sapoText}>"{project.sapo}"</p>
+            </div>
+          )}
         </motion.div>
 
         {/* Cover Image Banner */}
@@ -112,54 +118,87 @@ export default function ProjectDetailPage() {
 
         {/* Detailed Story Sections */}
         <div className={styles.contentBody}>
-          {/* Challenge Block */}
-          <motion.div
-            className={styles.storyBlock}
-            initial={{ opacity: 0, y: 25 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <h2 className={styles.blockHeading}>🎯 Bài toán & Thách thức thực tiễn</h2>
-            <p className={styles.blockParagraph}>{project.challenge}</p>
-          </motion.div>
+          {project.sections && project.sections.length > 0 ? (
+            project.sections.map((sec, idx) => (
+              <motion.div
+                key={idx}
+                className={styles.storyBlock}
+                initial={{ opacity: 0, y: 25 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: idx * 0.1 }}
+              >
+                <h2 className={styles.blockHeading}>✦ {sec.title}</h2>
+                {sec.content.split("\n\n").map((para, pIdx) => (
+                  <p key={pIdx} className={styles.blockParagraph}>
+                    {para}
+                  </p>
+                ))}
 
-          {/* Solution Block */}
-          <motion.div
-            className={styles.storyBlock}
-            initial={{ opacity: 0, y: 25 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-          >
-            <h2 className={styles.blockHeading}>🚀 Giải pháp thực thi từ QTM</h2>
-            <p className={styles.blockParagraph}>{project.solution}</p>
+                {sec.bullets && sec.bullets.length > 0 && (
+                  <ul className={styles.bulletList}>
+                    {sec.bullets.map((b, bIdx) => (
+                      <li key={bIdx} className={styles.bulletItem}>
+                        <span className={styles.bulletDot}>•</span>
+                        <span>{b}</span>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </motion.div>
+            ))
+          ) : (
+            <>
+              {/* Challenge Block */}
+              <motion.div
+                className={styles.storyBlock}
+                initial={{ opacity: 0, y: 25 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6 }}
+              >
+                <h2 className={styles.blockHeading}>🎯 Bài toán & Thách thức thực tiễn</h2>
+                <p className={styles.blockParagraph}>{project.challenge}</p>
+              </motion.div>
 
-            {project.speakers && project.speakers.length > 0 && (
-              <div style={{ marginTop: "1rem" }}>
-                <strong style={{ color: "#38CFC8", fontSize: "0.9rem" }}>Diễn giả & Bậc thầy tri thức đồng hành:</strong>
-                <div className={styles.speakersBox}>
-                  {project.speakers.map((sp, i) => (
-                    <span key={i} className={styles.speakerChip}>
-                      ✦ {sp}
-                    </span>
-                  ))}
-                </div>
+              {/* Solution Block */}
+              <motion.div
+                className={styles.storyBlock}
+                initial={{ opacity: 0, y: 25 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.1 }}
+              >
+                <h2 className={styles.blockHeading}>🚀 Giải pháp thực thi từ QTM</h2>
+                <p className={styles.blockParagraph}>{project.solution}</p>
+              </motion.div>
+
+              {/* Impact Block */}
+              <motion.div
+                className={styles.storyBlock}
+                initial={{ opacity: 0, y: 25 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+              >
+                <h2 className={styles.blockHeading}>💎 Giá trị & Tác động xã hội tạo ra</h2>
+                <p className={styles.blockParagraph}>{project.impact}</p>
+              </motion.div>
+            </>
+          )}
+
+          {project.speakers && project.speakers.length > 0 && (
+            <div style={{ marginTop: "0.5rem" }}>
+              <strong style={{ color: "#38CFC8", fontSize: "0.9rem" }}>Đơn vị & Đại biểu đồng hành:</strong>
+              <div className={styles.speakersBox}>
+                {project.speakers.map((sp, i) => (
+                  <span key={i} className={styles.speakerChip}>
+                    ✦ {sp}
+                  </span>
+                ))}
               </div>
-            )}
-          </motion.div>
-
-          {/* Impact Block */}
-          <motion.div
-            className={styles.storyBlock}
-            initial={{ opacity: 0, y: 25 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-          >
-            <h2 className={styles.blockHeading}>💎 Giá trị & Tác động xã hội tạo ra</h2>
-            <p className={styles.blockParagraph}>{project.impact}</p>
-          </motion.div>
+            </div>
+          )}
         </div>
 
         {/* Bottom CTA Banner */}
