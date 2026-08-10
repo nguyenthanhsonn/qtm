@@ -11,8 +11,8 @@ const easeOut = [0.22, 1, 0.36, 1] as const;
 const ecosystemItems: CarouselItem[] = [
   {
     id: 1,
-    title: "Hội nghị & Thượng đỉnh Toàn cầu",
-    tag: "GLOBAL SUMMIT",
+    title: "Hội nghị - Hội thảo",
+    tag: "Conference",
     imageSrc: "/home/ecosystem/panel-events.jpg",
     alt: "Không gian sự kiện và hội trường",
   },

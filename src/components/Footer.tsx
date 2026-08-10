@@ -63,7 +63,7 @@ export default function Footer() {
               />
             </Link>
             <p className={styles.footerDesc}>
-              Strategic MediaTech Partner – 15 năm kiến tạo giải pháp truyền thông và công nghệ toàn diện, đồng hành cùng sự phát triển bền vững của doanh nghiệp.
+              Strategic MediaTech Partner – 16 năm kiến tạo giải pháp truyền thông và công nghệ toàn diện, đồng hành cùng sự phát triển bền vững của doanh nghiệp.
             </p>
             <div className={styles.footerSocials}>
               <a
@@ -122,7 +122,7 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/project">
+                <Link href="/missLegacy">
                   <span className={styles.linkBullet} /> Miss Legacy
                 </Link>
               </li>
@@ -159,7 +159,7 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/project">
+                <Link href="/projects">
                   <span className={styles.linkBullet} /> Sự kiện & Trải nghiệm
                 </Link>
               </li>
@@ -175,20 +175,20 @@ export default function Footer() {
                   <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
                   <circle cx="12" cy="10" r="3" />
                 </svg>
-                <span>Tòa nhà QTM, Hà Nội & TP. Hồ Chí Minh, Việt Nam</span>
+                <span>Số 1 Lê Đức Thọ, phường Từ Liêm, thành phố Hà Nội</span>
               </li>
               <li>
                 <svg className={styles.contactIcon} width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                   <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
                 </svg>
-                <a href="tel:0988888888">0988 888 888</a>
+                <a href="tel:0439412585">04 3941 2585</a>
               </li>
               <li>
                 <svg className={styles.contactIcon} width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                   <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
                   <polyline points="22,6 12,13 2,6" />
                 </svg>
-                <a href="mailto:contact@qtm.vn">contact@qtm.vn</a>
+                <a href="mailto:info@qtmmedia.vn">info@qtmmedia.vn</a>
               </li>
             </ul>
 

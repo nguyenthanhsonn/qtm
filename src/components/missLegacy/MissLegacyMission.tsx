@@ -2,6 +2,7 @@
 
 import React from "react";
 import { motion } from "motion/react";
+import RoyalCrownIcon from "./RoyalCrownIcon";
 import styles from "@/scss/missLagecy/MissLegacyMission.module.scss";
 
 const CARDS = [
@@ -179,29 +180,12 @@ export default function MissLegacyMission() {
             {/* Title Block */}
             <div className={styles.titleWrap}>
               <h2 className={styles.sectionTitle}>
-                <span>Sứ mệnh</span>
+                <span>
+                  Sứ mệnh
+                  <RoyalCrownIcon className={styles.titleLotusIcon} gradId="missionTitleCrownGrad" glowId="missionTitleCrownGlow" />
+                </span>
                 <span className={styles.titleLine2}>
                   và <span className={styles.titleHighlightGold}>niềm tin</span>
-                  <svg className={styles.titleLotusIcon} viewBox="0 0 100 80" fill="none">
-                    <path
-                      d="M50 5 C55 25 70 35 90 40 C75 55 55 60 50 75 C45 60 25 55 10 40 C30 35 45 25 50 5 Z"
-                      fill="url(#titleLotusGrad)"
-                      stroke="#D4AF37"
-                      strokeWidth="1.5"
-                    />
-                    <path
-                      d="M50 20 C53 35 65 42 78 45 C67 55 53 58 50 68 C47 58 33 55 22 45 C35 42 47 35 50 20 Z"
-                      fill="#FFF5D0"
-                      opacity="0.6"
-                    />
-                    <defs>
-                      <linearGradient id="titleLotusGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" stopColor="#FFF5D0" />
-                        <stop offset="50%" stopColor="#D4AF37" />
-                        <stop offset="100%" stopColor="#AA7C11" />
-                      </linearGradient>
-                    </defs>
-                  </svg>
                 </span>
               </h2>
             </div>
@@ -289,20 +273,7 @@ export default function MissLegacyMission() {
                 transition={{ duration: 0.3 }}
               >
                 <div className={styles.centerLotusIconBox}>
-                  <svg className={styles.centerLotusSvg} viewBox="0 0 100 80" fill="none">
-                    <path
-                      d="M50 5 C55 25 70 35 90 40 C75 55 55 60 50 75 C45 60 25 55 10 40 C30 35 45 25 50 5 Z"
-                      fill="url(#centerLotusGrad)"
-                      stroke="#D4AF37"
-                      strokeWidth="1.5"
-                    />
-                    <defs>
-                      <linearGradient id="centerLotusGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" stopColor="#FFF5D0" />
-                        <stop offset="100%" stopColor="#D4AF37" />
-                      </linearGradient>
-                    </defs>
-                  </svg>
+                  <RoyalCrownIcon className={styles.centerLotusSvg} gradId="missionCenterCrownGrad" glowId="missionCenterCrownGlow" />
                 </div>
                 <h3 className={styles.centerTitle}>VĂN HÓA</h3>
                 <p className={styles.centerDesc}>Gìn giữ bản sắc dân tộc</p>

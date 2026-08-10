@@ -224,7 +224,7 @@ export default function AboutHero() {
                 viewport={viewport}
                 transition={{ duration: 0.65, delay: 0.08, ease: easeOut }}
               >
-                Chúng tôi không chỉ<br />làm truyền thông.
+                Chúng tôi không chỉ<br />làm truyền thông
               </motion.h1>
 
               {/* Sub-heading */}
@@ -389,9 +389,10 @@ export default function AboutHero() {
                 {/* Card bottom stats bar */}
                 <div className={styles.cardStatsBar}>
                   {[
-                    { val: "300+", lbl: "Dự án" },
+                    { val: "200+", lbl: "Dự án" },
                     { val: "100+", lbl: "Khách hàng" },
-                    { val: "1000+", lbl: "Sự kiện" },
+                    { val: "300+", lbl: "Sự kiện" },
+                    { val: "93%", lbl: "Hài lòng" },
                   ].map(s => (
                     <div key={s.lbl} className={styles.cardStat}>
                       <span className={styles.cardStatVal}>{s.val}</span>
