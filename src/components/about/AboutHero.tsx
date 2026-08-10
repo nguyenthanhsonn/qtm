@@ -389,9 +389,9 @@ export default function AboutHero() {
                 {/* Card bottom stats bar */}
                 <div className={styles.cardStatsBar}>
                   {[
-                    { val: "300+", lbl: "Dự án" },
+                    { val: "200+", lbl: "Dự án" },
                     { val: "100+", lbl: "Khách hàng" },
-                    { val: "1000+", lbl: "Sự kiện" },
+                    { val: "300+", lbl: "Sự kiện" },
                   ].map(s => (
                     <div key={s.lbl} className={styles.cardStat}>
                       <span className={styles.cardStatVal}>{s.val}</span>

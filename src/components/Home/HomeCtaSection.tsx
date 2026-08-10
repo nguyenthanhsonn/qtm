@@ -54,9 +54,9 @@ const coreValues: CoreValue[] = [
     title: "MINDSET",
     subtitle: "TƯ DUY & VĂN HÓA ĐỒNG HÀNH",
     items: [
-      { head: "Tư duy đối tác (Partner Mindset)", desc: "Xem sự thành công của khách hàng là thước đo giá trị của QTM." },
-      { head: "Tinh gọn & Linh hoạt (Agile & Lean)", desc: "Tối ưu nguồn lực, phản ứng nhanh với biến động thị trường." },
-      { head: "Minh bạch & Tin cậy (Transparency & Trust)", desc: "Rõ ràng trong chi phí, quy trình và báo cáo hiệu quả." },
+      { head: "Tư duy đối tác", desc: "Xem sự thành công của khách hàng là thước đo giá trị của QTM." },
+      { head: "Tinh gọn & Linh hoạt", desc: "Tối ưu nguồn lực, phản ứng nhanh với biến động thị trường." },
+      { head: "Minh bạch & Tin cậy", desc: "Rõ ràng trong chi phí, quy trình và báo cáo hiệu quả." },
       { head: "Hướng tới giá trị bền vững", desc: "Xây dựng nền tảng truyền thông dài hạn thay vì các chiến dịch ngắn hạn." },
     ],
   },

@@ -48,9 +48,9 @@ const StarIcon = ({ className = "" }: HomeIconProps) => (
 function HomeHero() {
   const stats = [
     { value: 16, suffix: "+", label: "Năm kinh nghiệm", icon: TrophyIcon },
-    { value: 300, suffix: "+", label: "Dự án đã triển khai", icon: BriefcaseIcon },
+    { value: 200, suffix: "+", label: "Dự án đã triển khai", icon: BriefcaseIcon },
     { value: 100, suffix: "+", label: "Khách hàng tin tưởng", icon: UsersIcon },
-    { value: 1000, suffix: "+", label: "Sự kiện ấn tượng", icon: StarIcon },
+    { value: 300, suffix: "+", label: "Sự kiện ấn tượng", icon: StarIcon },
   ];
 
   return (
