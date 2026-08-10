@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 import { motion, useReducedMotion } from "motion/react";
 import styles from "@/scss/about_us/AboutTargetAudience.module.scss";
 import type { TargetColumn } from "@/types/about";
@@ -14,35 +15,35 @@ const targetColumns: TargetColumn[] = [
     logos: [
       {
         name: "Viettel",
-        iconSvg: <text x="5" y="24" fill="#EA0029" fontFamily="var(--font-heading)" fontSize="16" fontWeight="900">viettel</text>,
+        logoSrc: "/logo/logo-moi-cua-viettel-1610030805425937362871.jpg",
       },
       {
         name: "VNPT",
-        iconSvg: <text x="5" y="24" fill="#005C97" fontFamily="var(--font-heading)" fontSize="16" fontWeight="900">VNPT</text>,
+        logoSrc: "/logo/logo-vnpt-4.png",
       },
       {
         name: "PV GAS",
-        iconSvg: <text x="5" y="24" fill="#005C97" fontFamily="var(--font-heading)" fontSize="14" fontWeight="800">PV GAS</text>,
+        logoSrc: "/logo/f269038fa4534045b59925e7d5e023e1_M.jpg",
       },
       {
         name: "BIDV",
-        iconSvg: <text x="5" y="24" fill="#005A36" fontFamily="var(--font-heading)" fontSize="16" fontWeight="900">BIDV</text>,
+        logoSrc: "/logo/logo-bidv-20220426071253.jpg",
       },
       {
         name: "Agribank",
-        iconSvg: <text x="5" y="24" fill="#8B1D24" fontFamily="var(--font-heading)" fontSize="14" fontWeight="900">AGRIBANK</text>,
+        logoSrc: "/logo/Logo-Agribank-V.webp",
       },
       {
-        name: "Vietcombank",
-        iconSvg: <text x="5" y="24" fill="#005A36" fontFamily="var(--font-heading)" fontSize="14" fontWeight="800">Vietcombank</text>,
+        name: "VietinBank",
+        logoSrc: "/logo/Logo-VietinBank-CTG-Te.webp",
       },
       {
         name: "MobiFone",
-        iconSvg: <text x="5" y="24" fill="#005C97" fontFamily="var(--font-heading)" fontSize="15" fontWeight="800">mobi<tspan fill="#EA0029">fone</tspan></text>,
+        logoSrc: "/logo/logo-mobifone-inkythuatso-01-02-08-58-34.jpg",
       },
       {
         name: "Vietnam Airlines",
-        iconSvg: <text x="5" y="24" fill="#003B7A" fontFamily="var(--font-heading)" fontSize="12" fontWeight="800">Vietnam Airlines</text>,
+        logoSrc: "/logo/Vietnam_Airlines_logo.svg.webp",
       },
     ],
   },
@@ -54,35 +55,35 @@ const targetColumns: TargetColumn[] = [
     logos: [
       {
         name: "Samsung",
-        iconSvg: <text x="5" y="24" fill="#1428A0" fontFamily="var(--font-heading)" fontSize="15" fontWeight="900">SAMSUNG</text>,
+        logoSrc: "/logo/Logo-samsung.jpg",
       },
       {
         name: "LG",
-        iconSvg: <text x="5" y="24" fill="#A50034" fontFamily="var(--font-heading)" fontSize="16" fontWeight="900">LG</text>,
+        logoSrc: "/logo/LG_logo_(2014).svg.webp",
       },
       {
         name: "Canon",
-        iconSvg: <text x="5" y="24" fill="#CC0000" fontFamily="var(--font-heading)" fontSize="16" fontWeight="900">Canon</text>,
+        logoSrc: "/logo/logo_01.png",
       },
       {
         name: "Toyota",
-        iconSvg: <text x="5" y="24" fill="#EB0A1E" fontFamily="var(--font-heading)" fontSize="15" fontWeight="900">TOYOTA</text>,
+        logoSrc: "/logo/logo-Toyota.jpg",
       },
       {
         name: "Honda",
-        iconSvg: <text x="5" y="24" fill="#CC0000" fontFamily="var(--font-heading)" fontSize="16" fontWeight="900">HONDA</text>,
+        logoSrc: "/logo/Honda.svg.webp",
       },
       {
         name: "Panasonic",
-        iconSvg: <text x="5" y="24" fill="#004098" fontFamily="var(--font-heading)" fontSize="14" fontWeight="800">Panasonic</text>,
+        logoSrc: "/logo/Panasonic_logo_(Blue).svg.webp",
       },
       {
         name: "Bosch",
-        iconSvg: <text x="5" y="24" fill="#EA1B2D" fontFamily="var(--font-heading)" fontSize="15" fontWeight="900">BOSCH</text>,
+        logoSrc: "/logo/Bosch-logo.svg.webp",
       },
       {
         name: "Intel",
-        iconSvg: <text x="5" y="24" fill="#0068B5" fontFamily="var(--font-heading)" fontSize="16" fontWeight="900">intel</text>,
+        logoSrc: "/logo/Intel_logo_2023.svg.webp",
       },
     ],
   },
@@ -94,35 +95,35 @@ const targetColumns: TargetColumn[] = [
     logos: [
       {
         name: "TH True Milk",
-        iconSvg: <text x="5" y="24" fill="#005C97" fontFamily="var(--font-heading)" fontSize="13" fontWeight="900">TH true MILK</text>,
+        logoSrc: "/logo/Logo_th_group.png",
       },
       {
         name: "Vinamilk",
-        iconSvg: <text x="5" y="24" fill="#002D62" fontFamily="var(--font-heading)" fontSize="15" fontWeight="900">VINAMILK</text>,
+        logoSrc: "/logo/Logo-Vinamilk.jpg",
       },
       {
         name: "Meiji",
-        iconSvg: <text x="5" y="24" fill="#DF0012" fontFamily="var(--font-heading)" fontSize="17" fontWeight="900" fontStyle="italic">meiji</text>,
+        logoSrc: "/logo/Meiji_logo.svg.webp",
       },
       {
         name: "Masan",
-        iconSvg: <text x="5" y="24" fill="#E31B23" fontFamily="var(--font-heading)" fontSize="15" fontWeight="900">MASAN</text>,
+        logoSrc: "/logo/logo-masan-group2-compressed.jpg",
       },
       {
         name: "Pepsico",
-        iconSvg: <text x="5" y="24" fill="#00529B" fontFamily="var(--font-heading)" fontSize="14" fontWeight="900">PEPSICO</text>,
+        logoSrc: "/logo/Pepsi_logo_2008.svg.webp",
       },
       {
         name: "CocaCola",
-        iconSvg: <text x="5" y="24" fill="#F40009" fontFamily="var(--font-heading)" fontSize="15" fontWeight="900" fontStyle="italic">Coca-Cola</text>,
+        logoSrc: "/logo/images.png",
       },
       {
         name: "Nestlé",
-        iconSvg: <text x="5" y="24" fill="#005A9C" fontFamily="var(--font-heading)" fontSize="15" fontWeight="900">Nestle</text>,
+        logoSrc: "/logo/logo-nestle-1.jpg",
       },
       {
         name: "P&G",
-        iconSvg: <text x="5" y="24" fill="#00205B" fontFamily="var(--font-heading)" fontSize="18" fontWeight="900">P&amp;G</text>,
+        logoSrc: "/logo/Procter_&_Gamble_logo.svg.webp",
       },
     ],
   },
@@ -208,10 +209,21 @@ export default function AboutTargetAudience() {
               {col.logos ? (
                 <div className={styles.colLogoGrid}>
                   {col.logos.map((logo, idx) => (
-                    <div key={`${logo.name}-${idx}`} className={styles.logoBoxMini}>
-                      <svg width="100" height="32" viewBox="0 0 110 32" fill="none">
-                        {logo.iconSvg}
-                      </svg>
+                    <div key={`${logo.name}-${idx}`} className={styles.logoBoxMini} title={logo.name}>
+                      {logo.logoSrc ? (
+                        <Image
+                          src={logo.logoSrc}
+                          alt={logo.name}
+                          width={120}
+                          height={40}
+                          className={styles.logoImg}
+                          style={{ objectFit: "contain" }}
+                        />
+                      ) : (
+                        <div className={styles.logoSvgWrap}>
+                          {logo.iconSvg}
+                        </div>
+                      )}
                     </div>
                   ))}
                 </div>

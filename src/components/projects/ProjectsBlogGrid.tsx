@@ -29,11 +29,8 @@ export default function ProjectsBlogGrid({
       ? PROJECTS_DATA
       : PROJECTS_DATA.filter((p) => p.category === selectedCategory);
 
-  const spotlightProject = PROJECTS_DATA[0];
-  const gridProjects = filteredProjects.filter((p) => p.id !== spotlightProject.id);
-
-  const totalPages = Math.ceil(gridProjects.length / ITEMS_PER_PAGE) || 1;
-  const paginatedProjects = gridProjects.slice(
+  const totalPages = Math.ceil(filteredProjects.length / ITEMS_PER_PAGE) || 1;
+  const paginatedProjects = filteredProjects.slice(
     (currentPage - 1) * ITEMS_PER_PAGE,
     currentPage * ITEMS_PER_PAGE
   );
@@ -49,50 +46,10 @@ export default function ProjectsBlogGrid({
   return (
     <section className={styles.sectionGrid} ref={gridSectionRef}>
       <div className={styles.gridContainer}>
-        {/* Spotlight Featured Hero Project (Shown on All or Culture category) */}
-        {(selectedCategory === "Tất cả" || selectedCategory === "Chiến dịch Truyền thông") && currentPage === 1 && (
-          <Link href={`/projects/${spotlightProject.id}`} style={{ textDecoration: "none" }}>
-            <motion.div
-              className={styles.spotlightCard}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={viewport}
-              transition={{ duration: 0.8, ease: cubicEase }}
-            >
-              <div className={styles.spotlightImgBox}>
-                <Image
-                  src={spotlightProject.image}
-                  alt={spotlightProject.title}
-                  width={600}
-                  height={350}
-                  style={{ objectFit: "cover" }}
-                />
-              </div>
-              <div className={styles.spotlightTextCol}>
-                <span className={styles.spotlightBadge}>✦ DỰ ÁN TIÊU BIỂU SPOTLIGHT</span>
-                <h2 className={styles.spotlightTitle}>{spotlightProject.title}</h2>
-                <p className={styles.spotlightDesc}>{spotlightProject.summary}</p>
-                <div className={styles.metricsRow}>
-                  {spotlightProject.metrics.map((m, idx) => (
-                    <div key={idx} className={styles.metricItem}>
-                      <span className={styles.val}>{m.val}</span>
-                      <span className={styles.lbl}>{m.lbl}</span>
-                    </div>
-                  ))}
-                </div>
-                <div className={styles.readMoreBtn}>
-                  <span>Xem chi tiết</span>
-                  <span>→</span>
-                </div>
-              </div>
-            </motion.div>
-          </Link>
-        )}
-
         {/* 3-Column Projects Showcase Grid */}
         <div className={styles.cardsGrid3}>
           {paginatedProjects.map((p, idx) => (
-            <Link key={p.id} href={`/projects/${p.id}`} style={{ textDecoration: "none", color: "inherit" }}>
+            <Link key={p.id} href={`/projects/${p.id}`} className={styles.cardLink}>
               <motion.div
                 className={styles.blogCard}
                 initial={{ opacity: 0, y: 30 }}
@@ -117,7 +74,7 @@ export default function ProjectsBlogGrid({
                   </div>
                   <div className={styles.cardFooter}>
                     <span className={styles.clientName}>{p.client}</span>
-                    <span className={styles.readBtn}>Xem chi tiết →</span>
+                    <span className={styles.readBtn}>Xem bài viết →</span>
                   </div>
                 </div>
               </motion.div>
