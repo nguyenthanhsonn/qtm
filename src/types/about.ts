@@ -25,7 +25,8 @@ export type CommitmentItem = {
 
 export type TargetLogo = {
   name: string;
-  iconSvg: React.ReactNode;
+  logoSrc?: string;
+  iconSvg?: React.ReactNode;
 };
 
 export type TargetColumn = {

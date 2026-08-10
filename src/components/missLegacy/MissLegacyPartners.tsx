@@ -71,10 +71,10 @@ export default function MissLegacyPartners() {
 
             <div className={styles.logoImageWrap}>
               <Image
-                src="/missLegacy/block5_1.png"
-                alt="Tạp Chí An Ninh Mạng"
-                width={360}
-                height={160}
+                src="/logo/logo.png"
+                alt="Tạp Chí Điện Tử An Ninh Mạng"
+                width={420}
+                height={140}
                 className={styles.partnerLogoImg}
                 priority
               />
@@ -97,10 +97,10 @@ export default function MissLegacyPartners() {
 
             <div className={styles.logoImageWrap}>
               <Image
-                src="/missLegacy/block5_2.png"
+                src="/logo/pnvn_logo_2025.svg"
                 alt="Báo Phụ Nữ Việt Nam"
-                width={360}
-                height={160}
+                width={420}
+                height={140}
                 className={styles.partnerLogoImg}
                 priority
               />

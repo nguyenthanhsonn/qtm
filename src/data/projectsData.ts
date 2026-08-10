@@ -8,7 +8,7 @@ export const PROJECTS_DATA: ProjectItem[] = [
     category: "Chiến dịch Truyền thông",
     client: "Cộng đồng Sinh viên Đông Bắc Bộ & QTM Media",
     summary:
-      "Chuỗi talkshow quy mô lớn dành cho hơn 15.000 sinh viên các trường đại học khu vực Đông Bắc Bộ, khởi động từ tháng 5/2017 nhằm kết nối, khơi dậy tinh thần dấn thân và định hướng con đường lập nghiệp cho thế hệ trẻ.",
+      "Chuỗi talkshow quy mô lớn dành cho hơn 15.000 sinh viên, kết nối và khơi dậy tinh thần dấn thân, định hướng con đường lập nghiệp cho thế hệ trẻ.",
     image: "/projects/talkshow.png",
     startDate: "Tháng 05/2017",
     targetAudience: "Hơn 15.000 sinh viên tại các trường Đại học thuộc khu vực Đông Bắc Bộ (Đại học Hàng hải, Hải Phòng,...)",
@@ -26,326 +26,243 @@ export const PROJECTS_DATA: ProjectItem[] = [
       "Khơi gợi khát vọng đam mê và nhiệt huyết cho tuổi trẻ, tháo gỡ khó khăn chia sẻ bài học thực tế, đồng thời gia tăng kết nối giữa thế hệ đi trước tài năng với hơn 15.000 sinh viên trẻ.",
   },
   {
-    id: "miss-legacy",
-    title: "Miss Legacy - Gìn Giữ Hồn Việt | Tỏa Sáng Toàn Cầu",
-    category: "Văn hóa & Di sản",
-    client: "QTM Foundation & Đơn vị Văn hóa",
+    id: "be-a-star-mobifone-2017",
+    title: "BE A STAR – NGÀY HỘI ĐIỆN THOẠI VIÊN MOBIFONE 2017",
+    category: "Lan tỏa thương hiệu",
+    client: "Tổng công ty Viễn thông Mobifone & QTM",
     summary:
-      "Hành trình tìm kiếm, tôn vinh và ứng dụng công nghệ AI lan tỏa giá trị di sản văn hóa Việt Nam đến thế hệ trẻ và cộng đồng quốc tế.",
-    image: "/projects/miss-legacy.png",
-    startDate: "Năm 2026",
-    targetAudience: "Cộng đồng yêu văn hóa Việt & bạn bè quốc tế",
-    speakers: ["Đại sứ Miss Legacy", "Hội đồng Cố vấn Văn hóa QTM"],
+      "Chúng tôi tin rằng, mỗi điện thoại viên đều là những ngôi sao thầm lặng, và chúng tôi tự hào vì đã mang đến cơ hội để họ tỏa sáng thật rực rỡ trên bầu trời Mobifone.",
+    sapo:
+      "Chúng tôi tin rằng, mỗi điện thoại viên đều là những ngôi sao thầm lặng, và chúng tôi tự hào vì đã mang đến cơ hội để họ tỏa sáng thật rực rỡ trên bầu trời Mobifone.",
+    image: "/projects/be-a-star-mobifone.png",
+    startDate: "Năm 2017",
+    targetAudience: "Đội ngũ Điện thoại viên & Nhân viên Chăm sóc Khách hàng Mobifone toàn quốc",
+    speakers: ["Ban Lãnh đạo Mobifone", "Đạo diễn Sân khấu QTM", "Đội ngũ Điện thoại viên xuất sắc"],
     metrics: [
-      { val: "1.000.000+", lbl: "Lượt lan tỏa" },
-      { val: "50+", lbl: "Đại sứ vinh danh" },
-      { val: "10+", lbl: "Quốc gia đồng hành" },
+      { val: "24+ Năm", lbl: "Phát triển & Chăm sóc KH" },
+      { val: "Top 1", lbl: "Mạng di động CSKH tốt nhất" },
+      { val: "Toàn quốc", lbl: "Đội ngũ ĐTV tham gia" },
     ],
     challenge:
-      "Văn hóa di sản truyền thống đứng trước nguy cơ bị suy giảm sự chú ý trong kỷ nguyên số hóa, giới trẻ chưa thực sự tìm thấy sự gắn kết với di sản.",
+      "Trải qua hơn 24 năm xây dựng và phát triển, Tổng công ty Viễn thông Mobifone ngày càng khẳng định vị thế vững chắc trong lòng hàng chục triệu khách hàng, giữ vững danh hiệu Mạng di động Chăm sóc khách hàng tốt nhất Việt Nam. Thành công đó có sự đóng góp không nhỏ của đội ngũ Điện thoại viên – những người luôn tận tụy đồng hành và kết nối thương hiệu với người dùng.\n\nĐảm nhận công việc 'làm dâu trăm họ', các điện thoại viên luôn phải đối mặt với áp lực lớn nhưng vẫn duy trì thái độ chuyên nghiệp, thân thiện. Để tri ân những nỗ lực ấy, chương trình tri ân điện thoại viên đã trở thành hoạt động thường niên đầy ý nghĩa của Mobifone.",
     solution:
-      "QTM xây dựng hệ sinh thái truyền thông số Miss Legacy kết hợp AI nghệ thuật, thiết kế bộ nhận diện thương hiệu số đậm chất di sản Việt và chiến dịch viral đa kênh.",
+      "Năm 2017, chương trình trở lại với tên gọi “Be a Star”, mang theo thông điệp “Tự tin – Tỏa sáng” đến với đội ngũ điện thoại viên trên toàn quốc. Đây là cơ hội để những ngôi sao thầm lặng đằng sau tổng đài bước ra ánh sáng, thể hiện tài năng và bản sắc riêng.",
     impact:
-      "Tạo làn sóng tự hào di sản mạnh mẽ, thu hút hơn 1 triệu lượt tương tác trên MXH, khẳng định vị thế văn hóa Việt Nam trên bản đồ di sản toàn cầu.",
+      "Chương trình 'Be a Star 2017' không chỉ mang lại những phút giây thư giãn sau giờ làm việc căng thẳng mà còn thắt chặt sợi dây gắn kết giữa nhân viên với doanh nghiệp, bồi đắp tình yêu nghề và truyền cảm hứng để đội ngũ tiếp tục đồng hành cùng Mobifone trên chặng đường phát triển.",
+    sections: [
+      {
+        title: "Sự cống hiến thầm lặng của đội ngũ chăm sóc khách hàng",
+        content:
+          "Trải qua hơn 24 năm xây dựng và phát triển, Tổng công ty Viễn thông Mobifone ngày càng khẳng định vị thế vững chắc trong lòng hàng chục triệu khách hàng, giữ vững danh hiệu Mạng di động Chăm sóc khách hàng tốt nhất Việt Nam. Thành công đó có sự đóng góp không nhỏ của đội ngũ Điện thoại viên – những người luôn tận tụy đồng hành và kết nối thương hiệu với người dùng.\n\nĐảm nhận công việc \"làm dâu trăm họ\", các điện thoại viên luôn phải đối mặt với áp lực lớn nhưng vẫn duy trì thái độ chuyên nghiệp, thân thiện. Để tri ân những nỗ lực ấy, chương trình tri ân điện thoại viên đã trở thành hoạt động thường niên đầy ý nghĩa của Mobifone.",
+      },
+      {
+        title: "\"Be a Star\" – Sân chơi tôn vinh và kết nối",
+        content:
+          "Năm 2017, chương trình trở lại với tên gọi “Be a Star”, mang theo thông điệp “Tự tin – Tỏa sáng” đến với đội ngũ điện thoại viên trên toàn quốc. Đây là cơ hội để những ngôi sao thầm lặng đằng sau tổng đài bước ra ánh sáng, thể hiện tài năng và bản sắc riêng.\n\nChuỗi hoạt động trong chương trình bao gồm:",
+        bullets: [
+          "Bồi dưỡng nghiệp vụ: Cập nhật kiến thức và nâng cao kỹ năng chuyên môn.",
+          "Hoạt động teambuilding: Các trò chơi giải trí giúp giải tỏa căng thẳng và tăng cường tinh thần đồng đội.",
+          "Đêm hội nghệ thuật: Nơi các điện thoại viên bùng nổ với những màn trình diễn ca múa nhạc sôi động, thể hiện tinh thần trẻ trung và nhiệt huyết.",
+        ],
+      },
+      {
+        title: "Lan tỏa giá trị bền vững",
+        content:
+          "Chương trình \"Be a Star 2017\" không chỉ mang lại những phút giây thư giãn sau giờ làm việc căng thẳng mà còn thắt chặt sợi dây gắn kết giữa nhân viên với doanh nghiệp, bồi đắp tình yêu nghề và truyền cảm hứng để đội ngũ tiếp tục đồng hành cùng Mobifone trên chặng đường phát triển.",
+      },
+    ],
   },
   {
-    id: "ai-marketing-retail",
-    title: "Hệ Thống AI Marketing Automation Cho Tập Đoàn Bán Lẻ",
-    category: "Chuyển đổi số & AI",
-    client: "RetailCorp Vietnam",
+    id: "toi-yeu-dong-bao-toi",
+    title: "TÔI YÊU ĐỒNG BÀO TÔI – HÀNH TRÌNH ‘MÙA XUÂN YÊU THƯƠNG’",
+    category: "Hoạt động xã hội / Thiện nguyện",
+    client: "Chiến dịch Cộng đồng & QTM Foundation",
     summary:
-      "Xây dựng hệ thống tự động hóa chiến dịch Marketing bằng AI Agent, tối ưu hóa điểm chạm khách hàng toàn kênh theo thời gian thực.",
-    image: "/projects/ai-retail.png",
-    startDate: "Năm 2025",
-    targetAudience: "Tập đoàn bán lẻ & chuỗi cửa hàng toàn quốc",
-    speakers: ["Chuyên gia AI QTM", "Đội ngũ Kỹ sư Dữ liệu"],
+      "Hành trình 5 năm mang mùa xuân ấm áp, quà tặng thiết yếu và tủ sách tri thức đến với đồng bào và trẻ em vùng cao khó khăn.",
+    sapo:
+      "... nhìn những nụ cười hạnh phúc, những ánh mắt tràn ngập tình cảm của người dân nghèo khi nhận những món quà của 'Tôi yêu đồng bào tôi', chúng tôi lại được trao thêm sức mạnh và động lực để tiếp tục sứ mệnh mùa xuân yêu thương.",
+    image: "/projects/toi-yeu-dong-bao-toi.png",
+    startDate: "2014 – 2018",
+    targetAudience: "Đồng bào và trẻ em khó khăn tại các tỉnh vùng cao (Hà Giang, Cao Bằng, Yên Bái, Lai Châu, Điện Biên)",
+    speakers: ["Đội ngũ Tình nguyện viên QTM", "Đại diện Chính quyền Địa phương", "Ban Điều phối 'Tôi Yêu Đồng Bào Tôi'"],
     metrics: [
-      { val: "+185%", lbl: "Tỷ lệ chuyển đổi" },
-      { val: "-40%", lbl: "Chi phí CAC" },
-      { val: "2.5x", lbl: "Tăng trưởng doanh số" },
+      { val: "5 Năm", lbl: "Hành trình bền bỉ" },
+      { val: "5 Tỉnh", lbl: "Vùng cao Tây Bắc & Đông Bắc" },
+      { val: "Hàng Ngàn", lbl: "Suất quà & Tủ sách" },
     ],
     challenge:
-      "Dữ liệu khách hàng bị phân tán, quy trình phân tích bài viết thủ công khiến doanh nghiệp bỏ lỡ thời điểm vàng tiếp cận khách hàng tiềm năng.",
+      "Mùa xuân vốn là mùa của niềm vui, sự đơm hoa kết trái và những hy vọng mới. Tuy nhiên, đối với người dân nghèo tại các vùng xa xôi, mùa xuân về lại đi kèm với muôn vàn nỗi lo toan gánh nặng cơm áo gạo tiền.\n\nThấu hiểu những khó khăn ấy, chiến dịch “Tôi yêu đồng bào tôi” đã ra đời với tiêu chí “Thiện từ tâm”. Chương trình không chỉ dừng lại ở những món quà vật chất mà còn gửi gắm tình yêu thương, giúp sưởi ấm lòng người dân vùng cao trong những ngày đông rét mướt.",
     solution:
-      "QTM tích hợp bộ giải pháp AI Enterprise Data Analytics, tự động hóa phân khúc khách hàng, cá nhân hóa nội dung quảng cáo và tự động điều chỉnh ngân sách tối ưu.",
+      "Kể từ năm 2014 đến nay, hành trình đã lăn bánh qua nhiều vùng đất xa xôi hẻo lánh như Hà Giang, Cao Bằng, Yên Bái, Lai Châu và Điện Biên:\n\n• Nhu yếu phẩm thiết yếu: Hàng ngàn suất quà gồm gạo, mắm muối, chăn bông, quần áo ấm và ủng cao su đã được trao tận tay các hộ gia đình khó khăn.\n\n• Ươm mầm tri thức (Xuân 2018): Hướng đến đối tượng trẻ em tại xã Búng Lao (huyện Mường Ảng, tỉnh Điện Biên), chương trình đã trao 300 suất quà cùng dự án Tủ sách tri thức (300 đầu sách văn học thiếu nhi) và bộ tô màu “Ước mơ của em” nhằm nuôi dưỡng tâm hồn và kỹ năng sống cho các em.",
     impact:
-      "Tăng gấp 2.5 lần hiệu suất chiến dịch, giảm 40% chi phí tìm kiếm khách hàng mới và giúp ban lãnh đạo đưa ra quyết định kinh doanh chuẩn xác theo từng giây.",
+      "Hành trình 5 năm qua không chỉ mang đến cái Tết no đủ hơn cho đồng bào miền núi mà còn thắp sáng niềm tin vào những giá trị nhân văn tốt đẹp. “Tôi yêu đồng bào tôi” sẽ tiếp tục kéo dài và mở rộng đến nhiều vùng miền hơn nữa trên khắp Tổ quốc.",
+    sections: [
+      {
+        title: "Sứ mệnh bắt nguồn từ sự đồng cảm",
+        content:
+          "Mùa xuân vốn là mùa của niềm vui, sự đơm hoa kết trái và những hy vọng mới. Tuy nhiên, đối với người dân nghèo tại các vùng xa xôi, mùa xuân về lại đi kèm với muôn vàn nỗi lo toan gánh nặng cơm áo gạo tiền.\n\nThấu hiểu những khó khăn ấy, chiến dịch “Tôi yêu đồng bào tôi” đã ra đời với tiêu chí “Thiện từ tâm”. Chương trình không chỉ dừng lại ở những món quà vật chất mà còn gửi gắm tình yêu thương, giúp sưởi ấm lòng người dân vùng cao trong những ngày đông rét mướt.",
+      },
+      {
+        title: "Dấu ấn 5 năm gieo mầm ấm áp",
+        content:
+          "Kể từ năm 2014 đến nay, hành trình đã lăn bánh qua nhiều vùng đất xa xôi hẻo lánh như Hà Giang, Cao Bằng, Yên Bái, Lai Châu và Điện Biên:",
+        bullets: [
+          "Nhu yếu phẩm thiết yếu: Hàng ngàn suất quà gồm gạo, mắm muối, chăn bông, quần áo ấm và ủng cao su đã được trao tận tay các hộ gia đình khó khăn.",
+          "Ươm mầm tri thức (Xuân 2018): Hướng đến đối tượng trẻ em tại xã Búng Lao (huyện Mường Ảng, tỉnh Điện Biên), chương trình đã trao 300 suất quà cùng dự án Tủ sách tri thức (300 đầu sách văn học thiếu nhi) và bộ tô màu “Ước mơ của em” nhằm nuôi dưỡng tâm hồn và kỹ năng sống cho các em.",
+        ],
+      },
+      {
+        title: "Tiếp nối những mùa xuân yêu thương",
+        content:
+          "Hành trình 5 năm qua không chỉ mang đến cái Tết no đủ hơn cho đồng bào miền núi mà còn thắp sáng niềm tin vào những giá trị nhân văn tốt đẹp. “Tôi yêu đồng bào tôi” sẽ tiếp tục kéo dài và mở rộng đến nhiều vùng miền hơn nữa trên khắp Tổ quốc.",
+      },
+    ],
   },
   {
-    id: "ocop-branding",
-    title: "Định Vị Thương Hiệu & Quảng Bá Nông Sản OCOP Quốc Gia",
-    category: "Thương hiệu & OCOP",
-    client: "Sở Công Thương & OCOP Vietnam",
+    id: "tiep-thi-xa-hoi-hai-phong",
+    title: "TIẾP THỊ XÃ HỘI – CHẠM ĐẾN TRÁI TIM NGƯỜI TIÊU DÙNG",
+    category: "Xu hướng Marketing",
+    client: "Tổng công ty Viễn thông Mobifone & QTM",
     summary:
-      "Chiến lược tái định vị thương hiệu nông sản đặc sản vùng miền, ứng dụng bộ nhận diện số chuẩn quốc tế vươn tầm thế giới.",
-    image: "/projects/ocop-branding.png",
-    startDate: "Năm 2024",
-    targetAudience: "Hơn 500 doanh nghiệp & Hợp tác xã OCOP",
-    speakers: ["Chuyên gia Thương hiệu QTM", "Đại diện Bộ Công Thương"],
+      "Khám phá cách Mobifone ứng dụng thành công mô hình tiếp thị cộng đồng qua chiến dịch \"Tôi yêu Hải Phòng\" để xây dựng thiện cảm thương hiệu.",
+    sapo:
+      "Mỗi chiến dịch Tiếp thị xã hội đều có một ý tưởng nhân văn sâu sắc, bởi đó là tinh thần, là sự gắn bó và cam kết trách nhiệm lâu dài, thể hiện ý chí và vị thế của doanh nghiệp.",
+    image: "/projects/tiep-thi-xa-hoi-hai-phong.png",
+    startDate: "2015 – 2017",
+    targetAudience: "Cộng đồng người dân & giới trẻ học sinh - sinh viên TP. Hải Phòng",
+    speakers: ["Ban Lãnh đạo MobiFone", "Đạo diễn Chiến dịch QTM", "Đại diện Đoàn Thanh niên Hải Phòng"],
     metrics: [
-      { val: "12", lbl: "Quốc gia xuất khẩu" },
-      { val: "+220%", lbl: "Giá trị thương hiệu" },
-      { val: "500+", lbl: "Doanh nghiệp OCOP" },
+      { val: "80%", lbl: "NTD ủng hộ quỹ xã hội" },
+      { val: "1.000+", lbl: "Bạn trẻ đồng diễn Flashmob" },
+      { val: "Hàng Vạn", lbl: "Khán giả Đêm hội Gala" },
     ],
     challenge:
-      "Nông sản Việt Nam có chất lượng hàng đầu nhưng thiếu bao bì chuẩn quốc tế, câu chuyện sản phẩm còn mờ nhạt và khó tiếp cận thị trường cao cấp.",
+      "Trong marketing hiện đại, tiếp thị xã hội là hoạt động bao trùm khách hàng ở diện rộng, lấy khách hàng làm trọng tâm để tạo dựng môi trường cộng đồng chứa đựng cảm xúc. Khi doanh nghiệp tạo ra giá trị cho cộng đồng, chính lợi ích từ cộng đồng sẽ quay trở lại nâng cao vị thế và sự gắn kết của thương hiệu.\n\nChạm tới trái tim cộng đồng luôn là mục tiêu hàng đầu trước khi tính đến việc kinh doanh sản phẩm. Dù không thể hiện bằng các con số doanh thu trực tiếp, thiện cảm của người tiêu dùng sẽ được củng cố mạnh mẽ – giống như cách Saigon Tourist gắn liền với 'Đường hoa Nguyễn Huệ', Colgate với 'Vì một Việt Nam không sâu răng' hay Lifebuoy với 'Ngày thế giới rửa tay với xà phòng'.",
     solution:
-      "QTM tái thiết kế toàn bộ hệ thống bao bì số, xây dựng chuỗi bài viết Storytelling văn hóa vùng miền và số hóa sản phẩm lên sàn TMĐT xuyên biên giới.",
+      "Mobifone đã chuyển đổi linh hoạt từ tiếp thị quảng bá sản phẩm tập trung sang hình thức phân bổ 'may đo' theo từng thị trường khu vực dựa trên nguyên tắc 'am hiểu địa phương'.\n\nĐiển hình tại Hải Phòng, chiến dịch 'Tôi yêu Hải Phòng' gắn liền với Sim Hoa Phượng đã gặt hái thành công lớn nhờ các hoạt động cộng đồng thiết thực: Cuộc thi Flashmob Online 'Vũ điệu Hoa Phượng', Chương trình 'Thắp sáng ước mơ 2015' và Đêm Gala Ca nhạc tại Quảng trường Nhà hát Thành phố.",
     impact:
-      "Mở rộng thị trường xuất khẩu sang 12 quốc gia Châu Âu & Châu Á, nâng tầm giá trị nông sản Việt và tăng thu nhập bền vững cho hàng ngàn bà con nông dân.",
+      "Nhờ đóng vai trò chất xúc tác thúc đẩy văn hóa - xã hội địa phương, Mobifone không chỉ kích cầu kinh doanh mà còn chiếm trọn tình cảm của người dân Thành phố Cảng một cách tự nhiên và bền vững.",
+    sections: [
+      {
+        title: "Xu hướng mới trong hoạt động marketing thương hiệu",
+        content:
+          "Trong marketing hiện đại, tiếp thị xã hội là hoạt động bao trùm khách hàng ở diện rộng, lấy khách hàng làm trọng tâm để tạo dựng môi trường cộng đồng chứa đựng cảm xúc. Khi doanh nghiệp tạo ra giá trị cho cộng đồng, chính lợi ích từ cộng đồng sẽ quay trở lại nâng cao vị thế và sự gắn kết của thương hiệu.\n\nChạm tới trái tim cộng đồng luôn là mục tiêu hàng đầu trước khi tính đến việc kinh doanh sản phẩm. Dù không thể hiện bằng các con số doanh thu trực tiếp, thiện cảm của người tiêu dùng sẽ được củng cố mạnh mẽ – giống như cách Saigon Tourist gắn liền với \"Đường hoa Nguyễn Huệ\", Colgate với \"Vì một Việt Nam không sâu răng\" hay Lifebuoy với \"Ngày thế giới rửa tay với xà phòng\".",
+      },
+      {
+        title: "Nghệ thuật chinh phục người tiêu dùng",
+        content:
+          "Theo nghiên cứu của Edelman, 80% người tiêu dùng toàn cầu tin rằng thương hiệu nên duy trì nguồn quỹ phục vụ mục đích xã hội ngay cả khi kinh tế khó khăn. Đáng chú ý, 68% sẵn sàng trung thành với thương hiệu chung tay vì cộng đồng.\n\nKhi chất lượng sản phẩm giữa các bên tương đồng, thiện cảm cá nhân là yếu tố quyết định hành vi mua hàng. Tuy nhiên, doanh nghiệp cần cẩn trọng: chiến dịch chỉ phát huy hiệu quả khi phù hợp với tính cách thương hiệu; nếu phô trương hay gượng ép sẽ gây lãng phí nguồn lực và tác dụng ngược.",
+      },
+      {
+        title: "Bước chuyển trong hình thức tiếp thị: Bài học từ Mobifone",
+        content:
+          "Mobifone đã chuyển đổi linh hoạt từ tiếp thị quảng bá sản phẩm tập trung sang hình thức phân bổ \"may đo\" theo từng thị trường khu vực dựa trên nguyên tắc \"am hiểu địa phương\".\n\nĐiển hình tại Hải Phòng, chiến dịch \"Tôi yêu Hải Phòng\" gắn liền với Sim Hoa Phượng đã gặt hái thành công lớn nhờ các hoạt động cộng đồng thiết thực:",
+        bullets: [
+          "Cuộc thi Flashmob Online \"Vũ điệu Hoa Phượng\": Thu hút hàng ngàn học sinh, sinh viên tham gia.",
+          "Chương trình \"Thắp sáng ước mơ 2015\": Dành cho học sinh, sinh viên vượt khó.",
+          "Đêm Gala Ca nhạc: Quy tụ hơn 1.000 bạn trẻ đồng diễn và hàng chục ngàn khán giả tại Quảng trường Nhà hát Thành phố.",
+          "Nhờ đóng vai trò chất xúc tác thúc đẩy văn hóa - xã hội địa phương, Mobifone không chỉ kích cầu kinh doanh mà còn chiếm trọn tình cảm của người dân Thành phố Cảng một cách tự nhiên và bền vững.",
+        ],
+      },
+    ],
   },
   {
-    id: "techbank-campaign",
-    title: "Chiến Dịch Truyền Thông Số Ngân Hàng Kỹ Thuật Số TechBank",
-    category: "Chiến dịch Truyền thông",
-    client: "TechBank Digital",
+    id: "vietcombank-tinh-hoa-ket-noi",
+    title: "HỘI NGHỊ KHÁCH HÀNG VIETCOMBANK SGD – TINH HOA KẾT NỐI",
+    category: "Góc sự kiện",
+    client: "Vietcombank Sở Giao Dịch & QTM",
     summary:
-      "Kích hoạt chiến dịch truyền thông phủ sóng giới trẻ Gen Z với thông điệp 'Ngân Hàng Số Không Giới Hạn'.",
-    image: "/projects/techbank.png",
-    startDate: "Năm 2025",
-    targetAudience: "Thế hệ Gen Z & Người dùng số trẻ tuổi",
-    speakers: ["Đội ngũ Sáng tạo QTM", "Creators & KOLs"],
+      "Khám phá sự kết hợp hoàn hảo giữa công nghệ hiện đại và âm nhạc đỉnh cao trong sự kiện tri ân dấu ấn của Vietcombank Sở giao dịch.",
+    sapo:
+      "Tiếp nối thành công của chương trình 'Chinh phục đỉnh cao' năm 2016, QTM vinh hạnh tiếp tục đồng hành cùng Vietcombank Sở giao dịch trong sự kiện tri ân khách hàng 2017 với chủ đề 'Tinh hoa kết nối' – nơi những giá trị đồng hành bền chặt được tôn vinh.",
+    image: "/projects/vietcombank-tinh-hoa-ket-noi.png",
+    startDate: "Năm 2017",
+    targetAudience: "Khách hàng VIP, đối tác doanh nghiệp thân thiết & Ban Lãnh đạo Vietcombank Sở Giao Dịch",
+    speakers: ["Ban Giám đốc Vietcombank SGD", "Nhạc sĩ Dương Cầm (GĐ Âm nhạc)", "Ca sĩ Tấn Minh, Phương Linh, Tiêu Châu Như Quỳnh"],
     metrics: [
-      { val: "5.000.000+", lbl: "Lượt hiển thị" },
-      { val: "250.000+", lbl: "Tài khoản mở mới" },
-      { val: "#1", lbl: "Trending chiến dịch số" },
+      { val: "Top 1", lbl: "Sự kiện tri ân ngành Ngân hàng" },
+      { val: "500+", lbl: "Khách hàng VIP & Đối tác lớn" },
+      { val: "100%", lbl: "Gắn kết & Tôn vinh giá trị" },
     ],
     challenge:
-      "Gen Z có thói quen sử dụng tài chính linh hoạt và rất khắt khe với các thông điệp quảng cáo truyền thống khô khan.",
+      "Thấu hiểu sự trân quý mà Vietcombank Sở giao dịch dành cho các Khách hàng thân thiết đã đồng hành trong suốt một chặng đường dài, sự kiện “Tinh hoa kết nối” được tổ chức trong không gian trang trọng và ấm cúng. Đây không chỉ là dịp để nhìn lại một năm nỗ lực gặt hái nhiều thành công lớn, mà còn là lời tri ân sâu sắc nhất gửi tới quý khách hàng.",
     solution:
-      "Sáng tạo tuyến nội dung ngắn Gamification, hợp tác cùng dàn Creator công nghệ hàng đầu và tổ chức sự kiện âm nhạc tương tác thực tế ảo AR.",
+      "Chương trình mở đầu bằng màn trình diễn múa tương tác đầy ấn tượng, kết hợp giữa công nghệ Visual Effect hiện đại và ánh sáng nghệ thuật mê hoặc tái hiện sống động hành trình thương mại toàn cầu từ thời La Mã – Ai Cập đến hội nhập thế kỷ 20. Đêm tiệc bùng nổ dưới sự chỉ đạo âm nhạc của nhạc sĩ Dương Cầm cùng dàn nghệ sĩ hàng đầu.",
     impact:
-      "Đạt hơn 250.000 mở tài khoản mới chỉ sau 30 ngày khởi chạy, chiến dịch dẫn đầu xu hướng truyền thông ngân hàng năm 2026.",
+      "Sự kiện khép lại trong không khí tràn ngập niềm vui và gắn kết, khẳng định vị thế dẫn đầu cùng mối quan hệ hợp tác bền chặt giữa Vietcombank SGD và quý khách hàng thân thiết.",
+    sections: [
+      {
+        title: "Tri ân sâu sắc những người bạn đồng hành",
+        content:
+          "Thấu hiểu sự trân quý mà Vietcombank Sở giao dịch dành cho các Khách hàng thân thiết đã đồng hành trong suốt một chặng đường dài, sự kiện “Tinh hoa kết nối” được tổ chức trong không gian trang trọng và ấm cúng. Đây không chỉ là dịp để nhìn lại một năm nỗ lực gặt hái nhiều thành công lớn, mà còn là lời tri ân sâu sắc nhất gửi tới quý khách hàng.",
+      },
+      {
+        title: "Mãn nhãn với tiết mục nghệ thuật tương tác công nghệ",
+        content:
+          "Chương trình mở đầu bằng màn trình diễn múa tương tác đầy ấn tượng, kết hợp giữa công nghệ Visual Effect hiện đại và ánh sáng nghệ thuật mê hoặc. Tiết mục đã tái hiện sống động hành trình phát triển của thương mại toàn cầu:\n\nHành trình ấy cũng chính là hình ảnh thu nhỏ của Vietcombank nói chung và Vietcombank Sở giao dịch nói riêng trong việc từng bước khẳng định vị thế vững chắc. Với Vietcombank SGD, mỗi khách hàng chính là một người bạn đồng hành quý báu trên con đường chinh phục thế giới – nơi các giá trị tinh hoa luôn tỏa sáng và kết nối.",
+        bullets: [
+          "Từ thời kỳ La Mã – Ai Cập cổ đại.",
+          "Qua những chuyến hải trình khai phá Tân Thế giới vào thế kỷ 16 của người châu Âu.",
+          "Đến sự hội nhập toàn cầu nhanh chóng và tiện lợi ở thế kỷ 20.",
+        ],
+      },
+      {
+        title: "Đêm tiệc thăng hoa của âm nhạc và cảm xúc",
+        content:
+          "Dưới sự chỉ đạo nghệ thuật của nhạc sĩ Dương Cầm, chương trình mang đến những màn trình diễn âm nhạc đỉnh cao với sự góp mặt của dàn ca sĩ tên tuổi như Tấn Minh, Phương Linh và Tiêu Châu Như Quỳnh.\n\nBên cạnh những phút giây thưởng thức nghệ thuật, các vị khách quý còn nhận được những phần quà tri ân giá trị. Sự kiện khép lại trong không khí tràn ngập niềm vui và gắn kết, khẳng định vị thế dẫn đầu cùng mối quan hệ hợp tác bền chặt giữa Vietcombank SGD và khách hàng.",
+      },
+    ],
   },
   {
-    id: "women-empowerment",
-    title: "Nền Tảng Đào Tạo & Kết Nối Phụ Nữ Khởi Nghiệp Số",
-    category: "Văn hóa & Di sản",
-    client: "QTM Ecosystem & Hội LHPN",
+    id: "billboard-pvndb-2023",
+    title: "BILLBOARD PVNDB NĂM 2023",
+    category: "Lan tỏa thương hiệu",
+    client: "PVNDB & QTM",
     summary:
-      "Xây dựng chuỗi hội thảo, khóa học số và cộng đồng kết nối hàng ngàn nữ doanh nhân trẻ bứt phá trong thời đại mới.",
-    image: "/miss-legacy-mission-bg.jpg",
-    startDate: "Năm 2025",
-    targetAudience: "Hàng ngàn nữ doanh nhân & phụ nữ trẻ toàn quốc",
-    speakers: ["Cố vấn Khởi nghiệp QTM", "Lãnh đạo Hội LHPN"],
+      "Dự án biển quảng cáo ngoài trời thực hiện trong 3 tháng, khẳng định sự sáng tạo và năng lực đồng hành bền vững cùng đối tác PVNDB.",
+    sapo:
+      "Trong vòng 3 tháng với đầy sự nỗ lực và sáng tạo không ngừng, đội ngũ QTM đã hoàn thiện Dự án Billboard ngoài trời cho PVNDB, tiếp tục khẳng định năng lực và thắt chặt mối quan hệ hợp tác bền vững.",
+    image: "/projects/billboard-pvndb-2023.png",
+    startDate: "Năm 2023",
+    targetAudience: "Hàng triệu lượt người tham gia giao thông & đối tác năng lượng PVNDB",
+    speakers: ["Ban Lãnh đạo PVNDB", "Đội ngũ Thiết kế & Thi công OOH QTM"],
     metrics: [
-      { val: "10.000+", lbl: "Học viên toàn quốc" },
-      { val: "300+", lbl: "Dự án nhận đầu tư" },
-      { val: "98%", lbl: "Hài lòng tuyệt đối" },
+      { val: "3 Tháng", lbl: "Thời gian hoàn thiện" },
+      { val: "100%", lbl: "Tiêu chuẩn an toàn & thẩm mỹ" },
+      { val: "Triệu+", lbl: "Lượt tiếp cận mỗi ngày" },
     ],
     challenge:
-      "Nhiều phụ nữ khởi nghiệp ở khu vực địa phương gặp rào cản về tiếp cận công nghệ số và quản trị tài chính doanh nghiệp.",
+      "Dự án được khởi đầu từ sự kết nối mạnh mẽ giữa QTM và đối tác đáng tin cậy PVNDB. Cả hai bên đã bước vào một cuộc hợp tác chất lượng với mục tiêu chung: tạo ra một tấm biển quảng cáo ngoài trời đẳng cấp, phản ánh chính xác thông điệp và giá trị thương hiệu của PVNDB.",
     solution:
-      "Cung cấp chương trình đào tạo trực tuyến miễn phí, xây dựng mạng lưới cố vấn chuyên gia 1-1 và kết nối trực tiếp với các quỹ đầu tư thiên thần.",
+      "Suốt 3 tháng triển khai, đội ngũ QTM đã đầu tư nhiều thời gian và tâm huyết để đảm bảo tính độc đáo cho công trình: Nghiên cứu phát triển ý tưởng thiết kế đặc biệt phù hợp nhận diện thương hiệu PVNDB và phối hợp tương tác liên tục giữa hai bên để hoàn thiện từng chi tiết nhỏ nhất, tạo nên sự khác biệt cho tác phẩm.",
     impact:
-      "Giúp hơn 300 dự án khởi nghiệp do nữ làm chủ hoàn thiện mô hình kinh doanh và nhận vốn đầu tư mở rộng quy mô toàn quốc.",
-  },
-  {
-    id: "ooh-smart-city-led",
-    title: "Mạng Lưới Truyền Thông Đô Thị & LED 3D Tương Tác OOH",
-    category: "Truyền thông Đô thị & OOH",
-    client: "Tập đoàn Đô thị Thông minh SmartCity",
-    summary:
-      "Triển khai mạng lưới màn hình LED 3D Naked-Eye tại các đại lộ trung tâm thành phố, kết nối dữ liệu thời gian thực và trải nghiệm AR.",
-    image: "/home/ecosystem/panel-city.jpg",
-    startDate: "Tháng 12/2025",
-    targetAudience: "Cư dân đô thị & du khách tại các trung tâm kinh tế lớn",
-    speakers: ["Đội ngũ Kỹ thuật OOH QTM", "Chuyên gia Thiết kế 3D Visual"],
-    metrics: [
-      { val: "20.000.000+", lbl: "Lượt tiếp cận/tháng" },
-      { val: "15+", lbl: "Màn hình 3D Naked-Eye" },
-      { val: "+300%", lbl: "Tăng nhận diện" },
+      "Kết quả của sự hợp tác là một biển quảng cáo ngoài trời (Billboard) thực sự nổi bật, không chỉ thu hút mọi ánh nhìn của người đi đường mà còn đại diện cho tầm nhìn dài hạn và sự chuyên nghiệp của PVNDB trên thị trường, khẳng định sự gắn kết dài lâu giữa hai đơn vị.",
+    sections: [
+      {
+        title: "Hành trình hợp tác bền vững",
+        content:
+          "Dự án được khởi đầu từ sự kết nối mạnh mẽ giữa QTM và đối tác đáng tin cậy PVNDB. Cả hai bên đã bước vào một cuộc hợp tác chất lượng với mục tiêu chung: tạo ra một tấm biển quảng cáo ngoài trời đẳng cấp, phản ánh chính xác thông điệp và giá trị thương hiệu của PVNDB.",
+      },
+      {
+        title: "Nỗ lực không ngừng trong thiết kế & thi công",
+        content:
+          "Suốt 3 tháng triển khai, đội ngũ QTM đã đầu tư nhiều thời gian và tâm huyết để đảm bảo tính độc đáo cho công trình:",
+        bullets: [
+          "Thiết kế sáng tạo: Nghiên cứu và phát triển ý tưởng thiết kế đặc biệt, phù hợp hoàn hảo với nhận diện thương hiệu PVNDB.",
+          "Phối hợp chặt chẽ: Tương tác liên tục giữa hai bên để hoàn thiện từng chi tiết nhỏ nhất, tạo nên sự khác biệt cho tác phẩm.",
+        ],
+      },
+      {
+        title: "Tác phẩm gây ấn tượng thị giác",
+        content:
+          "Kết quả của sự hợp tác là một biển quảng cáo ngoài trời (Billboard) thực sự nổi bật. Sản phẩm không chỉ thu hút mọi ánh nhìn của người đi đường mà còn đại diện cho tầm nhìn dài hạn và sự chuyên nghiệp của PVNDB trên thị trường.",
+      },
+      {
+        title: "Khẳng định niềm tin và cam kết tương lai",
+        content:
+          "Sự thành công của dự án Billboard 2023 là minh chứng cho sự gắn kết dài lâu giữa QTM và PVNDB. QTM trân trọng cảm ơn sự tin tưởng từ PVNDB và cam kết sẽ tiếp tục đồng hành, gặt hái thêm nhiều thành tựu vượt trội trong những chặng đường tiếp theo.",
+      },
     ],
-    challenge:
-      "Hình thức OOH truyền thống bị giảm hiệu quả do thiếu tính tương tác và khả năng đo lường chỉ số ROI cho nhãn hàng.",
-    solution:
-      "QTM ứng dụng công nghệ LED 3D Naked-Eye kết hợp hệ thống camera AI cảm biến lưu lượng giao thông để điều chỉnh nội dung quảng cáo động theo thời gian thực.",
-    impact:
-      "Tái định nghĩa trải nghiệm truyền thông ngoài trời tại Việt Nam, biến các billboard thành biểu tượng kiến trúc công nghệ rực rỡ thu hút du khách.",
-  },
-  {
-    id: "ai-customer-experience-center",
-    title: "Trung Tâm Trải Nghiệm Khách Hàng Thông Minh AI Experience",
-    category: "Chuyển đổi số & AI",
-    client: "Tập đoàn Công nghệ NextGen",
-    summary:
-      "Thiết kế và thi công không gian trải nghiệm công nghệ đa giác quan tương tác AI cho trung tâm điều hành thương hiệu.",
-    image: "/home/ecosystem/panel-office.jpg",
-    startDate: "Tháng 08/2025",
-    targetAudience: "Khách hàng VIP, đối tác chiến lược & các nhà đầu tư lớn",
-    speakers: ["Kiến trúc sư Trải nghiệm QTM", "Đội ngũ Kỹ sư AI"],
-    metrics: [
-      { val: "100%", lbl: "Tương tác số hóa" },
-      { val: "5.000+", lbl: "Lượt đoàn tham quan" },
-      { val: "99%", lbl: "Đánh giá ấn tượng" },
-    ],
-    challenge:
-      "Không gian trưng bày truyền thống thiếu tính công nghệ tương tác, chưa truyền tải hết quy mô và năng lực số hóa của doanh nghiệp.",
-    solution:
-      "QTM xây dựng không gian immersive tích hợp bản đồ hologram 3D, phòng trải nghiệm AI nhận diện giọng nói và cảm biến cử chỉ thông minh.",
-    impact:
-      "Nâng tầm hình ảnh thương hiệu quốc tế cho doanh nghiệp, chốt hàng trăm hợp đồng hợp tác chiến lược ngay tại trung tâm trải nghiệm.",
-  },
-  {
-    id: "heritage-art-festival-2025",
-    title: "Festival Âm Nhạc & Văn Hóa Di Sản Số 2025",
-    category: "Văn hóa & Di sản",
-    client: "Sở Văn hóa Thể thao & Miss Legacy",
-    summary:
-      "Đại nhạc hội kết hợp ánh sáng Laser Mapping 3D tái hiện di sản truyền thống Việt Nam trên sân khấu quy mô 30.000 khán giả.",
-    image: "/home/ecosystem/panel-concert.jpg",
-    startDate: "Tháng 11/2025",
-    targetAudience: "Hơn 30.000 khán giả xem trực tiếp & hàng triệu người xem livestream",
-    speakers: ["Đạo diễn Sân khấu QTM", "Nghệ sĩ Văn hóa Di sản"],
-    metrics: [
-      { val: "30.000+", lbl: "Khán giả trực tiếp" },
-      { val: "10.000.000+", lbl: "Lượt tương tác MXH" },
-      { val: "Top 1", lbl: "Sự kiện văn hóa năm" },
-    ],
-    challenge:
-      "Kết hợp giữa nét trầm mặc của di sản văn hóa cổ truyền với nhịp sống âm nhạc hiện đại mà không làm mất đi tính nguyên bản của lịch sử.",
-    solution:
-      "QTM xây dựng kịch bản 3 chương âm nhạc công nghệ, ứng dụng kỹ thuật trình chiếu ánh sáng Hologram 3D trên nền âm hưởng dân gian đương đại.",
-    impact:
-      "Sự kiện ghi dấu ấn rực rỡ trong lòng công chúng, thu hút báo chí quốc tế đưa tin và tạo làn sóng tự hào di sản trẻ trung.",
-  },
-  {
-    id: "eco-green-brand-repositioning",
-    title: "Chiến Lược Tái Định Vị Thương Hiệu Xanh EcoGreen",
-    category: "Thương hiệu & OCOP",
-    client: "EcoGreen Corporation",
-    summary:
-      "Tái kiến tạo toàn bộ nhận diện thương hiệu bền vững, xây dựng thông điệp ESG phát triển vì môi trường cho tập đoàn sản xuất sạch.",
-    image: "/home/ecosystem/panel-growth.jpg",
-    startDate: "Tháng 03/2025",
-    targetAudience: "Người tiêu dùng xanh & cộng đồng nhà đầu tư ESG",
-    speakers: ["Chuyên gia Chiến lược QTM", "Đại sứ Phát triển Bền vững"],
-    metrics: [
-      { val: "+160%", lbl: "Chỉ số yêu thích thương hiệu" },
-      { val: "100%", lbl: "Bao bì tái chế" },
-      { val: "ESG A+", lbl: "Xếp hạng bền vững" },
-    ],
-    challenge:
-      "Thương hiệu lâu đời bị thị trường đánh giá là già cỗi, chưa bắt kịp xu hướng phát triển bền vững và tiêu dùng xanh toàn cầu.",
-    solution:
-      "QTM xây dựng bộ tái nhận diện thương hiệu tinh gọn, chạy chiến dịch 'Gieo Mầm Xanh - Kiến Tạo Bền Vững' phủ sóng toàn quốc.",
-    impact:
-      "Giúp doanh nghiệp tái khẳng định vị thế dẫn đầu trong sản xuất xanh, đạt chứng nhận ESG quốc tế và gia tăng 160% thiện cảm thương hiệu.",
-  },
-  {
-    id: "smart-mobility-ooh-network",
-    title: "Mạng Lưới Quảng Cáo Đô Thị Đa Điểm Chạm Smart Mobility",
-    category: "Truyền thông Đô thị & OOH",
-    client: "Mobility Tech Vietnam",
-    summary:
-      "Hệ thống màn hình thông minh tích hợp trên các phương tiện giao thông công cộng, đo lường hành vi tiếp cận bằng AI Vision.",
-    image: "/home/ecosystem/panel-data.jpg",
-    startDate: "Tháng 07/2025",
-    targetAudience: "Hàng triệu hành khách di chuyển đô thị mỗi ngày",
-    speakers: ["Chuyên gia Dữ liệu OOH QTM", "Kỹ sư IoT System"],
-    metrics: [
-      { val: "5.000+", lbl: "Màn hình kết nối" },
-      { val: "15.000.000+", lbl: "Lượt tiếp cận/ngày" },
-      { val: "Realtime", lbl: "Đo lường dữ liệu" },
-    ],
-    challenge:
-      "Quảng cáo trên phương tiện di chuyển thiếu tính đo lường dữ liệu chính xác và khó tùy biến nội dung theo từng quận huyện.",
-    solution:
-      "QTM phát triển hộp thiết bị thông minh GPS/AI Vision định vị xe, tự động phát clip quảng cáo phù hợp với vị trí địa lý của phương tiện.",
-    impact:
-      "Tối ưu hóa ngân sách quảng cáo cho nhãn hàng lên gấp 2 lần, cung cấp báo cáo đo lường thị giác minh bạch từng giây.",
-  },
-  {
-    id: "vietnam-tech-forum-2025",
-    title: "Diễn Đàn Chuyển Đổi Số & Đổi Mới Sáng Tạo Việt Nam",
-    category: "Sự kiện & Hội nghị",
-    client: "Bộ Thông tin Truyền thông & QTM",
-    summary:
-      "Hội nghị quy mô cấp quốc gia kết nối hàng ngàn doanh nghiệp công nghệ, startup và các nhà đầu tư mạo hiểm quốc tế.",
-    image: "/talkshow-khat-vong-khoi-nghiep.png",
-    startDate: "Tháng 09/2025",
-    targetAudience: "Cộng đồng công nghệ, Doanh nghiệp DX & Nhà đầu tư",
-    speakers: ["Lãnh đạo Bộ ngành", "Lãnh đạo QTM MediaTech", "Chuyên gia Tech Global"],
-    metrics: [
-      { val: "3.000+", lbl: "Doanh nghiệp tham gia" },
-      { val: "50M$", lbl: "Cam kết đầu tư" },
-      { val: "50+", lbl: "Gian hàng công nghệ 3D" },
-    ],
-    challenge:
-      "Cần thiết lập triển lãm công nghệ số trực tuyến kết hợp trực tiếp với tiêu chuẩn bảo mật dữ liệu cấp chính phủ.",
-    solution:
-      "QTM vận hành toàn bộ hạ tầng công nghệ đăng ký check-in khuôn mặt AI, triển lãm ảo 3D Metaverse và ứng dụng Networking tự động.",
-    impact:
-      "Thúc đẩy hàng chục thương vụ hợp tác chuyển đổi số giá trị lớn, củng cố vị thế nền kinh tế số Việt Nam.",
-  },
-  {
-    id: "healthcare-ai-communication",
-    title: "Chiến Dịch Truyền Thông Sức Khỏe Cộng Đồng AI Healthcare",
-    category: "Chuyển đổi số & AI",
-    client: "Healthcare Alliance & QTM",
-    summary:
-      "Ứng dụng trợ lý AI tư vấn sức khỏe chủ động và chiến dịch nâng cao nhận thức chăm sóc y tế cho người dân vùng xa.",
-    image: "/miss-legacy-hero-bg.png",
-    startDate: "Tháng 04/2025",
-    targetAudience: "Người dân toàn quốc & các y bác sĩ cơ sở",
-    speakers: ["Chuyên gia Y tế", "Đội ngũ AI R&D QTM"],
-    metrics: [
-      { val: "2.000.000+", lbl: "Lượt tư vấn AI" },
-      { val: "63", lbl: "Tỉnh thành phủ sóng" },
-      { val: "95%", lbl: "Độ chính xác tư vấn" },
-    ],
-    challenge:
-      "Người dân vùng xa thiếu cơ hội tiếp cận thông tin y tế chính thống, quy trình đặt lịch khám chữa bệnh còn rườm rà.",
-    solution:
-      "QTM xây dựng Chatbot AI y tế thông minh trên Zalo/Facebook, kết hợp các video hoạt hình sinh động hướng dẫn phòng bệnh.",
-    impact:
-      "Hỗ trợ hơn 2 triệu lượt hỏi đáp sức khỏe tự động, giảm tải áp lực cho các bệnh viện tuyến trên.",
-  },
-  {
-    id: "digital-ooh-airport-takeover",
-    title: "Chiến Dịch Phủ Sóng OOH Kỹ Thuật Số Sân Bay Quốc Tế",
-    category: "Truyền thông Đô thị & OOH",
-    client: "Luxury Brands Association",
-    summary:
-      "Chiến dịch bao phủ toàn bộ hạ tầng LED màn hình cong tại ga quốc tế, chào đón hàng triệu du khách đến Việt Nam.",
-    image: "/home/ecosystem/panel-city.jpg",
-    startDate: "Tháng 01/2026",
-    targetAudience: "Du khách quốc tế & thương gia cao cấp tại sân bay",
-    speakers: ["Đội ngũ Sáng tạo OOH QTM"],
-    metrics: [
-      { val: "8.000.000+", lbl: "Du khách tiếp cận" },
-      { val: "100%", lbl: "Màn hình cong 4K" },
-      { val: "Top Impact", lbl: "Đánh giá xuất sắc" },
-    ],
-    challenge:
-      "Sân bay là môi trường đòi hỏi tiêu chuẩn khắt khe về mặt thị giác, chất lượng hình ảnh hiển thị và khả năng hoạt động 24/7.",
-    solution:
-      "QTM thiết kế bộ hình ảnh Visual 3D siêu thực cá nhân hóa theo từng quốc gia của chuyến bay hạ cánh.",
-    impact:
-      "Tạo ấn tượng thị giác choáng ngợp đầu tiên cho du khách quốc tế ngay khi bước chân xuống Việt Nam.",
-  },
-  {
-    id: "national-culture-summit",
-    title: "Hội Nghị Quốc Gia Báo Chí & Truyền Thông Số Di Sản",
-    category: "Sự kiện & Hội nghị",
-    client: "Hội Nhà Báo Việt Nam & QTM",
-    summary:
-      "Chuỗi hội thảo cấp cao bàn về chiến lược chuyển đổi số báo chí và bảo tồn di sản văn hóa trên không gian mạng.",
-    image: "/miss-legacy-impact-bg.png",
-    startDate: "Tháng 06/2025",
-    targetAudience: "Lãnh đạo các cơ quan báo chí & truyền thông toàn quốc",
-    speakers: ["Lãnh đạo Hội Nhà Báo", "Chuyên gia Truyền thông QTM"],
-    metrics: [
-      { val: "500+", lbl: "Tổng biên tập & Nhà báo" },
-      { val: "100%", lbl: "Số hóa tài liệu" },
-      { val: "10+", lbl: "Chủ đề bứt phá" },
-    ],
-    challenge:
-      "Báo chí truyền thống đang đối mặt với sự cạnh tranh khốc liệt từ các nền tảng mạng xã hội xuyên biên giới.",
-    solution:
-      "QTM chia sẻ mô hình Toà soạn số tích hợp AI Agent và mô hình kinh doanh nội dung số đa nền tảng.",
-    impact:
-      "Mở ra định hướng chiến lược mới giúp các cơ quan báo chí bứt phá doanh thu và giữ vững dòng tin tức chính thống.",
   },
 ];
 

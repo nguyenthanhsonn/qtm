@@ -6,10 +6,11 @@ import styles from "@/scss/project/ProjectsBlogHero.module.scss";
 
 export const CATEGORIES = [
   "Tất cả",
-  "Văn hóa & Di sản",
-  "Chuyển đổi số & AI",
   "Chiến dịch Truyền thông",
-  "Thương hiệu & OCOP",
+  "Lan tỏa thương hiệu",
+  "Hoạt động xã hội / Thiện nguyện",
+  "Xu hướng Marketing",
+  "Góc sự kiện",
 ];
 
 const viewport = { once: true, amount: 0.2 } as const;
