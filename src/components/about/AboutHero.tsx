@@ -392,7 +392,6 @@ export default function AboutHero() {
                     { val: "200+", lbl: "Dự án" },
                     { val: "100+", lbl: "Khách hàng" },
                     { val: "300+", lbl: "Sự kiện" },
-                    { val: "93%", lbl: "Hài lòng" },
                   ].map(s => (
                     <div key={s.lbl} className={styles.cardStat}>
                       <span className={styles.cardStatVal}>{s.val}</span>

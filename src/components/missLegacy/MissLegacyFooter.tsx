@@ -22,6 +22,7 @@ export default function MissLegacyFooter() {
               width={180}
               height={45}
               className={styles.qtmLogoImg}
+              style={{ height: "auto", width: "auto" }}
             />
             <div className={styles.brandTextWrap}>
               <span className={styles.legacyTitle}>MISS LEGACY</span>

@@ -23,14 +23,7 @@ function getParticleCount(): number {
 }
 
 export default function ScrollApertureIntro() {
-  const [show, setShow] = useState<boolean>(() => {
-    if (typeof window === "undefined") return true;
-    try {
-      return !sessionStorage.getItem(SESSION_KEY);
-    } catch {
-      return true;
-    }
-  });
+  const [show, setShow] = useState<boolean>(false);
 
   const [phase, setPhase] = useState<Phase>(PHASES.BG);
   const [logoReady, setLogoReady] = useState(false);
@@ -45,10 +38,17 @@ export default function ScrollApertureIntro() {
   const phaseRef = useRef<Phase>(PHASES.BG);
 
   useEffect(() => {
-    if (!show) {
-      window.dispatchEvent(new CustomEvent("intro-finished"));
+    try {
+      const seen = sessionStorage.getItem(SESSION_KEY);
+      if (!seen) {
+        setShow(true);
+      } else {
+        window.dispatchEvent(new CustomEvent("intro-finished"));
+      }
+    } catch {
+      setShow(true);
     }
-  }, [show]);
+  }, []);
 
   // Lock scrolling completely while intro is active
   useEffect(() => {
@@ -337,6 +337,7 @@ export default function ScrollApertureIntro() {
                   height={65}
                   priority
                   className={`${styles.qiLogoImg}${logoReady ? ` ${styles.qiLogoImgActive}` : ""}`}
+                  style={{ height: "auto", width: "auto" }}
                 />
               </motion.div>
 

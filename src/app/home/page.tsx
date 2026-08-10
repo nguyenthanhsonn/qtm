@@ -57,7 +57,6 @@ function HomeHero() {
     { value: 200, suffix: "+", label: "Dự án đã triển khai", icon: BriefcaseIcon },
     { value: 100, suffix: "+", label: "Khách hàng tin tưởng", icon: UsersIcon },
     { value: 300, suffix: "+", label: "Sự kiện ấn tượng", icon: StarIcon },
-    { value: 93, suffix: "%", label: "Khách hàng hài lòng", icon: ThumbsUpIcon },
   ];
 
   return (
