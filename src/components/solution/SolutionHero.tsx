@@ -76,18 +76,17 @@ export default function SolutionHero() {
               <div className={styles.leftTagsAndLogoRow}>
                 {/* Logo QTM MediaTech */}
                 <div className={styles.qtmBrandStamp}>
-                  <svg width="110" height="34" viewBox="0 0 160 48" fill="none">
-                    <circle cx="20" cy="18" r="4" fill="#4FD1E8" />
-                    <circle cx="34" cy="10" r="4" fill="#38CFC8" />
-                    <circle cx="34" cy="26" r="4" fill="#38CFC8" />
-                    <circle cx="48" cy="18" r="4" fill="#4FD1E8" />
-                    <line x1="20" y1="18" x2="34" y2="10" stroke="#38CFC8" strokeWidth="2" />
-                    <line x1="20" y1="18" x2="34" y2="26" stroke="#38CFC8" strokeWidth="2" />
-                    <line x1="34" y1="10" x2="48" y2="18" stroke="#38CFC8" strokeWidth="2" />
-                    <line x1="34" y1="26" x2="48" y2="18" stroke="#38CFC8" strokeWidth="2" />
-                    <text x="60" y="28" fill="#FFFFFF" fontFamily="var(--font-heading)" fontSize="26" fontWeight="900">QTM</text>
-                    <text x="60" y="42" fill="#38CFC8" fontFamily="var(--font-geist-mono)" fontSize="11" fontWeight="700">MediaTech</text>
-                  </svg>
+                  <Image
+                    src="/logo.png"
+                    alt="QTM Logo"
+                    width={110}
+                    height={28}
+                    style={{
+                      height: "auto",
+                      width: "110px",
+                      filter: "brightness(0) saturate(100%) invert(73%) sepia(48%) saturate(542%) hue-rotate(126deg) brightness(96%) contrast(92%) drop-shadow(0 0 8px rgba(56, 207, 200, 0.4))",
+                    }}
+                  />
                 </div>
 
                 {/* 4 Icon Tags */}
@@ -226,15 +225,15 @@ export default function SolutionHero() {
                   </div>
                   <div className={styles.kpiMetricsRow}>
                     <div className={styles.kpiItem}>
-                      <span className={styles.kpiValue}>+<CountUp to={250} duration={2.2} />%</span>
+                      <span className={styles.kpiValue}>+<CountUp to={200} duration={2.2} />%</span>
                       <span className={styles.kpiLabel}>Tiếp cận</span>
                     </div>
                     <div className={styles.kpiItem}>
-                      <span className={styles.kpiValue}>+<CountUp to={180} duration={2} />%</span>
+                      <span className={styles.kpiValue}>+<CountUp to={250} duration={2} />%</span>
                       <span className={styles.kpiLabel}>Tương tác</span>
                     </div>
                     <div className={styles.kpiItem}>
-                      <span className={styles.kpiValue}>+<CountUp to={45} duration={1.8} />%</span>
+                      <span className={styles.kpiValue}>+<CountUp to={93} duration={1.8} />%</span>
                       <span className={styles.kpiLabel}>Chuyển đổi</span>
                     </div>
                   </div>

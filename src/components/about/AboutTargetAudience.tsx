@@ -132,12 +132,12 @@ const targetColumns: TargetColumn[] = [
     badgeClass: styles.colBadgePurple,
     desc: "Hỗ trợ doanh nghiệp tăng trưởng bằng các giải pháp truyền thông tối ưu chi phí.",
     smeFeatures: [
-      "⚡ Chuẩn hóa & Tự động hóa",
-      "🏢 1000+ SME Đồng hành",
-      "🚀 Startup & Scale-up",
-      "📌 Doanh nghiệp địa phương",
-      "📈 Tối ưu chi phí Marketing",
-      "✦ Tư vấn giải pháp 1:1",
+      "Chuẩn hóa & Tự động hóa",
+      "1000+ SME Đồng hành",
+      "Startup & Scale-up",
+      "Doanh nghiệp địa phương",
+      "Tối ưu chi phí Marketing",
+      "Tư vấn giải pháp 1:1",
     ],
   },
 ];
