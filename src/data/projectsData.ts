@@ -141,29 +141,6 @@ export const PROJECTS_DATA: ProjectItem[] = [
       "Giúp hơn 300 dự án khởi nghiệp do nữ làm chủ hoàn thiện mô hình kinh doanh và nhận vốn đầu tư mở rộng quy mô toàn quốc.",
   },
   {
-    id: "global-media-summit-2025",
-    title: "Thượng Đỉnh Truyền Thông & Công Nghệ Toàn Cầu 2025",
-    category: "Sự kiện & Hội nghị",
-    client: "Hiệp hội Truyền thông Châu Á & QTM MediaTech",
-    summary:
-      "Quy tụ hơn 2.500 nhà lãnh đạo truyền thông, các chuyên gia AI toàn cầu bàn về tương lai của công nghệ số và báo chí đa phương tiện.",
-    image: "/home/ecosystem/panel-events.jpg",
-    startDate: "Tháng 10/2025",
-    targetAudience: "Lãnh đạo tập đoàn truyền thông, chuyên gia AI & báo chí toàn quốc",
-    speakers: ["Chuyên gia AI Quốc tế", "Ban cố vấn QTM MediaTech"],
-    metrics: [
-      { val: "2.500+", lbl: "Đại biểu quốc tế" },
-      { val: "35+", lbl: "Quốc gia tham dự" },
-      { val: "100+", lbl: "Cơ quan báo chí" },
-    ],
-    challenge:
-      "Đòi hỏi hạ tầng sự kiện hybrid kết hợp AR/VR thời gian thực, truyền hình trực tiếp cho khán giả toàn cầu với độ trễ siêu thấp.",
-    solution:
-      "QTM phát triển sân khấu sự kiện thông minh tích hợp màn hình LED vô cực 8K, hệ thống phiên dịch đa ngôn ngữ bằng AI và cổng tương tác 3D.",
-    impact:
-      "Tạo nên sự kiện kinh điển dẫn dắt xu hướng truyền thông số tại Đông Nam Á, thu hút hàng triệu lượt xem trực tuyến.",
-  },
-  {
     id: "ooh-smart-city-led",
     title: "Mạng Lưới Truyền Thông Đô Thị & LED 3D Tương Tác OOH",
     category: "Truyền thông Đô thị & OOH",

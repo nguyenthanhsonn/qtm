@@ -45,6 +45,12 @@ const StarIcon = ({ className = "" }: HomeIconProps) => (
   </svg>
 );
 
+const ThumbsUpIcon = ({ className = "" }: HomeIconProps) => (
+  <svg className={className} width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3" />
+  </svg>
+);
+
 function HomeHero() {
   const stats = [
     { value: 16, suffix: "+", label: "Năm kinh nghiệm", icon: TrophyIcon },
@@ -97,7 +103,7 @@ function HomeHero() {
         <div className={styles.homeInfoCard} data-aos="flip-left" data-aos-delay="300">
           <div className={styles.infoCardTitle}>
             <span className={styles.infoCardDot} />
-            15 NĂM ĐỒNG HÀNH CÙNG TRUYỀN THÔNG SỐ
+            16 NĂM ĐỒNG HÀNH CÙNG TRUYỀN THÔNG SỐ
           </div>
           <div className={styles.infoCardDivider} />
           <p className={styles.infoCardDesc}>

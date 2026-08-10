@@ -196,7 +196,7 @@ export default function SolutionValueReceived() {
             <div className={styles.statIconBadge}>📅</div>
             <div className={styles.statTextGroup}>
               <span className={styles.statNum}>
-                <CountUp to={10} duration={2} />+
+                <CountUp to={16} duration={2} />+
               </span>
               <span className={styles.statLbl}>NĂM KINH NGHIỆM</span>
             </div>
@@ -208,7 +208,7 @@ export default function SolutionValueReceived() {
             <div className={styles.statIconBadge}>👥</div>
             <div className={styles.statTextGroup}>
               <span className={styles.statNum}>
-                <CountUp to={500} duration={2.2} />+
+                <CountUp to={200} duration={2.2} />+
               </span>
               <span className={styles.statLbl}>DỰ ÁN ĐÃ THỰC HIỆN</span>
             </div>
@@ -220,7 +220,7 @@ export default function SolutionValueReceived() {
             <div className={styles.statIconBadge}>🏢</div>
             <div className={styles.statTextGroup}>
               <span className={styles.statNum}>
-                <CountUp to={200} duration={2.2} />+
+                <CountUp to={100} duration={2.2} />+
               </span>
               <span className={styles.statLbl}>ĐỐI TÁC &amp; KHÁCH HÀNG</span>
             </div>
@@ -229,12 +229,12 @@ export default function SolutionValueReceived() {
           <div className={styles.statDivider} />
 
           <div className={styles.statBox}>
-            <div className={styles.statIconBadge}>📍</div>
+            <div className={styles.statIconBadge}>⭐</div>
             <div className={styles.statTextGroup}>
               <span className={styles.statNum}>
-                <CountUp to={1000} duration={2.5} />+
+                <CountUp to={300} duration={2.2} />+
               </span>
-              <span className={styles.statLbl}>VỊ TRÍ TRUYỀN THÔNG TOÀN QUỐC</span>
+              <span className={styles.statLbl}>SỰ KIỆN ẤN TƯỢNG</span>
             </div>
           </div>
 
@@ -244,7 +244,7 @@ export default function SolutionValueReceived() {
             <div className={styles.statIconBadge}>👍</div>
             <div className={styles.statTextGroup}>
               <span className={styles.statNum}>
-                <CountUp to={98} duration={2} />%
+                <CountUp to={93} duration={2} />%
               </span>
               <span className={styles.statLbl}>KHÁCH HÀNG HÀI LÒNG</span>
             </div>

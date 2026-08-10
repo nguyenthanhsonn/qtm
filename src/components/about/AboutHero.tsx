@@ -224,7 +224,7 @@ export default function AboutHero() {
                 viewport={viewport}
                 transition={{ duration: 0.65, delay: 0.08, ease: easeOut }}
               >
-                Chúng tôi không chỉ<br />làm truyền thông.
+                Chúng tôi không chỉ<br />làm truyền thông
               </motion.h1>
 
               {/* Sub-heading */}

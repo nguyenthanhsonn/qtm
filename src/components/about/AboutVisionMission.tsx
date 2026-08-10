@@ -83,13 +83,6 @@ export default function AboutVisionMission() {
               <p className={styles.vmCardText}>
                 Trở thành Strategic MediaTech Partner hàng đầu Việt Nam, tiên phong ứng dụng AI, dữ liệu và công nghệ trong lĩnh vực truyền thông, sự kiện và xây dựng thương hiệu, đồng hành cùng doanh nghiệp trên hành trình chuyển đổi số và phát triển bền vững.
               </p>
-
-              {/* Vision Tags */}
-              <div className={styles.vmTagsRow}>
-                <span className={styles.tagItem}>Strategic Partner</span>
-                <span className={styles.tagItem}>Pioneer in AI &amp; Data</span>
-                <span className={styles.tagItem}>Sustainable Growth</span>
-              </div>
             </Card3DTilt>
           </div>
 
@@ -198,13 +191,6 @@ export default function AboutVisionMission() {
               <p className={styles.vmCardText}>
                 Ứng dụng công nghệ, dữ liệu và tư duy sáng tạo để thiết kế những giải pháp truyền thông hiệu quả, giúp khách hàng gia tăng giá trị thương hiệu, tối ưu hiệu suất kinh doanh và tạo ra tác động tích cực cho cộng đồng.
               </p>
-
-              {/* Mission Tags */}
-              <div className={styles.vmTagsRow}>
-                <span className={`${styles.tagItem} ${styles.tagTeal}`}>Gia tăng Thương hiệu</span>
-                <span className={`${styles.tagItem} ${styles.tagTeal}`}>Tối ưu Hiệu suất</span>
-                <span className={`${styles.tagItem} ${styles.tagTeal}`}>Tác động Cộng đồng</span>
-              </div>
             </Card3DTilt>
           </div>
         </motion.div>

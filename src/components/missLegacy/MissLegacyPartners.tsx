@@ -3,6 +3,7 @@
 import React from "react";
 import Image from "next/image";
 import { motion } from "motion/react";
+import RoyalCrownIcon from "./RoyalCrownIcon";
 import styles from "@/scss/missLagecy/MissLegacyPartners.module.scss";
 
 const viewport = { once: true, amount: 0.2 } as const;
@@ -13,20 +14,7 @@ export default function MissLegacyPartners() {
     <section className={styles.sectionPartners} id="partners">
       {/* Top Right Watermark Emblem */}
       <div className={styles.topRightEmblem}>
-        <svg className={styles.topRightLotusSvg} viewBox="0 0 100 80" fill="none">
-          <path
-            d="M50 5 C55 25 70 35 90 40 C75 55 55 60 50 75 C45 60 25 55 10 40 C30 35 45 25 50 5 Z"
-            fill="url(#topRightLotusGrad)"
-            stroke="#D4AF37"
-            strokeWidth="1.5"
-          />
-          <defs>
-            <linearGradient id="topRightLotusGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#FFF5D0" />
-              <stop offset="100%" stopColor="#D4AF37" />
-            </linearGradient>
-          </defs>
-        </svg>
+        <RoyalCrownIcon className={styles.topRightLotusSvg} gradId="partnersTopCrownGrad" glowId="partnersTopCrownGlow" />
         <span className={styles.topRightBrand}>MISS LEGACY</span>
         <span className={styles.topRightTagline}>TINH HOA SẮC VIỆT</span>
       </div>
@@ -53,20 +41,7 @@ export default function MissLegacyPartners() {
 
           <div className={styles.titleLotusDivider}>
             <div className={styles.dividerLineLeft} />
-            <svg className={styles.dividerLotusIcon} viewBox="0 0 100 80" fill="none">
-              <path
-                d="M50 5 C55 25 70 35 90 40 C75 55 55 60 50 75 C45 60 25 55 10 40 C30 35 45 25 50 5 Z"
-                fill="url(#partnersDividerLotusGrad)"
-                stroke="#D4AF37"
-                strokeWidth="1.5"
-              />
-              <defs>
-                <linearGradient id="partnersDividerLotusGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stopColor="#FFF5D0" />
-                  <stop offset="100%" stopColor="#D4AF37" />
-                </linearGradient>
-              </defs>
-            </svg>
+            <RoyalCrownIcon className={styles.dividerLotusIcon} gradId="partnersDivCrownGrad" glowId="partnersDivCrownGlow" />
             <div className={styles.dividerLineRight} />
           </div>
 
