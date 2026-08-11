@@ -23,14 +23,10 @@ function getParticleCount(): number {
 }
 
 export default function ScrollApertureIntro() {
-  const [show, setShow] = useState<boolean>(() => {
-    if (typeof window === 'undefined') return true; // SSR: always show
-    try {
-      return !sessionStorage.getItem(SESSION_KEY); // show if not yet seen
-    } catch {
-      return true; // storage blocked → show intro
-    }
-  });
+  // `show` starts true — SSR and first client render both render the intro,
+  // so there is no hydration mismatch and the overlay appears from the very
+  // first paint. On repeat visits, the useEffect below hides it instantly.
+  const [show, setShow] = useState<boolean>(true);
 
   const [phase, setPhase] = useState<Phase>(PHASES.BG);
   const [logoReady, setLogoReady] = useState(false);
@@ -44,12 +40,17 @@ export default function ScrollApertureIntro() {
   const pausedRef = useRef(false);
   const phaseRef = useRef<Phase>(PHASES.BG);
 
-  // Lazy initializer already determined the correct `show` value synchronously.
-  // If the user has already seen the intro (show=false), dispatch the event so
-  // dependent components (e.g. header AOS) can initialise immediately.
+  // After hydration: if the user already saw the intro, hide it instantly.
+  // This runs after first paint so the overlay covers the page during any
+  // brief React commit — no flash of home content on repeat visits either.
   useEffect(() => {
-    if (!show) {
-      window.dispatchEvent(new CustomEvent("intro-finished"));
+    try {
+      if (sessionStorage.getItem(SESSION_KEY)) {
+        setShow(false);
+        window.dispatchEvent(new CustomEvent("intro-finished"));
+      }
+    } catch {
+      // sessionStorage blocked — keep intro showing
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
