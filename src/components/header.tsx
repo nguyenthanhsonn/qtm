@@ -179,7 +179,7 @@ export default function Header() {
             style={{ background: "none", border: "none", cursor: "pointer", padding: 0 }}
           >
             <Image
-              src="/logo.png"
+              src="https://res.cloudinary.com/s3qilvce/image/upload/v1786453565/logo.png"
               alt="QTM MediaTech Logo"
               width={180}
               height={40}
