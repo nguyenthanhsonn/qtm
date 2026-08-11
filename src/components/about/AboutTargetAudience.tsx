@@ -59,7 +59,7 @@ const targetColumns: TargetColumn[] = [
       },
       {
         name: "LG",
-        logoSrc: "/logo/LG_logo_(2014).svg.webp",
+        logoSrc: "/logo/lg-logo-2014.webp",
       },
       {
         name: "Canon",
@@ -75,7 +75,7 @@ const targetColumns: TargetColumn[] = [
       },
       {
         name: "Panasonic",
-        logoSrc: "/logo/Panasonic_logo_(Blue).svg.webp",
+        logoSrc: "/logo/panasonic-logo.webp",
       },
       {
         name: "Bosch",
@@ -123,7 +123,7 @@ const targetColumns: TargetColumn[] = [
       },
       {
         name: "P&G",
-        logoSrc: "/logo/Procter_&_Gamble_logo.svg.webp",
+        logoSrc: "/logo/procter-and-gamble-logo.webp",
       },
     ],
   },

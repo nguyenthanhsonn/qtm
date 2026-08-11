@@ -112,19 +112,19 @@ const mediaPartnersList: PartnerItem[] = [
     id: "tuoitre",
     name: "Báo Tuổi Trẻ",
     category: "National Press",
-    logoSrc: "/logo/Tuổi_Trẻ_Logo.svg.webp",
+    logoSrc: "/logo/tuoi-tre-logo.webp",
   },
   {
     id: "thanhnien",
     name: "Báo Thanh Niên",
     category: "National Press",
-    logoSrc: "/logo/Thanh_Niên_logo.svg.webp",
+    logoSrc: "/logo/thanh-nien-logo.webp",
   },
   {
     id: "laodong",
     name: "Báo Lao Động",
     category: "National Press",
-    logoSrc: "/logo/Báo_Lao_Động.png",
+    logoSrc: "/logo/bao-lao-dong.png",
   },
   {
     id: "dantri",
@@ -142,7 +142,7 @@ const mediaPartnersList: PartnerItem[] = [
     id: "qdnd",
     name: "Báo Quân Đội Nhân Dân",
     category: "National Press",
-    logoSrc: "/logo/Logo_of_the_People's_Army_Newspaper_(Báo_Quân_đội_nhân_dân).svg.webp",
+    logoSrc: "/logo/bao-quan-doi-nhan-dan.webp",
   },
   {
     id: "vtcnews",
