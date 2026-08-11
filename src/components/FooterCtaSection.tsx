@@ -52,7 +52,7 @@ export default function FooterCtaSection() {
           preload="none"
           aria-hidden="true"
         >
-          <source src="/home/vid_footer.mp4" type="video/mp4" />
+          <source src="https://res.cloudinary.com/s3qilvce/video/upload/v1786449663/vid_footer.mp4" type="video/mp4" />
         </video>
 
         {/* Dark Gradient Overlay */}
@@ -189,7 +189,7 @@ export default function FooterCtaSection() {
           >
             <video
               ref={videoRef}
-              src="/home/vid_footer.mp4"
+              src="https://res.cloudinary.com/s3qilvce/video/upload/v1786449663/vid_footer.mp4"
               className={styles.fctaVideoPlayer}
               autoPlay
               playsInline
