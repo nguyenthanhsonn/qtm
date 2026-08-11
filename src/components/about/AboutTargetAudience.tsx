@@ -15,35 +15,35 @@ const targetColumns: TargetColumn[] = [
     logos: [
       {
         name: "Viettel",
-        logoSrc: "/logo/logo-moi-cua-viettel-1610030805425937362871.jpg",
+        logoSrc: "https://res.cloudinary.com/s3qilvce/image/upload/v1786450677/logo-moi-cua-viettel-1610030805425937362871.jpg",
       },
       {
         name: "VNPT",
-        logoSrc: "/logo/logo-vnpt-4.png",
+        logoSrc: "https://res.cloudinary.com/s3qilvce/image/upload/logo-vnpt-4.png",
       },
       {
         name: "PV GAS",
-        logoSrc: "/logo/f269038fa4534045b59925e7d5e023e1_M.jpg",
+        logoSrc: "https://res.cloudinary.com/s3qilvce/image/upload/v1786450671/f269038fa4534045b59925e7d5e023e1_M.jpg",
       },
       {
         name: "BIDV",
-        logoSrc: "/logo/logo-bidv-20220426071253.jpg",
+        logoSrc: "https://res.cloudinary.com/s3qilvce/image/upload/v1786450675/logo-bidv-20220426071253.jpg",
       },
       {
         name: "Agribank",
-        logoSrc: "/logo/Logo-Agribank-V.webp",
+        logoSrc: "https://res.cloudinary.com/s3qilvce/image/upload/v1786450674/Logo-Agribank-V.webp",
       },
       {
         name: "VietinBank",
-        logoSrc: "/logo/Logo-VietinBank-CTG-Te.webp",
+        logoSrc: "https://res.cloudinary.com/s3qilvce/image/upload/v1786450679/Logo-VietinBank-CTG-Te.webp",
       },
       {
         name: "MobiFone",
-        logoSrc: "/logo/logo-mobifone-inkythuatso-01-02-08-58-34.jpg",
+        logoSrc: "https://res.cloudinary.com/s3qilvce/image/upload/v1786450677/logo-mobifone-inkythuatso-01-02-08-58-34.jpg",
       },
       {
         name: "Vietnam Airlines",
-        logoSrc: "/logo/Vietnam_Airlines_logo.svg.webp",
+        logoSrc: "https://res.cloudinary.com/s3qilvce/image/upload/Vietnam_Airlines_logo.svg.webp",
       },
     ],
   },
@@ -55,35 +55,35 @@ const targetColumns: TargetColumn[] = [
     logos: [
       {
         name: "Samsung",
-        logoSrc: "/logo/Logo-samsung.jpg",
+        logoSrc: "https://res.cloudinary.com/s3qilvce/image/upload/v1786450679/Logo-samsung.jpg",
       },
       {
         name: "LG",
-        logoSrc: "/logo/lg-logo-2014.webp",
+        logoSrc: "https://res.cloudinary.com/s3qilvce/image/upload/v1786450672/lg-logo-2014.webp",
       },
       {
         name: "Canon",
-        logoSrc: "/logo/logo_01.png",
+        logoSrc: "https://res.cloudinary.com/s3qilvce/image/upload/v1786450673/logo_01.png",
       },
       {
         name: "Toyota",
-        logoSrc: "/logo/logo-Toyota.jpg",
+        logoSrc: "https://res.cloudinary.com/s3qilvce/image/upload/v1786450679/logo-Toyota.jpg",
       },
       {
         name: "Honda",
-        logoSrc: "/logo/Honda.svg.webp",
+        logoSrc: "https://res.cloudinary.com/s3qilvce/image/upload/v1786450671/Honda.svg.webp",
       },
       {
         name: "Panasonic",
-        logoSrc: "/logo/panasonic-logo.webp",
+        logoSrc: "https://res.cloudinary.com/s3qilvce/image/upload/panasonic-logo.webp",
       },
       {
         name: "Bosch",
-        logoSrc: "/logo/Bosch-logo.svg.webp",
+        logoSrc: "https://res.cloudinary.com/s3qilvce/image/upload/v1786450670/Bosch-logo.svg.webp",
       },
       {
         name: "Intel",
-        logoSrc: "/logo/Intel_logo_2023.svg.webp",
+        logoSrc: "https://res.cloudinary.com/s3qilvce/image/upload/v1786450672/Intel_logo_2023.svg.webp",
       },
     ],
   },
@@ -95,35 +95,35 @@ const targetColumns: TargetColumn[] = [
     logos: [
       {
         name: "TH True Milk",
-        logoSrc: "/logo/Logo_th_group.png",
+        logoSrc: "https://res.cloudinary.com/s3qilvce/image/upload/v1786450674/Logo_th_group.png",
       },
       {
         name: "Vinamilk",
-        logoSrc: "/logo/Logo-Vinamilk.jpg",
+        logoSrc: "https://res.cloudinary.com/s3qilvce/image/upload/v1786450680/Logo-Vinamilk.jpg",
       },
       {
         name: "Meiji",
-        logoSrc: "/logo/Meiji_logo.svg.webp",
+        logoSrc: "https://res.cloudinary.com/s3qilvce/image/upload/Meiji_logo.svg.webp",
       },
       {
         name: "Masan",
-        logoSrc: "/logo/logo-masan-group2-compressed.jpg",
+        logoSrc: "https://res.cloudinary.com/s3qilvce/image/upload/v1786450676/logo-masan-group2-compressed.jpg",
       },
       {
         name: "Pepsico",
-        logoSrc: "/logo/Pepsi_logo_2008.svg.webp",
+        logoSrc: "https://res.cloudinary.com/s3qilvce/image/upload/Pepsi_logo_2008.svg.webp",
       },
       {
         name: "CocaCola",
-        logoSrc: "/logo/images.png",
+        logoSrc: "https://res.cloudinary.com/s3qilvce/image/upload/v1786450672/images.png",
       },
       {
         name: "Nestlé",
-        logoSrc: "/logo/logo-nestle-1.jpg",
+        logoSrc: "https://res.cloudinary.com/s3qilvce/image/upload/v1786450678/logo-nestle-1.jpg",
       },
       {
         name: "P&G",
-        logoSrc: "/logo/procter-and-gamble-logo.webp",
+        logoSrc: "https://res.cloudinary.com/s3qilvce/image/upload/procter-and-gamble-logo.webp",
       },
     ],
   },

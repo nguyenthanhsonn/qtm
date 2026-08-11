@@ -71,7 +71,7 @@ export default function MissLegacyPartners() {
 
             <div className={styles.logoImageWrap}>
               <Image
-                src="/logo/logo.png"
+                src="https://res.cloudinary.com/s3qilvce/image/upload/v1786450681/logo.png"
                 alt="Tạp Chí Điện Tử An Ninh Mạng"
                 width={420}
                 height={140}
@@ -97,7 +97,7 @@ export default function MissLegacyPartners() {
 
             <div className={styles.logoImageWrap}>
               <Image
-                src="/logo/pnvn_logo_2025.svg"
+                src="https://res.cloudinary.com/s3qilvce/image/upload/v1786450683/pnvn_logo_2025.svg"
                 alt="Báo Phụ Nữ Việt Nam"
                 width={420}
                 height={140}

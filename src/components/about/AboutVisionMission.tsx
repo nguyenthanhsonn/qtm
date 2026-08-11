@@ -102,7 +102,7 @@ export default function AboutVisionMission() {
 
               <div className={styles.imageWrap}>
                 <Image
-                  src="/about_us/img_vision.png"
+                  src="https://res.cloudinary.com/s3qilvce/image/upload/v1786449048/img_vision.jpg"
                   alt="Tầm nhìn chiến lược QTM MediaTech"
                   width={600}
                   height={380}
@@ -145,7 +145,7 @@ export default function AboutVisionMission() {
 
               <div className={styles.imageWrap}>
                 <Image
-                  src="/about_us/img_mission.png"
+                  src="https://res.cloudinary.com/s3qilvce/image/upload/v1786449048/img_mission.jpg"
                   alt="Sứ mệnh kiến tạo giá trị QTM MediaTech"
                   width={600}
                   height={380}

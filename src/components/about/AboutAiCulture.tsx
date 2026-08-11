@@ -142,7 +142,7 @@ export default function AboutAiCulture() {
           >
             <div className={styles.aiHeadImageWrapper}>
               <Image
-                src="/about_us/img_ai_head_dark.png"
+                src="https://res.cloudinary.com/s3qilvce/image/upload/v1786449049/img_ai_head_dark.jpg"
                 alt="QTM AI & Human Synergy Graphic"
                 width={420}
                 height={420}

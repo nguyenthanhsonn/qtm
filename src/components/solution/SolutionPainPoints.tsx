@@ -13,7 +13,7 @@ const painCards: PainCardItem[] = [
     num: "01",
     title: "KHÓ TẠO DẤU ẤN",
     desc: "Thương hiệu chưa đủ khác biệt, dễ bị hòa lẫn giữa hàng ngàn chiến dịch truyền thông của đối thủ trên thị trường.",
-    imageSrc: "/solution/img_pain_chess.png",
+    imageSrc: "https://res.cloudinary.com/s3qilvce/image/upload/v1786452177/img_pain_chess.jpg",
     gradientClass: styles.iconGradCyan,
     iconSvg: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -28,7 +28,7 @@ const painCards: PainCardItem[] = [
     num: "02",
     title: "THIẾU SỨC LAN TỎA",
     desc: "Ngân sách đầu tư lớn nhưng chiến dịch chưa tạo được hiệu ứng bùng nổ, không tiếp cận đúng tệp khách hàng mục tiêu.",
-    imageSrc: "/solution/img_pain_meeting.png",
+    imageSrc: "https://res.cloudinary.com/s3qilvce/image/upload/v1786452183/img_pain_meeting.jpg",
     isFeatured: true,
     gradientClass: styles.iconGradBlue,
     iconSvg: (
@@ -44,7 +44,7 @@ const painCards: PainCardItem[] = [
     num: "03",
     title: "THIẾU SỰ KẾT NỐI",
     desc: "Đứt gãy trải nghiệm giữa các kênh Online & Offline khiến khách hàng thiếu sự gắn kết lâu dài với thương hiệu.",
-    imageSrc: "/solution/img_pain_connect.png",
+    imageSrc: "https://res.cloudinary.com/s3qilvce/image/upload/v1786452179/img_pain_connect.jpg",
     gradientClass: styles.iconGradPurple,
     iconSvg: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -60,7 +60,7 @@ const painCards: PainCardItem[] = [
     num: "04",
     title: "KHÓ ĐO LƯỜNG HIỆU QUẢ TRUYỀN THÔNG",
     desc: "Thiếu bộ chỉ số ROI và báo cáo real-time rõ ràng, khó xác định tỷ lệ chuyển đổi thực tế từ hoạt động truyền thông.",
-    imageSrc: "/solution/img_pain_roi.png",
+    imageSrc: "https://res.cloudinary.com/s3qilvce/image/upload/v1786452183/img_pain_roi.jpg",
     gradientClass: styles.iconGradTeal,
     iconSvg: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -75,7 +75,7 @@ const painCards: PainCardItem[] = [
     num: "05",
     title: "CHI PHÍ VẬN HÀNH QUÁ LỚN",
     desc: "Quy trình triển khai thủ công cồng kềnh kéo dài thời gian, làm tiêu tốn nhiều nhân lực và ngân sách của doanh nghiệp.",
-    imageSrc: "/solution/img_pain_cost.png",
+    imageSrc: "https://res.cloudinary.com/s3qilvce/image/upload/v1786452178/img_pain_cost.jpg",
     gradientClass: styles.iconGradOrange,
     iconSvg: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
