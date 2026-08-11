@@ -67,7 +67,7 @@ function HomeHero() {
         loop
         muted
         playsInline
-        preload="auto"
+        preload="metadata"
         aria-hidden="true"
       >
         <source src="/kling_20260804_VIDEO_A_cinemati_5058_0.mp4" type="video/mp4" />
