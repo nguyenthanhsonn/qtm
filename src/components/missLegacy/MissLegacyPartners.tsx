@@ -71,7 +71,7 @@ export default function MissLegacyPartners() {
 
             <div className={styles.logoImageWrap}>
               <Image
-                src="/logo_anninhmang.png"
+                src="https://res.cloudinary.com/s3qilvce/image/upload/v1786455005/logo_anninhmang.png"
                 alt="Tạp Chí Điện Tử An Ninh Mạng"
                 width={420}
                 height={140}
