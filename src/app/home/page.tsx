@@ -70,7 +70,7 @@ function HomeHero() {
         preload="metadata"
         aria-hidden="true"
       >
-        <source src="/kling_20260804_VIDEO_A_cinemati_5058_0.mp4" type="video/mp4" />
+        <source src="https://res.cloudinary.com/s3qilvce/video/upload/v1786449911/kling_20260804_VIDEO_A_cinemati_5058_0.mp4" type="video/mp4" />
       </video>
       <div className={styles.sectionBgOverlay} aria-hidden="true" />
       <div className="absolute inset-0 pointer-events-none z-1 overflow-hidden">
