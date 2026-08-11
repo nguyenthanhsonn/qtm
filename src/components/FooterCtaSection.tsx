@@ -54,7 +54,7 @@ export default function FooterCtaSection() {
           loop
           muted
           playsInline
-          preload="auto"
+          preload="none"
           aria-hidden="true"
         >
           <source src="/home/vid_footer.mp4" type="video/mp4" />
