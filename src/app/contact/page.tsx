@@ -397,13 +397,12 @@ export default function ContactPage() {
 
                 {/* Primary Submit Button */}
                 <button type="submit" className={styles.modalSubmitBtn}>
-                  <span className={styles.btnIcon}>🚀</span>
                   <span>NHẬN TƯ VẤN CHIẾN LƯỢC</span>
                 </button>
 
                 {/* Privacy Note */}
                 <div className={styles.privacyNote}>
-                  <span>🔒 Thông tin của bạn được bảo mật tuyệt đối</span>
+                  <span>Thông tin của bạn được bảo mật tuyệt đối</span>
                 </div>
               </form>
             </div>
