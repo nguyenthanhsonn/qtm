@@ -77,7 +77,7 @@ export default function SolutionHero() {
                 {/* Logo QTM MediaTech */}
                 <div className={styles.qtmBrandStamp}>
                   <Image
-                    src="/logo.png"
+                    src="https://res.cloudinary.com/s3qilvce/image/upload/v1786450681/logo.png"
                     alt="QTM Logo"
                     width={110}
                     height={28}

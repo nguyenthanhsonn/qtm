@@ -126,7 +126,7 @@ export default function MissLegacyHeader() {
             style={{ background: "none", border: "none", cursor: "pointer", padding: 0 }}
           >
             <Image
-              src="/logo.png"
+              src="https://res.cloudinary.com/s3qilvce/image/upload/v1786450681/logo.png"
               alt="Miss Legacy Logo"
               width={200}
               height={45}

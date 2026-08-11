@@ -246,13 +246,13 @@
 }
 
 .qiGlitchR {
-  background-image: url('/logo.png');
+  background-image: url('https://res.cloudinary.com/s3qilvce/image/upload/v1786450681/logo.png');
   filter: brightness(0) sepia(1) saturate(8) hue-rotate(-30deg) invert(0.3);
   animation: qi-glitch-r 2.2s steps(1) infinite;
 }
 
 .qiGlitchB {
-  background-image: url('/logo.png');
+  background-image: url('https://res.cloudinary.com/s3qilvce/image/upload/v1786450681/logo.png');
   filter: brightness(0) sepia(1) saturate(8) hue-rotate(160deg) invert(0.3);
   animation: qi-glitch-b 2.2s steps(1) 0.08s infinite;
 }
