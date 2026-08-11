@@ -9,7 +9,7 @@ export const PROJECTS_DATA: ProjectItem[] = [
     client: "Cộng đồng Sinh viên Đông Bắc Bộ & QTM Media",
     summary:
       "Chuỗi talkshow quy mô lớn dành cho hơn 15.000 sinh viên, kết nối và khơi dậy tinh thần dấn thân, định hướng con đường lập nghiệp cho thế hệ trẻ.",
-    image: "/projects/talkshow.png",
+    image: "https://res.cloudinary.com/s3qilvce/image/upload/v1786451738/talkshow.jpg",
     startDate: "Tháng 05/2017",
     targetAudience: "Hơn 15.000 sinh viên tại các trường Đại học thuộc khu vực Đông Bắc Bộ (Đại học Hàng hải, Hải Phòng,...)",
     speakers: ["TS. Lê Thẩm Dương", "Ông Trần Lương Sơn", "Ông Nguyễn Hữu Thái Hoà", "Ông Nguyễn Cảnh Bình"],
@@ -34,7 +34,7 @@ export const PROJECTS_DATA: ProjectItem[] = [
       "Chúng tôi tin rằng, mỗi điện thoại viên đều là những ngôi sao thầm lặng, và chúng tôi tự hào vì đã mang đến cơ hội để họ tỏa sáng thật rực rỡ trên bầu trời Mobifone.",
     sapo:
       "Chúng tôi tin rằng, mỗi điện thoại viên đều là những ngôi sao thầm lặng, và chúng tôi tự hào vì đã mang đến cơ hội để họ tỏa sáng thật rực rỡ trên bầu trời Mobifone.",
-    image: "/projects/be-a-star-mobifone.png",
+    image: "https://res.cloudinary.com/s3qilvce/image/upload/v1786451736/be-a-star-mobifone.jpg",
     startDate: "Năm 2017",
     targetAudience: "Đội ngũ Điện thoại viên & Nhân viên Chăm sóc Khách hàng Mobifone toàn quốc",
     speakers: ["Ban Lãnh đạo Mobifone", "Đạo diễn Sân khấu QTM", "Đội ngũ Điện thoại viên xuất sắc"],
@@ -81,7 +81,7 @@ export const PROJECTS_DATA: ProjectItem[] = [
       "Hành trình 5 năm mang mùa xuân ấm áp, quà tặng thiết yếu và tủ sách tri thức đến với đồng bào và trẻ em vùng cao khó khăn.",
     sapo:
       "... nhìn những nụ cười hạnh phúc, những ánh mắt tràn ngập tình cảm của người dân nghèo khi nhận những món quà của 'Tôi yêu đồng bào tôi', chúng tôi lại được trao thêm sức mạnh và động lực để tiếp tục sứ mệnh mùa xuân yêu thương.",
-    image: "/projects/toi-yeu-dong-bao-toi.png",
+    image: "https://res.cloudinary.com/s3qilvce/image/upload/v1786451737/toi-yeu-dong-bao-toi.jpg",
     startDate: "2014 – 2018",
     targetAudience: "Đồng bào và trẻ em khó khăn tại các tỉnh vùng cao (Hà Giang, Cao Bằng, Yên Bái, Lai Châu, Điện Biên)",
     speakers: ["Đội ngũ Tình nguyện viên QTM", "Đại diện Chính quyền Địa phương", "Ban Điều phối 'Tôi Yêu Đồng Bào Tôi'"],
@@ -127,7 +127,7 @@ export const PROJECTS_DATA: ProjectItem[] = [
       "Khám phá cách Mobifone ứng dụng thành công mô hình tiếp thị cộng đồng qua chiến dịch \"Tôi yêu Hải Phòng\" để xây dựng thiện cảm thương hiệu.",
     sapo:
       "Mỗi chiến dịch Tiếp thị xã hội đều có một ý tưởng nhân văn sâu sắc, bởi đó là tinh thần, là sự gắn bó và cam kết trách nhiệm lâu dài, thể hiện ý chí và vị thế của doanh nghiệp.",
-    image: "/projects/tiep-thi-xa-hoi-hai-phong.png",
+    image: "https://res.cloudinary.com/s3qilvce/image/upload/v1786451738/tiep-thi-xa-hoi-hai-phong.jpg",
     startDate: "2015 – 2017",
     targetAudience: "Cộng đồng người dân & giới trẻ học sinh - sinh viên TP. Hải Phòng",
     speakers: ["Ban Lãnh đạo MobiFone", "Đạo diễn Chiến dịch QTM", "Đại diện Đoàn Thanh niên Hải Phòng"],
@@ -175,7 +175,7 @@ export const PROJECTS_DATA: ProjectItem[] = [
       "Khám phá sự kết hợp hoàn hảo giữa công nghệ hiện đại và âm nhạc đỉnh cao trong sự kiện tri ân dấu ấn của Vietcombank Sở giao dịch.",
     sapo:
       "Tiếp nối thành công của chương trình 'Chinh phục đỉnh cao' năm 2016, QTM vinh hạnh tiếp tục đồng hành cùng Vietcombank Sở giao dịch trong sự kiện tri ân khách hàng 2017 với chủ đề 'Tinh hoa kết nối' – nơi những giá trị đồng hành bền chặt được tôn vinh.",
-    image: "/projects/vietcombank-tinh-hoa-ket-noi.png",
+    image: "https://res.cloudinary.com/s3qilvce/image/upload/v1786451737/vietcombank-tinh-hoa-ket-noi.jpg",
     startDate: "Năm 2017",
     targetAudience: "Khách hàng VIP, đối tác doanh nghiệp thân thiết & Ban Lãnh đạo Vietcombank Sở Giao Dịch",
     speakers: ["Ban Giám đốc Vietcombank SGD", "Nhạc sĩ Dương Cầm (GĐ Âm nhạc)", "Ca sĩ Tấn Minh, Phương Linh, Tiêu Châu Như Quỳnh"],
@@ -222,7 +222,7 @@ export const PROJECTS_DATA: ProjectItem[] = [
       "Dự án biển quảng cáo ngoài trời thực hiện trong 3 tháng, khẳng định sự sáng tạo và năng lực đồng hành bền vững cùng đối tác PVNDB.",
     sapo:
       "Trong vòng 3 tháng với đầy sự nỗ lực và sáng tạo không ngừng, đội ngũ QTM đã hoàn thiện Dự án Billboard ngoài trời cho PVNDB, tiếp tục khẳng định năng lực và thắt chặt mối quan hệ hợp tác bền vững.",
-    image: "/projects/billboard-pvndb-2023.png",
+    image: "https://res.cloudinary.com/s3qilvce/image/upload/v1786451737/billboard-pvndb-2023.jpg",
     startDate: "Năm 2023",
     targetAudience: "Hàng triệu lượt người tham gia giao thông & đối tác năng lượng PVNDB",
     speakers: ["Ban Lãnh đạo PVNDB", "Đội ngũ Thiết kế & Thi công OOH QTM"],

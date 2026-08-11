@@ -54,7 +54,7 @@ export default function Footer() {
           <div className={styles.footerCol}>
             <Link href="/home" prefetch={false} className={styles.footerLogo} aria-label="QTM - Trang chủ">
               <Image
-                src="/logo.png"
+                src="https://res.cloudinary.com/s3qilvce/image/upload/v1786453565/logo.png"
                 alt="QTM Logo"
                 width={180}
                 height={40}

@@ -142,15 +142,15 @@ const FEATURES = [
 /* ─── Carousel Images ───────────────────────────────────────────────────────── */
 const HERO_IMAGES = [
   {
-    src: "/about_us/img_team_tech.png",
+    src: "https://res.cloudinary.com/s3qilvce/image/upload/v1786449048/img_team_tech.jpg",
     alt: "Đội ngũ QTM MediaTech đang phân tích dữ liệu trên màn hình điều khiển",
   },
   {
-    src: "/about_us/img_team_tech2.png",
+    src: "https://res.cloudinary.com/s3qilvce/image/upload/v1786449049/img_team_tech2.jpg",
     alt: "Studio sản xuất truyền thông công nghệ cao QTM MediaTech",
   },
   {
-    src: "/about_us/img_team_tech3.png",
+    src: "https://res.cloudinary.com/s3qilvce/image/upload/v1786449048/img_team_tech3.jpg",
     alt: "Trung tâm chiến lược và điều hành truyền thông QTM MediaTech",
   },
 ];

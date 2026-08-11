@@ -214,7 +214,7 @@ export default function AboutCommitments() {
               {/* Graphic Image */}
               <div className={styles.imageWrap}>
                 <Image
-                  src="/about_us/img_commitment_shield.png"
+                  src="https://res.cloudinary.com/s3qilvce/image/upload/v1786449048/img_commitment_shield.jpg"
                   alt="Biểu tượng cam kết và đối tác tin cậy QTM MediaTech"
                   width={520}
                   height={520}

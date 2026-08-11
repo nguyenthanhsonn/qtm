@@ -77,7 +77,7 @@ export default function SolutionHero() {
                 {/* Logo QTM MediaTech */}
                 <div className={styles.qtmBrandStamp}>
                   <Image
-                    src="/logo.png"
+                    src="https://res.cloudinary.com/s3qilvce/image/upload/v1786453565/logo.png"
                     alt="QTM Logo"
                     width={110}
                     height={28}
@@ -168,7 +168,7 @@ export default function SolutionHero() {
                 {/* Executive Leader Background Photo */}
                 <div className={styles.execPhotoWrapper}>
                   <Image
-                    src="/solution/img_executive.png"
+                    src="https://res.cloudinary.com/s3qilvce/image/upload/v1786452179/img_executive.jpg"
                     alt="Người dẫn dắt tầm nhìn chiến lược QTM"
                     width={580}
                     height={700}
@@ -182,7 +182,7 @@ export default function SolutionHero() {
                 {/* Floating Card 1: Event */}
                 <Card3DTilt className={`${styles.floatingPhotoCard} ${styles.photoCard1}`} maxTilt={6} scale={1.02}>
                   <div className={styles.cardImageInner}>
-                    <Image src="/solution/img_event.png" alt="Sự kiện hội nghị QTM" width={180} height={120} className={styles.thumbImg} />
+                    <Image src="https://res.cloudinary.com/s3qilvce/image/upload/v1786452181/img_event.jpg" alt="Sự kiện hội nghị QTM" width={180} height={120} className={styles.thumbImg} />
                     <div className={styles.photoCardPill}>SỰ KIỆN // CONVENTION</div>
                   </div>
                 </Card3DTilt>
@@ -190,7 +190,7 @@ export default function SolutionHero() {
                 {/* Floating Card 2: Billboard */}
                 <Card3DTilt className={`${styles.floatingPhotoCard} ${styles.photoCard2}`} maxTilt={6} scale={1.02}>
                   <div className={styles.cardImageInner}>
-                    <Image src="/solution/img_billboard.png" alt="Billboard DOOH QTM" width={180} height={120} className={styles.thumbImg} />
+                    <Image src="https://res.cloudinary.com/s3qilvce/image/upload/v1786452181/img_billboard.jpg" alt="Billboard DOOH QTM" width={180} height={120} className={styles.thumbImg} />
                     <div className={styles.photoCardPill}>OUTDOOR // DOOH</div>
                   </div>
                 </Card3DTilt>
@@ -198,7 +198,7 @@ export default function SolutionHero() {
                 {/* Floating Card 3: Stage */}
                 <Card3DTilt className={`${styles.floatingPhotoCard} ${styles.photoCard3}`} maxTilt={6} scale={1.02}>
                   <div className={styles.cardImageInner}>
-                    <Image src="/solution/img_stage.png" alt="Sân khấu ánh sáng QTM" width={180} height={120} className={styles.thumbImg} />
+                    <Image src="https://res.cloudinary.com/s3qilvce/image/upload/v1786452185/img_stage.jpg" alt="Sân khấu ánh sáng QTM" width={180} height={120} className={styles.thumbImg} />
                     <div className={styles.photoCardPill}>VISUAL // LIGHTING STAGE</div>
                   </div>
                 </Card3DTilt>

@@ -339,7 +339,7 @@ export default function ScrollApertureIntro() {
                 transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
               >
                 <Image
-                  src="/logo.png"
+                  src="https://res.cloudinary.com/s3qilvce/image/upload/v1786453565/logo.png"
                   alt="QTM Logo"
                   width={280}
                   height={65}

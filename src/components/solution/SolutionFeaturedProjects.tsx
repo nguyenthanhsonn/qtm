@@ -16,7 +16,7 @@ const projectsData: SolutionProjectItem[] = [
     title: "HỘI NGHỊ KHÁCH HÀNG TOÀN QUỐC 2024",
     client: "Techcombank",
     desc: "Hội nghị thượng đỉnh toàn quốc dành cho 2,000+ đối tác chiến lược của Techcombank, tích hợp công nghệ check-in AI và trình diễn ánh sáng hologram 3D.",
-    imageSrc: "/solution/img_proj_techcombank.png",
+    imageSrc: "https://res.cloudinary.com/s3qilvce/image/upload/v1786452182/img_proj_techcombank.jpg",
     highlights: [
       "Check-in AI & Nhận diện khuôn mặt tự động",
       "Sân khấu 3D Spatial Audio & Hologram đỉnh cao",
@@ -30,7 +30,7 @@ const projectsData: SolutionProjectItem[] = [
     title: "CHIẾN DỊCH BILLBOARD TOÀN QUỐC",
     client: "VinFast",
     desc: "Chuỗi màn hình Outdoor 3D Naked-Eye phủ sóng tại các giao lộ huyết mạch trên toàn quốc, tạo hiệu ứng thị giác bùng nổ cho VinFast.",
-    imageSrc: "/solution/img_proj_vinfast.png",
+    imageSrc: "https://res.cloudinary.com/s3qilvce/image/upload/v1786452184/img_proj_vinfast.jpg",
     highlights: [
       "Kỹ thuật hiển thị 3D Naked-Eye không dùng kính",
       "Phủ sóng 5,000,000+ Lượt tiếp cận khách hàng mục tiêu",
@@ -44,7 +44,7 @@ const projectsData: SolutionProjectItem[] = [
     title: "LIVESHOW CA NHẠC KẾT NỐI CẢM XÚC",
     client: "Viettel",
     desc: "Đại nhạc hội quy tụ 30,000+ khán giả với hệ thống âm thanh 3D Spatial Audio và hiệu ứng trình diễn laser công nghệ đỉnh cao từ Viettel.",
-    imageSrc: "/solution/img_proj_viettel.png",
+    imageSrc: "https://res.cloudinary.com/s3qilvce/image/upload/v1786452180/img_proj_viettel.jpg",
     highlights: [
       "Đại nhạc hội quy tụ 30,000+ khán giả cuồng nhiệt",
       "Hệ thống laser show & 3D Spatial Audio hiện đại",
@@ -58,7 +58,7 @@ const projectsData: SolutionProjectItem[] = [
     title: "CHƯƠNG TRÌNH CSR VÌ TƯƠNG LAI XANH",
     client: "Unilever",
     desc: "Chiến dịch cộng đồng nâng cao nhận thức bảo vệ môi trường, lan tỏa thông điệp ESG phát triển bền vững cùng Unilever.",
-    imageSrc: "/solution/img_proj_unilever.png",
+    imageSrc: "https://res.cloudinary.com/s3qilvce/image/upload/v1786452184/img_proj_unilever.jpg",
     highlights: [
       "Chuỗi chiến dịch ESG cộng đồng lan tỏa giá trị xanh",
       "Kết nối 50+ Cơ quan báo chí truyền thông hàng đầu",
