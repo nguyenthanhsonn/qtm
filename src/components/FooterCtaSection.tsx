@@ -189,11 +189,11 @@ export default function FooterCtaSection() {
           >
             <video
               ref={videoRef}
-              src="/kling_20260805_VIDEO_L_m_chuy_n_5195_0.mp4"
+              src="/home/vid_footer.mp4"
               className={styles.fctaVideoPlayer}
               autoPlay
               playsInline
-              preload="auto"
+              preload="none"
               onEnded={handleTransitionToContact}
               onError={handleTransitionToContact}
             />
