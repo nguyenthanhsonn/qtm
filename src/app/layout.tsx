@@ -94,9 +94,10 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="vi"
+      suppressHydrationWarning
       className={`${geistSans.variable} ${geistMono.variable} ${poppins.variable} ${chakraPetch.variable} ${montserrat.variable} ${nunitoSans.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">
+      <body suppressHydrationWarning className="min-h-full flex flex-col">
         <ClickSpark
           sparkColor="#ffffff"
           sparkSize={12}

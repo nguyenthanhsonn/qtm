@@ -84,9 +84,10 @@ export default function Header() {
   // ── AOS (Animate on Scroll) Integration ──────────────────
   useEffect(() => {
     const initAOS = () => {
+      if ((window as any).aosInitialized) return;
       import("aos").then((AOS) => {
         AOS.init({
-          duration: 1500,
+          duration: 1000,
           once: true,
           easing: "ease-out-quad",
         });
@@ -101,9 +102,11 @@ export default function Header() {
     } catch {}
 
     window.addEventListener("intro-finished", initAOS);
+    const fallbackTimer = setTimeout(initAOS, 2000);
 
     return () => {
       window.removeEventListener("intro-finished", initAOS);
+      clearTimeout(fallbackTimer);
     };
   }, []);
 
@@ -175,8 +178,9 @@ export default function Header() {
             <Image
               src="/logo.png"
               alt="Miss Legacy Logo"
-              width={200}
-              height={45}
+              width={180}
+              height={40}
+              sizes="180px"
               priority
               className="brightness-0 invert"
               style={{ height: "clamp(32px, 4vw, 45px)", width: "auto" }}

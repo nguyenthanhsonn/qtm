@@ -321,15 +321,19 @@
   width: 100%;
   height: 100%;
   border-radius: 15px;
-  background-size: cover;
-  background-position: center;
   transition: transform 0.5s ease;
   overflow: hidden;
+
+  .c3dCardImgEl {
+    z-index: 1;
+    border-radius: 15px;
+  }
 
   &::after {
     content: "";
     position: absolute;
     inset: 0;
+    z-index: 2;
     background: linear-gradient(
       180deg,
       rgba(5, 12, 26, 0.1) 0%,

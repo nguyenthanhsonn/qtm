@@ -58,6 +58,7 @@ export default function Footer() {
                 alt="QTM Logo"
                 width={180}
                 height={40}
+                sizes="160px"
                 className="brightness-0 invert"
                 style={{ height: "auto", width: "160px" }}
               />
