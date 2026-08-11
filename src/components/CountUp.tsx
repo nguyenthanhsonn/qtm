@@ -100,5 +100,5 @@ export default function CountUp({
     return () => unsubscribe();
   }, [springValue, formatValue]);
 
-  return <span className={className} ref={ref} />;
+  return <span className={className} ref={ref}>{direction === 'down' ? to : from}</span>;
 }
