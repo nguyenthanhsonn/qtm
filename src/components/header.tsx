@@ -145,6 +145,7 @@ export default function Header() {
             <li key={item.label}>
               <Link
                 href={item.href}
+                prefetch={false}
                 className={pathname === item.href ? styles.active : ""}
                 onClick={() => setMobileOpen(false)}
               >
@@ -156,6 +157,7 @@ export default function Header() {
         <div className={styles.mobileCtaWrap}>
           <Link
             href="/contact"
+            prefetch={false}
             onClick={() => setMobileOpen(false)}
           >
             <ContactButton />
@@ -171,6 +173,7 @@ export default function Header() {
           {/* Logo */}
           <Link
             href="/home"
+            prefetch={false}
             className={styles.headerLogo}
             aria-label="Miss Legacy - Trang chủ"
             style={{ background: "none", border: "none", cursor: "pointer", padding: 0 }}
@@ -196,6 +199,7 @@ export default function Header() {
               <li key={item.label}>
                 <Link
                   href={item.href}
+                  prefetch={false}
                   className={`${styles.navBtn}${pathname === item.href ? ` ${styles.active}` : ""}`}
                   style={{ textDecoration: "none" }}
                 >
@@ -207,7 +211,7 @@ export default function Header() {
 
           {/* Right: CTA + Hamburger */}
           <div style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
-            <Link href="/contact" className={styles.headerCtaWrapper}>
+            <Link href="/contact" prefetch={false} className={styles.headerCtaWrapper}>
               <ContactButton />
             </Link>
             <button
