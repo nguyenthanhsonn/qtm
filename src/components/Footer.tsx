@@ -52,7 +52,7 @@ export default function Footer() {
           
           {/* Column 1: Brand Info & Socials */}
           <div className={styles.footerCol}>
-            <Link href="/home" className={styles.footerLogo} aria-label="QTM - Trang chủ">
+            <Link href="/home" prefetch={false} className={styles.footerLogo} aria-label="QTM - Trang chủ">
               <Image
                 src="/logo.png"
                 alt="QTM Logo"
@@ -108,27 +108,27 @@ export default function Footer() {
             <h2 className={styles.footerHeading}>Liên kết nhanh</h2>
             <ul className={styles.footerLinks}>
               <li>
-                <Link href="/home">
+                <Link href="/home" prefetch={false}>
                   <span className={styles.linkBullet} /> Trang chủ
                 </Link>
               </li>
               <li>
-                <Link href="/about">
+                <Link href="/about" prefetch={false}>
                   <span className={styles.linkBullet} /> Về chúng tôi
                 </Link>
               </li>
               <li>
-                <Link href="/solution">
+                <Link href="/solution" prefetch={false}>
                   <span className={styles.linkBullet} /> Giải pháp
                 </Link>
               </li>
               <li>
-                <Link href="/missLegacy">
+                <Link href="/missLegacy" prefetch={false}>
                   <span className={styles.linkBullet} /> Miss Legacy
                 </Link>
               </li>
               <li>
-                <Link href="/contact">
+                <Link href="/contact" prefetch={false}>
                   <span className={styles.linkBullet} /> Liên hệ
                 </Link>
               </li>
@@ -140,27 +140,27 @@ export default function Footer() {
             <h2 className={styles.footerHeading}>Giải pháp QTM</h2>
             <ul className={styles.footerLinks}>
               <li>
-                <Link href="/solution">
+                <Link href="/solution" prefetch={false}>
                   <span className={styles.linkBullet} /> Tư vấn Chiến lược
                 </Link>
               </li>
               <li>
-                <Link href="/solution">
+                <Link href="/solution" prefetch={false}>
                   <span className={styles.linkBullet} /> Truyền thông & MediaTech
                 </Link>
               </li>
               <li>
-                <Link href="/solution">
+                <Link href="/solution" prefetch={false}>
                   <span className={styles.linkBullet} /> Phát triển Công nghệ
                 </Link>
               </li>
               <li>
-                <Link href="/solution">
+                <Link href="/solution" prefetch={false}>
                   <span className={styles.linkBullet} /> Phân tích Dữ liệu
                 </Link>
               </li>
               <li>
-                <Link href="/projects">
+                <Link href="/projects" prefetch={false}>
                   <span className={styles.linkBullet} /> Sự kiện & Trải nghiệm
                 </Link>
               </li>
@@ -220,9 +220,9 @@ export default function Footer() {
           </p>
 
           <div className={styles.footerLegal}>
-            <Link href="/about">Điều khoản sử dụng</Link>
+            <Link href="/about" prefetch={false}>Điều khoản sử dụng</Link>
             <span className={styles.legalDivider}>•</span>
-            <Link href="/about">Chính sách bảo mật</Link>
+            <Link href="/about" prefetch={false}>Chính sách bảo mật</Link>
           </div>
 
           <button onClick={scrollToTop} className={styles.backToTopBtn} aria-label="Cuộn lên đầu trang">
