@@ -3,6 +3,7 @@
 import styles from "@/scss/global/Carousel3D.module.scss";
 import { CarouselItem, Carousel3DProps } from "@/types/components";
 import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 
 export default function Carousel3D({ items }: Carousel3DProps) {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -191,12 +192,16 @@ export default function Carousel3D({ items }: Carousel3DProps) {
                   <div className={`${styles.c3dCardHudCorner} ${styles.c3dCardHudCornerBl}`} />
                   <div className={`${styles.c3dCardHudCorner} ${styles.c3dCardHudCornerBr}`} />
 
-                  <div
-                    className={styles.c3dCardImage}
-                    style={{ backgroundImage: `url('${item.imageSrc}')` }}
-                    role="img"
-                    aria-label={item.alt}
-                  >
+                  <div className={styles.c3dCardImage}>
+                    <Image
+                      src={item.imageSrc}
+                      alt={item.alt}
+                      fill
+                      sizes="(max-width: 640px) 220px, (max-width: 1024px) 260px, 300px"
+                      quality={75}
+                      className={styles.c3dCardImgEl}
+                      style={{ objectFit: "cover" }}
+                    />
                     <div className={styles.c3dCardOverlay}>
                       <span className={styles.c3dCardTag}>{item.tag}</span>
                       <h3 className={styles.c3dCardTitle}>{item.title}</h3>

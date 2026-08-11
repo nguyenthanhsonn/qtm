@@ -94,13 +94,11 @@ function HomeHero() {
       {/* Content */}
       <div className={`section__content ${styles.homeContent}`}>
         <h1 className={styles.homeTitle}>
-          <span data-aos="fade-up"
-            data-aos-anchor-placement="top-bottom" className={`${styles.homeTitleLine} ${styles.homeTitleLinePlain}`}>Strategic</span>
-          <span data-aos="fade-up"
-            data-aos-anchor-placement="top-bottom" className={`${styles.homeTitleLine} ${styles.homeTitleLineGradientTealBlue}`}>MediaTech Partner</span>
+          <span className={`${styles.homeTitleLine} ${styles.homeTitleLinePlain}`}>Strategic</span>
+          <span className={`${styles.homeTitleLine} ${styles.homeTitleLineGradientTealBlue}`}>MediaTech Partner</span>
         </h1>
 
-        <div className={styles.homeInfoCard} data-aos="flip-left" data-aos-delay="300">
+        <div className={styles.homeInfoCard}>
           <div className={styles.infoCardTitle}>
             <span className={styles.infoCardDot} />
             16 NĂM ĐỒNG HÀNH CÙNG TRUYỀN THÔNG SỐ
@@ -112,11 +110,11 @@ function HomeHero() {
         </div>
 
         <div className={styles.homeBadgePill}>
-          <span data-aos="zoom-in" data-aos-delay="150" data-aos-duration="900">Quality</span>
-          <span className={styles.badgePillDot} data-aos="zoom-in" data-aos-delay="900" data-aos-duration="900">•</span>
-          <span data-aos="zoom-in" data-aos-delay="550" data-aos-duration="1200">Technology</span>
-          <span className={styles.badgePillDot} data-aos="zoom-in" data-aos-delay="950" data-aos-duration="900">•</span>
-          <span data-aos="zoom-in" data-aos-delay="1050" data-aos-duration="1400">Mindset</span>
+          <span>Quality</span>
+          <span className={styles.badgePillDot}>•</span>
+          <span>Technology</span>
+          <span className={styles.badgePillDot}>•</span>
+          <span>Mindset</span>
         </div>
 
         {/* CTA buttons */}
