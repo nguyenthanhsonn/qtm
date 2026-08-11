@@ -30,7 +30,7 @@ const ecoBlocks: EcoBlock[] = [
       "Hội nghị nội bộ",
     ],
     ctaLabel: "Liên hệ tư vấn hội nghị",
-    imageSrc: "/solution/img_eco_conference.png",
+    imageSrc: "https://res.cloudinary.com/s3qilvce/image/upload/v1786452177/img_eco_conference.jpg",
     align: "left",
   },
   {
@@ -46,7 +46,7 @@ const ecoBlocks: EcoBlock[] = [
     ],
     types: ["Billboard tấm lớn", "Màn hình LED ngoài trời", "Pano quảng cáo đô thị"],
     ctaLabel: "Liên hệ tư vấn Billboard",
-    imageSrc: "/solution/img_eco_billboard.png",
+    imageSrc: "https://res.cloudinary.com/s3qilvce/image/upload/v1786452175/img_eco_billboard.jpg",
     align: "right",
   },
   {
@@ -62,7 +62,7 @@ const ecoBlocks: EcoBlock[] = [
     ],
     types: ["Liveshow", "Festival", "Fan Meeting", "Countdown", "Roadshow", "Entertainment Event"],
     ctaLabel: "Liên hệ tư vấn chương trình",
-    imageSrc: "/solution/img_eco_concert.png",
+    imageSrc: "https://res.cloudinary.com/s3qilvce/image/upload/v1786452176/img_eco_concert.jpg",
     align: "left",
   },
   {
@@ -77,7 +77,7 @@ const ecoBlocks: EcoBlock[] = [
     ],
     types: ["Chiến dịch ESG", "Quỹ cộng đồng CSR", "Truyền thông Nhân văn"],
     ctaLabel: "Liên hệ tư vấn CSR",
-    imageSrc: "/solution/img_eco_csr.png",
+    imageSrc: "https://res.cloudinary.com/s3qilvce/image/upload/v1786452176/img_eco_csr.jpg",
     align: "right",
   },
 ];
