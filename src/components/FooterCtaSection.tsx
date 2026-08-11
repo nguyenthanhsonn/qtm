@@ -15,11 +15,6 @@ export default function FooterCtaSection() {
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const bgVideoRef = useRef<HTMLVideoElement | null>(null);
 
-  useEffect(() => {
-    // Prefetch contact page for instant seamless navigation
-    router.prefetch("/contact");
-  }, [router]);
-
   const fadeUp = reduceMotion
     ? { hidden: { opacity: 0 }, visible: { opacity: 1 } }
     : { hidden: { opacity: 0, y: 28 }, visible: { opacity: 1, y: 0 } };
