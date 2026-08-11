@@ -6,66 +6,21 @@ import Link from "next/link";
 import styles from "@/scss/solution/SolutionFeaturedProjects.module.scss";
 import { motion, useReducedMotion } from "motion/react";
 import ParticleField from "@/components/TechBackground/ParticleField";
-import type { SolutionProjectItem } from "@/types/solution";
+import { PROJECTS_DATA } from "@/data/projectsData";
 
-const projectsData: SolutionProjectItem[] = [
-  {
-    id: "techcombank-summit",
-    num: "01",
-    category: "HỘI NGHỊ - HỘI THẢO",
-    title: "HỘI NGHỊ KHÁCH HÀNG TOÀN QUỐC 2024",
-    client: "Techcombank",
-    desc: "Hội nghị thượng đỉnh toàn quốc dành cho 2,000+ đối tác chiến lược của Techcombank, tích hợp công nghệ check-in AI và trình diễn ánh sáng hologram 3D.",
-    imageSrc: "https://res.cloudinary.com/s3qilvce/image/upload/v1786452182/img_proj_techcombank.jpg",
-    highlights: [
-      "Check-in AI & Nhận diện khuôn mặt tự động",
-      "Sân khấu 3D Spatial Audio & Hologram đỉnh cao",
-      "Đo lường sentiment & độ hài lòng của 2,000+ khách mời",
-    ],
-  },
-  {
-    id: "vinfast-billboard",
-    num: "02",
-    category: "BILLBOARD",
-    title: "CHIẾN DỊCH BILLBOARD TOÀN QUỐC",
-    client: "VinFast",
-    desc: "Chuỗi màn hình Outdoor 3D Naked-Eye phủ sóng tại các giao lộ huyết mạch trên toàn quốc, tạo hiệu ứng thị giác bùng nổ cho VinFast.",
-    imageSrc: "https://res.cloudinary.com/s3qilvce/image/upload/v1786452184/img_proj_vinfast.jpg",
-    highlights: [
-      "Kỹ thuật hiển thị 3D Naked-Eye không dùng kính",
-      "Phủ sóng 5,000,000+ Lượt tiếp cận khách hàng mục tiêu",
-      "Tăng +35% Mức độ nhận diện thương hiệu VinFast",
-    ],
-  },
-  {
-    id: "viettel-liveshow",
-    num: "03",
-    category: "CHƯƠNG TRÌNH NGHỆ THUẬT",
-    title: "LIVESHOW CA NHẠC KẾT NỐI CẢM XÚC",
-    client: "Viettel",
-    desc: "Đại nhạc hội quy tụ 30,000+ khán giả với hệ thống âm thanh 3D Spatial Audio và hiệu ứng trình diễn laser công nghệ đỉnh cao từ Viettel.",
-    imageSrc: "https://res.cloudinary.com/s3qilvce/image/upload/v1786452180/img_proj_viettel.jpg",
-    highlights: [
-      "Đại nhạc hội quy tụ 30,000+ khán giả cuồng nhiệt",
-      "Hệ thống laser show & 3D Spatial Audio hiện đại",
-      "Lan tỏa 10,000,000+ Lượt thảo luận trên MXH",
-    ],
-  },
-  {
-    id: "unilever-csr",
-    num: "04",
-    category: "CSR",
-    title: "CHƯƠNG TRÌNH CSR VÌ TƯƠNG LAI XANH",
-    client: "Unilever",
-    desc: "Chiến dịch cộng đồng nâng cao nhận thức bảo vệ môi trường, lan tỏa thông điệp ESG phát triển bền vững cùng Unilever.",
-    imageSrc: "https://res.cloudinary.com/s3qilvce/image/upload/v1786452184/img_proj_unilever.jpg",
-    highlights: [
-      "Chuỗi chiến dịch ESG cộng đồng lan tỏa giá trị xanh",
-      "Kết nối 50+ Cơ quan báo chí truyền thông hàng đầu",
-      "Định vị hình ảnh doanh nghiệp xanh phát triển bền vững",
-    ],
-  },
-];
+const projectsData = PROJECTS_DATA.map((p, idx) => ({
+  id: p.id,
+  num: String(idx + 1).padStart(2, "0"),
+  category: p.category,
+  title: p.title,
+  client: p.client,
+  desc: p.summary,
+  imageSrc: p.image,
+  highlights: [
+    ...(p.metrics?.map((m) => `${m.val} ${m.lbl}`) || []),
+    ...(p.startDate ? [`Thời gian: ${p.startDate}`] : []),
+  ].slice(0, 3),
+}));
 
 const viewport = { once: true, amount: 0.15 } as const;
 const easeOut = [0.22, 1, 0.36, 1] as const;
@@ -161,7 +116,7 @@ export default function SolutionFeaturedProjects() {
                   </div>
 
                   <div className={styles.cardCtaRow}>
-                    <Link href="/projects" className={styles.cardCtaLink}>
+                    <Link href={`/projects/${project.id}`} className={styles.cardCtaLink}>
                       <span>Xem chi tiết dự án</span>
                       <span>→</span>
                     </Link>
