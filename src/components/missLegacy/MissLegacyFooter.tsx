@@ -17,7 +17,7 @@ export default function MissLegacyFooter() {
         <div className={styles.brandRow}>
           <div className={styles.brandGroup}>
             <Image
-              src="https://res.cloudinary.com/s3qilvce/image/upload/v1786450681/logo.png"
+              src="/logo.png"
               alt="QTM Logo"
               width={180}
               height={45}

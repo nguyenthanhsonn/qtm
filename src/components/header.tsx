@@ -179,8 +179,8 @@ export default function Header() {
             style={{ background: "none", border: "none", cursor: "pointer", padding: 0 }}
           >
             <Image
-              src="https://res.cloudinary.com/s3qilvce/image/upload/v1786450681/logo.png"
-              alt="Miss Legacy Logo"
+              src="/logo.png"
+              alt="QTM MediaTech Logo"
               width={180}
               height={40}
               sizes="180px"
