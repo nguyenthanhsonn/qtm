@@ -23,7 +23,14 @@ function getParticleCount(): number {
 }
 
 export default function ScrollApertureIntro() {
-  const [show, setShow] = useState<boolean>(false);
+  const [show, setShow] = useState<boolean>(() => {
+    if (typeof window === 'undefined') return true; // SSR: always show
+    try {
+      return !sessionStorage.getItem(SESSION_KEY); // show if not yet seen
+    } catch {
+      return true; // storage blocked → show intro
+    }
+  });
 
   const [phase, setPhase] = useState<Phase>(PHASES.BG);
   const [logoReady, setLogoReady] = useState(false);
@@ -37,17 +44,14 @@ export default function ScrollApertureIntro() {
   const pausedRef = useRef(false);
   const phaseRef = useRef<Phase>(PHASES.BG);
 
+  // Lazy initializer already determined the correct `show` value synchronously.
+  // If the user has already seen the intro (show=false), dispatch the event so
+  // dependent components (e.g. header AOS) can initialise immediately.
   useEffect(() => {
-    try {
-      const seen = sessionStorage.getItem(SESSION_KEY);
-      if (!seen) {
-        setShow(true);
-      } else {
-        window.dispatchEvent(new CustomEvent("intro-finished"));
-      }
-    } catch {
-      setShow(true);
+    if (!show) {
+      window.dispatchEvent(new CustomEvent("intro-finished"));
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // Lock scrolling completely while intro is active
