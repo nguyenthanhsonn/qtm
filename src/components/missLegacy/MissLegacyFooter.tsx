@@ -48,7 +48,7 @@ export default function MissLegacyFooter() {
             <h4 className={styles.colTitle}>DANH MỤC</h4>
             <ul className={styles.navList}>
               <li>
-                <Link href="/home">Trang chủ</Link>
+                <Link href="/">Trang chủ</Link>
               </li>
               <li>
                 <Link href="/about">Về chúng tôi</Link>
