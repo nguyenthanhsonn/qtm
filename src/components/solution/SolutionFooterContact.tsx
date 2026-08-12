@@ -139,25 +139,25 @@ export default function SolutionFooterContact() {
               <h3 className="card-heading">MẠNG XÃ HỘI &amp; KÊNH TRUYỀN THÔNG</h3>
 
               <div className="social-links-list">
-                <a href="https://facebook.com" target="_blank" rel="noreferrer" className="social-chip">
+                <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="social-chip">
                   <span className="soc-icon">🌐</span>
                   <span className="soc-name">Facebook Fanpage</span>
                   <span className="soc-arrow">↗</span>
                 </a>
 
-                <a href="https://linkedin.com" target="_blank" rel="noreferrer" className="social-chip">
+                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="social-chip">
                   <span className="soc-icon">💼</span>
                   <span className="soc-name">LinkedIn Corporate</span>
                   <span className="soc-arrow">↗</span>
                 </a>
 
-                <a href="https://youtube.com" target="_blank" rel="noreferrer" className="social-chip">
+                <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" className="social-chip">
                   <span className="soc-icon">▶️</span>
                   <span className="soc-name">YouTube Channel</span>
                   <span className="soc-arrow">↗</span>
                 </a>
 
-                <a href="https://tiktok.com" target="_blank" rel="noreferrer" className="social-chip">
+                <a href="https://tiktok.com" target="_blank" rel="noopener noreferrer" className="social-chip">
                   <span className="soc-icon">🎵</span>
                   <span className="soc-name">TikTok Channel</span>
                   <span className="soc-arrow">↗</span>

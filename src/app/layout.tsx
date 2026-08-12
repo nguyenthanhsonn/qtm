@@ -5,7 +5,7 @@ import "@/scss/sections.scss";
 import LayoutWrapper from "@/components/LayoutWrapper";
 import ScrollApertureIntro from "@/components/ScrollApertureIntro";
 import ClickSpark from "@/uiux/ClickSpark";
-import { DEFAULT_OG_IMAGE, SITE_NAME, SITE_URL, getAbsoluteUrl, toJsonLd } from "@/lib/seo";
+import { DEFAULT_OG_IMAGE, LOGO_IMAGE, SITE_NAME, SITE_URL, getAbsoluteUrl, toJsonLd } from "@/lib/seo";
 import "aos/dist/aos.css";
 
 const geistSans = Geist({
@@ -107,7 +107,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     "@type": "Organization",
     name: SITE_NAME,
     url: SITE_URL,
-    logo: getAbsoluteUrl("/icon"),
+    logo: LOGO_IMAGE,
     email: "info@qtmmedia.vn",
     telephone: "04 3941 2585",
     address: {

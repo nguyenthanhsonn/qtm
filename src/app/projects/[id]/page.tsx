@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getProjectById, PROJECTS_DATA } from "@/data/projectsData";
-import { getAbsoluteUrl, SITE_NAME, toJsonLd } from "@/lib/seo";
+import { getAbsoluteUrl, LOGO_IMAGE, SITE_NAME, toJsonLd } from "@/lib/seo";
 import ProjectDetailClient from "./ProjectDetailClient";
 
 type ProjectDetailPageProps = {
@@ -97,7 +97,7 @@ export default async function ProjectDetailPage({ params }: ProjectDetailPagePro
       name: SITE_NAME,
       logo: {
         "@type": "ImageObject",
-        url: getAbsoluteUrl("/icon"),
+        url: LOGO_IMAGE,
       },
     },
     mainEntityOfPage: {
