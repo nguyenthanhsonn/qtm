@@ -32,7 +32,7 @@ export default function SolutionFooterContact() {
           viewport={viewport}
           transition={{ duration: 0.65, delay: 0.05, ease: easeOut }}
         >
-          <span className={styles.solContactTagPill}>// CONNECT WITH QTM MEDIATECH</span>
+          <span className={styles.solContactTagPill}>{"// "}CONNECT WITH QTM MEDIATECH</span>
           <h2 className={styles.solContactTitle}>
             LIÊN HỆ <span className="title-highlight-mint">TƯ VẤN GIẢI PHÁP</span>
           </h2>
