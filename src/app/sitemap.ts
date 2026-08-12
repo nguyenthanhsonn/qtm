@@ -15,10 +15,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const staticRoutes: MetadataRoute.Sitemap = [
     {
+      url: getUrl(""),
+      lastModified,
+      changeFrequency: "yearly",
+      priority: 1,
+    },
+    {
       url: getUrl("/home"),
       lastModified,
-      changeFrequency: "weekly",
-      priority: 1,
+      changeFrequency: "monthly",
+      priority: 0.8,
     },
     {
       url: getUrl("/solution"),
