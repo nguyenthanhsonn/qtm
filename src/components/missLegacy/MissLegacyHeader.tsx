@@ -8,7 +8,7 @@ import ContactButton from "@/uiux/btn_contact";
 import styles from "@/scss/missLagecy/MissLegacyHeader.module.scss";
 
 const NAV_ITEMS: { label: string; href: string }[] = [
-  { label: "Trang chủ", href: "/home" },
+  { label: "Trang chủ", href: "/" },
   { label: "Về chúng tôi", href: "/about" },
   { label: "Giải pháp", href: "/solution" },
   { label: "Dự án", href: "/projects" },
@@ -44,8 +44,10 @@ export default function MissLegacyHeader() {
     if (!navRef.current || !indicatorRef.current) return;
 
     const navEl = navRef.current;
-    const item = NAV_ITEMS.find(
-      (n) => n.href === currentPath || (n.href && currentPath.startsWith(n.href))
+    const item = NAV_ITEMS.find((n) =>
+      n.href === "/"
+        ? currentPath === "/"
+        : n.href === currentPath || currentPath.startsWith(n.href)
     );
     if (!item) {
       navEl.style.setProperty("--ind-opacity", "0");
@@ -96,7 +98,11 @@ export default function MissLegacyHeader() {
             <li key={item.label}>
               <Link
                 href={item.href}
-                className={pathname === item.href ? styles.active : ""}
+                className={
+                  item.href === "/"
+                    ? pathname === "/" ? styles.active : ""
+                    : pathname === item.href || pathname.startsWith(item.href) ? styles.active : ""
+                }
                 onClick={() => setMobileOpen(false)}
               >
                 {item.label}
@@ -120,7 +126,7 @@ export default function MissLegacyHeader() {
         <div className={styles.headerInner}>
           {/* Logo */}
           <Link
-            href="/home"
+            href="/"
             className={styles.headerLogo}
             aria-label="Miss Legacy - Trang chủ"
             style={{ background: "none", border: "none", cursor: "pointer", padding: 0 }}
@@ -145,7 +151,11 @@ export default function MissLegacyHeader() {
               <li key={item.label}>
                 <Link
                   href={item.href}
-                  className={`${styles.navBtn}${pathname === item.href ? ` ${styles.active}` : ""}`}
+                  className={`${styles.navBtn}${
+                    item.href === "/"
+                      ? pathname === "/" ? ` ${styles.active}` : ""
+                      : pathname === item.href || pathname.startsWith(item.href) ? ` ${styles.active}` : ""
+                  }`}
                   style={{ textDecoration: "none" }}
                 >
                   {item.label}

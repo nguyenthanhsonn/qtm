@@ -52,7 +52,7 @@ export default function Footer() {
           
           {/* Column 1: Brand Info & Socials */}
           <div className={styles.footerCol}>
-            <Link href="/home" prefetch={false} className={styles.footerLogo} aria-label="QTM - Trang chủ">
+            <Link href="/" prefetch={false} className={styles.footerLogo} aria-label="QTM - Trang chủ">
               <Image
                 src="https://res.cloudinary.com/s3qilvce/image/upload/v1786453565/logo.png"
                 alt="QTM Logo"
@@ -108,7 +108,7 @@ export default function Footer() {
             <h2 className={styles.footerHeading}>Liên kết nhanh</h2>
             <ul className={styles.footerLinks}>
               <li>
-                <Link href="/home" prefetch={false}>
+                <Link href="/" prefetch={false}>
                   <span className={styles.linkBullet} /> Trang chủ
                 </Link>
               </li>
