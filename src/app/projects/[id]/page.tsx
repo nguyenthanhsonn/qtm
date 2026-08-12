@@ -114,7 +114,7 @@ export default async function ProjectDetailPage({ params }: ProjectDetailPagePro
         "@type": "ListItem",
         position: 1,
         name: "Trang chủ",
-        item: getAbsoluteUrl("/home"),
+        item: getAbsoluteUrl("/"),
       },
       {
         "@type": "ListItem",

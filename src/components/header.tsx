@@ -9,7 +9,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 
 // Maps nav label → route href
 const NAV_ITEMS: { label: string; href: string }[] = [
-  { label: "Trang chủ",   href: "/home" },
+  { label: "Trang chủ",   href: "/" },
   { label: "Về chúng tôi",  href: "/about" },
   { label: "Giải pháp",   href: "/solution" },
   { label: "Dự án",      href: "/projects" },
@@ -52,7 +52,11 @@ export default function Header() {
     const navEl = navRef.current;
     
     // Find the item matching the pathname
-    const item = NAV_ITEMS.find((n) => n.href === currentPath || (n.href && currentPath.startsWith(n.href)));
+    const item = NAV_ITEMS.find((n) =>
+      n.href === "/"
+        ? currentPath === "/"
+        : n.href === currentPath || currentPath.startsWith(n.href)
+    );
     if (!item) {
       navEl.style.setProperty("--ind-opacity", "0");
       return;
@@ -152,7 +156,11 @@ export default function Header() {
               <Link
                 href={item.href}
                 prefetch={false}
-                className={pathname === item.href ? styles.active : ""}
+                className={
+                  item.href === "/"
+                    ? pathname === "/" ? styles.active : ""
+                    : pathname === item.href || pathname.startsWith(item.href) ? styles.active : ""
+                }
                 onClick={() => setMobileOpen(false)}
               >
                 {item.label}
@@ -178,7 +186,7 @@ export default function Header() {
 
           {/* Logo */}
           <Link
-            href="/home"
+            href="/"
             prefetch={false}
             className={styles.headerLogo}
             aria-label="Miss Legacy - Trang chủ"
@@ -206,7 +214,11 @@ export default function Header() {
                 <Link
                   href={item.href}
                   prefetch={false}
-                  className={`${styles.navBtn}${pathname === item.href ? ` ${styles.active}` : ""}`}
+                  className={`${styles.navBtn}${
+                    item.href === "/"
+                      ? pathname === "/" ? ` ${styles.active}` : ""
+                      : pathname === item.href || pathname.startsWith(item.href) ? ` ${styles.active}` : ""
+                  }`}
                   style={{ textDecoration: "none" }}
                 >
                   {item.label}

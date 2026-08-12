@@ -9,7 +9,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const staticRoutes: MetadataRoute.Sitemap = [
     {
-      url: getAbsoluteUrl("/home"),
+      url: getAbsoluteUrl("/"),
       lastModified,
       changeFrequency: "monthly",
       priority: 1,
