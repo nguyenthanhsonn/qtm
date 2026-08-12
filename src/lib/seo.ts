@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 
 export const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL ?? "https://qtmmedia.vn").replace(/\/$/, "");
 export const SITE_NAME = "QTM MediaTech";
+export const LOGO_IMAGE = "https://res.cloudinary.com/s3qilvce/image/upload/v1786453565/logo.png";
 export const DEFAULT_OG_IMAGE =
   "https://res.cloudinary.com/s3qilvce/image/upload/v1786451738/talkshow.jpg";
 
