@@ -141,7 +141,7 @@ export default function SolutionFeaturedProjects() {
                 {/* Right Col: Details */}
                 <div className={styles.cardDetailsCol}>
                   <div className={styles.cardTopRow}>
-                    <span className={styles.categoryPill}>// {project.category}</span>
+                    <span className={styles.categoryPill}>{"// "}{project.category}</span>
                     <span className={styles.numberBadge}>{project.num}</span>
                   </div>
 

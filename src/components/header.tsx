@@ -16,6 +16,10 @@ const NAV_ITEMS: { label: string; href: string }[] = [
   { label: "Miss Legacy", href: "/missLegacy" },
 ];
 
+type AosWindow = Window & {
+  aosInitialized?: boolean;
+};
+
 export default function Header() {
   const [scrolled,     setScrolled]     = useState(false);
   const [mobileOpen,   setMobileOpen]   = useState(false);
@@ -84,19 +88,20 @@ export default function Header() {
   // ── AOS (Animate on Scroll) Integration ──────────────────
   useEffect(() => {
     const initAOS = () => {
-      if ((window as any).aosInitialized) return;
+      const aosWindow = window as AosWindow;
+      if (aosWindow.aosInitialized) return;
       import("aos").then((AOS) => {
         AOS.init({
           duration: 1000,
           once: true,
           easing: "ease-out-quad",
         });
-        (window as any).aosInitialized = true;
+        aosWindow.aosInitialized = true;
       });
     };
 
     try {
-      if ((window as any).aosInitialized || sessionStorage.getItem("qtm_intro_v3")) {
+      if ((window as AosWindow).aosInitialized || sessionStorage.getItem("qtm_intro_v3")) {
         initAOS();
       }
     } catch {}
@@ -112,7 +117,8 @@ export default function Header() {
 
   useEffect(() => {
     import("aos").then((AOS) => {
-      if ((window as any).aosInitialized) {
+      const aosWindow = window as AosWindow;
+      if (aosWindow.aosInitialized) {
         AOS.refresh();
       } else {
         try {
@@ -122,7 +128,7 @@ export default function Header() {
               once: true,
               easing: "ease-out-quad",
             });
-            (window as any).aosInitialized = true;
+            aosWindow.aosInitialized = true;
           }
         } catch {}
       }

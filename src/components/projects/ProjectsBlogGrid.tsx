@@ -5,7 +5,7 @@ import { motion } from "motion/react";
 import Image from "next/image";
 import Link from "next/link";
 import styles from "@/scss/project/ProjectsBlogGrid.module.scss";
-import { PROJECTS_DATA, ProjectItem } from "@/data/projectsData";
+import { PROJECTS_DATA } from "@/data/projectsData";
 
 const viewport = { once: true, amount: 0.15 } as const;
 const cubicEase = [0.22, 1, 0.36, 1] as const;
@@ -21,7 +21,8 @@ export default function ProjectsBlogGrid({
 
   // Reset to page 1 when category changes
   useEffect(() => {
-    setCurrentPage(1);
+    const timer = window.setTimeout(() => setCurrentPage(1), 0);
+    return () => window.clearTimeout(timer);
   }, [selectedCategory]);
 
   const filteredProjects =
