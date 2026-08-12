@@ -1,7 +1,7 @@
 "use client";
 
 import { TextTypeProps } from '@/types/components';
-import { ElementType, useEffect, useRef, useState, createElement, useMemo, useCallback } from 'react';
+import { useEffect, useRef, useState, useMemo, useCallback } from 'react';
 import { gsap } from 'gsap';
 import styles from '@/scss/global/TextType.module.scss';
 
@@ -151,26 +151,21 @@ const TextType = ({
   const shouldHideCursor =
     hideCursorWhileTyping && (currentCharIndex < textArray[currentTextIndex].length || isDeleting);
 
-  return createElement(
-    Component,
-    {
-      ref: containerRef,
-      className: `${styles.textType} ${className}`,
-      ...props
-    },
-    <span className={styles.textTypeContent} style={{ color: getCurrentTextColor() || 'inherit' }}>
+  return (
+    <Component ref={containerRef} className={`${styles.textType} ${className}`} {...props}>
+      <span className={styles.textTypeContent} style={{ color: getCurrentTextColor() || 'inherit' }}>
       {displayedText}
-    </span>,
-    showCursor && (
-      <span
-        ref={cursorRef}
-        className={`${styles.textTypeCursor} ${cursorClassName} ${shouldHideCursor ? styles.textTypeCursorHidden : ''}`}
-      >
-        {cursorCharacter}
       </span>
-    )
+      {showCursor && (
+        <span
+          ref={cursorRef}
+          className={`${styles.textTypeCursor} ${cursorClassName} ${shouldHideCursor ? styles.textTypeCursorHidden : ''}`}
+        >
+          {cursorCharacter}
+        </span>
+      )}
+    </Component>
   );
 };
 
 export default TextType;
-

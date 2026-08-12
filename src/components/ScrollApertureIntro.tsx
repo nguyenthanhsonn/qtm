@@ -49,13 +49,14 @@ export default function ScrollApertureIntro() {
         (typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches);
 
       if (isBotOrReduced || sessionStorage.getItem(SESSION_KEY)) {
-        setShow(false);
-        window.dispatchEvent(new CustomEvent("intro-finished"));
+        window.setTimeout(() => {
+          setShow(false);
+          window.dispatchEvent(new CustomEvent("intro-finished"));
+        }, 0);
       }
     } catch {
       // sessionStorage blocked — keep intro showing
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // Lock scrolling completely while intro is active
@@ -126,7 +127,8 @@ export default function ScrollApertureIntro() {
     const lastTokenAt = 2900 + (SLOGAN_TOKENS.length - 1) * 160;
     T(() => finish(), lastTokenAt + 200);
 
-    return () => timersRef.current.forEach(clearTimeout);
+    const timers = timersRef.current;
+    return () => timers.forEach(clearTimeout);
   }, [show, finish]);
 
   useEffect(() => {

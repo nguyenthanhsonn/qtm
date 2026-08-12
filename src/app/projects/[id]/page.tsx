@@ -1,234 +1,147 @@
-"use client";
-
-import React, { useState } from "react";
-import { useParams, useRouter } from "next/navigation";
-import Link from "next/link";
-import Image from "next/image";
-import { motion } from "motion/react";
-import AboutBackground from "@/components/about/AboutBackground";
-import ContactModal from "@/components/about/ContactModal";
+import type { Metadata } from "next";
+import { notFound } from "next/navigation";
 import { getProjectById, PROJECTS_DATA } from "@/data/projectsData";
-import styles from "@/scss/project/projectDetail.module.scss";
+import { getAbsoluteUrl, SITE_NAME, toJsonLd } from "@/lib/seo";
+import ProjectDetailClient from "./ProjectDetailClient";
 
-export default function ProjectDetailPage() {
-  const params = useParams();
-  const router = useRouter();
-  const projectId = typeof params?.id === "string" ? params.id : "";
-  const project = getProjectById(projectId);
+type ProjectDetailPageProps = {
+  params: Promise<{
+    id: string;
+  }>;
+};
 
-  const [contactModalState, setContactModalState] = useState<{ isOpen: boolean; title: string }>({
-    isOpen: false,
-    title: "",
-  });
+function getProjectDescription(project: NonNullable<ReturnType<typeof getProjectById>>) {
+  return project.sapo ?? project.summary;
+}
 
-  const handleOpenContact = (title: string) => {
-    setContactModalState({ isOpen: true, title });
-  };
+export function generateStaticParams() {
+  return PROJECTS_DATA.map((project) => ({
+    id: project.id,
+  }));
+}
 
-  const handleCloseContact = () => {
-    setContactModalState({ isOpen: false, title: "" });
-  };
+export async function generateMetadata({ params }: ProjectDetailPageProps): Promise<Metadata> {
+  const { id } = await params;
+  const project = getProjectById(id);
 
   if (!project) {
-    return (
-      <main className={styles.detailPageRoot}>
-        <AboutBackground />
-        <div className={styles.detailContainer} style={{ textAlign: "center", paddingTop: "5rem" }}>
-          <h2>Dự án không tồn tại hoặc đã được di chuyển</h2>
-          <Link href="/projects" className={styles.backBtn} style={{ margin: "2rem auto 0" }}>
-            ← Quay lại danh sách dự án
-          </Link>
-        </div>
-      </main>
-    );
+    return {
+      title: "Dự án không tồn tại",
+      robots: {
+        index: false,
+        follow: false,
+      },
+    };
   }
 
-  const relatedProjects = PROJECTS_DATA.filter((p) => p.id !== project.id).slice(0, 3);
+  const description = getProjectDescription(project);
+  const path = `/projects/${project.id}`;
+  const url = getAbsoluteUrl(path);
+
+  return {
+    title: project.title,
+    description,
+    keywords: [project.title, project.category, project.client, "QTM MediaTech", "case study truyền thông"],
+    alternates: {
+      canonical: url,
+    },
+    openGraph: {
+      title: `${project.title} | ${SITE_NAME}`,
+      description,
+      url,
+      siteName: SITE_NAME,
+      locale: "vi_VN",
+      type: "article",
+      images: [
+        {
+          url: project.image,
+          width: 1200,
+          height: 630,
+          alt: project.title,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${project.title} | ${SITE_NAME}`,
+      description,
+      images: [project.image],
+    },
+  };
+}
+
+export default async function ProjectDetailPage({ params }: ProjectDetailPageProps) {
+  const { id } = await params;
+  const project = getProjectById(id);
+
+  if (!project) {
+    notFound();
+  }
+
+  const projectUrl = getAbsoluteUrl(`/projects/${project.id}`);
+  const projectJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: project.title,
+    description: getProjectDescription(project),
+    image: project.image,
+    url: projectUrl,
+    inLanguage: "vi-VN",
+    about: project.category,
+    author: {
+      "@type": "Organization",
+      name: SITE_NAME,
+    },
+    publisher: {
+      "@type": "Organization",
+      name: SITE_NAME,
+      logo: {
+        "@type": "ImageObject",
+        url: getAbsoluteUrl("/icon"),
+      },
+    },
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": projectUrl,
+    },
+  };
+
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Trang chủ",
+        item: getAbsoluteUrl("/home"),
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Dự án",
+        item: getAbsoluteUrl("/projects"),
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: project.title,
+        item: projectUrl,
+      },
+    ],
+  };
 
   return (
-    <main className={styles.detailPageRoot}>
-      {/* Cyber Particle Background */}
-      <AboutBackground />
-
-      <div className={styles.detailContainer}>
-        {/* Top Back Navigation Bar */}
-        <motion.div
-          className={styles.backNavRow}
-          initial={{ opacity: 0, y: -15 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-        >
-          <Link href="/projects" className={styles.backBtn}>
-            ← Quay lại danh sách dự án
-          </Link>
-          <span className={styles.categoryPill}>{project.category}</span>
-        </motion.div>
-
-        {/* Header Title Block */}
-        <motion.div
-          className={styles.headerBlock}
-          initial={{ opacity: 0, y: 25 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.1 }}
-        >
-          <h1 className={styles.mainTitle}>{project.title}</h1>
-          <p className={styles.metaSubText}>
-            Đơn vị chủ trì & Đối tác: <strong>{project.client}</strong>
-            {project.startDate && ` | Thời gian: ${project.startDate}`}
-          </p>
-
-          {project.sapo && (
-            <div className={styles.sapoBox}>
-              <p className={styles.sapoText}>"{project.sapo}"</p>
-            </div>
-          )}
-        </motion.div>
-
-        {/* Cover Image Banner */}
-        <motion.div
-          className={styles.coverBox}
-          initial={{ opacity: 0, scale: 0.96 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.7, delay: 0.2 }}
-        >
-          <Image
-            src={project.image}
-            alt={project.title}
-            width={1200}
-            height={600}
-            priority
-            style={{ objectFit: "cover", width: "100%", height: "100%" }}
-          />
-        </motion.div>
-
-        {/* Key Metrics Grid */}
-        <motion.div
-          className={styles.metricsGrid}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-        >
-          {project.metrics.map((m, idx) => (
-            <div key={idx} className={styles.metricCard}>
-              <span className={styles.val}>{m.val}</span>
-              <span className={styles.lbl}>{m.lbl}</span>
-            </div>
-          ))}
-        </motion.div>
-
-        {/* Detailed Story Sections */}
-        <div className={styles.contentBody}>
-          {project.sections && project.sections.length > 0 ? (
-            project.sections.map((sec, idx) => (
-              <motion.div
-                key={idx}
-                className={styles.storyBlock}
-                initial={{ opacity: 0, y: 25 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: idx * 0.1 }}
-              >
-                <h2 className={styles.blockHeading}>✦ {sec.title}</h2>
-                {sec.content.split("\n\n").map((para, pIdx) => (
-                  <p key={pIdx} className={styles.blockParagraph}>
-                    {para}
-                  </p>
-                ))}
-
-                {sec.bullets && sec.bullets.length > 0 && (
-                  <ul className={styles.bulletList}>
-                    {sec.bullets.map((b, bIdx) => (
-                      <li key={bIdx} className={styles.bulletItem}>
-                        <span className={styles.bulletDot}>•</span>
-                        <span>{b}</span>
-                      </li>
-                    ))}
-                  </ul>
-                )}
-              </motion.div>
-            ))
-          ) : (
-            <>
-              {/* Challenge Block */}
-              <motion.div
-                className={styles.storyBlock}
-                initial={{ opacity: 0, y: 25 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6 }}
-              >
-                <h2 className={styles.blockHeading}>🎯 Bài toán & Thách thức thực tiễn</h2>
-                <p className={styles.blockParagraph}>{project.challenge}</p>
-              </motion.div>
-
-              {/* Solution Block */}
-              <motion.div
-                className={styles.storyBlock}
-                initial={{ opacity: 0, y: 25 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.1 }}
-              >
-                <h2 className={styles.blockHeading}>🚀 Giải pháp thực thi từ QTM</h2>
-                <p className={styles.blockParagraph}>{project.solution}</p>
-              </motion.div>
-
-              {/* Impact Block */}
-              <motion.div
-                className={styles.storyBlock}
-                initial={{ opacity: 0, y: 25 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-              >
-                <h2 className={styles.blockHeading}>💎 Giá trị & Tác động xã hội tạo ra</h2>
-                <p className={styles.blockParagraph}>{project.impact}</p>
-              </motion.div>
-            </>
-          )}
-
-          {project.speakers && project.speakers.length > 0 && (
-            <div style={{ marginTop: "0.5rem" }}>
-              <strong style={{ color: "#38CFC8", fontSize: "0.9rem" }}>Đơn vị & Đại biểu đồng hành:</strong>
-              <div className={styles.speakersBox}>
-                {project.speakers.map((sp, i) => (
-                  <span key={i} className={styles.speakerChip}>
-                    ✦ {sp}
-                  </span>
-                ))}
-              </div>
-            </div>
-          )}
-        </div>
-
-        {/* Bottom CTA Banner */}
-        <motion.div
-          className={styles.ctaBanner}
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-        >
-          <div>
-            <h3 className={styles.ctaTitle}>Bạn muốn khởi chạy chiến dịch tương tự?</h3>
-            <p className={styles.ctaDesc}>Liên hệ ngay với QTM để nhận tư vấn giải pháp chiến lược và công nghệ tối ưu.</p>
-          </div>
-          <button
-            type="button"
-            className={styles.ctaBtn}
-            onClick={() => handleOpenContact(`Tư vấn chiến dịch: ${project.title}`)}
-          >
-            Tư vấn giải pháp ngay →
-          </button>
-        </motion.div>
-      </div>
-
-      {/* Project Consulting Modal */}
-      <ContactModal
-        isOpen={contactModalState.isOpen}
-        onClose={handleCloseContact}
-        contextTitle={contactModalState.title || "TƯ VẤN DỰ ÁN QTM"}
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: toJsonLd(projectJsonLd) }}
       />
-    </main>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: toJsonLd(breadcrumbJsonLd) }}
+      />
+      <ProjectDetailClient project={project} />
+    </>
   );
 }
