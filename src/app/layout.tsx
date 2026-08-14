@@ -6,7 +6,6 @@ import LayoutWrapper from "@/components/LayoutWrapper";
 import ScrollApertureIntro from "@/components/ScrollApertureIntro";
 import ClickSpark from "@/uiux/ClickSpark";
 import { DEFAULT_OG_IMAGE, LOGO_IMAGE, SITE_NAME, SITE_URL, getAbsoluteUrl, toJsonLd } from "@/lib/seo";
-import "aos/dist/aos.css";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
