@@ -16,9 +16,6 @@ const NAV_ITEMS: { label: string; href: string }[] = [
   { label: "Miss Legacy", href: "/missLegacy" },
 ];
 
-type AosWindow = Window & {
-  aosInitialized?: boolean;
-};
 
 export default function Header() {
   const [scrolled,     setScrolled]     = useState(false);
@@ -89,55 +86,6 @@ export default function Header() {
     return () => clearTimeout(t);
   }, [pathname, updateIndicator]);
 
-  // ── AOS (Animate on Scroll) Integration ──────────────────
-  useEffect(() => {
-    const initAOS = () => {
-      const aosWindow = window as AosWindow;
-      if (aosWindow.aosInitialized) return;
-      import("aos").then((AOS) => {
-        AOS.init({
-          duration: 1000,
-          once: true,
-          easing: "ease-out-quad",
-        });
-        aosWindow.aosInitialized = true;
-      });
-    };
-
-    try {
-      if ((window as AosWindow).aosInitialized || sessionStorage.getItem("qtm_intro_v3")) {
-        initAOS();
-      }
-    } catch {}
-
-    window.addEventListener("intro-finished", initAOS);
-    const fallbackTimer = setTimeout(initAOS, 2000);
-
-    return () => {
-      window.removeEventListener("intro-finished", initAOS);
-      clearTimeout(fallbackTimer);
-    };
-  }, []);
-
-  useEffect(() => {
-    import("aos").then((AOS) => {
-      const aosWindow = window as AosWindow;
-      if (aosWindow.aosInitialized) {
-        AOS.refresh();
-      } else {
-        try {
-          if (sessionStorage.getItem("qtm_intro_v3")) {
-            AOS.init({
-              duration: 1500,
-              once: true,
-              easing: "ease-out-quad",
-            });
-            aosWindow.aosInitialized = true;
-          }
-        } catch {}
-      }
-    });
-  }, [pathname]);
 
   return (
     <>
