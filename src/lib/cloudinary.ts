@@ -10,58 +10,99 @@ cloudinary.config({
 
 export default cloudinary;
 
+/** Transformation options for Cloudinary image delivery URLs. */
+export interface CloudinaryOptions {
+  width?: number;
+  height?: number;
+  /** Quality level. Defaults to 'auto'. */
+  quality?: "auto" | number;
+  /** Output format. Defaults to 'auto' (serves WebP/AVIF per browser support). */
+  format?: "auto" | "webp" | "avif" | "jpg" | "png";
+  /** Crop mode. Defaults to 'fill'. Only applied when width or height is set. */
+  crop?: "fill" | "fit" | "scale" | "thumb" | "limit";
+  /** Gravity for crop focus. Only applied when crop is active. */
+  gravity?: "auto" | "face" | "center";
+}
+
 /**
- * Helper to generate an optimized Cloudinary delivery URL with auto-format and auto-quality
- * @param publicId - The public ID or path in Cloudinary
- * @param options - Transformation options (width, height, quality, crop, etc.)
+ * Extract Cloudinary public_id from a full URL or return the input as-is.
+ * Handles:
+ *   https://res.cloudinary.com/<cloud>/image/upload/v123456/folder/file.jpg
+ *   https://res.cloudinary.com/<cloud>/image/upload/folder/file.webp
+ *   plain public_id strings like "folder/image" or "folder/image.jpg"
+ */
+function extractPublicId(input: string): string {
+  if (input.includes("res.cloudinary.com")) {
+    // Strip everything up to and including /upload/ and optional version token
+    const match = input.match(/\/upload\/(?:v\d+\/)?(.+?)(?:\.[a-zA-Z0-9]+)?$/);
+    return match ? match[1] : input;
+  }
+  // Plain public_id: strip leading slash only
+  return input.replace(/^\//, "");
+}
+
+/**
+ * Generate an optimized Cloudinary image delivery URL.
+ *
+ * Accepts either a raw public_id or a full Cloudinary URL — the public_id is
+ * extracted automatically from full URLs.
+ *
+ * f_auto and q_auto are always included. crop and gravity are only applied
+ * when at least one dimension (width or height) is specified.
+ *
+ * @example
+ *   // From public_id
+ *   getCloudinaryUrl("img_proj_techcombank", { width: 600, height: 400 })
+ *   // From full URL
+ *   getCloudinaryUrl("https://res.cloudinary.com/s3qilvce/image/upload/v1786452184/img_proj_vinfast.jpg", { width: 600 })
  */
 export function getCloudinaryUrl(
-  publicId: string,
-  options: {
-    width?: number;
-    height?: number;
-    quality?: string | number;
-    format?: "auto" | "webp" | "avif" | "mp4";
-    crop?: string;
-  } = {}
-) {
+  publicIdOrUrl: string,
+  options: CloudinaryOptions = {}
+): string {
   const cloudName = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME;
-  if (!cloudName) {
-    // If not configured yet, return local fallback path
-    return publicId.startsWith("/") ? publicId : `/${publicId}`;
-  }
+  // Fallback: return original input unchanged if cloud name not configured
+  if (!cloudName) return publicIdOrUrl;
 
-  const { width, height, quality = "auto", format = "auto", crop = "limit" } = options;
+  const publicId = extractPublicId(publicIdOrUrl);
+  const {
+    width,
+    height,
+    quality = "auto",
+    format = "auto",
+    crop = "fill",
+    gravity,
+  } = options;
 
   const transforms: string[] = [`f_${format}`, `q_${quality}`];
   if (width) transforms.push(`w_${width}`);
   if (height) transforms.push(`h_${height}`);
-  if (crop) transforms.push(`c_${crop}`);
+  // Apply crop/gravity only when a size constraint is present
+  if (width || height) {
+    transforms.push(`c_${crop}`);
+    if (gravity) transforms.push(`g_${gravity}`);
+  }
 
-  const transformString = transforms.join(",");
-  const cleanId = publicId.replace(/^\//, "");
-
-  return `https://res.cloudinary.com/${cloudName}/image/upload/${transformString}/${cleanId}`;
+  return `https://res.cloudinary.com/${cloudName}/image/upload/${transforms.join(",")}/${publicId}`;
 }
 
 /**
- * Helper to generate an optimized Cloudinary Video delivery URL
+ * Generate an optimized Cloudinary video delivery URL.
+ *
+ * Accepts either a raw public_id or a full Cloudinary video URL.
  */
 export function getCloudinaryVideoUrl(
-  publicId: string,
+  publicIdOrUrl: string,
   options: {
     quality?: string | number;
     format?: "auto" | "mp4" | "webm";
   } = {}
-) {
+): string {
   const cloudName = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME;
-  if (!cloudName) {
-    return publicId.startsWith("/") ? publicId : `/${publicId}`;
-  }
+  if (!cloudName) return publicIdOrUrl;
 
+  const publicId = extractPublicId(publicIdOrUrl);
   const { quality = "auto", format = "auto" } = options;
-  const transformString = `f_${format},q_${quality}`;
-  const cleanId = publicId.replace(/^\//, "");
 
-  return `https://res.cloudinary.com/${cloudName}/video/upload/${transformString}/${cleanId}`;
+  return `https://res.cloudinary.com/${cloudName}/video/upload/f_${format},q_${quality}/${publicId}`;
 }
