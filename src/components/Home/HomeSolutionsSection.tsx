@@ -63,8 +63,8 @@ const solutionsData: SolutionItem[] = [
     id: "04",
     badge: "MISS LEGACY",
     subtitle: "MISS LEGACY",
-    title: "Tổ hợp Không gian Trải nghiệm",
-    desc: "Biểu tượng kết nối di sản văn hoá nghệ thuật và công nghệ hiện đại, nơi kiến tạo hệ sinh thái trải nghiệm đỉnh cao.",
+    title: "Chương trình Đại sứ Miss Legacy",
+    desc: "Hành trình tìm kiếm và tôn vinh những Đại sứ truyền cảm hứng, kết nối di sản văn hoá – nghệ thuật với thế hệ trẻ đầy nhiệt huyết.",
     link: "/missLegacy",
     accentColor: "#7C4DFF",
     icon: (

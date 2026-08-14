@@ -39,10 +39,10 @@ const ecosystemItems: CarouselItem[] = [
   },
   {
     id: 5,
-    title: "Không gian Trải nghiệm Thương hiệu",
-    tag: "MISS LEGACY EXPERIENCE CENTER",
+    title: "Chương trình Đại sứ Thương hiệu",
+    tag: "MISS LEGACY AMBASSADOR PROGRAM",
     imageSrc: "https://res.cloudinary.com/s3qilvce/image/upload/v1786449673/panel-office.webp",
-    alt: "Không gian trải nghiệm & Văn phòng",
+    alt: "Chương trình Đại sứ Miss Legacy",
   },
   {
     id: 6,
