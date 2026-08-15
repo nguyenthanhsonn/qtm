@@ -3,7 +3,7 @@
 import styles from "@/scss/global/Header.module.scss";
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import ContactButton from "@/uiux/btn_contact";
 import { useCallback, useEffect, useRef, useState } from "react";
 
@@ -21,8 +21,9 @@ export default function Header() {
   const [scrolled,     setScrolled]     = useState(false);
   const [mobileOpen,   setMobileOpen]   = useState(false);
 
-  // Active route tracking
+  // Active route tracking & router prefetch
   const pathname = usePathname();
+  const router = useRouter();
 
   const navRef      = useRef<HTMLUListElement>(null);
   const indicatorRef = useRef<HTMLDivElement>(null);
@@ -103,13 +104,14 @@ export default function Header() {
             <li key={item.label}>
               <Link
                 href={item.href}
-                prefetch={false}
                 className={
                   item.href === "/"
                     ? pathname === "/" ? styles.active : ""
                     : pathname === item.href || pathname.startsWith(item.href) ? styles.active : ""
                 }
                 onClick={() => setMobileOpen(false)}
+                onMouseEnter={() => router.prefetch(item.href)}
+                onTouchStart={() => router.prefetch(item.href)}
               >
                 {item.label}
               </Link>
@@ -119,8 +121,9 @@ export default function Header() {
         <div className={styles.mobileCtaWrap}>
           <Link
             href="/contact"
-            prefetch={false}
             onClick={() => setMobileOpen(false)}
+            onMouseEnter={() => router.prefetch("/contact")}
+            onTouchStart={() => router.prefetch("/contact")}
           >
             <ContactButton />
           </Link>
@@ -135,10 +138,10 @@ export default function Header() {
           {/* Logo */}
           <Link
             href="/"
-            prefetch={false}
             className={styles.headerLogo}
             aria-label="Miss Legacy - Trang chủ"
             style={{ background: "none", border: "none", cursor: "pointer", padding: 0 }}
+            onMouseEnter={() => router.prefetch("/")}
           >
             <Image
               src="https://res.cloudinary.com/s3qilvce/image/upload/v1786453565/logo.png"
@@ -161,13 +164,13 @@ export default function Header() {
               <li key={item.label}>
                 <Link
                   href={item.href}
-                  prefetch={false}
                   className={`${styles.navBtn}${
                     item.href === "/"
                       ? pathname === "/" ? ` ${styles.active}` : ""
                       : pathname === item.href || pathname.startsWith(item.href) ? ` ${styles.active}` : ""
                   }`}
                   style={{ textDecoration: "none" }}
+                  onMouseEnter={() => router.prefetch(item.href)}
                 >
                   {item.label}
                 </Link>
@@ -177,7 +180,11 @@ export default function Header() {
 
           {/* Right: CTA + Hamburger */}
           <div style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
-            <Link href="/contact" prefetch={false} className={styles.headerCtaWrapper}>
+            <Link
+              href="/contact"
+              className={styles.headerCtaWrapper}
+              onMouseEnter={() => router.prefetch("/contact")}
+            >
               <ContactButton />
             </Link>
             <button

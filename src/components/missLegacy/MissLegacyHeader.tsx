@@ -3,7 +3,7 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import ContactButton from "@/uiux/btn_contact";
 import styles from "@/scss/missLagecy/MissLegacyHeader.module.scss";
 
@@ -19,6 +19,7 @@ export default function MissLegacyHeader() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const pathname = usePathname();
+  const router = useRouter();
 
   const navRef = useRef<HTMLUListElement>(null);
   const indicatorRef = useRef<HTMLDivElement>(null);
@@ -104,6 +105,8 @@ export default function MissLegacyHeader() {
                     : pathname === item.href || pathname.startsWith(item.href) ? styles.active : ""
                 }
                 onClick={() => setMobileOpen(false)}
+                onMouseEnter={() => router.prefetch(item.href)}
+                onTouchStart={() => router.prefetch(item.href)}
               >
                 {item.label}
               </Link>
@@ -111,7 +114,12 @@ export default function MissLegacyHeader() {
           ))}
         </ul>
         <div className={styles.mobileCtaWrap}>
-          <Link href="/contact" onClick={() => setMobileOpen(false)}>
+          <Link 
+            href="/contact" 
+            onClick={() => setMobileOpen(false)}
+            onMouseEnter={() => router.prefetch("/contact")}
+            onTouchStart={() => router.prefetch("/contact")}
+          >
             <ContactButton />
           </Link>
         </div>
@@ -130,6 +138,7 @@ export default function MissLegacyHeader() {
             className={styles.headerLogo}
             aria-label="Miss Legacy - Trang chủ"
             style={{ background: "none", border: "none", cursor: "pointer", padding: 0 }}
+            onMouseEnter={() => router.prefetch("/")}
           >
             <Image
               src="https://res.cloudinary.com/s3qilvce/image/upload/v1786453565/logo.png"
@@ -157,6 +166,7 @@ export default function MissLegacyHeader() {
                       : pathname === item.href || pathname.startsWith(item.href) ? ` ${styles.active}` : ""
                   }`}
                   style={{ textDecoration: "none" }}
+                  onMouseEnter={() => router.prefetch(item.href)}
                 >
                   {item.label}
                 </Link>
@@ -166,7 +176,11 @@ export default function MissLegacyHeader() {
 
           {/* Right: CTA + Hamburger 3-bar */}
           <div style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
-            <Link href="/contact" className={styles.headerCtaWrapper}>
+            <Link 
+              href="/contact" 
+              className={styles.headerCtaWrapper}
+              onMouseEnter={() => router.prefetch("/contact")}
+            >
               <ContactButton />
             </Link>
 
@@ -175,6 +189,7 @@ export default function MissLegacyHeader() {
               onClick={() => setMobileOpen((p) => !p)}
               aria-label={mobileOpen ? "Đóng menu" : "Mở menu"}
               aria-expanded={mobileOpen}
+              aria-controls="mobile-drawer"
             >
               <span className={styles.hamburgerBar} />
               <span className={styles.hamburgerBar} />
