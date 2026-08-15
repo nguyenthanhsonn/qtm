@@ -55,7 +55,7 @@ export default function MissLegacyPartners() {
 
         {/* 2 Large Media Partner Cards Grid (Equal Compact Size) */}
         <div className={styles.partnersGrid2}>
-          {/* Card 1: Tạp Chí An Ninh Mạng Image */}
+          {/* Card 1: Hiệp hội An ninh mạng Quốc gia (NCA) Image */}
           <motion.div
             className={styles.partnerGlassCard}
             initial={{ opacity: 0, y: 30 }}
@@ -71,8 +71,8 @@ export default function MissLegacyPartners() {
 
             <div className={styles.logoImageWrap}>
               <Image
-                src="https://res.cloudinary.com/s3qilvce/image/upload/v1786455005/logo_anninhmang.png"
-                alt="Tạp Chí Điện Tử An Ninh Mạng"
+                src="/images/logo_nca.png"
+                alt="Hiệp hội An ninh mạng Quốc gia (NCA)"
                 width={420}
                 height={140}
                 className={styles.partnerLogoImg}

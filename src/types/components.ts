@@ -68,3 +68,12 @@ export interface ScrollApertureParticle {
 }
 
 export type ScrollAperturePhase = 0 | 1 | 2 | 3 | 4 | 5;
+
+export interface NotFoundHeroProps {
+  errorCode?: string;
+  badgeText?: string;
+  typewriterTexts?: string[];
+  description?: string;
+  homeButtonText?: string;
+}
+
