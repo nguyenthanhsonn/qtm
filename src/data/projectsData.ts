@@ -222,7 +222,7 @@ export const PROJECTS_DATA: ProjectItem[] = [
       "Dự án biển quảng cáo ngoài trời thực hiện trong 3 tháng, khẳng định sự sáng tạo và năng lực đồng hành bền vững cùng đối tác PVNDB.",
     sapo:
       "Trong vòng 3 tháng với đầy sự nỗ lực và sáng tạo không ngừng, đội ngũ QTM đã hoàn thiện Dự án Billboard ngoài trời cho PVNDB, tiếp tục khẳng định năng lực và thắt chặt mối quan hệ hợp tác bền vững.",
-    image: "https://res.cloudinary.com/s3qilvce/image/upload/v1786451737/billboard-pvndb-2023.jpg",
+    image: "/images/billboard-pvndb-oilrig-16x9.jpg",
     startDate: "Năm 2023",
     targetAudience: "Hàng triệu lượt người tham gia giao thông & đối tác năng lượng PVNDB",
     speakers: ["Ban Lãnh đạo PVNDB", "Đội ngũ Thiết kế & Thi công OOH QTM"],
