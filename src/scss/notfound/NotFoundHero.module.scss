@@ -1,0 +1,202 @@
+@use '@/scss/global/variables' as *;
+@use '@/scss/global/mixins' as *;
+
+.notFoundHeroRoot {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  @include flex-center;
+  padding: clamp(6rem, 12vh, 8.5rem) clamp(1.2rem, 4vw, 3rem) clamp(4rem, 8vh, 6rem);
+  box-sizing: border-box;
+}
+
+.cardContainer {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: 780px;
+  margin: 0 auto;
+  @include glass-card($bg: rgba(10, 24, 48, 0.72), $border-color: rgba(56, 207, 200, 0.28), $blur: 20px);
+  border-radius: 28px;
+  padding: clamp(2.5rem, 6vw, 4.5rem) clamp(1.5rem, 5vw, 3.5rem);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.65), 0 0 40px rgba(56, 207, 200, 0.12);
+  overflow: hidden;
+}
+
+/* Corner Cyber Accent Pins */
+.cornerTL,
+.cornerTR,
+.cornerBL,
+.cornerBR {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border-color: $teal-mint;
+  pointer-events: none;
+  opacity: 0.8;
+}
+
+.cornerTL {
+  top: 14px;
+  left: 14px;
+  border-top: 2px solid $teal-mint;
+  border-left: 2px solid $teal-mint;
+}
+
+.cornerTR {
+  top: 14px;
+  right: 14px;
+  border-top: 2px solid $teal-mint;
+  border-right: 2px solid $teal-mint;
+}
+
+.cornerBL {
+  bottom: 14px;
+  left: 14px;
+  border-bottom: 2px solid $teal-mint;
+  border-left: 2px solid $teal-mint;
+}
+
+.cornerBR {
+  bottom: 14px;
+  right: 14px;
+  border-bottom: 2px solid $teal-mint;
+  border-right: 2px solid $teal-mint;
+}
+
+/* Status Badge (Error Red Glow) */
+.statusBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.4rem 1.1rem;
+  border-radius: 999px;
+  background: rgba(239, 68, 68, 0.12);
+  border: 1px solid rgba(239, 68, 68, 0.4);
+  font-family: var(--font-geist-mono), monospace;
+  font-size: clamp(0.75rem, 1.2vw, 0.85rem);
+  font-weight: 700;
+  color: #FF5A70;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin-bottom: clamp(1rem, 2.5vh, 1.8rem);
+  box-shadow: 0 0 16px rgba(239, 68, 68, 0.18);
+}
+
+.statusDot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #EF4444;
+  box-shadow: 0 0 10px #EF4444, 0 0 18px rgba(239, 68, 68, 0.6);
+  animation: pulseDot 1.8s infinite ease-in-out;
+}
+
+@keyframes pulseDot {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.4;
+    transform: scale(0.75);
+  }
+}
+
+/* Giant 404 Heading */
+.errorCodeBlock {
+  position: relative;
+  margin: 0;
+  line-height: 0.95;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.errorCodeNumber {
+  font-family: $font-heading;
+  font-size: clamp(5.5rem, 14vw, 10rem);
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  @include gradient-text($start-color: #FFFFFF, $end-color: $cyan-bright, $deg: 135deg);
+  filter: drop-shadow(0 0 35px rgba(0, 212, 255, 0.35));
+  margin: 0;
+  user-select: none;
+}
+
+/* Typewriter Subtitle Container */
+.typewriterRow {
+  min-height: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: clamp(0.8rem, 2vh, 1.4rem);
+}
+
+.typewriterWrapper {
+  font-family: $font-heading;
+  font-size: clamp(1.35rem, 2.5vw, 2.1rem);
+  font-weight: 800;
+  line-height: 1.3;
+  letter-spacing: 0.02em;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  white-space: pre-wrap;
+}
+
+.typewriterText {
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  letter-spacing: inherit;
+  color: $text-white;
+  white-space: pre-wrap;
+}
+
+.typewriterHighlight {
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  letter-spacing: inherit;
+  white-space: pre-wrap;
+  @include gradient-text($start-color: $teal-mint, $end-color: $cyan-bright, $deg: 90deg);
+  filter: drop-shadow(0 0 14px rgba(56, 207, 200, 0.45));
+}
+
+.typewriterCursor {
+  font-family: var(--font-geist-mono), monospace;
+  font-size: inherit;
+  color: $teal-mint;
+  font-weight: 900;
+  margin-left: 4px;
+}
+
+/* Description Text */
+.descriptionText {
+  font-family: $font-body;
+  font-size: clamp(0.95rem, 1.2vw, 1.08rem);
+  line-height: 1.65;
+  color: $text-muted;
+  max-width: 500px;
+  margin: clamp(1rem, 2.2vh, 1.4rem) 0 clamp(1.8rem, 3.5vh, 2.4rem);
+}
+
+/* Actions Row */
+.actionsRow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.2rem;
+  flex-wrap: wrap;
+}
+
+.homeLinkWrapper {
+  display: inline-flex;
+  text-decoration: none;
+}
+
