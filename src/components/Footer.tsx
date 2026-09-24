@@ -123,8 +123,8 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/missLegacy" prefetch={false}>
-                  <span className={styles.linkBullet} /> Miss Legacy
+                <Link href="/news" prefetch={false}>
+                  <span className={styles.linkBullet} /> Tin tức & Insights
                 </Link>
               </li>
               <li>

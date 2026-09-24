@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { PROJECTS_DATA } from "@/data/projectsData";
+import { NEWS_ARTICLES } from "@/data/newsData";
 import { getAbsoluteUrl } from "@/lib/seo";
 
 const SITE_LAST_MODIFIED = new Date("2026-08-12");
@@ -30,13 +31,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: getAbsoluteUrl("/projects"),
       lastModified,
       changeFrequency: "weekly",
-      priority: 0.7,
+      priority: 0.8,
     },
     {
-      url: getAbsoluteUrl("/missLegacy"),
+      url: getAbsoluteUrl("/news"),
       lastModified,
-      changeFrequency: "monthly",
-      priority: 0.6,
+      changeFrequency: "daily",
+      priority: 0.8,
     },
     {
       url: getAbsoluteUrl("/contact"),
@@ -50,8 +51,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
     url: getAbsoluteUrl(`/projects/${project.id}`),
     lastModified,
     changeFrequency: "monthly",
-    priority: 0.6,
+    priority: 0.7,
   }));
 
-  return [...staticRoutes, ...projectRoutes];
+  const newsRoutes: MetadataRoute.Sitemap = NEWS_ARTICLES.map((article) => ({
+    url: getAbsoluteUrl(`/news/${article.slug}`),
+    lastModified,
+    changeFrequency: "weekly",
+    priority: 0.7,
+  }));
+
+  return [...staticRoutes, ...projectRoutes, ...newsRoutes];
 }
