@@ -40,9 +40,9 @@ const ecosystemItems: CarouselItem[] = [
   {
     id: 5,
     title: "Chương trình Đại sứ Thương hiệu",
-    tag: "MISS LEGACY AMBASSADOR PROGRAM",
+    tag: "BRAND AMBASSADOR PROGRAM",
     imageSrc: "https://res.cloudinary.com/s3qilvce/image/upload/v1786449673/panel-office.webp",
-    alt: "Chương trình Đại sứ Miss Legacy",
+    alt: "Chương trình Đại sứ Thương hiệu",
   },
   {
     id: 6,
