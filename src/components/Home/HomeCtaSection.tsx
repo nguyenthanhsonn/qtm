@@ -81,7 +81,7 @@ export default function HomeCtaSection() {
           className={styles.homeCtaTitle}
           data-aos="zoom-in"
         >
-          GIÁ <span className={styles.titleHighlight}>TRỊ CỐT LÕI</span>
+          GIÁ TRỊ <span className={styles.titleHighlight}>CỐT LÕI</span>
         </h2>
 
         <motion.p

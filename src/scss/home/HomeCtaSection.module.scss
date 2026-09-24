@@ -79,8 +79,15 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: clamp(1.25rem, 2.5vw, 2rem);
+  align-items: stretch;
   width: 100%;
   margin-top: 0.5rem;
+
+  > div {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
 
   @media (max-width: 1024px) {
     grid-template-columns: 1fr;

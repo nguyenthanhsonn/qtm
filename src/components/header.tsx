@@ -13,7 +13,7 @@ const NAV_ITEMS: { label: string; href: string }[] = [
   { label: "Về chúng tôi",  href: "/about" },
   { label: "Giải pháp",   href: "/solution" },
   { label: "Dự án",      href: "/projects" },
-  { label: "Miss Legacy", href: "/missLegacy" },
+  { label: "Tin tức",     href: "/news" },
 ];
 
 
@@ -139,7 +139,7 @@ export default function Header() {
           <Link
             href="/"
             className={styles.headerLogo}
-            aria-label="Miss Legacy - Trang chủ"
+            aria-label="QTM MediaTech - Trang chủ"
             style={{ background: "none", border: "none", cursor: "pointer", padding: 0 }}
             onMouseEnter={() => router.prefetch("/")}
           >
