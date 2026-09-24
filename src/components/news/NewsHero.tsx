@@ -32,19 +32,6 @@ export default function NewsHero({
   return (
     <section className={styles.heroRoot}>
       <div className={styles.heroContent}>
-        {/* Top Badge */}
-        <motion.div
-          variants={fadeUp}
-          initial="hidden"
-          animate="visible"
-          transition={{ duration: 0.5 }}
-        >
-          <div className={styles.heroBadge}>
-            <span className={styles.dotPulse} />
-            <span>KHO TÀI LIỆU & INSIGHTS NGÀNH SỰ KIỆN 2026</span>
-          </div>
-        </motion.div>
-
         {/* Main Title */}
         <motion.h1
           className={styles.heroTitle}

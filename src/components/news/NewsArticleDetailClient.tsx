@@ -3,7 +3,7 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { motion } from "motion/react";
+import { motion, useScroll, useSpring } from "motion/react";
 import styles from "@/scss/news/NewsDetail.module.scss";
 import gridStyles from "@/scss/news/NewsGrid.module.scss";
 import { NEWS_ARTICLES } from "@/data/newsData";
@@ -16,25 +16,67 @@ interface NewsArticleDetailClientProps {
 }
 
 export default function NewsArticleDetailClient({ article }: NewsArticleDetailClientProps) {
+  // Reading scroll progress indicator
+  const { scrollYProgress } = useScroll();
+  const scaleX = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001,
+  });
+
   // Related articles
   const relatedArticles = NEWS_ARTICLES.filter(
     (a) => a.slug !== article.slug && (a.category === article.category || article.relatedSlugs?.includes(a.slug))
   ).slice(0, 2);
 
+  const fadeUp = {
+    hidden: { opacity: 0, y: 32 },
+    visible: { opacity: 1, y: 0 },
+  };
+
   return (
     <article className={styles.articleDetailRoot}>
+      {/* Top Reading Scroll Progress Bar */}
+      <motion.div
+        style={{
+          scaleX,
+          position: "fixed",
+          top: 0,
+          left: 0,
+          right: 0,
+          height: "3px",
+          background: "linear-gradient(90deg, #2095AD 0%, #38CFC8 100%)",
+          transformOrigin: "0%",
+          zIndex: 1001,
+          boxShadow: "0 0 10px rgba(56, 207, 200, 0.8)",
+        }}
+      />
+
       <div className={styles.articleContainer}>
         {/* Breadcrumbs */}
-        <nav className={styles.breadcrumbs} aria-label="Breadcrumb">
+        <motion.nav
+          className={styles.breadcrumbs}
+          aria-label="Breadcrumb"
+          variants={fadeUp}
+          initial="hidden"
+          animate="visible"
+          transition={{ duration: 0.4 }}
+        >
           <Link href="/">Trang chủ</Link>
           <span className={styles.separator}>/</span>
           <Link href="/news">Tin tức & Insights</Link>
           <span className={styles.separator}>/</span>
           <span className={styles.current}>{article.title}</span>
-        </nav>
+        </motion.nav>
 
         {/* Article Header */}
-        <header className={styles.headerSection}>
+        <motion.header
+          className={styles.headerSection}
+          variants={fadeUp}
+          initial="hidden"
+          animate="visible"
+          transition={{ duration: 0.55, delay: 0.1 }}
+        >
           <span className={styles.categoryTag}>{article.category}</span>
           <h1 className={styles.articleTitle}>{article.title}</h1>
 
@@ -45,10 +87,16 @@ export default function NewsArticleDetailClient({ article }: NewsArticleDetailCl
               <span>👁 {formatNumber(article.views)} lượt xem</span>
             </div>
           </div>
-        </header>
+        </motion.header>
 
         {/* Cover Image */}
-        <div className={styles.coverWrapper}>
+        <motion.div
+          className={styles.coverWrapper}
+          variants={fadeUp}
+          initial="hidden"
+          animate="visible"
+          transition={{ duration: 0.6, delay: 0.2 }}
+        >
           <Image
             src={article.coverImage}
             alt={article.title}
@@ -57,11 +105,18 @@ export default function NewsArticleDetailClient({ article }: NewsArticleDetailCl
             priority
             className={styles.coverImg}
           />
-        </div>
+        </motion.div>
 
         {/* Key Highlights Box */}
         {article.highlights && article.highlights.length > 0 && (
-          <div className={styles.highlightsBox}>
+          <motion.div
+            className={styles.highlightsBox}
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          >
             <div className={styles.title}>
               <span>✦</span> Tóm tắt nội dung trọng tâm (Key Takeaways)
             </div>
@@ -70,17 +125,27 @@ export default function NewsArticleDetailClient({ article }: NewsArticleDetailCl
                 <li key={idx}>{item}</li>
               ))}
             </ul>
-          </div>
+          </motion.div>
         )}
 
         {/* Main Body Content */}
-        <div
+        <motion.div
           className={styles.articleBody}
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.05 }}
+          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
           dangerouslySetInnerHTML={{ __html: article.content }}
         />
 
         {/* Consulting CTA Banner */}
-        <div
+        <motion.div
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
           style={{
             margin: "4rem 0",
             padding: "2.5rem 2rem",
@@ -100,7 +165,7 @@ export default function NewsArticleDetailClient({ article }: NewsArticleDetailCl
           <Link href="/contact" style={{ display: "inline-block", textDecoration: "none" }}>
             <ContactButton />
           </Link>
-        </div>
+        </motion.div>
 
         {/* Article Footer & Tags */}
         <footer className={styles.footerBar}>
@@ -122,7 +187,14 @@ export default function NewsArticleDetailClient({ article }: NewsArticleDetailCl
 
         {/* Related Articles Section */}
         {relatedArticles.length > 0 && (
-          <section className={styles.relatedSection}>
+          <motion.section
+            className={styles.relatedSection}
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.15 }}
+            transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+          >
             <h2 className={styles.title}>BÀI VIẾT LIÊN QUAN</h2>
             <div className={gridStyles.articlesGrid}>
               {relatedArticles.map((rel) => (
@@ -155,7 +227,7 @@ export default function NewsArticleDetailClient({ article }: NewsArticleDetailCl
                 </div>
               ))}
             </div>
-          </section>
+          </motion.section>
         )}
       </div>
     </article>

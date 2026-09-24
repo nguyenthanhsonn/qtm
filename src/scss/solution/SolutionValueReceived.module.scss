@@ -36,6 +36,8 @@
   display: flex;
   align-items: center;
   gap: 8px;
+  padding-top: 4px;
+  line-height: 1.4;
 }
 
 .tagDash {
@@ -50,6 +52,8 @@
   letter-spacing: 0.18em;
   color: #94A3B8;
   text-transform: uppercase;
+  line-height: 1.4;
+  padding-top: 2px;
 }
 
 .mainTitleHead {
