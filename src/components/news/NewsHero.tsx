@@ -51,7 +51,9 @@ export default function NewsHero({
           animate="visible"
           transition={{ duration: 0.6, delay: 0.2 }}
         >
-          Cập nhật xu hướng MediaTech, giải pháp ứng dụng AI, kịch bản dàn dựng và bí quyết tổ chức sự kiện chuyên nghiệp nâng tầm thương hiệu doanh nghiệp.
+          Cập nhật xu hướng MediaTech, giải pháp ứng dụng AI, kịch bản dàn dựng{" "}
+          <br className="hidden md:inline" />
+          và bí quyết tổ chức sự kiện chuyên nghiệp nâng tầm thương hiệu doanh nghiệp.
         </motion.p>
 
         {/* Search & Category Filter Controls */}

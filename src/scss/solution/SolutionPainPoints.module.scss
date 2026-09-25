@@ -3,7 +3,7 @@
 .sectionSolPain {
   position: relative;
   background: transparent;
-  padding: clamp(5rem, 9vh, 8rem) clamp(1.2rem, 4vw, 3.5rem);
+  padding: clamp(3.5rem, 6vh, 5.5rem) clamp(1rem, 3.5vw, 2.5rem);
   overflow: hidden;
   color: #FFFFFF;
 }
@@ -12,12 +12,12 @@
   position: relative;
   z-index: 2;
   width: 100%;
-  max-width: 1440px;
+  max-width: 1240px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: clamp(2.5rem, 5vh, 4rem);
+  gap: clamp(2rem, 4vh, 3rem);
 }
 
 /* ─── 1. Top Section Header (Centered) ─────────────────────────────────────── */
@@ -107,19 +107,19 @@
 .fiveCardsGridRow {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  gap: clamp(0.6rem, 1vw, 1.1rem);
+  gap: clamp(0.5rem, 0.8vw, 0.85rem);
   width: 100%;
   align-items: stretch;
 
-  @media (max-width: 1280px) {
+  @media (max-width: 1080px) {
     grid-template-columns: repeat(3, 1fr);
   }
 
-  @media (max-width: 840px) {
+  @media (max-width: 720px) {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  @media (max-width: 580px) {
+  @media (max-width: 480px) {
     grid-template-columns: 1fr;
   }
 }
@@ -132,15 +132,15 @@
 
 .isFeaturedCardWrapper {
   @media (min-width: 1101px) {
-    transform: translateY(-14px);
+    transform: translateY(-8px);
   }
 }
 
 .painPointGlassCard {
   background: rgba(12, 28, 52, 0.75);
   border: 1.5px solid rgba(79, 209, 232, 0.28);
-  border-radius: 20px;
-  padding: 0.9rem 0.85rem;
+  border-radius: 16px;
+  padding: 0.75rem 0.65rem;
   box-shadow: 0 14px 40px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.08);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
@@ -167,21 +167,21 @@
   flex-direction: column;
   align-items: flex-start;
   gap: 2px;
-  margin-bottom: 0.75rem;
-  padding-left: 0.4rem;
+  margin-bottom: 0.5rem;
+  padding-left: 0.3rem;
 }
 
 .cardNumber {
   font-family: $font-heading;
-  font-size: 1.3rem;
+  font-size: 1.05rem;
   font-weight: 900;
   color: #FFFFFF;
   letter-spacing: 0.04em;
 }
 
 .numUnderline {
-  width: 24px;
-  height: 3px;
+  width: 20px;
+  height: 2.5px;
   border-radius: 999px;
   background: linear-gradient(90deg, #4FD1E8 0%, #38CFC8 100%);
   box-shadow: 0 0 8px rgba(56, 207, 200, 0.5);
@@ -191,10 +191,10 @@
 .cardPhotoFrame {
   position: relative;
   width: 100%;
-  height: 220px;
-  border-radius: 16px;
+  height: 140px;
+  border-radius: 12px;
   overflow: visible;
-  margin-bottom: 2.2rem;
+  margin-bottom: 1.4rem;
 }
 
 .cardPhotoImg {
@@ -202,7 +202,7 @@
   height: 100%;
   object-fit: cover;
   object-position: center center;
-  border-radius: 16px;
+  border-radius: 12px;
   filter: contrast(1.05) brightness(1.02);
   transition: transform 0.45s ease;
 
@@ -214,7 +214,7 @@
 .photoOverlayGlow {
   position: absolute;
   inset: 0;
-  border-radius: 16px;
+  border-radius: 12px;
   background: linear-gradient(180deg, transparent 40%, rgba(12, 28, 52, 0.65) 100%);
   pointer-events: none;
 }
@@ -222,19 +222,24 @@
 /* Round Overlapping Icon Badge */
 .overlappingIconBadge {
   position: absolute;
-  bottom: -24px;
+  bottom: -18px;
   left: 50%;
   transform: translateX(-50%);
-  width: 52px;
-  height: 52px;
+  width: 38px;
+  height: 38px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.45);
-  border: 3px solid rgba(12, 28, 52, 0.9);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.45);
+  border: 2.5px solid rgba(12, 28, 52, 0.9);
   z-index: 4;
   transition: transform 0.35s ease;
+
+  svg {
+    width: 18px;
+    height: 18px;
+  }
 
   .painPointGlassCard:hover & {
     transform: translateX(-50%) scale(1.1);
@@ -267,24 +272,24 @@
   flex-direction: column;
   align-items: flex-start;
   text-align: left;
-  gap: 0.6rem;
-  padding: 0.4rem;
+  gap: 0.45rem;
+  padding: 0.2rem;
   flex: 1;
 }
 
 .cardTitleText {
   font-family: $font-heading;
-  font-size: 1.05rem;
+  font-size: 0.85rem;
   font-weight: 900;
   color: #FFFFFF;
   margin: 0;
-  letter-spacing: 0.03em;
+  letter-spacing: 0.02em;
   line-height: 1.3;
 }
 
 .titleAccentLine {
-  width: 32px;
-  height: 2.5px;
+  width: 24px;
+  height: 2px;
   border-radius: 999px;
   background: linear-gradient(90deg, #4FD1E8 0%, #38CFC8 100%);
   box-shadow: 0 0 8px rgba(56, 207, 200, 0.4);
@@ -292,8 +297,8 @@
 
 .cardDescText {
   font-family: $font-body;
-  font-size: 0.88rem;
-  line-height: 1.65;
+  font-size: 0.76rem;
+  line-height: 1.5;
   color: #CBD5E1;
   margin: 0;
 }
