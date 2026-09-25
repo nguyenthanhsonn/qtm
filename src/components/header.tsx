@@ -131,7 +131,7 @@ export default function Header() {
       </nav>
 
       {/* Header */}
-      <header className={`${styles.headerRoot}${scrolled ? ` ${styles.scrolled}` : ""}`} role="banner">
+      <header className={`fixed top-0 left-0 right-0 z-50 ${styles.headerRoot}${scrolled ? ` ${styles.scrolled}` : ""}`} role="banner">
         <div className={styles.headerGlowLine} aria-hidden="true" />
         <div className={styles.headerInner}>
 
