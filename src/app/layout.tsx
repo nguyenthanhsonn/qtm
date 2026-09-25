@@ -37,16 +37,14 @@ const chakraPetch = Chakra_Petch({
 // Fallback for SVN-Aguda (commercial font) — geometric, thick, rounded
 const montserrat = Montserrat({
   variable: "--font-montserrat",
-  subsets: ["latin", "latin-ext", "vietnamese"],
-  weight: ["400", "500", "600", "700", "800", "900"],
+  subsets: ["latin", "vietnamese"],
   display: "swap",
 });
 
 // Fallback for Proxima Nova (commercial font) — neutral, humanist, readable
 const nunitoSans = Nunito_Sans({
   variable: "--font-nunito-sans",
-  subsets: ["latin", "latin-ext", "vietnamese"],
-  weight: ["300", "400", "500", "600", "700", "800", "900"],
+  subsets: ["latin", "vietnamese"],
   display: "swap",
 });
 

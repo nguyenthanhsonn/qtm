@@ -18,9 +18,10 @@ export default function NewsFeaturedSpotlight({ article }: NewsFeaturedSpotlight
   return (
     <motion.div
       className={styles.spotlightCard}
-      initial={{ opacity: 0, y: 30 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6 }}
+      initial={{ opacity: 0, y: 32 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.15 }}
+      transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
     >
       <div className={styles.spotlightInner}>
         {/* Left Column: Image with Gradient Overlay */}

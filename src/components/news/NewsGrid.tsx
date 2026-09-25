@@ -84,14 +84,15 @@ export default function NewsGrid({
             {filteredArticles.length > 0 ? (
               <motion.div className={styles.articlesGrid} layout>
                 <AnimatePresence mode="popLayout">
-                  {filteredArticles.map((article) => (
+                  {filteredArticles.map((article, idx) => (
                     <motion.div
                       key={article.id}
                       layout
-                      initial={{ opacity: 0, scale: 0.95 }}
-                      animate={{ opacity: 1, scale: 1 }}
+                      initial={{ opacity: 0, y: 32, scale: 0.96 }}
+                      whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                      viewport={{ once: true, amount: 0.1 }}
                       exit={{ opacity: 0, scale: 0.95 }}
-                      transition={{ duration: 0.35 }}
+                      transition={{ duration: 0.5, delay: (idx % 4) * 0.08, ease: [0.22, 1, 0.36, 1] }}
                       className="h-full flex flex-col"
                     >
                       <article className={styles.articleCard}>

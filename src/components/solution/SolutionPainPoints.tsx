@@ -114,13 +114,15 @@ export default function SolutionPainPoints() {
           </div>
 
           <h2 className={styles.mainTitleHead}>
-            DOANH NGHIỆP ĐANG GẶP <span className={styles.titleHighlightCyan}>ĐIỀU GÌ?</span>
+            DOANH NGHIỆP <span className={styles.titleHighlightCyan}>ĐANG GẶP ĐIỀU GÌ?</span>
           </h2>
 
           <div className={styles.titleUnderlineAccent} />
 
           <p className={styles.mainSubtitleDesc}>
-            Những rào cản phổ biến cản trở sự tăng trưởng thương hiệu và hiệu quả kinh doanh trong thời đại số.
+            Những rào cản phổ biến cản trở sự tăng trưởng thương hiệu
+            <br />
+            và hiệu quả kinh doanh trong thời đại số.
           </p>
         </motion.div>
 

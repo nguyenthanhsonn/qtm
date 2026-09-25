@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
+import { motion } from "motion/react";
 import styles from "@/scss/news/NewsGrid.module.scss";
 import type { NewsArticle } from "@/types/news";
 import { formatNumber } from "@/lib/utils";
@@ -31,10 +32,22 @@ export default function NewsSidebar({
     }
   };
 
+  const fadeUp = {
+    hidden: { opacity: 0, y: 28 },
+    visible: { opacity: 1, y: 0 },
+  };
+
   return (
     <aside className={styles.sidebar}>
       {/* 1. Trending Articles Widget */}
-      <div className={styles.sidebarCard}>
+      <motion.div
+        className={styles.sidebarCard}
+        variants={fadeUp}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.15 }}
+        transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+      >
         <h3 className={styles.sidebarTitle}>BÀI VIẾT NỔI BẬT</h3>
         <div className={styles.trendingList}>
           {trendingArticles.slice(0, 5).map((art, idx) => (
@@ -47,10 +60,17 @@ export default function NewsSidebar({
             </Link>
           ))}
         </div>
-      </div>
+      </motion.div>
 
       {/* 2. Popular Tags Cloud */}
-      <div className={styles.sidebarCard}>
+      <motion.div
+        className={styles.sidebarCard}
+        variants={fadeUp}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.15 }}
+        transition={{ duration: 0.55, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+      >
         <h3 className={styles.sidebarTitle}>CHỦ ĐỀ HOT</h3>
         <div className={styles.tagCloud}>
           <button
@@ -69,10 +89,17 @@ export default function NewsSidebar({
             </button>
           ))}
         </div>
-      </div>
+      </motion.div>
 
       {/* 3. Newsletter Subscription Card */}
-      <div className={`${styles.sidebarCard} ${styles.newsletterCard}`}>
+      <motion.div
+        className={`${styles.sidebarCard} ${styles.newsletterCard}`}
+        variants={fadeUp}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.15 }}
+        transition={{ duration: 0.55, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+      >
         <h3 className={styles.newsletterTitle}>📬 INSIGHTS ĐỊNH KỲ</h3>
         <p className={styles.newsletterDesc}>
           Đăng ký để nhận những xu hướng MediaTech & Bí quyết sự kiện mới nhất trực tiếp qua Email hàng tuần.
@@ -94,7 +121,7 @@ export default function NewsSidebar({
             ✓ Đã đăng ký thành công! Cảm ơn bạn.
           </p>
         )}
-      </div>
+      </motion.div>
     </aside>
   );
 }

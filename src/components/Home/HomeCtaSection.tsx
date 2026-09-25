@@ -92,7 +92,9 @@ export default function HomeCtaSection() {
           viewport={viewport}
           transition={{ duration: 0.65, delay: 0.15, ease: easeOut }}
         >
-          Những giá trị cốt lõi là kim chỉ nam cho mọi hành động của QTM, tạo nên sự khác biệt và giá trị bền vững cho khách hàng.
+          Những giá trị cốt lõi là kim chỉ nam cho mọi hành động của QTM,
+          <br />
+          tạo nên sự khác biệt và giá trị bền vững cho khách hàng.
         </motion.p>
 
         {/* 3 HUD Cards */}

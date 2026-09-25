@@ -32,7 +32,7 @@
   color: #FFFFFF;
   letter-spacing: -0.01em;
   margin: 0;
-  line-height: 1.2;
+  line-height: 1.35;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -56,6 +56,11 @@
   }
 
   .titleHighlight {
+    display: inline-block;
+    padding-top: 0.15em;
+    padding-bottom: 0.1em;
+    margin-top: -0.15em;
+    margin-bottom: -0.1em;
     color: #38cfc8;
     background: linear-gradient(90deg, #2095ad 0%, #38cfc8 100%);
     -webkit-background-clip: text;
@@ -141,27 +146,31 @@
 }
 
 .topLeft {
-  top: 8px;
-  left: 8px;
+  top: 14px;
+  left: 14px;
   border-width: 2px 0 0 2px;
+  border-top-left-radius: 3px;
 }
 
 .topRight {
-  top: 8px;
-  right: 8px;
+  top: 14px;
+  right: 14px;
   border-width: 2px 2px 0 0;
+  border-top-right-radius: 3px;
 }
 
 .bottomLeft {
-  bottom: 8px;
-  left: 8px;
+  bottom: 14px;
+  left: 14px;
   border-width: 0 0 2px 2px;
+  border-bottom-left-radius: 3px;
 }
 
 .bottomRight {
-  bottom: 8px;
-  right: 8px;
+  bottom: 14px;
+  right: 14px;
   border-width: 0 2px 2px 0;
+  border-bottom-right-radius: 3px;
 }
 
 .hudTitle {
@@ -302,27 +311,31 @@
   }
 
   .topLeft {
-    top: 10px;
-    left: 10px;
+    top: 18px;
+    left: 18px;
     border-width: 2px 0 0 2px;
+    border-top-left-radius: 4px;
   }
 
   .topRight {
-    top: 10px;
-    right: 10px;
+    top: 18px;
+    right: 18px;
     border-width: 2px 2px 0 0;
+    border-top-right-radius: 4px;
   }
 
   .bottomLeft {
-    bottom: 10px;
-    left: 10px;
+    bottom: 18px;
+    left: 18px;
     border-width: 0 0 2px 2px;
+    border-bottom-left-radius: 4px;
   }
 
   .bottomRight {
-    bottom: 10px;
-    right: 10px;
+    bottom: 18px;
+    right: 18px;
     border-width: 0 2px 2px 0;
+    border-bottom-right-radius: 4px;
   }
 
   .quoteBrandHeader {
@@ -402,6 +415,13 @@
       margin: 0;
 
       .quoteAccent {
+        display: inline-block;
+        padding-right: 0.18em;
+        margin-right: -0.18em;
+        padding-left: 0.05em;
+        margin-left: -0.05em;
+        padding-top: 0.1em;
+        margin-top: -0.1em;
         background: linear-gradient(90deg, #2095AD 0%, #38CFC8 100%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
