@@ -18,7 +18,7 @@ const clientsList: PartnerItem[] = [
     id: "viettel",
     name: "Viettel Group",
     category: "Telecommunications",
-    logoSrc: "https://res.cloudinary.com/s3qilvce/image/upload/v1786450677/logo-moi-cua-viettel-1610030805425937362871.jpg",
+    logoSrc: "https://res.cloudinary.com/s3qilvce/image/upload/e_trim/v1786450677/logo-moi-cua-viettel-1610030805425937362871.jpg",
   },
   {
     id: "vnpt",
@@ -60,7 +60,7 @@ const clientsList: PartnerItem[] = [
     id: "mobifone",
     name: "MobiFone",
     category: "Telecommunications",
-    logoSrc: "https://res.cloudinary.com/s3qilvce/image/upload/v1786450677/logo-mobifone-inkythuatso-01-02-08-58-34.jpg",
+    logoSrc: "https://res.cloudinary.com/s3qilvce/image/upload/e_trim/v1786450677/logo-mobifone-inkythuatso-01-02-08-58-34.jpg",
   },
   {
     id: "vinhomes",
@@ -79,6 +79,12 @@ const clientsList: PartnerItem[] = [
     name: "Đạm Cà Mau (PVCFC)",
     category: "PVCFC Group",
     logoSrc: "https://res.cloudinary.com/s3qilvce/image/upload/v1786450670/0027_dcm_logo_fa-01.jpg",
+  },
+  {
+    id: "itpc",
+    name: "ITPC - Trung tâm Xúc tiến Thương mại & Đầu tư TP.HCM",
+    category: "Trade & Investment Promotion",
+    logoSrc: "https://res.cloudinary.com/s3qilvce/image/upload/e_trim/v1790775349/d6b7302f-58fd-478c-8769-8f36359df23d.jpg",
   },
 ];
 
@@ -150,6 +156,18 @@ const mediaPartnersList: PartnerItem[] = [
     category: "Digital Press",
     logoSrc: "https://res.cloudinary.com/s3qilvce/image/upload/VTC_News_logo.svg.webp",
   },
+  {
+    id: "pnvn",
+    name: "Báo Phụ Nữ Việt Nam",
+    category: "National Press",
+    logoSrc: "https://res.cloudinary.com/s3qilvce/image/upload/v1786450683/pnvn_logo_2025.svg",
+  },
+  {
+    id: "anninhmang",
+    name: "Tạp chí An ninh mạng",
+    category: "Cybersecurity Magazine",
+    logoSrc: "https://res.cloudinary.com/s3qilvce/image/upload/v1786455005/logo_anninhmang.png",
+  },
 ];
 
 const viewport = { once: true, amount: 0.2 } as const;
@@ -184,14 +202,14 @@ export default function HomePartnersSection() {
         </motion.div>
       </div>
 
-      {/* ─── PHẦN 1: KHÁCH HÀNG TIÊU BIỂU ─── */}
+      {/* ─── PHẦN 1: KHÁCH HÀNG ─── */}
       <div className={styles.homePartnersCategoryBlock}> 
         <div className={styles.homePartnersCategoryBadge}>
           <span className={styles.categoryBadgeDot} />
-          <span className={styles.categoryBadgeText}>KHÁCH HÀNG TIÊU BIỂU</span>
+          <span className={styles.categoryBadgeText}>KHÁCH HÀNG</span>
         </div>
 
-        <div className={styles.homePartnersMarqueeWrapper} aria-label="Danh sách logo khách hàng tiêu biểu">
+        <div className={styles.homePartnersMarqueeWrapper} aria-label="Danh sách logo khách hàng">
           <div className={`${styles.marqueeTrack} ${styles.marqueeTrackLeft}`}>
             {[...clientsList, ...clientsList].map((p, idx) => (
               <div key={`client-${p.id}-${idx}`} className={styles.partnerCardWrap} title={p.name}>
@@ -203,7 +221,7 @@ export default function HomePartnersSection() {
                         alt={p.name}
                         width={220}
                         height={70}
-                        className={styles.partnerImgFull}
+                        className={`${styles.partnerImgFull}${p.id === "viettel" || p.id === "mobifone" ? ` ${styles.partnerImgEnlarge}` : ""}`}
                         style={{ width: "100%", height: "100%", objectFit: "contain" }}
                       />
                     ) : (
@@ -217,11 +235,11 @@ export default function HomePartnersSection() {
         </div>
       </div>
 
-      {/* ─── PHẦN 2: ĐỐI TÁC TRUYỀN THÔNG & BÁO CHÍ ─── */}
+      {/* ─── PHẦN 2: ĐỐI TÁC TRUYỀN THÔNG ─── */}
       <div className={styles.homePartnersCategoryBlock}>
         <div className={styles.homePartnersCategoryBadge}>
           <span className={styles.categoryBadgeDot} />
-          <span className={styles.categoryBadgeText}>ĐỐI TÁC TRUYỀN THÔNG & BÁO CHÍ</span>
+          <span className={styles.categoryBadgeText}>ĐỐI TÁC TRUYỀN THÔNG</span>
         </div>
 
         <div className={styles.homePartnersMarqueeWrapper} aria-label="Danh sách logo đối tác truyền thông">
