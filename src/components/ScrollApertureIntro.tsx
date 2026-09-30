@@ -7,10 +7,9 @@ import styles from "@/scss/global/ScrollApertureIntro.module.scss";
 import type { ScrollApertureParticle as Particle } from "@/types/components";
 
 const SESSION_KEY = "qtm_intro_v3";
-const PHASES = { BG: 0, SURGE: 1, LOGO: 2, WORD: 3, SLOGAN: 4, EXIT: 5 } as const;
+const PHASES = { BG: 0, SURGE: 1, LOGO: 2, SLOGAN: 3, EXIT: 4 } as const;
 type Phase = (typeof PHASES)[keyof typeof PHASES];
 
-const WORDMARK = ["Q", "T", "M"];
 const SLOGAN_TOKENS = ["QUALITY", "•", "TECHNOLOGY", "•", "MINDSET"];
 
 function getParticleCount(): number {
@@ -117,15 +116,14 @@ export default function ScrollApertureIntro() {
     T(() => { setPhase(PHASES.SURGE); phaseRef.current = PHASES.SURGE; }, 700);
     T(() => { setPhase(PHASES.LOGO); phaseRef.current = PHASES.LOGO; }, 1100);
     T(() => setLogoReady(true), 1650);
-    T(() => { setPhase(PHASES.WORD); phaseRef.current = PHASES.WORD; }, 2100);
-    T(() => { setPhase(PHASES.SLOGAN); phaseRef.current = PHASES.SLOGAN; }, 2900);
+    T(() => { setPhase(PHASES.SLOGAN); phaseRef.current = PHASES.SLOGAN; }, 2100);
 
     SLOGAN_TOKENS.forEach((_, i) =>
-      T(() => setSloganIdx(i), 2900 + i * 160)
+      T(() => setSloganIdx(i), 2100 + i * 160)
     );
 
-    const lastTokenAt = 2900 + (SLOGAN_TOKENS.length - 1) * 160;
-    T(() => finish(), lastTokenAt + 200);
+    const lastTokenAt = 2100 + (SLOGAN_TOKENS.length - 1) * 160;
+    T(() => finish(), lastTokenAt + 400);
 
     const timers = timersRef.current;
     return () => timers.forEach(clearTimeout);
@@ -286,7 +284,6 @@ export default function ScrollApertureIntro() {
   if (!show) return null;
 
   const showLogo = phase >= PHASES.LOGO;
-  const showWord = phase >= PHASES.WORD;
   const showSlogan = phase >= PHASES.SLOGAN;
   const isExiting = phase === PHASES.EXIT;
 
@@ -363,36 +360,6 @@ export default function ScrollApertureIntro() {
           )}
         </AnimatePresence>
 
-        {/* Wordmark */}
-        <AnimatePresence>
-          {showWord && !isExiting && (
-            <motion.div
-              key="wordmark"
-              className={styles.qiWordmark}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.25 }}
-            >
-              {WORDMARK.map((ch, i) => (
-                <motion.span
-                  key={ch + i}
-                  className={styles.qiWordmarkLetter}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{
-                    duration: 0.42,
-                    delay: i * 0.12,
-                    ease: [0.16, 1, 0.3, 1],
-                  }}
-                >
-                  {ch}
-                </motion.span>
-              ))}
-            </motion.div>
-          )}
-        </AnimatePresence>
-
         {/* Slogan */}
         <AnimatePresence>
           {showSlogan && !isExiting && (
@@ -453,7 +420,7 @@ export default function ScrollApertureIntro() {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.5, delay: 0.25 }}
           >
-            STRATEGIC MEDIATECH PARTNER
+            MEDIATECH PARTNER
           </motion.p>
         )}
       </AnimatePresence>

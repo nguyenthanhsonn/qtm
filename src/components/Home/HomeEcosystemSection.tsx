@@ -73,7 +73,7 @@ export default function HomeEcosystemSection() {
         >
           <p className={styles.homeEcosystemLead}>Chúng tôi không tạo chiến dịch.</p>
           <h2 className={styles.homeEcosystemTitle}>
-            Chúng tôi kiến tạo{" "}
+            Kiến tạo{" "}
             <span className={styles.homeEcosystemTitleGradient}>hệ sinh thái truyền thông</span>
             <span className={styles.homeEcosystemTitleDot}>.</span>
           </h2>

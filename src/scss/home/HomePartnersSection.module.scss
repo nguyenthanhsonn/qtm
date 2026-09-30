@@ -270,6 +270,10 @@
     transition: transform 0.30s cubic-bezier(0.25, 1, 0.36, 1);
   }
 
+  .partnerImgEnlarge {
+    transform: scale(1.16);
+  }
+
   .partnerCardLogo {
     display: flex;
     align-items: center;
