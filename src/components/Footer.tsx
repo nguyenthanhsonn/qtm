@@ -55,7 +55,7 @@ export default function Footer() {
             <Link href="/" prefetch={false} className={styles.footerLogo} aria-label="QTM - Trang chủ">
               <Image
                 src="https://res.cloudinary.com/s3qilvce/image/upload/v1786453565/logo.png"
-                alt="QTM Logo"
+                alt="QTM MediaTech"
                 width={180}
                 height={40}
                 sizes="160px"

@@ -13,15 +13,45 @@ import TextType from "@/components/TextType";
 
 import HomeTransitionQuote from "@/components/Home/HomeTransitionQuote";
 import CursorGrid from "@/uiux/CursorGrid";
-import { createPageMetadata } from "@/lib/seo";
+import { DEFAULT_OG_IMAGE, SITE_NAME, getAbsoluteUrl } from "@/lib/seo";
 
-export const metadata: Metadata = createPageMetadata({
-  title: "QTM MediaTech — Đối Tác Truyền Thông Công Nghệ Chiến Lược",
-  description:
-    "QTM MediaTech — Strategic MediaTech Partner. 16 năm kinh nghiệm đồng hành cùng doanh nghiệp chuyển hóa Chiến lược, Công nghệ, Sáng tạo và Dữ liệu thành giải pháp truyền thông đo lường được.",
-  path: "/",
-  keywords: ["QTM MediaTech", "media tech", "truyền thông đo lường", "giải pháp truyền thông"],
-});
+const homeTitle = "QTM MediaTech — Strategic MediaTech Partner";
+const homeDescription =
+  "QTM MediaTech là đối tác truyền thông công nghệ chiến lược, 16 năm kinh nghiệm trong tổ chức sự kiện, MediaTech, OOH và giải pháp truyền thông đo lường được.";
+const homeUrl = getAbsoluteUrl("/");
+
+export const metadata: Metadata = {
+  title: {
+    absolute: homeTitle,
+  },
+  description: homeDescription,
+  keywords: ["QTM MediaTech", "media tech", "tổ chức sự kiện", "truyền thông đo lường", "giải pháp truyền thông"],
+  alternates: {
+    canonical: homeUrl,
+  },
+  openGraph: {
+    title: homeTitle,
+    description: homeDescription,
+    url: homeUrl,
+    siteName: SITE_NAME,
+    locale: "vi_VN",
+    type: "website",
+    images: [
+      {
+        url: DEFAULT_OG_IMAGE,
+        width: 1200,
+        height: 630,
+        alt: homeTitle,
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: homeTitle,
+    description: homeDescription,
+    images: [DEFAULT_OG_IMAGE],
+  },
+};
 
 const TrophyIcon = ({ className = "" }: HomeIconProps) => (
   <svg className={className} width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
