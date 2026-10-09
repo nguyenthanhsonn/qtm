@@ -26,16 +26,17 @@ export function createPageMetadata({
   keywords?: string[];
 }): Metadata {
   const url = getAbsoluteUrl(path);
+  const fullTitle = title.includes(SITE_NAME) ? title : `${title} | ${SITE_NAME}`;
 
   return {
-    title,
+    title: fullTitle,
     description,
     keywords,
     alternates: {
       canonical: url,
     },
     openGraph: {
-      title: `${title} | ${SITE_NAME}`,
+      title: fullTitle,
       description,
       url,
       siteName: SITE_NAME,
@@ -46,13 +47,13 @@ export function createPageMetadata({
           url: image,
           width: 1200,
           height: 630,
-          alt: `${title} | ${SITE_NAME}`,
+          alt: fullTitle,
         },
       ],
     },
     twitter: {
       card: "summary_large_image",
-      title: `${title} | ${SITE_NAME}`,
+      title: fullTitle,
       description,
       images: [image],
     },

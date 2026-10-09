@@ -145,7 +145,7 @@ export default function Header() {
           >
             <Image
               src="https://res.cloudinary.com/s3qilvce/image/upload/v1786453565/logo.png"
-              alt="QTM MediaTech Logo"
+              alt="QTM MediaTech"
               width={180}
               height={40}
               sizes="180px"

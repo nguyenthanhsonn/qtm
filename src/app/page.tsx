@@ -16,7 +16,7 @@ import CursorGrid from "@/uiux/CursorGrid";
 import { createPageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = createPageMetadata({
-  title: "Trang chủ",
+  title: "QTM MediaTech — Đối Tác Truyền Thông Công Nghệ Chiến Lược",
   description:
     "QTM MediaTech — Strategic MediaTech Partner. 16 năm kinh nghiệm đồng hành cùng doanh nghiệp chuyển hóa Chiến lược, Công nghệ, Sáng tạo và Dữ liệu thành giải pháp truyền thông đo lường được.",
   path: "/",
@@ -132,8 +132,8 @@ function HomeHero() {
           <Link href="/contact" className={`btn btn--primary ${styles.homeCta} ${styles.homeCtaPrimary}`}>
             LIÊN HỆ TƯ VẤN
           </Link>
-          <Link href="/missLegacy" className={`btn btn--outline ${styles.homeCta} ${styles.homeCtaOutline}`}>
-            KHÁM PHÁ MISS LEGACY <span className={styles.btnArrow}>→</span>
+          <Link href="/solution" className={`btn btn--outline ${styles.homeCta} ${styles.homeCtaOutline}`}>
+            KHÁM PHÁ GIẢI PHÁP <span className={styles.btnArrow}>→</span>
           </Link>
         </div>
 
