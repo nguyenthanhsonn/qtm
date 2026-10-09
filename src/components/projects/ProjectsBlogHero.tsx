@@ -51,8 +51,9 @@ export default function ProjectsBlogHero({
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.2, ease: cubicEase }}
         >
-          Khám phá những chiến lược truyền thông toàn diện, giải pháp công nghệ AI
-          bứt phá và dự án di sản văn hóa sáng tạo do QTM kiến tạo và thực thi.
+          Khám phá những chiến lược truyền thông toàn diện, giải pháp công nghệ AI bứt phá{" "}
+          <br className="hidden md:inline" />
+          và dự án di sản văn hóa sáng tạo do QTM kiến tạo và thực thi.
         </motion.p>
 
         {/* Category Filter Bar */}

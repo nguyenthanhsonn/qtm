@@ -39,21 +39,26 @@
 
 .mainTitle {
   font-family: var(--font-heading);
-  font-size: clamp(2.4rem, 4.8vw, 4.2rem);
+  font-size: clamp(1.6rem, 2.8vw, 2.6rem);
   font-weight: 900;
   margin: 0;
-  line-height: 1.15;
+  line-height: 1.25;
   letter-spacing: -0.02em;
   background: linear-gradient(135deg, #FFFFFF 0%, #38CFC8 50%, #00D4FF 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  white-space: nowrap;
+
+  @media (max-width: 640px) {
+    white-space: normal;
+  }
 }
 
 .subTitle {
   font-size: clamp(1rem, 1.4vw, 1.175rem);
   color: #CBD5E1;
-  max-width: 760px;
+  max-width: 840px;
   line-height: 1.7;
   margin: 0;
 }

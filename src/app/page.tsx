@@ -134,14 +134,13 @@ function HomeHero() {
       {/* Content */}
       <div className={`section__content ${styles.homeContent}`}>
         <h1 className={styles.homeTitle}>
-          <span className={`${styles.homeTitleLine} ${styles.homeTitleLinePlain}`}>Strategic</span>
-          <span className={`${styles.homeTitleLine} ${styles.homeTitleLineGradientTealBlue}`}>MediaTech Partner</span>
+          <span className={`${styles.homeTitleLine} ${styles.homeTitleLinePlain}`}>MediaTech Partner</span>
         </h1>
 
         <div className={styles.homeInfoCard}>
           <div className={styles.infoCardTitle}>
             <span className={styles.infoCardDot} />
-            16 NĂM ĐỒNG HÀNH CÙNG TRUYỀN THÔNG SỐ
+            GẦN 20 NĂM ĐỒNG HÀNH CÙNG TRUYỀN THÔNG SỐ
           </div>
           <div className={styles.infoCardDivider} />
           <p className={styles.infoCardDesc}>

@@ -13,6 +13,8 @@ export interface ContactButtonProps {
   text?: string;
   onClick?: () => void;
   className?: string;
+  children?: React.ReactNode;
+  type?: "button" | "submit" | "reset";
 }
 
 export interface TypewriterTextProps {

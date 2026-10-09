@@ -3,7 +3,7 @@
 .sectionSolVal {
   position: relative;
   background: transparent;
-  padding: clamp(5rem, 9vh, 8rem) clamp(1.2rem, 4vw, 3.5rem);
+  padding: clamp(3.5rem, 6vh, 5.5rem) clamp(1rem, 3.5vw, 2.5rem);
   overflow: hidden;
   color: #FFFFFF;
 }
@@ -12,12 +12,12 @@
   position: relative;
   z-index: 2;
   width: 100%;
-  max-width: 1480px;
+  max-width: 1240px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: clamp(2.5rem, 5vh, 4rem);
+  gap: clamp(2rem, 4vh, 3.5rem);
 }
 
 /* ─── 1. Top Section Header (Centered & Single Line) ───────────────────────── */

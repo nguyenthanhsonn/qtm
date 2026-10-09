@@ -31,9 +31,14 @@
 .roadmapSubtitle {
   font-size: clamp(1rem, 1.4vw, 1.15rem);
   color: #CBD5E1;
-  max-width: 720px;
+  max-width: 1050px;
   margin: 0;
   line-height: 1.65;
+  white-space: nowrap;
+
+  @media (max-width: 768px) {
+    white-space: normal;
+  }
 }
 
 /* ==========================================================================
