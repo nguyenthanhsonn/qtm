@@ -48,6 +48,9 @@ const nunitoSans = Nunito_Sans({
   display: "swap",
 });
 
+const SITE_DESCRIPTION =
+  "QTM MediaTech là đối tác truyền thông công nghệ chiến lược, chuyên tổ chức sự kiện, MediaTech, OOH và giải pháp truyền thông đo lường được.";
+
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   applicationName: SITE_NAME,
@@ -55,8 +58,7 @@ export const metadata: Metadata = {
     default: "QTM MediaTech — Strategic MediaTech Partner",
     template: "%s | QTM MediaTech",
   },
-  description:
-    "QTM MediaTech — Đơn vị đồng hành cùng doanh nghiệp chuyển hóa Chiến lược, Công nghệ, Sáng tạo và Dữ liệu thành giải pháp truyền thông đo lường được. 16 năm kinh nghiệm, 200+ dự án.",
+  description: SITE_DESCRIPTION,
   keywords: ["QTM MediaTech", "truyền thông", "sự kiện", "billboard", "media tech", "Miss Legacy"],
   alternates: {
     canonical: getAbsoluteUrl("/"),
@@ -78,8 +80,7 @@ export const metadata: Metadata = {
     url: SITE_URL,
     siteName: SITE_NAME,
     title: "QTM MediaTech — Strategic MediaTech Partner",
-    description:
-      "Đồng hành cùng doanh nghiệp chuyển hóa Chiến lược – Công nghệ – Sáng tạo – Dữ liệu thành giải pháp truyền thông có thể đo lường.",
+    description: SITE_DESCRIPTION,
     images: [
       {
         url: DEFAULT_OG_IMAGE,
@@ -92,8 +93,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "QTM MediaTech — Strategic MediaTech Partner",
-    description:
-      "Đồng hành cùng doanh nghiệp chuyển hóa Chiến lược – Công nghệ – Sáng tạo – Dữ liệu thành giải pháp truyền thông có thể đo lường.",
+    description: SITE_DESCRIPTION,
     images: [DEFAULT_OG_IMAGE],
   },
 };
@@ -102,7 +102,10 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   const organizationJsonLd = {
     "@context": "https://schema.org",
     "@type": "Organization",
+    "@id": `${SITE_URL}/#organization`,
     name: SITE_NAME,
+    alternateName: "QTM",
+    description: SITE_DESCRIPTION,
     url: SITE_URL,
     logo: LOGO_IMAGE,
     email: "info@qtmmedia.vn",
@@ -118,7 +121,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   const websiteJsonLd = {
     "@context": "https://schema.org",
     "@type": "WebSite",
+    "@id": `${SITE_URL}/#website`,
     name: SITE_NAME,
+    description: SITE_DESCRIPTION,
     url: SITE_URL,
     inLanguage: "vi-VN",
     publisher: {

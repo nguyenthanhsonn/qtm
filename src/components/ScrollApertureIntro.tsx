@@ -339,7 +339,7 @@ export default function ScrollApertureIntro() {
               >
                 <Image
                   src="https://res.cloudinary.com/s3qilvce/image/upload/v1786453565/logo.png"
-                  alt="QTM Logo"
+                  alt="QTM MediaTech"
                   width={280}
                   height={65}
                   priority
