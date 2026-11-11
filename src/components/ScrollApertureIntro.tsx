@@ -7,10 +7,8 @@ import styles from "@/scss/global/ScrollApertureIntro.module.scss";
 import type { ScrollApertureParticle as Particle } from "@/types/components";
 
 const SESSION_KEY = "qtm_intro_v3";
-const PHASES = { BG: 0, SURGE: 1, LOGO: 2, SLOGAN: 3, EXIT: 4 } as const;
+const PHASES = { BG: 0, SURGE: 1, LOGO: 2, EXIT: 3 } as const;
 type Phase = (typeof PHASES)[keyof typeof PHASES];
-
-const SLOGAN_TOKENS = ["QUALITY", "•", "TECHNOLOGY", "•", "MINDSET"];
 
 function getParticleCount(): number {
   if (typeof navigator === "undefined") return 60;
@@ -29,7 +27,6 @@ export default function ScrollApertureIntro() {
 
   const [phase, setPhase] = useState<Phase>(PHASES.BG);
   const [logoReady, setLogoReady] = useState(false);
-  const [sloganIdx, setSloganIdx] = useState(-1);
   const [irisOn, setIrisOn] = useState(false);
 
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -48,10 +45,8 @@ export default function ScrollApertureIntro() {
         (typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches);
 
       if (isBotOrReduced || sessionStorage.getItem(SESSION_KEY)) {
-        window.setTimeout(() => {
-          setShow(false);
-          window.dispatchEvent(new CustomEvent("intro-finished"));
-        }, 0);
+        const timer = window.setTimeout(() => setShow(false), 0);
+        return () => window.clearTimeout(timer);
       }
     } catch {
       // sessionStorage blocked — keep intro showing
@@ -98,12 +93,16 @@ export default function ScrollApertureIntro() {
     phaseRef.current = PHASES.EXIT;
     setIrisOn(true);
 
-    const t = setTimeout(() => {
-      setShow(false);
-      window.dispatchEvent(new CustomEvent("intro-finished"));
-    }, 950);
+    const t = setTimeout(() => setShow(false), 950);
     timersRef.current.push(t);
   }, []);
+
+  useEffect(() => {
+    if (show) return;
+
+    document.documentElement.dataset.introFinished = "true";
+    window.dispatchEvent(new CustomEvent("intro-finished"));
+  }, [show]);
 
   useEffect(() => {
     if (!show) return;
@@ -116,14 +115,7 @@ export default function ScrollApertureIntro() {
     T(() => { setPhase(PHASES.SURGE); phaseRef.current = PHASES.SURGE; }, 700);
     T(() => { setPhase(PHASES.LOGO); phaseRef.current = PHASES.LOGO; }, 1100);
     T(() => setLogoReady(true), 1650);
-    T(() => { setPhase(PHASES.SLOGAN); phaseRef.current = PHASES.SLOGAN; }, 2100);
-
-    SLOGAN_TOKENS.forEach((_, i) =>
-      T(() => setSloganIdx(i), 2100 + i * 160)
-    );
-
-    const lastTokenAt = 2100 + (SLOGAN_TOKENS.length - 1) * 160;
-    T(() => finish(), lastTokenAt + 400);
+    T(finish, 3140);
 
     const timers = timersRef.current;
     return () => timers.forEach(clearTimeout);
@@ -284,7 +276,6 @@ export default function ScrollApertureIntro() {
   if (!show) return null;
 
   const showLogo = phase >= PHASES.LOGO;
-  const showSlogan = phase >= PHASES.SLOGAN;
   const isExiting = phase === PHASES.EXIT;
 
   return (
@@ -359,49 +350,6 @@ export default function ScrollApertureIntro() {
             </motion.div>
           )}
         </AnimatePresence>
-
-        {/* Slogan */}
-        <AnimatePresence>
-          {showSlogan && !isExiting && (
-            <motion.div
-              key="slogan"
-              className={styles.qiSlogan}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.25 }}
-            >
-              {SLOGAN_TOKENS.map((token, i) => (
-                <motion.span
-                  key={token + i}
-                  className={token === "•" ? styles.qiSloganDot : styles.qiSloganWord}
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: sloganIdx >= i ? 1 : 0 }}
-                  transition={{ duration: 0.28, ease: "easeOut" }}
-                >
-                  {token}
-                </motion.span>
-              ))}
-              {sloganIdx < SLOGAN_TOKENS.length - 1 && (
-                <span className={styles.qiSloganCursor} aria-hidden="true">_</span>
-              )}
-            </motion.div>
-          )}
-        </AnimatePresence>
-
-        {/* Accent line */}
-        <AnimatePresence>
-          {showSlogan && !isExiting && (
-            <motion.div
-              key="accentline"
-              className={styles.qiAccentLine}
-              initial={{ scaleX: 0, opacity: 0 }}
-              animate={{ scaleX: 1, opacity: 1 }}
-              exit={{ scaleX: 0, opacity: 0 }}
-              transition={{ duration: 0.65, delay: 0.45, ease: [0.16, 1, 0.3, 1] }}
-              style={{ transformOrigin: "center" }}
-            />
-          )}
-        </AnimatePresence>
       </div>
 
       {/* LAYER 7: Iris wipe */}
@@ -410,28 +358,13 @@ export default function ScrollApertureIntro() {
         aria-hidden="true"
       />
 
-      {/* Eyebrow hint */}
-      <AnimatePresence>
-        {phase === PHASES.BG && (
-          <motion.p
-            className={styles.qiEyebrow}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.5, delay: 0.25 }}
-          >
-            MEDIATECH PARTNER
-          </motion.p>
-        )}
-      </AnimatePresence>
-
       {/* Skip button */}
       <button
         className={styles.qiSkip}
         onClick={finish}
         aria-label="Bỏ qua intro"
       >
-        SKIP <span className={styles.qiSkipArrow} aria-hidden="true">▶</span>
+        <span className={styles.qiSkipArrow} aria-hidden="true">▶</span>
       </button>
     </div>
   );

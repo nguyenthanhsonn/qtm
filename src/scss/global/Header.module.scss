@@ -17,7 +17,8 @@ $bg-dropdown: rgba(10, 15, 30, 0.95);
   padding: 0 clamp(1rem, 5vw, 4.5rem);
   background: transparent;
   border-bottom: 1px solid transparent;
-  transition: background 0.35s ease, border-color 0.35s ease, backdrop-filter 0.35s ease;
+  transition: background 0.35s ease, border-color 0.35s ease, backdrop-filter 0.35s ease,
+    opacity 0.3s ease var(--header-reveal-delay, 0s), visibility 0s var(--header-reveal-delay, 0s);
   padding-left: max(clamp(1rem, 5vw, 4.5rem), env(safe-area-inset-left));
   padding-right: max(clamp(1rem, 5vw, 4.5rem), env(safe-area-inset-right));
 
@@ -29,6 +30,15 @@ $bg-dropdown: rgba(10, 15, 30, 0.95);
 
     .headerGlowLine { width: 100%; }
   }
+}
+
+:global(html:has(#home)) .headerRoot {
+  --header-reveal-delay: 2s;
+}
+
+:global(html:not([data-intro-finished]):has(#home)) .headerRoot {
+  opacity: 0;
+  visibility: hidden;
 }
 
 .headerInner {

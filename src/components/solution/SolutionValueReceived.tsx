@@ -195,9 +195,7 @@ export default function SolutionValueReceived() {
           <div className={styles.statBox}>
             <div className={styles.statIconBadge}>📅</div>
             <div className={styles.statTextGroup}>
-              <span className={styles.statNum}>
-                <CountUp to={16} duration={2} />+
-              </span>
+              <span className={styles.statNum}>Gần 20</span>
               <span className={styles.statLbl}>NĂM KINH NGHIỆM</span>
             </div>
           </div>

@@ -5,19 +5,18 @@ import { HomeIconProps } from "@/types/home";
 import CountUp from "@/components/CountUp";
 import AboutBackground from "@/components/about/AboutBackground";
 import HomeCtaSection from "@/components/Home/HomeCtaSection";
+import HomeHeroScene from "@/components/Home/HomeHeroScene";
 import HomeEcosystemSection from "@/components/Home/HomeEcosystemSection";
 import HomeSolutionsSection from "@/components/Home/HomeSolutionsSection";
 import HomePartnersSection from "@/components/Home/HomePartnersSection";
 import FooterCtaSection from "@/components/FooterCtaSection";
-import TextType from "@/components/TextType";
 
 import HomeTransitionQuote from "@/components/Home/HomeTransitionQuote";
-import CursorGrid from "@/uiux/CursorGrid";
 import { DEFAULT_OG_IMAGE, SITE_NAME, getAbsoluteUrl } from "@/lib/seo";
 
 const homeTitle = "QTM MediaTech — Strategic MediaTech Partner";
 const homeDescription =
-  "QTM MediaTech là đối tác truyền thông công nghệ chiến lược, 16 năm kinh nghiệm trong tổ chức sự kiện, MediaTech, OOH và giải pháp truyền thông đo lường được.";
+  "QTM MediaTech là đối tác truyền thông công nghệ chiến lược, với gần 20 năm kinh nghiệm trong tổ chức sự kiện, MediaTech, OOH và giải pháp truyền thông đo lường được.";
 const homeUrl = getAbsoluteUrl("/");
 
 export const metadata: Metadata = {
@@ -93,44 +92,14 @@ const ThumbsUpIcon = ({ className = "" }: HomeIconProps) => (
 
 function HomeHero() {
   const stats = [
-    { value: 16, suffix: "+", label: "Năm kinh nghiệm", icon: TrophyIcon },
+    { value: 20, suffix: "+", label: "Năm kinh nghiệm", icon: TrophyIcon },
     { value: 200, suffix: "+", label: "Dự án đã triển khai", icon: BriefcaseIcon },
     { value: 100, suffix: "+", label: "Khách hàng tin tưởng", icon: UsersIcon },
     { value: 300, suffix: "+", label: "Sự kiện ấn tượng", icon: StarIcon },
   ];
 
   return (
-    <section id="home" className={`section ${styles.sectionHome}`}>
-      <video
-        className={styles.sectionBgVideo}
-        autoPlay
-        loop
-        muted
-        playsInline
-        preload="metadata"
-        aria-hidden="true"
-      >
-        <source src="https://res.cloudinary.com/s3qilvce/video/upload/v1786449911/kling_20260804_VIDEO_A_cinemati_5058_0.mp4" type="video/mp4" />
-      </video>
-      <div className={styles.sectionBgOverlay} aria-hidden="true" />
-      <div className="absolute inset-0 pointer-events-none z-1 overflow-hidden">
-        <CursorGrid
-          color="#38CFC8"
-          cellSize={65}
-          gridOpacity={0.06}
-          maxOpacity={0.45}
-          fillOpacity={0.14}
-          radius={160}
-          clickPulse={true}
-        />
-      </div>
-      <div className={styles.sectionBgGrid} aria-hidden="true" />
-      <div className={styles.sectionParticles} aria-hidden="true">
-        {Array.from({ length: 20 }).map((_, i) => (
-          <span key={i} className={styles.particle} style={{ "--i": i } as React.CSSProperties} />
-        ))}
-      </div>
-
+    <HomeHeroScene>
       {/* Content */}
       <div className={`section__content ${styles.homeContent}`}>
         <h1 className={styles.homeTitle}>
@@ -193,19 +162,15 @@ function HomeHero() {
         <span className={styles.homeScrollDot} />
       </div>
 
-      <div className="orb orb--cyan" aria-hidden="true" />
-      <div className="orb orb--purple" aria-hidden="true" />
-
       {/* Floating Tech Quote Card positioned relative to HomeHero */}
       <HomeTransitionQuote />
-    </section>
+    </HomeHeroScene>
   );
 }
 
 export default function HomePage() {
   return (
     <>
-      {/* BLOCK 1 - HERO (Original Video Background) */}
       <HomeHero />
 
       {/* BLOCKS 2 TO 5 - UNIFIED WITH ABOUT US PAGE BACKGROUND */}

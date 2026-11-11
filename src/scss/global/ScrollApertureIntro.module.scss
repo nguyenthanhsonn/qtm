@@ -124,10 +124,8 @@
   inset: 0;
   z-index: 10;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 0.9rem;
 }
 
 .qiLogoWrap {
@@ -326,86 +324,6 @@
   }
 }
 
-.qiWordmark {
-  display: flex;
-  gap: 0.04em;
-}
-
-.qiWordmarkLetter {
-  font-family: var(--font-montserrat), 'Montserrat', sans-serif;
-  font-size: clamp(2.6rem, 6.5vw, 5rem);
-  font-weight: 800;
-  letter-spacing: 0.2em;
-  color: #ffffff;
-  filter: drop-shadow(0 0 16px rgba(56, 207, 200, 0.45));
-  line-height: 1;
-  display: inline-block;
-  will-change: transform, opacity;
-}
-
-.qiSlogan {
-  display: flex;
-  align-items: center;
-  gap: 0.55rem;
-  flex-wrap: wrap;
-  justify-content: center;
-  min-height: 1.5em;
-}
-
-.qiSloganWord {
-  font-family: var(--font-montserrat), 'Montserrat', sans-serif;
-  font-size: clamp(10px, 1.3vw, 12.5px);
-  font-weight: 700;
-  letter-spacing: 0.24em;
-  color: rgba(255, 255, 255, 0.76);
-  text-transform: uppercase;
-  will-change: opacity;
-}
-
-.qiSloganDot {
-  color: #38CFC8;
-  font-size: 15px;
-  font-weight: 900;
-  animation: qi-dot-signal 0.85s ease-in-out infinite;
-  will-change: transform, opacity;
-}
-
-@keyframes qi-dot-signal {
-  0%, 100% {
-    opacity: 0.4;
-    transform: scale(0.85);
-  }
-  50% {
-    opacity: 1;
-    transform: scale(1.25);
-  }
-}
-
-.qiSloganCursor {
-  color: #38CFC8;
-  font-weight: 700;
-  animation: qi-cursor-blink 0.7s steps(1) infinite;
-}
-
-@keyframes qi-cursor-blink {
-  0%, 50% {
-    opacity: 1;
-  }
-  51%, 100% {
-    opacity: 0;
-  }
-}
-
-.qiAccentLine {
-  width: clamp(90px, 16vw, 190px);
-  height: 2px;
-  background: linear-gradient(90deg, #2DD4BF 0%, #38CFC8 55%, #3B82F6 100%);
-  border-radius: 2px;
-  filter: drop-shadow(0 0 10px rgba(56, 207, 200, 0.65));
-  transform-origin: center;
-  will-change: transform, opacity;
-}
-
 .qiIris {
   position: fixed;
   inset: -2%;
@@ -422,22 +340,6 @@
   }
 }
 
-.qiEyebrow {
-  position: absolute;
-  bottom: clamp(2rem, 7vh, 4.5rem);
-  left: 50%;
-  z-index: 10;
-  transform: translateX(-50%);
-  font-family: var(--font-montserrat), sans-serif;
-  font-size: 10px;
-  font-weight: 600;
-  letter-spacing: 0.28em;
-  color: rgba(56, 207, 200, 0.48);
-  text-transform: uppercase;
-  white-space: nowrap;
-  margin: 0;
-}
-
 .qiSkip {
   position: absolute;
   bottom: clamp(1.25rem, 3.5vh, 2rem);
@@ -445,7 +347,6 @@
   z-index: 90;
   display: inline-flex;
   align-items: center;
-  gap: 0.4rem;
   padding: 0.38rem 0.9rem;
   border-radius: 999px;
   background: rgba(12, 25, 43, 0.5);
@@ -456,8 +357,6 @@
   font-family: var(--font-montserrat), sans-serif;
   font-size: 10px;
   font-weight: 700;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
   cursor: pointer;
   transition: opacity 0.2s ease, transform 0.2s ease;
 
@@ -481,10 +380,6 @@
 
   .qiLogoWrap {
     padding: 1.1rem 1.6rem;
-  }
-
-  .qiWordmarkLetter {
-    font-size: clamp(2rem, 9.5vw, 3.2rem);
   }
 
   .qiCorner {

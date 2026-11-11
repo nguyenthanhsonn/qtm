@@ -7,7 +7,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: transparent;
+  &:global(.section) {
+    background: transparent;
+  }
   padding: clamp(5.5rem, 11vh, 9rem) clamp(1.2rem, 5vw, 4rem) clamp(4rem, 7vh, 6rem);
   overflow: hidden;
   color: #fff;

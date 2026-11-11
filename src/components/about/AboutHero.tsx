@@ -380,7 +380,7 @@ export default function AboutHero() {
                   <div className={styles.floatingBadge}>
                     <div className={styles.fbDot} />
                     <div className={styles.fbText}>
-                      <span className={styles.fbValue}>16+</span>
+                      <span className={styles.fbValue}>20+</span>
                       <span className={styles.fbLabel}>Năm kinh nghiệm</span>
                     </div>
                   </div>
