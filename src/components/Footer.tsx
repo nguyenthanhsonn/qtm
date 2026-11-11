@@ -64,7 +64,7 @@ export default function Footer() {
               />
             </Link>
             <p className={styles.footerDesc}>
-              Strategic MediaTech Partner – 16 năm kiến tạo giải pháp truyền thông và công nghệ toàn diện, đồng hành cùng sự phát triển bền vững của doanh nghiệp.
+              Strategic MediaTech Partner – gần 20 năm kiến tạo giải pháp truyền thông và công nghệ toàn diện, đồng hành cùng sự phát triển bền vững của doanh nghiệp.
             </p>
             <div className={styles.footerSocials}>
               <a
