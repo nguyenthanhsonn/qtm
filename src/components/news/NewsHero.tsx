@@ -136,7 +136,7 @@ export default function NewsHero({
             <span>Bài viết chuyên sâu</span>
           </div>
           <div className={styles.statItem}>
-            <span className={styles.statVal}>16+</span>
+            <span className={styles.statVal}>20+</span>
             <span>Năm kinh nghiệm MediaTech</span>
           </div>
           <div className={styles.statItem}>
